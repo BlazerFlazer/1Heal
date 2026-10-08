@@ -1,0 +1,83 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: Typecheck, lint, unit tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - run: npm run typecheck
+      - run: npm run lint -- --max-warnings=0
+      - run: npm run format:check
+      - run: npm run test:ci
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: coverage
+          path: coverage/lcov.info
+          if-no-files-found: ignore
+
+  audit:
+    name: Dependency audit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm audit --audit-level=high --omit=dev
+
+  db:
+    name: Database migrations and pgTAP tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Detect Supabase project
+        id: has_db
+        run: |
+          if [ -f supabase/config.toml ]; then echo "present=true" >> "$GITHUB_OUTPUT"; else echo "present=false" >> "$GITHUB_OUTPUT"; fi
+      - uses: supabase/setup-cli@v1
+        if: steps.has_db.outputs.present == 'true'
+        with:
+          version: latest
+      - name: Start local Supabase and run tests
+        if: steps.has_db.outputs.present == 'true'
+        run: |
+          supabase start -x studio,imgproxy,inbucket,logflare,vector,edge-runtime
+          supabase db reset --local
+          supabase test db --local
+      - name: Skipped (no supabase/config.toml yet)
+        if: steps.has_db.outputs.present != 'true'
+        run: echo "Database tests skipped until M2 adds supabase/config.toml"
+
+  e2e-smoke:
+    name: E2E smoke (Maestro, Android emulator)
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    steps:
+      - uses: actions/checkout@v4
+      - name: Detect flows
+        id: has_e2e
+        run: |
+          if ls e2e/*.yaml >/dev/null 2>&1; then echo "present=true" >> "$GITHUB_OUTPUT"; else echo "present=false" >> "$GITHUB_OUTPUT"; fi
+      - name: Skipped (no e2e flows yet)
+        if: steps.has_e2e.outputs.present != 'true'
+        run: echo "E2E skipped until flows exist in e2e/"
+      - name: E2E placeholder
+        if: steps.has_e2e.outputs.present == 'true'
+        run: echo "E2E runner is configured in M3 (needs an EAS development build artifact and an emulator)."

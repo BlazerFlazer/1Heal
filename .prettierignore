@@ -1,0 +1,10 @@
+node_modules
+.expo
+dist
+coverage
+apps/admin/node_modules
+apps/admin/.next
+package-lock.json
+expo-env.d.ts
+android
+ios

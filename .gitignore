@@ -41,3 +41,20 @@ example
 # generated native folders
 /ios
 /android
+
+# Agent tooling artifacts (not part of the project)
+.claude-flow/
+.claude/proven-config.json
+.claude/.proven-config-version
+
+# env
+.env
+.env.*
+!.env.example
+
+# coverage
+coverage/
+
+# admin app
+apps/admin/node_modules/
+apps/admin/.next/
