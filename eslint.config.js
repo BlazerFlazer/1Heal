@@ -78,8 +78,18 @@ module.exports = defineConfig([
   },
   ...featureBoundaries,
   {
-    // Routes are thin: they may import features, shared, services.
-    files: ['app/**/*.{ts,tsx}'],
-    rules: {},
+    // No raw user-facing strings in JSX: everything goes through i18n.
+    files: ['app/**/*.tsx', 'src/features/**/*.tsx', 'src/shared/ui/**/*.tsx'],
+    rules: {
+      'react/jsx-no-literals': [
+        'error',
+        {
+          noStrings: true,
+          ignoreProps: true,
+          noAttributeStrings: false,
+          allowedStrings: ['·', '•', '—', '–', '/', '(', ')', ':', '%', '+', '…', '-', ',', '.'],
+        },
+      ],
+    },
   },
 ]);
