@@ -31,7 +31,7 @@
     "loading": "Kontent yuklanmoqda"
   },
   "priceTag": {
-    "perMonth": "oyiga {{price}}",
+    "perMonth": "oyiga",
     "from": "{{price}} dan boshlab"
   },
   "badge": {
@@ -113,7 +113,6 @@
       "venue": "«Pulse» fitnes klubi",
       "address": "Amir Temur koʻchasi, 12",
       "distance": "1,2 km",
-      "perMonth": "oyiga",
       "openSheet": "Pastki oynani ochish",
       "sheetTitle": "Filtrlar",
       "sheetBody": "Pastki oyna mazmuni. Yopish uchun pastga torting yoki fonni bosing.",

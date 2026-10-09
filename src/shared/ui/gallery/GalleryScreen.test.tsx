@@ -49,7 +49,7 @@ describe('GalleryScreen', () => {
 
   it('renders the header, the switches and every section', async () => {
     await render(<GalleryScreen />);
-    expect(screen.getByRole('header', { name: 'Component gallery' })).toBeOnTheScreen();
+    expect(screen.getByText('Every component in every state')).toBeOnTheScreen();
     expect(screen.getByRole('tab', { name: 'System', selected: true })).toBeOnTheScreen();
     expect(screen.getByRole('tab', { name: 'English', selected: true })).toBeOnTheScreen();
     for (const { key } of GALLERY_SECTIONS) {
@@ -71,7 +71,7 @@ describe('GalleryScreen', () => {
     await fireEvent.press(screen.getByRole('tab', { name: 'Русский' }));
     try {
       expect(i18n.language).toBe('ru');
-      expect(screen.getByRole('header', { name: 'Галерея компонентов' })).toBeOnTheScreen();
+      expect(screen.getByText('Все компоненты во всех состояниях')).toBeOnTheScreen();
     } finally {
       await act(async () => {
         await i18n.changeLanguage('en');

@@ -1,3 +1,24 @@
 {
-  "title": "Discover"
+  "title": "Discover",
+  "search": {
+    "placeholder": "Gym, pool, yoga…",
+    "label": "Search venues",
+    "clear": "Clear search"
+  },
+  "view": {
+    "list": "List",
+    "map": "Map"
+  },
+  "empty": {
+    "title": "Venues are coming soon",
+    "body": "The partner catalogue with filters and a map opens in the next update.",
+    "search": {
+      "title": "Nothing found",
+      "body": "Nothing matches “{{query}}” yet. Try another word."
+    }
+  },
+  "map": {
+    "title": "Map is coming soon",
+    "body": "Venues on the map arrive together with the catalogue."
+  }
 }

@@ -1,3 +1,34 @@
 {
-  "title": "Profil"
+  "title": "Profil",
+  "avatarLabel": "{{name}} avatari",
+  "anonymous": "Aʼzo",
+  "sections": {
+    "settings": "Sozlamalar",
+    "activity": "Faollik",
+    "about": "Ilova haqida"
+  },
+  "menu": {
+    "language": "Til",
+    "theme": "Mavzu",
+    "notifications": "Bildirishnomalar",
+    "favorites": "Sevimlilar",
+    "history": "Tashriflar tarixi",
+    "support": "Yordam",
+    "legal": "Hujjatlar",
+    "switchToPartner": "Hamkor rejimi",
+    "devGallery": "Komponentlar galereyasi",
+    "soon": "Tez orada"
+  },
+  "themeOptions": {
+    "system": "Tizimdagidek",
+    "light": "Yorugʻ",
+    "dark": "Qorongʻi"
+  },
+  "signOut": {
+    "title": "Hisobdan chiqasizmi?",
+    "body": "Qayta kirish uchun SMS kodi kerak boʻladi.",
+    "confirm": "Chiqish",
+    "cancel": "Qolish"
+  },
+  "version": "Versiya {{version}}"
 }

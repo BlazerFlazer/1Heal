@@ -1,3 +1,10 @@
 {
-  "title": "My QR code"
+  "title": "My QR code",
+  "frameLabel": "QR code placeholder",
+  "inactive": {
+    "title": "Your QR code appears once a subscription is active",
+    "body": "Show it at the entrance — staff scan it and the visit is counted.",
+    "cta": "Choose a plan"
+  },
+  "offlineNote": "The QR code works offline too: a few codes are saved in advance."
 }

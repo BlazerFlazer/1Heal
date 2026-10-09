@@ -1,3 +1,36 @@
 {
-  "title": "Asosiy"
+  "title": "Asosiy",
+  "greeting": {
+    "morning": "Xayrli tong, {{name}}",
+    "afternoon": "Xayrli kun, {{name}}",
+    "evening": "Xayrli kech, {{name}}",
+    "night": "Xayrli tun, {{name}}",
+    "neutral": {
+      "morning": "Xayrli tong",
+      "afternoon": "Xayrli kun",
+      "evening": "Xayrli kech",
+      "night": "Xayrli tun"
+    }
+  },
+  "subscription": {
+    "title": "Obunangiz",
+    "none": {
+      "title": "Hali obuna yoʻq",
+      "body": "Bitta obuna — shahardagi sport zallari, basseynlar va studiyalarga kirish.",
+      "cta": "Tariflarni koʻrish"
+    },
+    "plansSoon": {
+      "title": "Tariflar tez orada",
+      "body": "Tariflarni solishtirish va toʻlov keyingi yangilanishda paydo boʻladi."
+    }
+  },
+  "nearby": {
+    "title": "Yaqin atrofda",
+    "seeAll": "Barchasini koʻrish",
+    "empty": {
+      "title": "Maskanlar shu yerda paydo boʻladi",
+      "body": "Hamkorlar katalogi keyingi yangilanishda ochiladi.",
+      "cta": "Katalogni ochish"
+    }
+  }
 }

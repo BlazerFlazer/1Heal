@@ -39,12 +39,20 @@ function Dot({ index, active, scrollX, pageWidth, reduceMotion }: DotProps) {
 
   const animatedStyle = useAnimatedStyle(() => {
     if (reduceMotion) {
-      return { width: active ? activeWidth : inactiveWidth, opacity: active ? 1 : INACTIVE_OPACITY };
+      return {
+        width: active ? activeWidth : inactiveWidth,
+        opacity: active ? 1 : INACTIVE_OPACITY,
+      };
     }
     const input = [(index - 1) * pageWidth, index * pageWidth, (index + 1) * pageWidth];
     const x = scrollX.get();
     return {
-      width: interpolate(x, input, [inactiveWidth, activeWidth, inactiveWidth], Extrapolation.CLAMP),
+      width: interpolate(
+        x,
+        input,
+        [inactiveWidth, activeWidth, inactiveWidth],
+        Extrapolation.CLAMP,
+      ),
       opacity: interpolate(x, input, [INACTIVE_OPACITY, 1, INACTIVE_OPACITY], Extrapolation.CLAMP),
     };
   });
@@ -52,7 +60,10 @@ function Dot({ index, active, scrollX, pageWidth, reduceMotion }: DotProps) {
   return (
     <Animated.View
       testID={ONBOARDING_TEST_IDS.dot(index)}
-      style={[{ height: spacing[2], borderRadius: radii.full, backgroundColor: colors.primary }, animatedStyle]}
+      style={[
+        { height: spacing[2], borderRadius: radii.full, backgroundColor: colors.primary },
+        animatedStyle,
+      ]}
     />
   );
 }

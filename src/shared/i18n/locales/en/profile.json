@@ -1,3 +1,34 @@
 {
-  "title": "Profile"
+  "title": "Profile",
+  "avatarLabel": "Avatar of {{name}}",
+  "anonymous": "Member",
+  "sections": {
+    "settings": "Settings",
+    "activity": "Activity",
+    "about": "About"
+  },
+  "menu": {
+    "language": "Language",
+    "theme": "Theme",
+    "notifications": "Notifications",
+    "favorites": "Favourites",
+    "history": "Visit history",
+    "support": "Support",
+    "legal": "Legal",
+    "switchToPartner": "Partner mode",
+    "devGallery": "Component gallery",
+    "soon": "Soon"
+  },
+  "themeOptions": {
+    "system": "System",
+    "light": "Light",
+    "dark": "Dark"
+  },
+  "signOut": {
+    "title": "Sign out?",
+    "body": "You will need an SMS code to sign in again.",
+    "confirm": "Sign out",
+    "cancel": "Stay"
+  },
+  "version": "Version {{version}}"
 }

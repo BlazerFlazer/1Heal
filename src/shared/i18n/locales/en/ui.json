@@ -31,7 +31,7 @@
     "loading": "Loading content"
   },
   "priceTag": {
-    "perMonth": "{{price}} per month",
+    "perMonth": "per month",
     "from": "from {{price}}"
   },
   "badge": {
@@ -113,7 +113,6 @@
       "venue": "Pulse Fitness Club",
       "address": "12 Amir Temur St.",
       "distance": "1.2 km",
-      "perMonth": "per month",
       "openSheet": "Open sheet",
       "sheetTitle": "Filters",
       "sheetBody": "Sheet content. Drag down or tap the backdrop to close.",

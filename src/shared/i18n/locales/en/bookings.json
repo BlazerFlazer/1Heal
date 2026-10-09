@@ -1,3 +1,18 @@
 {
-  "title": "My bookings"
+  "title": "My bookings",
+  "tabs": {
+    "upcoming": "Upcoming",
+    "past": "Past"
+  },
+  "empty": {
+    "upcoming": {
+      "title": "No bookings yet",
+      "body": "Find a venue and book your first session.",
+      "cta": "Find a venue"
+    },
+    "past": {
+      "title": "No history yet",
+      "body": "Sessions you attended will appear here."
+    }
+  }
 }

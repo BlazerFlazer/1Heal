@@ -1,0 +1,20 @@
+/** Stable ids shared by component tests and the Maestro flows in `e2e/`. */
+export const AUTH_TEST_IDS = {
+  phoneScreen: 'phone',
+  phoneInput: 'phone-input',
+  phoneSubmit: 'phone-submit',
+  phoneOffline: 'phone-offline',
+  phoneConsent: 'phone-consent',
+  phoneTerms: 'phone-consent-terms',
+  phonePrivacy: 'phone-consent-privacy',
+  verifyScreen: 'verify',
+  verifyInvalid: 'verify-invalid-phone',
+  verifyBack: 'verify-back',
+  otpInput: 'otp-input',
+  otpResend: 'otp-resend',
+  otpChangeNumber: 'otp-change-number',
+  otpError: 'otp-error',
+  otpVerifying: 'otp-verifying',
+  otpLocked: 'otp-locked',
+  otpDevHint: 'otp-dev-hint',
+} as const;

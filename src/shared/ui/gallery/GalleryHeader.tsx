@@ -11,7 +11,7 @@ import {
 import { Tabs, type TabItem } from '@/shared/ui/Tabs';
 import { Text } from '@/shared/ui/Text';
 
-/** Gallery title plus live theme (system/light/dark) and language switches. */
+/** Gallery subtitle plus live theme (system/light/dark) and language switches; the title is the native header. */
 export function GalleryHeader() {
   const { t } = useTranslation();
   const { spacing } = useTheme();
@@ -29,9 +29,6 @@ export function GalleryHeader() {
 
   return (
     <View style={{ paddingHorizontal: spacing[4], paddingTop: spacing[4], gap: spacing[3] }}>
-      <Text variant="title" accessibilityRole="header">
-        {t('ui.gallery.title')}
-      </Text>
       <Text color="textSecondary">{t('ui.gallery.subtitle')}</Text>
       <Tabs
         testID="gallery-theme"

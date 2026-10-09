@@ -1,3 +1,18 @@
 {
-  "title": "Mening bronlarim"
+  "title": "Mening bronlarim",
+  "tabs": {
+    "upcoming": "Kelgusi",
+    "past": "Oʻtgan"
+  },
+  "empty": {
+    "upcoming": {
+      "title": "Hali bronlar yoʻq",
+      "body": "Maskanni toping va birinchi mashgʻulotni bron qiling.",
+      "cta": "Maskan topish"
+    },
+    "past": {
+      "title": "Tarix boʻsh",
+      "body": "Bu yerda tashrif buyurilgan mashgʻulotlar paydo boʻladi."
+    }
+  }
 }

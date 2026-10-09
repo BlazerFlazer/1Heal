@@ -1,11 +1,9 @@
-import { Text, View } from 'react-native';
+import { Redirect } from 'expo-router';
 
-import { BRAND_NAME } from '@/shared/config/brand';
+import { resolveEntryHref, useShellState } from '@/shared/providers';
 
+/** Anchor route: `Stack.Protected` lands here whenever a guard closes, and we forward on. */
 export default function Index() {
-  return (
-    <View accessibilityRole="summary">
-      <Text>{BRAND_NAME}</Text>
-    </View>
-  );
+  const state = useShellState();
+  return <Redirect href={resolveEntryHref(state)} />;
 }

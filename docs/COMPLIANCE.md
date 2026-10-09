@@ -46,3 +46,17 @@ analytics, not exported to third parties, deleted with the account, minimised in
 
 Separate, versioned consents for terms, privacy and marketing in `consents`. Location only
 when-in-use; camera only in partner mode; notifications after explicit priming.
+
+## 7. Session tokens on the device
+
+Flag: with the Supabase auth provider, supabase-js persists the access and refresh tokens in
+AsyncStorage (plain storage: app-private files on Android, the app sandbox on iOS) rather than in
+the OS keychain/keystore. The refresh token is long-lived, so a rooted device or a backup extraction
+could reuse it.
+
+Design response (M1): the app-level device id and the QR token window already go through
+expo-secure-store; the mock provider stores its session there too. Open item (M2): evaluate an
+encrypted storage adapter for supabase-js (AES key held in SecureStore, ciphertext in AsyncStorage),
+server-side refresh-token rotation and reuse detection (Supabase default), and a device list with
+remote revocation (`devices.revoked_at`). Biometric lock (`profiles.biometric_lock`) is a later
+milestone.

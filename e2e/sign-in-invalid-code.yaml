@@ -1,0 +1,48 @@
+# Skip onboarding, request a code, enter a wrong one, see the inline error, go back to the phone.
+# Needs a dev build with EXPO_PUBLIC_AUTH_PROVIDER=mock (any code but 123456 is rejected).
+# Test ids come from src/features/onboarding/testIds.ts and src/features/auth/testIds.ts.
+appId: uz.oneheal.app
+name: Sign-in with an invalid code
+tags:
+  - smoke
+---
+- launchApp:
+    clearState: true
+
+# Skip lands directly on sign-in
+- assertVisible:
+    id: 'onboarding'
+- tapOn:
+    id: 'onboarding-skip'
+- assertVisible:
+    id: 'phone-input'
+
+# Request a code
+- tapOn:
+    id: 'phone-input'
+- inputText: '901234567'
+- tapOn:
+    id: 'phone-submit'
+- assertVisible:
+    id: 'otp-input'
+
+# Wrong code: inline error, cells cleared, still on the code screen
+- tapOn:
+    id: 'otp-input'
+- inputText: '000000'
+- extendedWaitUntil:
+    visible:
+      id: 'otp-error'
+    timeout: 10000
+- assertVisible:
+    id: 'otp-input'
+
+# Resend is still counting down right after the request
+- assertVisible:
+    id: 'otp-resend'
+
+# Change number returns to the phone screen
+- tapOn:
+    id: 'otp-change-number'
+- assertVisible:
+    id: 'phone-input'

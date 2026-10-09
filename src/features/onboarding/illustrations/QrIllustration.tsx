@@ -33,7 +33,9 @@ export function QrIllustration({ size, accessibilityLabel, testID }: Illustratio
   const { colors } = useTheme();
   const cells = QR_PATTERN.flatMap((row, rowIndex) =>
     [...row].flatMap((cell, colIndex) =>
-      cell === '1' ? [{ x: QR_ORIGIN.x + colIndex * QR_CELL, y: QR_ORIGIN.y + rowIndex * QR_CELL }] : [],
+      cell === '1'
+        ? [{ x: QR_ORIGIN.x + colIndex * QR_CELL, y: QR_ORIGIN.y + rowIndex * QR_CELL }]
+        : [],
     ),
   );
 

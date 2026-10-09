@@ -1,3 +1,36 @@
 {
-  "title": "Home"
+  "title": "Home",
+  "greeting": {
+    "morning": "Good morning, {{name}}",
+    "afternoon": "Good afternoon, {{name}}",
+    "evening": "Good evening, {{name}}",
+    "night": "Good night, {{name}}",
+    "neutral": {
+      "morning": "Good morning",
+      "afternoon": "Good afternoon",
+      "evening": "Good evening",
+      "night": "Good night"
+    }
+  },
+  "subscription": {
+    "title": "Your subscription",
+    "none": {
+      "title": "No subscription yet",
+      "body": "One subscription unlocks gyms, pools and studios across the city.",
+      "cta": "See plans"
+    },
+    "plansSoon": {
+      "title": "Plans are coming soon",
+      "body": "Plan comparison and checkout arrive in the next update."
+    }
+  },
+  "nearby": {
+    "title": "Nearby venues",
+    "seeAll": "See all",
+    "empty": {
+      "title": "Venues will appear here",
+      "body": "The partner catalogue opens in the next update.",
+      "cta": "Open the catalogue"
+    }
+  }
 }

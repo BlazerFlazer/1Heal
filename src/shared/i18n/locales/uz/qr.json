@@ -1,3 +1,10 @@
 {
-  "title": "Mening QR kodim"
+  "title": "Mening QR kodim",
+  "frameLabel": "QR kod uchun joy",
+  "inactive": {
+    "title": "QR kod obuna faollashgach paydo boʻladi",
+    "body": "Uni kiraverishda koʻrsating — xodim skanerlaydi va tashrif hisobga olinadi.",
+    "cta": "Tarif tanlash"
+  },
+  "offlineNote": "QR kod internetsiz ham ishlaydi: bir nechta kod oldindan saqlanadi."
 }

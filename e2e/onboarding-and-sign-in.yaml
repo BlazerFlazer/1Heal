@@ -1,0 +1,52 @@
+# Fresh install: three onboarding slides, permission priming, phone entry, mock OTP, signed in.
+# Needs a dev build with EXPO_PUBLIC_AUTH_PROVIDER=mock (the code is MOCK_OTP_CODE, 123456).
+# Test ids come from src/features/onboarding/testIds.ts and src/features/auth/testIds.ts.
+appId: uz.oneheal.app
+name: Onboarding and sign-in
+tags:
+  - smoke
+---
+- launchApp:
+    clearState: true
+
+# Onboarding slides
+- assertVisible:
+    id: 'onboarding'
+- assertVisible:
+    id: 'onboarding-slide-subscription'
+- tapOn:
+    id: 'onboarding-next'
+- assertVisible:
+    id: 'onboarding-slide-qr'
+- tapOn:
+    id: 'onboarding-next'
+- assertVisible:
+    id: 'onboarding-slide-streaks'
+- tapOn:
+    id: 'onboarding-next'
+
+# Permission priming never shows a system prompt
+- assertVisible:
+    id: 'priming'
+- tapOn:
+    id: 'priming-continue'
+
+# Phone entry (the field masks "901234567" to "+998 90 123 45 67")
+- assertVisible:
+    id: 'phone-input'
+- tapOn:
+    id: 'phone-input'
+- inputText: '901234567'
+- tapOn:
+    id: 'phone-submit'
+
+# Code entry auto-submits on the sixth digit; the hidden input owns the keyboard
+- assertVisible:
+    id: 'otp-input'
+- tapOn:
+    id: 'otp-input'
+- inputText: '123456'
+- extendedWaitUntil:
+    notVisible:
+      id: 'otp-input'
+    timeout: 10000

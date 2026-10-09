@@ -1,3 +1,54 @@
 {
-  "title": "Hamkor"
+  "title": "Hamkor",
+  "scan": {
+    "title": "Skaner",
+    "frameLabel": "Skanerlash maydoni",
+    "start": "Skanerlashni boshlash",
+    "helper": "QR kodlarni skanerlash chek-in yangilanishida paydo boʻladi. Kameraga ruxsatni oʻshanda soʻraymiz.",
+    "offlineNote": "QR kodni tekshirish uchun internet kerak."
+  },
+  "today": {
+    "title": "Bugun",
+    "tabs": {
+      "bookings": "Bronlar",
+      "waitlist": "Kutish roʻyxati"
+    },
+    "empty": {
+      "bookings": {
+        "title": "Bugunga bronlar yoʻq",
+        "body": "Bu yerda aʼzolarning bugungi bronlari paydo boʻladi."
+      },
+      "waitlist": {
+        "title": "Kutish roʻyxati boʻsh",
+        "body": "Bu yerda joy kutayotgan aʼzolar paydo boʻladi."
+      }
+    }
+  },
+  "stats": {
+    "title": "Statistika",
+    "cards": {
+      "visits": {
+        "label": "Bugungi tashriflar",
+        "caption": "Maʼlumotlar birinchi chek-inlardan soʻng paydo boʻladi"
+      },
+      "noShows": {
+        "label": "Haftalik kelmaganlar",
+        "caption": "Mashgʻulot tugagach avtomatik hisoblanadi"
+      },
+      "payout": {
+        "label": "Kutilayotgan toʻlov",
+        "caption": "Joriy oy uchun, soʻmda"
+      }
+    }
+  },
+  "settings": {
+    "title": "Sozlamalar",
+    "switchToMember": "Aʼzo rejimi",
+    "signOut": {
+      "title": "Hisobdan chiqasizmi?",
+      "body": "Qayta kirish uchun SMS kodi kerak boʻladi.",
+      "confirm": "Chiqish",
+      "cancel": "Qolish"
+    }
+  }
 }

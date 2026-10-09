@@ -1,3 +1,54 @@
 {
-  "title": "Partner"
+  "title": "Partner",
+  "scan": {
+    "title": "Scanner",
+    "frameLabel": "Scanning area",
+    "start": "Start scanning",
+    "helper": "QR scanning arrives with the check-in update. We will ask for camera access then.",
+    "offlineNote": "Checking a QR code needs an internet connection."
+  },
+  "today": {
+    "title": "Today",
+    "tabs": {
+      "bookings": "Bookings",
+      "waitlist": "Waitlist"
+    },
+    "empty": {
+      "bookings": {
+        "title": "No bookings for today",
+        "body": "Members' bookings for today will appear here."
+      },
+      "waitlist": {
+        "title": "Waitlist is empty",
+        "body": "Members waiting for a spot will appear here."
+      }
+    }
+  },
+  "stats": {
+    "title": "Stats",
+    "cards": {
+      "visits": {
+        "label": "Visits today",
+        "caption": "Data appears after the first check-ins"
+      },
+      "noShows": {
+        "label": "No-shows this week",
+        "caption": "Counted automatically once a session ends"
+      },
+      "payout": {
+        "label": "Expected payout",
+        "caption": "For the current month, in UZS"
+      }
+    }
+  },
+  "settings": {
+    "title": "Settings",
+    "switchToMember": "Member mode",
+    "signOut": {
+      "title": "Sign out?",
+      "body": "You will need an SMS code to sign in again.",
+      "confirm": "Sign out",
+      "cancel": "Stay"
+    }
+  }
 }

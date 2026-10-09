@@ -19,7 +19,7 @@ export function MediaSection() {
   const [rating, setRating] = useState(3);
   const name = t('ui.gallery.samples.userName');
   const avatarLabel = t('ui.avatar.initialsLabel', { name });
-  const perMonth = t('ui.gallery.samples.perMonth');
+  const perMonth = t('ui.priceTag.perMonth');
 
   return (
     <>
