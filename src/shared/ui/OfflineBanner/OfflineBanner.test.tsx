@@ -82,8 +82,7 @@ describe('OfflineBanner', () => {
     await settle();
     const banner = screen.getByTestId('banner', { includeHiddenElements: true });
     expect(getAnimatedStyle(banner).height).toBe(0);
-    expect(banner.props.accessibilityElementsHidden).toBe(true);
-    expect(banner.props.importantForAccessibility).toBe('no-hide-descendants');
+    expect(banner.props['aria-hidden']).toBe(true);
 
     setOnline(null);
     await rerenderBanner();
@@ -98,7 +97,7 @@ describe('OfflineBanner', () => {
     await settle();
     const banner = screen.getByTestId('banner');
     expect(getAnimatedStyle(banner).height).toBe(BANNER_HEIGHT);
-    expect(banner.props.accessibilityElementsHidden).toBe(false);
+    expect(banner.props['aria-hidden']).toBe(false);
     expect(banner.props.accessibilityLiveRegion).toBe('polite');
     expect(screen.getByText('No connection. Showing saved data.')).toBeOnTheScreen();
 

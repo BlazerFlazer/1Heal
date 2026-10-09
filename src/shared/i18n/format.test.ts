@@ -61,8 +61,8 @@ describe('formatMoney', () => {
 
 describe('formatPhone', () => {
   it('formats a Uzbek E.164 number for display', () => {
-    expect(formatPhone('+998901234567')).toBe('+998 90 123 45 67');
-    expect(formatPhone('+998331234567')).toBe('+998 33 123 45 67');
+    expect(formatPhone('+998901234567')).toBe('+998 90 123 45 67');
+    expect(formatPhone('+998331234567')).toBe('+998 33 123 45 67');
   });
 
   it.each(['+99890123456', '+9989012345678', '998901234567', '+79001234567', '', 'abc'])(
@@ -132,7 +132,7 @@ describe('formatters and createFormatters', () => {
     expect(uz.formatNumber(1000)).toBe(`1${NBSP}000`);
     expect(uz.formatMoney(5000)).toBe(`5${NBSP}000${NBSP}so'm`);
     expect(uz.formatMoney(5000, { withCurrency: false })).toBe(`5${NBSP}000`);
-    expect(uz.formatPhone('+998901234567')).toBe('+998 90 123 45 67');
+    expect(uz.formatPhone('+998901234567')).toBe('+998 90 123 45 67');
     expect(uz.formatCount('common.units.visits', 2)).toBe('2 tashrif');
     expect(uz.formatDate(oct8, 'long')).toBe('8-oktabr, 2026');
     expect(uz.formatTime(oct8)).toBe('09:05');

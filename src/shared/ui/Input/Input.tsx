@@ -1,6 +1,7 @@
 import { Eye, EyeOff, X, type LucideIcon } from 'lucide-react-native';
 import { useRef, useState, type ReactNode, type Ref } from 'react';
 import {
+  Platform,
   StyleSheet,
   TextInput,
   View,
@@ -138,7 +139,13 @@ export function Input({
           accessibilityLabel={accessibilityLabel ?? label}
           accessibilityHint={accessibilityHint ?? (hasError ? errorText : helperText)}
           accessibilityState={{ disabled }}
-          style={[styles.input, typography.body, { color: colors.textPrimary }, inputStyle]}
+          style={[
+            styles.input,
+            typography.body,
+            { color: colors.textPrimary },
+            Platform.OS === 'web' ? styles.webInput : null,
+            inputStyle,
+          ]}
         />
         {showClear ? (
           <IconButton
@@ -177,5 +184,7 @@ const styles = StyleSheet.create({
   container: { alignSelf: 'stretch' },
   field: { flexDirection: 'row', alignItems: 'center' },
   input: { flex: 1, paddingVertical: 0, minWidth: 0 },
+  // The field draws its own focus ring; suppress the browser default outline on web.
+  webInput: { outlineWidth: 0 },
   disabled: { opacity: 0.5 },
 });

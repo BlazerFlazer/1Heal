@@ -25,8 +25,7 @@ function PermissionRow({ icon: Icon, title, body }: PermissionRowProps) {
     <Card>
       <View style={[styles.row, { gap: spacing[3] }]}>
         <View
-          accessibilityElementsHidden
-          importantForAccessibility="no-hide-descendants"
+          aria-hidden
           style={[
             styles.circle,
             {

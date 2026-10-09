@@ -27,8 +27,7 @@ export function Divider({
   return (
     <View
       testID={testID}
-      accessible={false}
-      importantForAccessibility="no"
+      aria-hidden
       role="separator"
       style={[
         horizontal ? styles.horizontal : styles.vertical,

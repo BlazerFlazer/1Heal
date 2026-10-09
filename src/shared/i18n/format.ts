@@ -44,7 +44,8 @@ export function formatPhone(e164: string): string {
     national.slice(5, 7),
     national.slice(7, 9),
   ];
-  return `+998 ${parts.join(' ')}`;
+  // No-break spaces: a phone number must never wrap across lines.
+  return `+998${NBSP}${parts.join(NBSP)}`;
 }
 
 /**

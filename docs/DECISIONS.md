@@ -238,3 +238,21 @@ Decision: (b). Web is a developer preview only (ADR-007); SEO and static HTML br
 would add guards to seven modules for a target that is not shipped.
 Consequences: `expo export --platform web` and `npm run web` need no SSR safety; if web ever becomes
 a product target, revisit (a) together with a proper `localStorage` boundary.
+
+## ADR-020 (2026-10-09) Decorative and hidden elements use `aria-hidden`, not the legacy props
+
+Context: components marked decorative nodes with `accessibilityElementsHidden` +
+`importantForAccessibility="no-hide-descendants"` or `accessible={false}`. react-native-web 0.21
+(the dev preview) forwards those to the DOM and React logs an error for every render.
+Options: (a) `Platform.select` around each usage; (b) the cross-platform `aria-hidden` prop that
+React Native ≥0.71 maps to both native props and to the DOM attribute.
+Decision: (b) everywhere in `src/` and `app/`; an architecture-style grep in review keeps the legacy
+props out. Behaviour on iOS/Android is identical; the web console is clean.
+Consequences: tests assert `aria-hidden`; components that exposed `accessible` keep their prop API
+but never forward `accessible={false}` to the DOM.
+
+## ADR-021 (2026-10-09) Tab bar reserves the home-indicator inset itself
+
+Context: on web (and Android devices without a gesture inset) the tab labels clipped at the bottom.
+Decision: `useTabBarScreenOptions` sets `height = 56 + max(insets.bottom, 8)` and the matching
+`paddingBottom`, so the icon + label block always has the same room regardless of inset.

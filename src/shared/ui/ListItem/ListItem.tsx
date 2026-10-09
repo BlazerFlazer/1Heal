@@ -89,7 +89,7 @@ export function ListItem({
       ) : null}
       {trailing}
       {showChevron ? (
-        <View accessibilityElementsHidden importantForAccessibility="no-hide-descendants">
+        <View aria-hidden>
           <ChevronRight size={spacing[5]} color={colors.textSecondary} />
         </View>
       ) : null}

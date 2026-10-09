@@ -73,7 +73,7 @@ export function Avatar({
           transition={motion.durations.base}
           recyclingKey={uri}
           style={StyleSheet.absoluteFill}
-          accessible={false}
+          aria-hidden
         />
       ) : initials ? (
         <Text variant={TEXT_VARIANTS[size]} color="onPrimarySubtle">

@@ -104,8 +104,7 @@ export function Button({
               testID={testID ? `${testID}-spinner` : undefined}
               style={StyleSheet.absoluteFill}
               color={palette.foreground}
-              accessibilityElementsHidden
-              importantForAccessibility="no-hide-descendants"
+              aria-hidden
             />
           ) : null}
         </View>

@@ -64,8 +64,7 @@ export function EmptyState({
         (Icon ? (
           <View
             testID={sub('icon')}
-            accessibilityElementsHidden
-            importantForAccessibility="no-hide-descendants"
+            aria-hidden
             style={[
               styles.circle,
               {

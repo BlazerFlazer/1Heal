@@ -93,8 +93,7 @@ export function Rating({
         testID={testID ? `${testID}-press-${index}` : undefined}
         onPress={() => commit(index + 1)}
         hitSlop={slack}
-        accessible={false}
-        importantForAccessibility="no-hide-descendants"
+        aria-hidden
       >
         {star}
       </Pressable>

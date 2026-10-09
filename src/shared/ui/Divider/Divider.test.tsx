@@ -11,6 +11,9 @@ jest.mock('@react-native-async-storage/async-storage', () =>
   jest.requireActual('@react-native-async-storage/async-storage/jest/async-storage-mock'),
 );
 
+/** Dividers are hidden from assistive tech by design, so queries must opt in to see them. */
+const hidden = { includeHiddenElements: true } as const;
+
 describe('Divider', () => {
   it('renders a horizontal hairline in the dark border color, hidden from a11y', async () => {
     useThemeStore.setState({ preference: 'dark' });
@@ -19,14 +22,14 @@ describe('Divider', () => {
         <Divider testID="d" />
       </ThemeProvider>,
     );
-    const divider = screen.getByTestId('d');
+    expect(screen.queryByTestId('d')).toBeNull();
+    const divider = screen.getByTestId('d', hidden);
     expect(divider).toHaveStyle({
       height: StyleSheet.hairlineWidth,
       backgroundColor: darkColors.border,
       marginHorizontal: 0,
     });
-    expect(divider.props.accessible).toBe(false);
-    expect(divider.props.importantForAccessibility).toBe('no');
+    expect(divider.props['aria-hidden']).toBe(true);
     expect(divider.props.role).toBe('separator');
   });
 
@@ -36,7 +39,7 @@ describe('Divider', () => {
         <Divider testID="d" orientation="vertical" inset={4} color="borderStrong" />
       </ThemeProvider>,
     );
-    expect(screen.getByTestId('d')).toHaveStyle({
+    expect(screen.getByTestId('d', hidden)).toHaveStyle({
       width: StyleSheet.hairlineWidth,
       marginVertical: spacing[4],
       backgroundColor: lightColors.borderStrong,

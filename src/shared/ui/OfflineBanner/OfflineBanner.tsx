@@ -56,8 +56,7 @@ export function OfflineBanner({ style, testID }: OfflineBannerProps) {
     <Animated.View
       testID={testID}
       accessibilityLiveRegion="polite"
-      accessibilityElementsHidden={!offline}
-      importantForAccessibility={offline ? 'auto' : 'no-hide-descendants'}
+      aria-hidden={!offline}
       style={[styles.clip, animatedStyle, style]}
     >
       <View

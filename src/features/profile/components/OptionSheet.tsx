@@ -48,7 +48,7 @@ export function OptionSheet<K extends string>({
               accessibilityHint={selected ? t('ui.chip.selected') : undefined}
               trailing={
                 selected ? (
-                  <View accessibilityElementsHidden importantForAccessibility="no-hide-descendants">
+                  <View aria-hidden>
                     <Check size={spacing[5]} color={colors.primary} />
                   </View>
                 ) : undefined

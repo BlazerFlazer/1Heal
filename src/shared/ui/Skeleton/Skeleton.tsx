@@ -14,8 +14,11 @@ import type { RadiusKey, SpacingKey } from '@/shared/theme/tokens';
 import { useShimmer } from './useShimmer';
 
 type SkeletonBaseProps = {
-  /** False when a parent already announces loading for the whole group. Defaults to true. */
-  accessible?: boolean;
+  /**
+   * Hides the placeholder from assistive tech. Set it when a parent already announces loading for
+   * the whole group; otherwise the placeholder is read as a busy progress bar.
+   */
+  'aria-hidden'?: boolean;
   style?: StyleProp<ViewStyle>;
   testID?: string;
 };
@@ -47,7 +50,7 @@ export function SkeletonBox({
   width = '100%',
   height,
   radius = 'sm',
-  accessible = true,
+  'aria-hidden': hidden = false,
   style,
   testID,
 }: SkeletonBoxProps) {
@@ -58,10 +61,11 @@ export function SkeletonBox({
     <View
       testID={testID}
       onLayout={shimmer.onLayout}
-      accessible={accessible}
-      accessibilityRole={accessible ? 'progressbar' : undefined}
-      accessibilityLabel={accessible ? t('ui.skeleton.loading') : undefined}
-      accessibilityState={accessible ? { busy: true } : undefined}
+      aria-hidden={hidden}
+      accessible={!hidden}
+      accessibilityRole={hidden ? undefined : 'progressbar'}
+      accessibilityLabel={hidden ? undefined : t('ui.skeleton.loading')}
+      accessibilityState={hidden ? undefined : { busy: true }}
       style={[
         styles.box,
         {
@@ -94,7 +98,7 @@ export function SkeletonText({
   width = '100%',
   lastLineWidth = '60%',
   gap = 3,
-  accessible = true,
+  'aria-hidden': hidden = false,
   style,
   testID,
 }: SkeletonTextProps) {
@@ -104,16 +108,17 @@ export function SkeletonText({
   return (
     <View
       testID={testID}
-      accessible={accessible}
-      accessibilityRole={accessible ? 'progressbar' : undefined}
-      accessibilityLabel={accessible ? t('ui.skeleton.loading') : undefined}
-      accessibilityState={accessible ? { busy: true } : undefined}
+      aria-hidden={hidden}
+      accessible={!hidden}
+      accessibilityRole={hidden ? undefined : 'progressbar'}
+      accessibilityLabel={hidden ? undefined : t('ui.skeleton.loading')}
+      accessibilityState={hidden ? undefined : { busy: true }}
       style={[{ width, gap: spacing[gap] }, style]}
     >
       {Array.from({ length: lines }, (_, index) => (
         <SkeletonBox
           key={index}
-          accessible={false}
+          aria-hidden
           height={height}
           width={lines > 1 && index === lines - 1 ? lastLineWidth : '100%'}
         />
@@ -123,13 +128,18 @@ export function SkeletonText({
 }
 
 /** Avatar / icon placeholder. */
-export function SkeletonCircle({ size, accessible, style, testID }: SkeletonCircleProps) {
+export function SkeletonCircle({
+  size,
+  'aria-hidden': hidden,
+  style,
+  testID,
+}: SkeletonCircleProps) {
   const { spacing } = useTheme();
   const side = size ?? spacing[10];
   return (
     <SkeletonBox
       testID={testID}
-      accessible={accessible}
+      aria-hidden={hidden}
       width={side}
       height={side}
       radius="full"

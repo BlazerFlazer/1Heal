@@ -109,7 +109,7 @@ describe('VerifyScreen', () => {
   it('shows the formatted number and submits as soon as the sixth digit lands', async () => {
     mockAuthService.verifyOtp.mockResolvedValue(session);
     await renderVerify();
-    expect(screen.getByText('We sent a code to +998 90 123 45 67')).toBeOnTheScreen();
+    expect(screen.getByText('We sent a code to +998 90 123 45 67')).toBeOnTheScreen();
 
     await typeCode('123456');
     await waitFor(() => expect(mockAuthService.verifyOtp).toHaveBeenCalledWith(E164, '123456'));

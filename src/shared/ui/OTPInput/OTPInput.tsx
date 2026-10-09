@@ -125,11 +125,7 @@ export function OTPInput({
 
   return (
     <Animated.View style={[styles.row, { gap: spacing[2] }, shakeStyle, style]}>
-      <View
-        style={[styles.row, { gap: spacing[2] }]}
-        accessibilityElementsHidden
-        importantForAccessibility="no-hide-descendants"
-      >
+      <View style={[styles.row, { gap: spacing[2] }]} aria-hidden>
         {cells}
       </View>
       <TextInput

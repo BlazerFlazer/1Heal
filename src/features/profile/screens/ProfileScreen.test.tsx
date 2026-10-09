@@ -99,7 +99,7 @@ describe('ProfileScreen', () => {
   it('shows the identity, the menu rows and the app version', async () => {
     await render(tree());
     expect(screen.getByRole('header', { name: 'Aziza Karimova' })).toBeOnTheScreen();
-    expect(screen.getByText('+998 90 123 45 67')).toBeOnTheScreen();
+    expect(screen.getByText('+998 90 123 45 67')).toBeOnTheScreen();
     expect(screen.getByLabelText('Avatar of Aziza Karimova')).toBeOnTheScreen();
     expect(screen.getByRole('button', { name: 'Language, English' })).toBeOnTheScreen();
     expect(screen.getByRole('button', { name: 'Theme, System' })).toBeOnTheScreen();

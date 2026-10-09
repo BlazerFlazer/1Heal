@@ -224,6 +224,12 @@ issued (exp 45 s) ─▶ used (exactly once) | expired
 
 ## 7. Milestones and gates
 
+Status (2026-10-09): **M1 done** — merged to `main`; gates observed: typecheck, lint, prettier,
+Jest (90 suites), `expo export --platform web`, and a manual walkthrough in the web preview
+(onboarding → sign-in → OTP → member tabs → language/theme switch → partner mode → sign-out).
+Not observed locally: iOS/Android simulator boot, Maestro flows, EAS builds (CI carries them).
+Next: M2 Data.
+
 | Milestone                   | Deliverables                                                                                                                                                   | Gates                                                                          |
 | --------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
 | M1 Foundation               | repo, tooling, tokens/theme, typography, component library + gallery, i18n (ru/uz/en), navigation shell, onboarding, auth with mock OTP, logo/icons/splash, CI | typecheck, lint, unit (incl. contrast + architecture tests), web boot observed |

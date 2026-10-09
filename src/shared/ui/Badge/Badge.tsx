@@ -67,7 +67,7 @@ export function Badge({
       <View
         testID={testID}
         accessible={accessibilityLabel !== undefined}
-        importantForAccessibility={accessibilityLabel === undefined ? 'no' : 'yes'}
+        aria-hidden={accessibilityLabel === undefined}
         accessibilityLabel={accessibilityLabel}
         style={[
           {

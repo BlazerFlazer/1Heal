@@ -11,7 +11,7 @@ export type SkeletonListProps = {
   /** Defaults to 3 rows. */
   count?: number;
   gap?: SpacingKey;
-  /** Custom row; defaults to avatar + two text lines. Render it `accessible={false}`. */
+  /** Custom row; defaults to avatar + two text lines. Render it `aria-hidden`. */
   renderItem?: (index: number) => ReactNode;
   style?: StyleProp<ViewStyle>;
   testID?: string;
@@ -21,9 +21,9 @@ function SkeletonRow() {
   const { spacing } = useTheme();
   return (
     <View style={[styles.row, { gap: spacing[3] }]}>
-      <SkeletonCircle accessible={false} />
+      <SkeletonCircle aria-hidden />
       <View style={styles.lines}>
-        <SkeletonText accessible={false} lines={2} lastLineWidth="40%" />
+        <SkeletonText aria-hidden lines={2} lastLineWidth="40%" />
       </View>
     </View>
   );

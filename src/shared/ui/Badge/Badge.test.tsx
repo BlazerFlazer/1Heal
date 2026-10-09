@@ -73,13 +73,15 @@ describe('Badge', () => {
         <Badge dot tone="info" accessibilityLabel="Unread" testID="spoken" />
       </>,
     );
-    const silent = screen.getByTestId('silent');
+    expect(screen.queryByTestId('silent')).toBeNull();
+    const silent = screen.getByTestId('silent', { includeHiddenElements: true });
     expect(silent).toHaveStyle({ width: spacing[3], backgroundColor: darkColors.error });
     expect(silent.props.accessible).toBe(false);
-    expect(silent.props.importantForAccessibility).toBe('no');
+    expect(silent.props['aria-hidden']).toBe(true);
     expect(screen.queryByText('')).toBeNull();
     const spoken = screen.getByTestId('spoken');
     expect(spoken.props.accessible).toBe(true);
+    expect(spoken.props['aria-hidden']).toBe(false);
     expect(spoken).toHaveAccessibleName('Unread');
   });
 });

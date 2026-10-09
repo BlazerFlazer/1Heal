@@ -65,7 +65,8 @@ describe('Avatar', () => {
         />
       </ThemeProvider>,
     );
-    const image = screen.getByTestId('a-image');
+    const image = screen.getByTestId('a-image', { includeHiddenElements: true });
+    expect(image.props['aria-hidden']).toBe(true);
     expect(image.props.source).toEqual(expect.arrayContaining([expect.objectContaining({ uri })]));
     expect(image.props.contentFit).toBe('cover');
     expect(image.props.recyclingKey).toBe(uri);

@@ -31,8 +31,7 @@ export function LogoMark({ size = 32, color, decorative = false, testID }: LogoM
       accessible={!decorative}
       accessibilityRole={decorative ? undefined : 'image'}
       accessibilityLabel={decorative ? undefined : BRAND_NAME}
-      accessibilityElementsHidden={decorative}
-      importantForAccessibility={decorative ? 'no-hide-descendants' : 'auto'}
+      aria-hidden={decorative}
       style={{ width: size, height: size }}
       testID={testID}
     >
