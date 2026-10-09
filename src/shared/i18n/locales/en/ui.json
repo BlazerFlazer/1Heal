@@ -1,0 +1,137 @@
+{
+  "input": {
+    "clear": "Clear",
+    "showPassword": "Show password",
+    "hidePassword": "Hide password"
+  },
+  "otp": {
+    "label": "Digit {{index}} of {{total}}"
+  },
+  "rating": {
+    "label": "Rating {{value}} of 5",
+    "set": "Rate {{value}} out of 5"
+  },
+  "sheet": {
+    "close": "Close sheet",
+    "dragHandle": "Drag down or tap to close"
+  },
+  "toast": {
+    "dismiss": "Dismiss notification"
+  },
+  "chip": {
+    "selected": "Selected"
+  },
+  "tabs": {
+    "label": "Tab bar"
+  },
+  "avatar": {
+    "initialsLabel": "Avatar of {{name}}"
+  },
+  "skeleton": {
+    "loading": "Loading content"
+  },
+  "priceTag": {
+    "perMonth": "{{price}} per month",
+    "from": "from {{price}}"
+  },
+  "badge": {
+    "new": "New"
+  },
+  "emptyState": {
+    "defaultTitle": "Nothing here yet"
+  },
+  "errorState": {
+    "defaultTitle": "Couldn't load",
+    "defaultBody": "Check your connection and try again.",
+    "retry": "Try again"
+  },
+  "offline": {
+    "banner": "No connection. Showing saved data."
+  },
+  "gallery": {
+    "title": "Component gallery",
+    "subtitle": "Every component in every state",
+    "theme": "Theme",
+    "language": "Language",
+    "themeOptions": {
+      "system": "System",
+      "light": "Light",
+      "dark": "Dark"
+    },
+    "sections": {
+      "text": "Text",
+      "buttons": "Buttons",
+      "inputs": "Inputs",
+      "chips": "Chips and badges",
+      "media": "Avatars, prices and rating",
+      "cards": "Cards and lists",
+      "tabs": "Tabs",
+      "states": "Empty and error states",
+      "skeleton": "Skeletons",
+      "overlays": "Sheet, toasts and offline"
+    },
+    "labels": {
+      "default": "Default",
+      "disabled": "Disabled",
+      "loading": "Loading",
+      "error": "Error",
+      "selected": "Selected",
+      "withIcon": "With icon",
+      "fullWidth": "Full width",
+      "variants": "Variants",
+      "sizes": "Sizes",
+      "tones": "Tones",
+      "iconButtons": "Icon buttons",
+      "pressable": "Pressable block",
+      "secure": "Password",
+      "otp": "SMS code",
+      "readOnly": "Read only",
+      "interactive": "Interactive",
+      "scrollable": "Scrollable",
+      "withBadges": "With badges",
+      "divider": "Divider",
+      "list": "List",
+      "box": "Box",
+      "circle": "Circle",
+      "text": "Text",
+      "initials": "Initials",
+      "placeholder": "Placeholder",
+      "oldPrice": "With old price",
+      "empty": "Empty",
+      "generic": "Generic error",
+      "offline": "Offline",
+      "permissionDenied": "Permission denied",
+      "notFound": "Not found"
+    },
+    "samples": {
+      "title": "Title",
+      "body": "Paragraph text to check wrapping and typography.",
+      "label": "Label",
+      "placeholder": "Type something",
+      "helper": "Helper text under the field",
+      "errorText": "This value is not valid",
+      "venue": "Pulse Fitness Club",
+      "address": "12 Amir Temur St.",
+      "distance": "1.2 km",
+      "perMonth": "per month",
+      "openSheet": "Open sheet",
+      "sheetTitle": "Filters",
+      "sheetBody": "Sheet content. Drag down or tap the backdrop to close.",
+      "toastMessage": "Booking confirmed",
+      "toastError": "Payment failed",
+      "toastAction": "Undo",
+      "action": "Action",
+      "seeAll": "See all",
+      "emptyBody": "Your bookings will appear here.",
+      "offlineNote": "The banner shows while the device is offline.",
+      "chipLabel": "Pool",
+      "userName": "Aziza Karimova",
+      "cardBody": "A card with elevation and rounded corners.",
+      "tabs": {
+        "upcoming": "Upcoming",
+        "past": "Past",
+        "waitlist": "Waitlist"
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "member": {
+    "home": "Home",
+    "discover": "Discover",
+    "bookings": "Bookings",
+    "qr": "QR code",
+    "profile": "Profile"
+  },
+  "partner": {
+    "scan": "Scan",
+    "today": "Today",
+    "stats": "Stats",
+    "settings": "Settings"
+  }
+}

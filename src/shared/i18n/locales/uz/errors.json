@@ -1,0 +1,17 @@
+{
+  "network": "Server bilan aloqa yoʻq. Internetni tekshiring.",
+  "timeout": "Server javob bermayapti. Qayta urinib koʻring.",
+  "unknown": "Xatolik yuz berdi. Qayta urinib koʻring.",
+  "auth": {
+    "invalidPhone": "Raqamni +998 XX XXX XX XX koʻrinishida kiriting",
+    "invalidCode": "Kod notoʻgʻri. SMSni tekshirib, qayta urinib koʻring.",
+    "codeExpired": "Kod muddati tugadi. Yangisini soʻrang.",
+    "tooManyRequests": "Urinishlar juda koʻp. {{minutes}} daqiqadan soʻng qayta urining",
+    "locked": "Kirish vaqtincha bloklangan. Keyinroq urinib koʻring.",
+    "sessionExpired": "Sessiya muddati tugadi. Qaytadan kiring."
+  },
+  "validation": {
+    "required": "Toʻldirish shart",
+    "phone": "Telefon raqamini tekshiring"
+  }
+}

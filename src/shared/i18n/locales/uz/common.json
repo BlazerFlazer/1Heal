@@ -1,0 +1,94 @@
+{
+  "appName": "{{brand}}",
+  "actions": {
+    "continue": "Davom etish",
+    "cancel": "Bekor qilish",
+    "retry": "Qayta urinish",
+    "back": "Orqaga",
+    "save": "Saqlash",
+    "done": "Tayyor",
+    "skip": "Oʻtkazib yuborish",
+    "next": "Keyingi",
+    "ok": "OK",
+    "close": "Yopish",
+    "search": "Qidirish",
+    "seeAll": "Barchasini koʻrish",
+    "confirm": "Tasdiqlash",
+    "delete": "Oʻchirish",
+    "edit": "Tahrirlash",
+    "share": "Ulashish",
+    "copy": "Nusxalash",
+    "copied": "Nusxalandi",
+    "signOut": "Chiqish"
+  },
+  "states": {
+    "loading": "Yuklanmoqda…",
+    "offline": {
+      "title": "Internet yoʻq",
+      "body": "Ulanishni tekshirib, qayta urinib koʻring."
+    },
+    "error": {
+      "title": "Xatolik yuz berdi",
+      "body": "Biz allaqachon buni koʻrib chiqyapmiz. Birozdan soʻng qayta urinib koʻring."
+    },
+    "empty": {
+      "title": "Hozircha boʻsh",
+      "body": "Bu yerda hali hech narsa yoʻq."
+    },
+    "permissionDenied": {
+      "title": "Ruxsat kerak",
+      "body": "Davom etish uchun telefon sozlamalarida ruxsat bering.",
+      "openSettings": "Sozlamalarni ochish"
+    },
+    "notFound": {
+      "title": "Sahifa topilmadi",
+      "body": "Havola eskirgan yoki oʻchirilgan boʻlishi mumkin.",
+      "goHome": "Bosh sahifaga"
+    }
+  },
+  "time": {
+    "today": "Bugun",
+    "tomorrow": "Ertaga",
+    "yesterday": "Kecha",
+    "minutesShort": "daq",
+    "hoursShort": "soat"
+  },
+  "units": {
+    "visits_one": "{{count}} tashrif",
+    "visits_other": "{{count}} tashrif",
+    "visitsLeft_one": "{{count}} tashrif qoldi",
+    "visitsLeft_other": "{{count}} tashrif qoldi"
+  },
+  "currency": {
+    "suffix": "so'm"
+  },
+  "yes": "Ha",
+  "no": "Yoʻq",
+  "dateFormats": {
+    "short": "{{day}}-{{month}}",
+    "shortYear": "{{day}}-{{month}}, {{year}}",
+    "long": "{{day}}-{{month}}, {{year}}",
+    "weekday": "{{weekday}}, {{day}}-{{month}}"
+  },
+  "months": {
+    "short": ["yan", "fev", "mar", "apr", "may", "iyn", "iyl", "avg", "sen", "okt", "noy", "dek"],
+    "long": [
+      "yanvar",
+      "fevral",
+      "mart",
+      "aprel",
+      "may",
+      "iyun",
+      "iyul",
+      "avgust",
+      "sentabr",
+      "oktabr",
+      "noyabr",
+      "dekabr"
+    ]
+  },
+  "weekdays": {
+    "short": ["Dush", "Sesh", "Chor", "Pay", "Jum", "Shan", "Yak"],
+    "long": ["dushanba", "seshanba", "chorshanba", "payshanba", "juma", "shanba", "yakshanba"]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "title": "Welcome",
+  "slides": {
+    "subscription": {
+      "title": "One subscription, dozens of venues",
+      "body": "Gyms, pools, yoga and spas — all on a single membership.",
+      "illustration": "One subscription card with several venues around it"
+    },
+    "qr": {
+      "title": "Book and check in with a QR",
+      "body": "Pick a time, show your QR code at the door — and you're in.",
+      "illustration": "A phone showing a QR code with a confirmation tick"
+    },
+    "streaks": {
+      "title": "Track your progress",
+      "body": "We count visits and streaks so keeping the rhythm feels easy.",
+      "illustration": "A calendar with workout days marked"
+    }
+  },
+  "pager": {
+    "label": "Slide {{current}} of {{total}}"
+  },
+  "priming": {
+    "title": "Two permissions, only when needed",
+    "body": "We'll ask at the right moment. The choice is always yours.",
+    "notifications": {
+      "title": "Notifications",
+      "body": "Booking reminders so you never miss a session."
+    },
+    "location": {
+      "title": "Location",
+      "body": "Shows venues near you."
+    },
+    "note": "You can change permissions any time in your phone settings."
+  }
+}

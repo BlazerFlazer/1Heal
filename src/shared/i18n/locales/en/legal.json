@@ -1,0 +1,98 @@
+{
+  "title": "Legal",
+  "draftBadge": "Draft",
+  "draftBanner": "Draft — to be reviewed by legal counsel before publication.",
+  "notFound": {
+    "title": "Document not found",
+    "body": "There is no such document. Check the link or go back."
+  },
+  "docs": {
+    "terms": {
+      "title": "Terms of Service",
+      "sections": [
+        {
+          "heading": "1. Definitions",
+          "body": "“Service” means the {{brand}} mobile app and related services. “User” means an individual who accepts these Terms. “Partner” means a venue that provides services under the subscription."
+        },
+        {
+          "heading": "2. Subscription",
+          "body": "A subscription gives access to visits at partner venues within the limits of the chosen plan. The number of visits, available venues and validity period are stated in the plan."
+        },
+        {
+          "heading": "3. Payments",
+          "body": "Payments are made in UZS through the supported payment systems. The subscription renews automatically unless auto-renewal is turned off in settings."
+        },
+        {
+          "heading": "4. Cancellation and refunds",
+          "body": "A booking can be cancelled without using up a visit until the venue's cancellation window closes. Refund terms for subscriptions are described in the public offer."
+        },
+        {
+          "heading": "5. Personal data",
+          "body": "Personal data is processed in accordance with the Privacy Policy and the laws of the Republic of Uzbekistan."
+        },
+        {
+          "heading": "6. Contacts",
+          "body": "Questions about the service are accepted through the Support section of the app. The operator's details will be added in the final version of this document."
+        }
+      ]
+    },
+    "privacy": {
+      "title": "Privacy Policy",
+      "sections": [
+        {
+          "heading": "1. Definitions",
+          "body": "The operator is {{brand}}. Personal data means any information relating to the User, including phone number, name and visit history."
+        },
+        {
+          "heading": "2. What we collect",
+          "body": "Phone number, name, language settings, booking and visit data, technical device data, and location — only with your permission."
+        },
+        {
+          "heading": "3. Why we process it",
+          "body": "Signing in, booking and confirming visits, booking notifications, improving the service and meeting legal requirements."
+        },
+        {
+          "heading": "4. Storage and sharing",
+          "body": "Data is stored in line with personal data localisation requirements. Partners receive only the information needed to confirm a visit."
+        },
+        {
+          "heading": "5. Your rights",
+          "body": "You can request a copy of your data, correct it or delete your account in the Profile section. Deletion requests are completed within the statutory period."
+        },
+        {
+          "heading": "6. Contacts",
+          "body": "For questions about personal data, contact us through the Support section. The operator's contact details will be added in the final version."
+        }
+      ]
+    },
+    "offer": {
+      "title": "Public Offer",
+      "sections": [
+        {
+          "heading": "1. Definitions",
+          "body": "The offer is a proposal by {{brand}} to enter into an agreement on the terms below. Acceptance is the payment of a subscription in the app."
+        },
+        {
+          "heading": "2. Subject",
+          "body": "The operator gives the User access to visits at partner venues within the chosen plan, and the User pays for the subscription."
+        },
+        {
+          "heading": "3. Subscription",
+          "body": "A subscription is valid for one calendar month from the moment of payment. Unused visits do not carry over to the next period."
+        },
+        {
+          "heading": "4. Payments",
+          "body": "Plan prices are shown in the app in UZS. Payments are accepted via Payme, Click and Uzum. A receipt is sent once the payment is confirmed."
+        },
+        {
+          "heading": "5. Cancellation and refunds",
+          "body": "You can cancel at any time; access continues until the end of the paid period. Refunds for the unused period are made in the cases provided by law."
+        },
+        {
+          "heading": "6. Contacts",
+          "body": "The operator's details, address and contact information will be provided in the final version of the offer."
+        }
+      ]
+    }
+  }
+}

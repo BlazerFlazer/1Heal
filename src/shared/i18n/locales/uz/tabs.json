@@ -1,0 +1,15 @@
+{
+  "member": {
+    "home": "Asosiy",
+    "discover": "Katalog",
+    "bookings": "Bronlar",
+    "qr": "QR kod",
+    "profile": "Profil"
+  },
+  "partner": {
+    "scan": "Skaner",
+    "today": "Bugun",
+    "stats": "Statistika",
+    "settings": "Sozlamalar"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "title": "Xush kelibsiz",
+  "slides": {
+    "subscription": {
+      "title": "Bitta obuna — oʻnlab maskanlar",
+      "body": "Zallar, basseynlar, yoga va spa — bitta obuna bilan.",
+      "illustration": "Bitta obuna kartasi va uning atrofidagi bir nechta maskan"
+    },
+    "qr": {
+      "title": "Bron qiling va QR orqali kiring",
+      "body": "Vaqtni tanlang, kiraverishda QR kodni koʻrsating — va siz ichkaridasiz.",
+      "illustration": "QR kod va tasdiq belgisi koʻrsatilgan telefon"
+    },
+    "streaks": {
+      "title": "Natijalaringizni kuzating",
+      "body": "Tashriflar va seriyalarni hisoblaymiz — ritmni saqlash osonroq.",
+      "illustration": "Mashgʻulot kunlari belgilangan taqvim"
+    }
+  },
+  "pager": {
+    "label": "{{total}} slayddan {{current}}-si"
+  },
+  "priming": {
+    "title": "Kerak boʻlganda ikkita ruxsat",
+    "body": "Faqat kerak paytda soʻraymiz. Qaror doim sizniki.",
+    "notifications": {
+      "title": "Bildirishnomalar",
+      "body": "Bron haqida eslatamiz — mashgʻulotni oʻtkazib yubormaysiz."
+    },
+    "location": {
+      "title": "Joylashuv",
+      "body": "Yaqin-atrofdagi maskanlarni koʻrsatamiz."
+    },
+    "note": "Ruxsatlarni istalgan vaqt telefon sozlamalarida oʻzgartirish mumkin."
+  }
+}

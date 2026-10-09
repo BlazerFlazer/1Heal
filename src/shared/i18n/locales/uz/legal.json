@@ -1,0 +1,98 @@
+{
+  "title": "Hujjatlar",
+  "draftBadge": "Qoralama",
+  "draftBanner": "Qoralama — matn nashrdan oldin yurist tomonidan tekshiriladi.",
+  "notFound": {
+    "title": "Hujjat topilmadi",
+    "body": "Bunday hujjat yoʻq. Havolani tekshiring yoki orqaga qayting."
+  },
+  "docs": {
+    "terms": {
+      "title": "Foydalanuvchi shartnomasi",
+      "sections": [
+        {
+          "heading": "1. Taʼriflar",
+          "body": "«Xizmat» — {{brand}} mobil ilovasi va u bilan bogʻliq xizmatlar. «Foydalanuvchi» — ushbu Shartnomani qabul qilgan jismoniy shaxs. «Hamkor» — obuna boʻyicha xizmat koʻrsatuvchi maskan."
+        },
+        {
+          "heading": "2. Obuna",
+          "body": "Obuna tarif limiti doirasida hamkor maskanlarga tashrif buyurish imkonini beradi. Tashriflar soni, mavjud maskanlar va amal qilish muddati tanlangan tarifda koʻrsatilgan."
+        },
+        {
+          "heading": "3. Toʻlov",
+          "body": "Toʻlov soʻmda, qoʻllab-quvvatlanadigan toʻlov tizimlari orqali amalga oshiriladi. Sozlamalarda avtouzaytirish oʻchirilmagan boʻlsa, obuna avtomatik uzaytiriladi."
+        },
+        {
+          "heading": "4. Bekor qilish va qaytarish",
+          "body": "Bronni maskanning bekor qilish oynasi tugagunga qadar tashrif hisobdan chiqarilmasdan bekor qilish mumkin. Obuna uchun pulni qaytarish shartlari ommaviy ofertada bayon etilgan."
+        },
+        {
+          "heading": "5. Shaxsiy maʼlumotlar",
+          "body": "Shaxsiy maʼlumotlar Maxfiylik siyosati va Oʻzbekiston Respublikasi qonunchiligiga muvofiq qayta ishlanadi."
+        },
+        {
+          "heading": "6. Aloqa",
+          "body": "Xizmat ishi boʻyicha savollar ilovadagi «Yordam» boʻlimi orqali qabul qilinadi. Operator rekvizitlari hujjatning yakuniy tahririda koʻrsatiladi."
+        }
+      ]
+    },
+    "privacy": {
+      "title": "Maxfiylik siyosati",
+      "sections": [
+        {
+          "heading": "1. Taʼriflar",
+          "body": "Operator — {{brand}}. Shaxsiy maʼlumotlar — Foydalanuvchiga tegishli har qanday maʼlumot, jumladan telefon raqami, ism va tashriflar tarixi."
+        },
+        {
+          "heading": "2. Qanday maʼlumotlarni yigʻamiz",
+          "body": "Telefon raqami, ism, til sozlamalari, bron va tashriflar haqidagi maʼlumotlar, qurilmaning texnik maʼlumotlari, shuningdek joylashuv — faqat sizning ruxsatingiz bilan."
+        },
+        {
+          "heading": "3. Qayta ishlash maqsadlari",
+          "body": "Ilovaga kirish, bron qilish va tashriflarni tasdiqlash, bronlar haqida bildirishnomalar, xizmatni yaxshilash va qonun talablarini bajarish."
+        },
+        {
+          "heading": "4. Saqlash va uzatish",
+          "body": "Maʼlumotlar shaxsiy maʼlumotlarni lokalizatsiya qilish talablariga rioya qilgan holda saqlanadi. Hamkorlarga faqat tashrifni tasdiqlash uchun zarur maʼlumot uzatiladi."
+        },
+        {
+          "heading": "5. Sizning huquqlaringiz",
+          "body": "Siz «Profil» boʻlimida maʼlumotlar nusxasini soʻrashingiz, ularni tuzatishingiz yoki hisobni oʻchirishingiz mumkin. Oʻchirish soʻrovi qonunda belgilangan muddatda bajariladi."
+        },
+        {
+          "heading": "6. Aloqa",
+          "body": "Shaxsiy maʼlumotlarni qayta ishlash boʻyicha savollar bilan «Yordam» boʻlimi orqali murojaat qiling. Operatorning aloqa maʼlumotlari yakuniy tahrirda qoʻshiladi."
+        }
+      ]
+    },
+    "offer": {
+      "title": "Ommaviy oferta",
+      "sections": [
+        {
+          "heading": "1. Taʼriflar",
+          "body": "Oferta — {{brand}} tomonidan quyida bayon etilgan shartlarda shartnoma tuzish taklifi. Aksept — ilovada obunani toʻlash."
+        },
+        {
+          "heading": "2. Shartnoma predmeti",
+          "body": "Operator Foydalanuvchiga tanlangan tarif doirasida hamkor maskanlarga tashrif buyurish imkonini beradi, Foydalanuvchi esa obunani toʻlaydi."
+        },
+        {
+          "heading": "3. Obuna",
+          "body": "Obunaning amal qilish muddati — toʻlov paytidan boshlab bir kalendar oy. Foydalanilmagan tashriflar keyingi davrga oʻtkazilmaydi."
+        },
+        {
+          "heading": "4. Toʻlov",
+          "body": "Tariflar narxi ilovada soʻmda koʻrsatilgan. Toʻlov Payme, Click va Uzum orqali qabul qilinadi. Chek toʻlov tasdiqlangandan soʻng yuboriladi."
+        },
+        {
+          "heading": "5. Bekor qilish va qaytarish",
+          "body": "Obunani istalgan vaqt bekor qilish mumkin; kirish toʻlangan davr oxirigacha saqlanadi. Foydalanilmagan davr uchun qaytarish qonunda nazarda tutilgan hollarda amalga oshiriladi."
+        },
+        {
+          "heading": "6. Aloqa",
+          "body": "Operator rekvizitlari, manzili va aloqa maʼlumotlari ofertaning yakuniy tahririda koʻrsatiladi."
+        }
+      ]
+    }
+  }
+}

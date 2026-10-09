@@ -1,0 +1,137 @@
+{
+  "input": {
+    "clear": "Tozalash",
+    "showPassword": "Parolni koʻrsatish",
+    "hidePassword": "Parolni yashirish"
+  },
+  "otp": {
+    "label": "{{total}} tadan {{index}}-raqam"
+  },
+  "rating": {
+    "label": "Reyting: 5 dan {{value}}",
+    "set": "5 dan {{value}} baho qoʻyish"
+  },
+  "sheet": {
+    "close": "Oynani yopish",
+    "dragHandle": "Yopish uchun pastga torting yoki bosing"
+  },
+  "toast": {
+    "dismiss": "Bildirishnomani yopish"
+  },
+  "chip": {
+    "selected": "Tanlangan"
+  },
+  "tabs": {
+    "label": "Boʻlimlar paneli"
+  },
+  "avatar": {
+    "initialsLabel": "{{name}} avatari"
+  },
+  "skeleton": {
+    "loading": "Kontent yuklanmoqda"
+  },
+  "priceTag": {
+    "perMonth": "oyiga {{price}}",
+    "from": "{{price}} dan boshlab"
+  },
+  "badge": {
+    "new": "Yangi"
+  },
+  "emptyState": {
+    "defaultTitle": "Hozircha boʻsh"
+  },
+  "errorState": {
+    "defaultTitle": "Yuklab boʻlmadi",
+    "defaultBody": "Ulanishni tekshirib, qayta urinib koʻring.",
+    "retry": "Qayta urinish"
+  },
+  "offline": {
+    "banner": "Internet yoʻq. Saqlangan maʼlumotlar koʻrsatilmoqda."
+  },
+  "gallery": {
+    "title": "Komponentlar galereyasi",
+    "subtitle": "Barcha komponentlar barcha holatlarda",
+    "theme": "Mavzu",
+    "language": "Til",
+    "themeOptions": {
+      "system": "Tizim",
+      "light": "Yorugʻ",
+      "dark": "Qorongʻi"
+    },
+    "sections": {
+      "text": "Matn",
+      "buttons": "Tugmalar",
+      "inputs": "Kiritish maydonlari",
+      "chips": "Chiplar va belgilar",
+      "media": "Avatarlar, narxlar va reyting",
+      "cards": "Kartalar va roʻyxatlar",
+      "tabs": "Boʻlimlar",
+      "states": "Boʻsh holatlar va xatolar",
+      "skeleton": "Skeletonlar",
+      "overlays": "Pastki oyna, bildirishnomalar va oflayn"
+    },
+    "labels": {
+      "default": "Oddiy",
+      "disabled": "Faol emas",
+      "loading": "Yuklanmoqda",
+      "error": "Xato",
+      "selected": "Tanlangan",
+      "withIcon": "Ikonka bilan",
+      "fullWidth": "Toʻliq kenglik",
+      "variants": "Variantlar",
+      "sizes": "Oʻlchamlar",
+      "tones": "Ohanglar",
+      "iconButtons": "Ikonka tugmalar",
+      "pressable": "Bosiladigan blok",
+      "secure": "Parol",
+      "otp": "SMS-dagi kod",
+      "readOnly": "Faqat koʻrish",
+      "interactive": "Interaktiv",
+      "scrollable": "Aylantiriladigan",
+      "withBadges": "Belgilar bilan",
+      "divider": "Ajratgich",
+      "list": "Roʻyxat",
+      "box": "Blok",
+      "circle": "Doira",
+      "text": "Matn",
+      "initials": "Bosh harflar",
+      "placeholder": "Oʻrinbosar",
+      "oldPrice": "Eski narx bilan",
+      "empty": "Boʻsh",
+      "generic": "Umumiy xato",
+      "offline": "Internet yoʻq",
+      "permissionDenied": "Ruxsat yoʻq",
+      "notFound": "Topilmadi"
+    },
+    "samples": {
+      "title": "Sarlavha",
+      "body": "Qatorlarga boʻlinish va tipografiyani tekshirish uchun matn.",
+      "label": "Yorliq",
+      "placeholder": "Matn kiriting",
+      "helper": "Maydon ostidagi yordamchi matn",
+      "errorText": "Qiymat notoʻgʻri kiritilgan",
+      "venue": "«Pulse» fitnes klubi",
+      "address": "Amir Temur koʻchasi, 12",
+      "distance": "1,2 km",
+      "perMonth": "oyiga",
+      "openSheet": "Pastki oynani ochish",
+      "sheetTitle": "Filtrlar",
+      "sheetBody": "Pastki oyna mazmuni. Yopish uchun pastga torting yoki fonni bosing.",
+      "toastMessage": "Bron tasdiqlandi",
+      "toastError": "Toʻlov amalga oshmadi",
+      "toastAction": "Bekor qilish",
+      "action": "Amal",
+      "seeAll": "Barchasini koʻrish",
+      "emptyBody": "Bu yerda bronlaringiz paydo boʻladi.",
+      "offlineNote": "Banner internet yoʻq paytda koʻrsatiladi.",
+      "chipLabel": "Basseyn",
+      "userName": "Aziza Karimova",
+      "cardBody": "Soya va yumaloq burchakli karta.",
+      "tabs": {
+        "upcoming": "Kelgusi",
+        "past": "Oʻtgan",
+        "waitlist": "Kutish roʻyxati"
+      }
+    }
+  }
+}

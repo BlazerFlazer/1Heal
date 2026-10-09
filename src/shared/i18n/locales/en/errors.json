@@ -1,0 +1,17 @@
+{
+  "network": "Can't reach the server. Check your internet connection.",
+  "timeout": "The server isn't responding. Please try again.",
+  "unknown": "Something went wrong. Please try again.",
+  "auth": {
+    "invalidPhone": "Enter a number in the format +998 XX XXX XX XX",
+    "invalidCode": "Wrong code. Check the SMS and try again.",
+    "codeExpired": "This code has expired. Request a new one.",
+    "tooManyRequests": "Too many attempts. Try again in {{minutes}} min",
+    "locked": "Sign-in is temporarily locked. Try again later.",
+    "sessionExpired": "Your session has expired. Please sign in again."
+  },
+  "validation": {
+    "required": "This field is required",
+    "phone": "Check the phone number"
+  }
+}

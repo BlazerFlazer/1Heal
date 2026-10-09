@@ -1,0 +1,94 @@
+{
+  "appName": "{{brand}}",
+  "actions": {
+    "continue": "Continue",
+    "cancel": "Cancel",
+    "retry": "Try again",
+    "back": "Back",
+    "save": "Save",
+    "done": "Done",
+    "skip": "Skip",
+    "next": "Next",
+    "ok": "OK",
+    "close": "Close",
+    "search": "Search",
+    "seeAll": "See all",
+    "confirm": "Confirm",
+    "delete": "Delete",
+    "edit": "Edit",
+    "share": "Share",
+    "copy": "Copy",
+    "copied": "Copied",
+    "signOut": "Sign out"
+  },
+  "states": {
+    "loading": "Loading…",
+    "offline": {
+      "title": "No connection",
+      "body": "Check your internet connection and try again."
+    },
+    "error": {
+      "title": "Something went wrong",
+      "body": "We're on it. Please try again in a moment."
+    },
+    "empty": {
+      "title": "Nothing here yet",
+      "body": "There's nothing to show yet."
+    },
+    "permissionDenied": {
+      "title": "Permission needed",
+      "body": "Allow access in your phone settings to continue.",
+      "openSettings": "Open settings"
+    },
+    "notFound": {
+      "title": "Page not found",
+      "body": "The link may be outdated or removed.",
+      "goHome": "Go home"
+    }
+  },
+  "time": {
+    "today": "Today",
+    "tomorrow": "Tomorrow",
+    "yesterday": "Yesterday",
+    "minutesShort": "min",
+    "hoursShort": "h"
+  },
+  "units": {
+    "visits_one": "{{count}} visit",
+    "visits_other": "{{count}} visits",
+    "visitsLeft_one": "{{count}} visit left",
+    "visitsLeft_other": "{{count}} visits left"
+  },
+  "currency": {
+    "suffix": "UZS"
+  },
+  "yes": "Yes",
+  "no": "No",
+  "dateFormats": {
+    "short": "{{day}} {{month}}",
+    "shortYear": "{{day}} {{month}} {{year}}",
+    "long": "{{day}} {{month}} {{year}}",
+    "weekday": "{{weekday}}, {{day}} {{month}}"
+  },
+  "months": {
+    "short": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    "long": [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December"
+    ]
+  },
+  "weekdays": {
+    "short": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+    "long": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+  }
+}
