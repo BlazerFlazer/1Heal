@@ -1,0 +1,3869 @@
+{
+  "plans": [
+    {
+      "id": "c4ef03ae-df62-5289-96ab-a2506246493d",
+      "code": "basic",
+      "sort": 1,
+      "priceUzs": 199000,
+      "visitsPerMonth": 8,
+      "maxVenueTier": 1,
+      "perVenueMonthlyCap": 4,
+      "name": { "ru": "Basic", "uz": "Basic", "en": "Basic" },
+      "perks": [
+        {
+          "key": "visits",
+          "ru": "8 посещений в месяц",
+          "uz": "Oyiga 8 ta tashrif",
+          "en": "8 visits a month"
+        },
+        {
+          "key": "venues",
+          "ru": "Залы, бассейны и студии базового уровня",
+          "uz": "Boshlangʻich darajadagi zallar, basseynlar va studiyalar",
+          "en": "Entry-level gyms, pools and studios"
+        },
+        {
+          "key": "venue_cap",
+          "ru": "До 4 посещений одного заведения в месяц",
+          "uz": "Bitta maskanga oyiga 4 tagacha tashrif",
+          "en": "Up to 4 visits a month at any one venue"
+        },
+        {
+          "key": "freeze",
+          "ru": "Заморозка до 30 дней раз в квартал",
+          "uz": "Har chorakda bir marta 30 kungacha muzlatish",
+          "en": "Freeze for up to 30 days once a quarter"
+        }
+      ]
+    },
+    {
+      "id": "2f817f0b-fa6c-5552-9a05-a68747e19ede",
+      "code": "standard",
+      "sort": 2,
+      "priceUzs": 349000,
+      "visitsPerMonth": 16,
+      "maxVenueTier": 2,
+      "perVenueMonthlyCap": 8,
+      "name": { "ru": "Standard", "uz": "Standard", "en": "Standard" },
+      "perks": [
+        {
+          "key": "visits",
+          "ru": "16 посещений в месяц",
+          "uz": "Oyiga 16 ta tashrif",
+          "en": "16 visits a month"
+        },
+        {
+          "key": "venues",
+          "ru": "Всё из Basic, а также фитнес-клубы и спа среднего уровня",
+          "uz": "Basicdagi barcha maskanlar hamda oʻrta darajadagi fitnes-klublar va spa",
+          "en": "Everything in Basic plus mid-range clubs and spas"
+        },
+        {
+          "key": "venue_cap",
+          "ru": "До 8 посещений одного заведения в месяц",
+          "uz": "Bitta maskanga oyiga 8 tagacha tashrif",
+          "en": "Up to 8 visits a month at any one venue"
+        },
+        {
+          "key": "freeze",
+          "ru": "Заморозка до 30 дней раз в квартал",
+          "uz": "Har chorakda bir marta 30 kungacha muzlatish",
+          "en": "Freeze for up to 30 days once a quarter"
+        }
+      ]
+    },
+    {
+      "id": "6f607e6c-ba79-5101-b481-2cccb1f87c24",
+      "code": "premium",
+      "sort": 3,
+      "priceUzs": 599000,
+      "visitsPerMonth": 99,
+      "maxVenueTier": 3,
+      "perVenueMonthlyCap": 99,
+      "name": { "ru": "Premium", "uz": "Premium", "en": "Premium" },
+      "perks": [
+        {
+          "key": "visits",
+          "ru": "Посещения без ограничений",
+          "uz": "Cheklovsiz tashriflar",
+          "en": "Unlimited visits"
+        },
+        {
+          "key": "venues",
+          "ru": "Все заведения, включая премиальные клубы и спа",
+          "uz": "Barcha maskanlar, jumladan premium klublar va spa",
+          "en": "Every venue, including premium clubs and spas"
+        },
+        {
+          "key": "venue_cap",
+          "ru": "Без лимита на одно заведение",
+          "uz": "Bitta maskan uchun cheklov yoʻq",
+          "en": "No per-venue limit"
+        },
+        {
+          "key": "freeze",
+          "ru": "Заморозка до 30 дней раз в квартал",
+          "uz": "Har chorakda bir marta 30 kungacha muzlatish",
+          "en": "Freeze for up to 30 days once a quarter"
+        }
+      ]
+    }
+  ],
+  "categories": [
+    {
+      "id": "5fece9ac-8cd5-53fc-b916-c16c364e7791",
+      "slug": "gym",
+      "icon": "dumbbell",
+      "name": { "ru": "Тренажёрные залы", "uz": "Trenajyor zallari", "en": "Gyms" },
+      "sort": 10
+    },
+    {
+      "id": "1f74afda-f47d-5692-aee9-4e994402f0aa",
+      "slug": "pool",
+      "icon": "waves-ladder",
+      "name": { "ru": "Бассейны", "uz": "Basseynlar", "en": "Pools" },
+      "sort": 20
+    },
+    {
+      "id": "0b32291e-48ef-59d5-9df7-b6c6a80ec4f8",
+      "slug": "yoga",
+      "icon": "flower-2",
+      "name": { "ru": "Йога", "uz": "Yoga", "en": "Yoga" },
+      "sort": 30
+    },
+    {
+      "id": "df0de8ef-8276-5fc7-96bd-a2a0689ce4ea",
+      "slug": "pilates",
+      "icon": "person-standing",
+      "name": { "ru": "Пилатес", "uz": "Pilates", "en": "Pilates" },
+      "sort": 40
+    },
+    {
+      "id": "50c9f243-53e6-5a4f-826a-be2dabc23ad2",
+      "slug": "dance",
+      "icon": "music",
+      "name": { "ru": "Танцы", "uz": "Raqs", "en": "Dance" },
+      "sort": 50
+    },
+    {
+      "id": "1d2a0f99-12c2-5315-b758-79c0bba34b55",
+      "slug": "martial-arts",
+      "icon": "swords",
+      "name": { "ru": "Единоборства", "uz": "Jang sanʼatlari", "en": "Martial arts" },
+      "sort": 60
+    },
+    {
+      "id": "90ce7f2b-edd7-5201-a76d-18654009f09d",
+      "slug": "crossfit",
+      "icon": "flame",
+      "name": { "ru": "Кроссфит", "uz": "Krossfit", "en": "CrossFit" },
+      "sort": 70
+    },
+    {
+      "id": "ed0db951-a707-589f-835b-6bdafd59ea61",
+      "slug": "spa",
+      "icon": "sparkles",
+      "name": { "ru": "Спа", "uz": "Spa", "en": "Spa" },
+      "sort": 80
+    },
+    {
+      "id": "c5ac33b5-7e12-57cf-a116-8d97b5fcfe4b",
+      "slug": "sauna-hammam",
+      "icon": "thermometer-sun",
+      "name": { "ru": "Сауны и хаммамы", "uz": "Saunalar va hammomlar", "en": "Saunas & hammams" },
+      "sort": 90
+    },
+    {
+      "id": "7c305c67-1510-503b-8d82-7d837c35dac1",
+      "slug": "massage",
+      "icon": "hand",
+      "name": { "ru": "Массаж", "uz": "Massaj", "en": "Massage" },
+      "sort": 100
+    },
+    {
+      "id": "c50acabe-378c-5779-87f1-6cb662ba143d",
+      "slug": "physio",
+      "icon": "stethoscope",
+      "name": { "ru": "Физиотерапия", "uz": "Fizioterapiya", "en": "Physiotherapy" },
+      "sort": 110
+    },
+    {
+      "id": "d69fad26-0e63-578d-8dfe-532fefd8f278",
+      "slug": "recovery",
+      "icon": "heart-pulse",
+      "name": { "ru": "Восстановление", "uz": "Tiklanish", "en": "Recovery" },
+      "sort": 120
+    }
+  ],
+  "venues": [
+    {
+      "id": "aebd4df0-457a-56c4-ba15-e4dfb1231ab4",
+      "slug": "pulse-fitness-yunusabad",
+      "category": "gym",
+      "tier": 2,
+      "priceTier": 2,
+      "district": "yunusabad",
+      "lat": 41.3432,
+      "lng": 69.2968,
+      "name": {
+        "ru": "Pulse Fitness Юнусабад",
+        "uz": "Pulse Fitness Yunusobod",
+        "en": "Pulse Fitness Yunusabad"
+      },
+      "street": {
+        "ru": "просп. Амира Темура, 107Б",
+        "uz": "Amir Temur shoh koʻchasi, 107B",
+        "en": "107B Amir Temur Avenue"
+      },
+      "address": {
+        "ru": "просп. Амира Темура, 107Б, Юнусабадский район, Ташкент",
+        "uz": "Amir Temur shoh koʻchasi, 107B, Yunusobod tumani, Toshkent",
+        "en": "107B Amir Temur Avenue, Yunusabad District, Tashkent"
+      },
+      "description": {
+        "ru": "Просторный зал на двух этажах: свободные веса, кардиозона с видом на проспект и отдельная студия для групповых занятий. На первом визите тренер поможет составить программу.",
+        "uz": "Ikki qavatli keng zal: erkin ogʻirliklar, shoh koʻchaga qaragan kardio zonasi va guruh mashgʻulotlari uchun alohida studiya. Birinchi tashrifda murabbiy dastur tuzishga yordam beradi.",
+        "en": "A spacious two-floor gym with free weights, a cardio zone overlooking the avenue and a separate studio for group classes. On your first visit a coach will help you build a programme."
+      },
+      "amenities": [
+        "showers",
+        "lockers",
+        "parking",
+        "wifi",
+        "towels",
+        "air_conditioning",
+        "personal_training"
+      ],
+      "phone": "+998712953108",
+      "cancellationWindowMin": 120,
+      "womenOnlyHours": null,
+      "hours": {
+        "0": [{ "opens": "08:00", "closes": "22:00", "womenOnly": false }],
+        "1": [{ "opens": "06:00", "closes": "23:00", "womenOnly": false }],
+        "2": [{ "opens": "06:00", "closes": "23:00", "womenOnly": false }],
+        "3": [{ "opens": "06:00", "closes": "23:00", "womenOnly": false }],
+        "4": [{ "opens": "06:00", "closes": "23:00", "womenOnly": false }],
+        "5": [{ "opens": "06:00", "closes": "23:00", "womenOnly": false }],
+        "6": [{ "opens": "08:00", "closes": "22:00", "womenOnly": false }]
+      },
+      "photos": [
+        "https://picsum.photos/seed/pulse-fitness-yunusabad-1/1200/800",
+        "https://picsum.photos/seed/pulse-fitness-yunusabad-2/1200/800",
+        "https://picsum.photos/seed/pulse-fitness-yunusabad-3/1200/800",
+        "https://picsum.photos/seed/pulse-fitness-yunusabad-4/1200/800"
+      ],
+      "rating": 4.9,
+      "ratingCount": 14,
+      "popularity": 15
+    },
+    {
+      "id": "693ede47-641b-5567-927e-51a3eb1b8d7d",
+      "slug": "pulse-fitness-chilanzar",
+      "category": "gym",
+      "tier": 2,
+      "priceTier": 2,
+      "district": "chilanzar",
+      "lat": 41.2853,
+      "lng": 69.2142,
+      "name": {
+        "ru": "Pulse Fitness Чиланзар",
+        "uz": "Pulse Fitness Chilonzor",
+        "en": "Pulse Fitness Chilanzar"
+      },
+      "street": {
+        "ru": "просп. Бунёдкор, 42",
+        "uz": "Bunyodkor shoh koʻchasi, 42",
+        "en": "42 Bunyodkor Avenue"
+      },
+      "address": {
+        "ru": "просп. Бунёдкор, 42, Чиланзарский район, Ташкент",
+        "uz": "Bunyodkor shoh koʻchasi, 42, Chilonzor tumani, Toshkent",
+        "en": "42 Bunyodkor Avenue, Chilanzar District, Tashkent"
+      },
+      "description": {
+        "ru": "Зал сети Pulse рядом с метро «Чиланзар»: силовая зона, функциональный тренинг и сауна после тренировки. Открывается рано утром.",
+        "uz": "Pulse tarmogʻining «Chilonzor» metrosi yonidagi zali: kuch zonasi, funksional mashgʻulotlar va mashgʻulotdan keyin sauna. Erta tongdan ochiq.",
+        "en": "The Pulse club next to Chilanzar metro, with a strength zone, functional training and a sauna for after your workout. Opens early in the morning."
+      },
+      "amenities": ["showers", "lockers", "sauna", "wifi", "towels"],
+      "phone": "+998712954833",
+      "cancellationWindowMin": 120,
+      "womenOnlyHours": null,
+      "hours": {
+        "0": [{ "opens": "08:00", "closes": "22:00", "womenOnly": false }],
+        "1": [{ "opens": "06:00", "closes": "23:00", "womenOnly": false }],
+        "2": [{ "opens": "06:00", "closes": "23:00", "womenOnly": false }],
+        "3": [{ "opens": "06:00", "closes": "23:00", "womenOnly": false }],
+        "4": [{ "opens": "06:00", "closes": "23:00", "womenOnly": false }],
+        "5": [{ "opens": "06:00", "closes": "23:00", "womenOnly": false }],
+        "6": [{ "opens": "08:00", "closes": "22:00", "womenOnly": false }]
+      },
+      "photos": [
+        "https://picsum.photos/seed/pulse-fitness-chilanzar-1/1200/800",
+        "https://picsum.photos/seed/pulse-fitness-chilanzar-2/1200/800"
+      ],
+      "rating": 4.9,
+      "ratingCount": 14,
+      "popularity": 42
+    },
+    {
+      "id": "ca8681b3-377c-5475-818e-169adbe437a1",
+      "slug": "kuch-gym-sergeli",
+      "category": "gym",
+      "tier": 1,
+      "priceTier": 1,
+      "district": "sergeli",
+      "lat": 41.2571,
+      "lng": 69.2265,
+      "name": { "ru": "Kuch Gym", "uz": "Kuch Gym", "en": "Kuch Gym" },
+      "street": {
+        "ru": "ул. Янги Сергели, 11",
+        "uz": "Yangi Sergeli koʻchasi, 11",
+        "en": "11 Yangi Sergeli Street"
+      },
+      "address": {
+        "ru": "ул. Янги Сергели, 11, Сергелийский район, Ташкент",
+        "uz": "Yangi Sergeli koʻchasi, 11, Sergeli tumani, Toshkent",
+        "en": "11 Yangi Sergeli Street, Sergeli District, Tashkent"
+      },
+      "description": {
+        "ru": "Районный зал без лишнего: штанги, гантели, тренажёры на все группы мышц и дружелюбная атмосфера. Удобно заниматься до и после работы.",
+        "uz": "Ortiqcha narsalarsiz mahalla zali: shtangalar, gantellar, barcha mushak guruhlari uchun trenajyorlar va samimiy muhit. Ishdan oldin va keyin shugʻullanish qulay.",
+        "en": "A no-frills neighbourhood gym with barbells, dumbbells, machines for every muscle group and a friendly crowd. Easy to fit in before or after work."
+      },
+      "amenities": ["showers", "lockers", "parking", "water"],
+      "phone": "+998712540065",
+      "cancellationWindowMin": 120,
+      "womenOnlyHours": null,
+      "hours": {
+        "0": [{ "opens": "08:00", "closes": "22:00", "womenOnly": false }],
+        "1": [{ "opens": "06:00", "closes": "23:00", "womenOnly": false }],
+        "2": [{ "opens": "06:00", "closes": "23:00", "womenOnly": false }],
+        "3": [{ "opens": "06:00", "closes": "23:00", "womenOnly": false }],
+        "4": [{ "opens": "06:00", "closes": "23:00", "womenOnly": false }],
+        "5": [{ "opens": "06:00", "closes": "23:00", "womenOnly": false }],
+        "6": [{ "opens": "08:00", "closes": "22:00", "womenOnly": false }]
+      },
+      "photos": [
+        "https://picsum.photos/seed/kuch-gym-sergeli-1/1200/800",
+        "https://picsum.photos/seed/kuch-gym-sergeli-2/1200/800",
+        "https://picsum.photos/seed/kuch-gym-sergeli-3/1200/800",
+        "https://picsum.photos/seed/kuch-gym-sergeli-4/1200/800",
+        "https://picsum.photos/seed/kuch-gym-sergeli-5/1200/800"
+      ],
+      "rating": 4,
+      "ratingCount": 14,
+      "popularity": 72
+    },
+    {
+      "id": "32792d45-a7ba-5082-8d1f-fcb63627ed60",
+      "slug": "atlas-club-mirabad",
+      "category": "gym",
+      "tier": 3,
+      "priceTier": 3,
+      "district": "mirabad",
+      "lat": 41.2989,
+      "lng": 69.2817,
+      "name": { "ru": "Atlas Club", "uz": "Atlas Club", "en": "Atlas Club" },
+      "street": {
+        "ru": "ул. Тараса Шевченко, 23",
+        "uz": "Taras Shevchenko koʻchasi, 23",
+        "en": "23 Taras Shevchenko Street"
+      },
+      "address": {
+        "ru": "ул. Тараса Шевченко, 23, Мирабадский район, Ташкент",
+        "uz": "Taras Shevchenko koʻchasi, 23, Mirobod tumani, Toshkent",
+        "en": "23 Taras Shevchenko Street, Mirabad District, Tashkent"
+      },
+      "description": {
+        "ru": "Премиальный клуб, открытый круглосуточно: новое оборудование, зона восстановления с хаммамом и свежие полотенца. Даже в часы пик здесь спокойно.",
+        "uz": "Kecha-kunduz ochiq premium klub: yangi jihozlar, hammomli tiklanish zonasi va toza sochiqlar. Gavjum soatlarda ham bu yerda osoyishta.",
+        "en": "A premium club open around the clock, with new equipment, a recovery area with a hammam and fresh towels. Calm even at peak hours."
+      },
+      "amenities": [
+        "showers",
+        "lockers",
+        "parking",
+        "wifi",
+        "towels",
+        "sauna",
+        "cafe",
+        "air_conditioning",
+        "personal_training",
+        "hairdryer"
+      ],
+      "phone": "+998712162331",
+      "cancellationWindowMin": 120,
+      "womenOnlyHours": null,
+      "hours": {
+        "0": [{ "opens": "00:00", "closes": "24:00", "womenOnly": false }],
+        "1": [{ "opens": "00:00", "closes": "24:00", "womenOnly": false }],
+        "2": [{ "opens": "00:00", "closes": "24:00", "womenOnly": false }],
+        "3": [{ "opens": "00:00", "closes": "24:00", "womenOnly": false }],
+        "4": [{ "opens": "00:00", "closes": "24:00", "womenOnly": false }],
+        "5": [{ "opens": "00:00", "closes": "24:00", "womenOnly": false }],
+        "6": [{ "opens": "00:00", "closes": "24:00", "womenOnly": false }]
+      },
+      "photos": [
+        "https://picsum.photos/seed/atlas-club-mirabad-1/1200/800",
+        "https://picsum.photos/seed/atlas-club-mirabad-2/1200/800"
+      ],
+      "rating": 4.8,
+      "ratingCount": 9,
+      "popularity": 18
+    },
+    {
+      "id": "9dd406c3-0824-5d2c-8b60-ab04f531aea7",
+      "slug": "bars-fitness-almazar",
+      "category": "gym",
+      "tier": 1,
+      "priceTier": 1,
+      "district": "almazar",
+      "lat": 41.3451,
+      "lng": 69.2196,
+      "name": { "ru": "Bars Fitness", "uz": "Bars Fitness", "en": "Bars Fitness" },
+      "street": { "ru": "ул. Фароби, 18", "uz": "Forobiy koʻchasi, 18", "en": "18 Farobiy Street" },
+      "address": {
+        "ru": "ул. Фароби, 18, Алмазарский район, Ташкент",
+        "uz": "Forobiy koʻchasi, 18, Olmazor tumani, Toshkent",
+        "en": "18 Farobiy Street, Almazar District, Tashkent"
+      },
+      "description": {
+        "ru": "Зал рядом со студенческим городком: много свободных весов, турники и площадка для функциональных тренировок. По вечерам здесь людно и весело.",
+        "uz": "Talabalar shaharchasi yonidagi zal: koʻplab erkin ogʻirliklar, turniklar va funksional mashgʻulotlar maydonchasi. Kechqurunlari gavjum va qiziqarli.",
+        "en": "A gym next to the student campus with plenty of free weights, pull-up bars and a functional training area. Busy and lively in the evenings."
+      },
+      "amenities": ["showers", "lockers", "wifi", "water"],
+      "phone": "+998712771872",
+      "cancellationWindowMin": 120,
+      "womenOnlyHours": null,
+      "hours": {
+        "0": [{ "opens": "08:00", "closes": "22:00", "womenOnly": false }],
+        "1": [{ "opens": "06:00", "closes": "23:00", "womenOnly": false }],
+        "2": [{ "opens": "06:00", "closes": "23:00", "womenOnly": false }],
+        "3": [{ "opens": "06:00", "closes": "23:00", "womenOnly": false }],
+        "4": [{ "opens": "06:00", "closes": "23:00", "womenOnly": false }],
+        "5": [{ "opens": "06:00", "closes": "23:00", "womenOnly": false }],
+        "6": [{ "opens": "08:00", "closes": "22:00", "womenOnly": false }]
+      },
+      "photos": [
+        "https://picsum.photos/seed/bars-fitness-almazar-1/1200/800",
+        "https://picsum.photos/seed/bars-fitness-almazar-2/1200/800"
+      ],
+      "rating": 4.6,
+      "ratingCount": 11,
+      "popularity": 27
+    },
+    {
+      "id": "311a2ded-2f05-5ba1-a548-74c52b2bd7b6",
+      "slug": "zilol-aqua-mirzo-ulugbek",
+      "category": "pool",
+      "tier": 2,
+      "priceTier": 2,
+      "district": "mirzo-ulugbek",
+      "lat": 41.3272,
+      "lng": 69.3301,
+      "name": { "ru": "Аквацентр Zilol", "uz": "Zilol akvamarkazi", "en": "Zilol Aqua Centre" },
+      "street": {
+        "ru": "ул. Буюк Ипак Йули, 158",
+        "uz": "Buyuk Ipak Yoʻli koʻchasi, 158",
+        "en": "158 Buyuk Ipak Yuli Street"
+      },
+      "address": {
+        "ru": "ул. Буюк Ипак Йули, 158, Мирзо-Улугбекский район, Ташкент",
+        "uz": "Buyuk Ipak Yoʻli koʻchasi, 158, Mirzo Ulugʻbek tumani, Toshkent",
+        "en": "158 Buyuk Ipak Yuli Street, Mirzo-Ulugbek District, Tashkent"
+      },
+      "description": {
+        "ru": "Бассейн 25 метров на шесть дорожек с подогревом воды, детская чаша и инструкторы по плаванию. По вторникам и четвергам утром — женские часы.",
+        "uz": "Isitiladigan suvli olti yoʻlakli 25 metrlik basseyn, bolalar hovuzi va suzish boʻyicha instruktorlar. Seshanba va payshanba kunlari ertalab — ayollar uchun soatlar.",
+        "en": "A heated 25-metre pool with six lanes, a children’s pool and swimming instructors. Tuesday and Thursday mornings are women-only hours."
+      },
+      "amenities": ["showers", "lockers", "hairdryer", "towels", "parking", "kids_room"],
+      "phone": "+998712848742",
+      "cancellationWindowMin": 120,
+      "womenOnlyHours": [
+        { "weekday": 2, "opens": "10:00", "closes": "13:00" },
+        { "weekday": 4, "opens": "10:00", "closes": "13:00" }
+      ],
+      "hours": {
+        "0": [{ "opens": "08:00", "closes": "20:00", "womenOnly": false }],
+        "1": [{ "opens": "07:00", "closes": "22:00", "womenOnly": false }],
+        "2": [
+          { "opens": "07:00", "closes": "10:00", "womenOnly": false },
+          { "opens": "10:00", "closes": "13:00", "womenOnly": true },
+          { "opens": "13:00", "closes": "22:00", "womenOnly": false }
+        ],
+        "3": [{ "opens": "07:00", "closes": "22:00", "womenOnly": false }],
+        "4": [
+          { "opens": "07:00", "closes": "10:00", "womenOnly": false },
+          { "opens": "10:00", "closes": "13:00", "womenOnly": true },
+          { "opens": "13:00", "closes": "22:00", "womenOnly": false }
+        ],
+        "5": [{ "opens": "07:00", "closes": "22:00", "womenOnly": false }],
+        "6": [{ "opens": "07:00", "closes": "22:00", "womenOnly": false }]
+      },
+      "photos": [
+        "https://picsum.photos/seed/zilol-aqua-mirzo-ulugbek-1/1200/800",
+        "https://picsum.photos/seed/zilol-aqua-mirzo-ulugbek-2/1200/800",
+        "https://picsum.photos/seed/zilol-aqua-mirzo-ulugbek-3/1200/800"
+      ],
+      "rating": 4.6,
+      "ratingCount": 15,
+      "popularity": 35
+    },
+    {
+      "id": "9df7f61b-0096-57f5-b052-8889bff32687",
+      "slug": "delfin-pool-chilanzar",
+      "category": "pool",
+      "tier": 1,
+      "priceTier": 1,
+      "district": "chilanzar",
+      "lat": 41.2781,
+      "lng": 69.2027,
+      "name": { "ru": "Бассейн «Дельфин»", "uz": "«Delfin» basseyni", "en": "Delfin Pool" },
+      "street": {
+        "ru": "Чиланзар, 9-й квартал, 3А",
+        "uz": "Chilonzor 9-mavze, 3A",
+        "en": "3A Chilanzar Block 9"
+      },
+      "address": {
+        "ru": "Чиланзар, 9-й квартал, 3А, Чиланзарский район, Ташкент",
+        "uz": "Chilonzor 9-mavze, 3A, Chilonzor tumani, Toshkent",
+        "en": "3A Chilanzar Block 9, Chilanzar District, Tashkent"
+      },
+      "description": {
+        "ru": "Классический районный бассейн, где многие учились плавать. Свободное плавание, аквааэробика и женские часы по субботам.",
+        "uz": "Koʻpchilik suzishni oʻrgangan klassik mahalla basseyni. Erkin suzish, akvaaerobika va shanba kunlari ayollar uchun soatlar.",
+        "en": "A classic neighbourhood pool where many locals learned to swim. Lap swimming, aqua aerobics and women-only hours on Saturdays."
+      },
+      "amenities": ["showers", "lockers", "hairdryer"],
+      "phone": "+998712368557",
+      "cancellationWindowMin": 120,
+      "womenOnlyHours": [{ "weekday": 6, "opens": "09:00", "closes": "12:00" }],
+      "hours": {
+        "0": [{ "opens": "08:00", "closes": "20:00", "womenOnly": false }],
+        "1": [{ "opens": "07:00", "closes": "22:00", "womenOnly": false }],
+        "2": [{ "opens": "07:00", "closes": "22:00", "womenOnly": false }],
+        "3": [{ "opens": "07:00", "closes": "22:00", "womenOnly": false }],
+        "4": [{ "opens": "07:00", "closes": "22:00", "womenOnly": false }],
+        "5": [{ "opens": "07:00", "closes": "22:00", "womenOnly": false }],
+        "6": [
+          { "opens": "07:00", "closes": "09:00", "womenOnly": false },
+          { "opens": "09:00", "closes": "12:00", "womenOnly": true },
+          { "opens": "12:00", "closes": "22:00", "womenOnly": false }
+        ]
+      },
+      "photos": [
+        "https://picsum.photos/seed/delfin-pool-chilanzar-1/1200/800",
+        "https://picsum.photos/seed/delfin-pool-chilanzar-2/1200/800"
+      ],
+      "rating": 3.7,
+      "ratingCount": 15,
+      "popularity": 80
+    },
+    {
+      "id": "005540c5-712c-5969-97ec-a42c9acac62d",
+      "slug": "aqua-nur-yakkasaray",
+      "category": "pool",
+      "tier": 3,
+      "priceTier": 3,
+      "district": "yakkasaray",
+      "lat": 41.2874,
+      "lng": 69.2633,
+      "name": { "ru": "Aqua Nur Club", "uz": "Aqua Nur Club", "en": "Aqua Nur Club" },
+      "street": { "ru": "ул. Бобура, 76", "uz": "Bobur koʻchasi, 76", "en": "76 Bobur Street" },
+      "address": {
+        "ru": "ул. Бобура, 76, Яккасарайский район, Ташкент",
+        "uz": "Bobur koʻchasi, 76, Yakkasaroy tumani, Toshkent",
+        "en": "76 Bobur Street, Yakkasaray District, Tashkent"
+      },
+      "description": {
+        "ru": "Бассейн с морской водой, джакузи и панорамными окнами на парк. После плавания — финская сауна и травяной чай в лаунже.",
+        "uz": "Dengiz suvli basseyn, jakuzi va bogʻga qaragan panorama oynalari. Suzishdan keyin — fin saunasi va lounjda giyohli choy.",
+        "en": "A saltwater pool with a jacuzzi and panoramic windows onto the park. After your swim, a Finnish sauna and herbal tea in the lounge."
+      },
+      "amenities": [
+        "showers",
+        "lockers",
+        "towels",
+        "sauna",
+        "hairdryer",
+        "cafe",
+        "parking",
+        "tea_lounge"
+      ],
+      "phone": "+998712124003",
+      "cancellationWindowMin": 120,
+      "womenOnlyHours": null,
+      "hours": {
+        "0": [{ "opens": "07:00", "closes": "22:00", "womenOnly": false }],
+        "1": [{ "opens": "07:00", "closes": "22:00", "womenOnly": false }],
+        "2": [{ "opens": "07:00", "closes": "22:00", "womenOnly": false }],
+        "3": [{ "opens": "07:00", "closes": "22:00", "womenOnly": false }],
+        "4": [{ "opens": "07:00", "closes": "22:00", "womenOnly": false }],
+        "5": [{ "opens": "07:00", "closes": "22:00", "womenOnly": false }],
+        "6": [{ "opens": "07:00", "closes": "22:00", "womenOnly": false }]
+      },
+      "photos": [
+        "https://picsum.photos/seed/aqua-nur-yakkasaray-1/1200/800",
+        "https://picsum.photos/seed/aqua-nur-yakkasaray-2/1200/800",
+        "https://picsum.photos/seed/aqua-nur-yakkasaray-3/1200/800",
+        "https://picsum.photos/seed/aqua-nur-yakkasaray-4/1200/800"
+      ],
+      "rating": 4.9,
+      "ratingCount": 10,
+      "popularity": 18
+    },
+    {
+      "id": "03afce4b-6ac3-5496-a729-66fffb1f444f",
+      "slug": "lotus-yoga-shaykhantahur",
+      "category": "yoga",
+      "tier": 2,
+      "priceTier": 2,
+      "district": "shaykhantahur",
+      "lat": 41.3163,
+      "lng": 69.2471,
+      "name": { "ru": "Lotus Yoga Studio", "uz": "Lotus Yoga Studio", "en": "Lotus Yoga Studio" },
+      "street": { "ru": "ул. Абая, 4", "uz": "Abay koʻchasi, 4", "en": "4 Abay Street" },
+      "address": {
+        "ru": "ул. Абая, 4, Шайхантахурский район, Ташкент",
+        "uz": "Abay koʻchasi, 4, Shayxontohur tumani, Toshkent",
+        "en": "4 Abay Street, Shaykhantahur District, Tashkent"
+      },
+      "description": {
+        "ru": "Светлая студия в тихом дворе в центре города. Хатха, виньяса и йога-нидра для любого уровня, коврики и пледы выдаём.",
+        "uz": "Shahar markazidagi sokin hovlida joylashgan yorugʻ studiya. Har qanday daraja uchun xatha, vinyasa va yoga-nidra; gilamcha va pled beriladi.",
+        "en": "A bright studio in a quiet courtyard in the city centre. Hatha, vinyasa and yoga nidra for every level; mats and blankets provided."
+      },
+      "amenities": ["mats_provided", "showers", "lockers", "tea_lounge", "wifi"],
+      "phone": "+998712780820",
+      "cancellationWindowMin": 120,
+      "womenOnlyHours": null,
+      "hours": {
+        "0": [{ "opens": "09:00", "closes": "15:00", "womenOnly": false }],
+        "1": [{ "opens": "07:00", "closes": "21:30", "womenOnly": false }],
+        "2": [{ "opens": "07:00", "closes": "21:30", "womenOnly": false }],
+        "3": [{ "opens": "07:00", "closes": "21:30", "womenOnly": false }],
+        "4": [{ "opens": "07:00", "closes": "21:30", "womenOnly": false }],
+        "5": [{ "opens": "07:00", "closes": "21:30", "womenOnly": false }],
+        "6": [{ "opens": "09:00", "closes": "18:00", "womenOnly": false }]
+      },
+      "photos": [
+        "https://picsum.photos/seed/lotus-yoga-shaykhantahur-1/1200/800",
+        "https://picsum.photos/seed/lotus-yoga-shaykhantahur-2/1200/800",
+        "https://picsum.photos/seed/lotus-yoga-shaykhantahur-3/1200/800"
+      ],
+      "rating": 5,
+      "ratingCount": 13,
+      "popularity": 52
+    },
+    {
+      "id": "9b56c39e-dc56-55e9-a7c1-e88bf903b3ae",
+      "slug": "nafas-yoga-yunusabad",
+      "category": "yoga",
+      "tier": 1,
+      "priceTier": 1,
+      "district": "yunusabad",
+      "lat": 41.3587,
+      "lng": 69.2862,
+      "name": { "ru": "Nafas Yoga", "uz": "Nafas Yoga", "en": "Nafas Yoga" },
+      "street": {
+        "ru": "ул. Богишамол, 21",
+        "uz": "Bogʻishamol koʻchasi, 21",
+        "en": "21 Bogishamol Street"
+      },
+      "address": {
+        "ru": "ул. Богишамол, 21, Юнусабадский район, Ташкент",
+        "uz": "Bogʻishamol koʻchasi, 21, Yunusobod tumani, Toshkent",
+        "en": "21 Bogishamol Street, Yunusabad District, Tashkent"
+      },
+      "description": {
+        "ru": "Небольшая студия у Юнусабадского парка: утренняя практика перед работой и мягкая йога по вечерам. Хорошее место, чтобы начать.",
+        "uz": "Yunusobod bogʻi yonidagi kichik studiya: ish oldidan ertalabki amaliyot va kechqurun yumshoq yoga. Boshlash uchun yaxshi joy.",
+        "en": "A small studio by Yunusabad park, with morning practice before work and gentle yoga in the evenings. A good place to start."
+      },
+      "amenities": ["mats_provided", "lockers", "water"],
+      "phone": "+998712667681",
+      "cancellationWindowMin": 120,
+      "womenOnlyHours": null,
+      "hours": {
+        "0": [{ "opens": "09:00", "closes": "15:00", "womenOnly": false }],
+        "1": [{ "opens": "07:00", "closes": "21:30", "womenOnly": false }],
+        "2": [{ "opens": "07:00", "closes": "21:30", "womenOnly": false }],
+        "3": [{ "opens": "07:00", "closes": "21:30", "womenOnly": false }],
+        "4": [{ "opens": "07:00", "closes": "21:30", "womenOnly": false }],
+        "5": [{ "opens": "07:00", "closes": "21:30", "womenOnly": false }],
+        "6": [{ "opens": "09:00", "closes": "18:00", "womenOnly": false }]
+      },
+      "photos": [
+        "https://picsum.photos/seed/nafas-yoga-yunusabad-1/1200/800",
+        "https://picsum.photos/seed/nafas-yoga-yunusabad-2/1200/800",
+        "https://picsum.photos/seed/nafas-yoga-yunusabad-3/1200/800",
+        "https://picsum.photos/seed/nafas-yoga-yunusabad-4/1200/800"
+      ],
+      "rating": 4.6,
+      "ratingCount": 11,
+      "popularity": 34
+    },
+    {
+      "id": "6a4f6c73-bf43-53dc-b4d7-a44e981d9e24",
+      "slug": "oqim-yoga-loft-mirabad",
+      "category": "yoga",
+      "tier": 3,
+      "priceTier": 3,
+      "district": "mirabad",
+      "lat": 41.3051,
+      "lng": 69.2875,
+      "name": { "ru": "Oqim Yoga Loft", "uz": "Oqim Yoga Loft", "en": "Oqim Yoga Loft" },
+      "street": {
+        "ru": "ул. Афросиаб, 12",
+        "uz": "Afrosiyob koʻchasi, 12",
+        "en": "12 Afrosiyob Street"
+      },
+      "address": {
+        "ru": "ул. Афросиаб, 12, Мирабадский район, Ташкент",
+        "uz": "Afrosiyob koʻchasi, 12, Mirobod tumani, Toshkent",
+        "en": "12 Afrosiyob Street, Mirabad District, Tashkent"
+      },
+      "description": {
+        "ru": "Лофт с высокими потолками и тёплым полом. Аштанга, йога в гамаках и звуковые медитации с опытными преподавателями.",
+        "uz": "Shiftlari baland va pollari isitiladigan loft. Tajribali ustozlar bilan ashtanga, gamakda yoga va tovushli meditatsiyalar.",
+        "en": "A loft with high ceilings and heated floors. Ashtanga, aerial yoga and sound meditation with experienced teachers."
+      },
+      "amenities": [
+        "mats_provided",
+        "showers",
+        "lockers",
+        "towels",
+        "tea_lounge",
+        "air_conditioning"
+      ],
+      "phone": "+998712344889",
+      "cancellationWindowMin": 120,
+      "womenOnlyHours": null,
+      "hours": {
+        "0": [{ "opens": "09:00", "closes": "15:00", "womenOnly": false }],
+        "1": [{ "opens": "07:00", "closes": "21:30", "womenOnly": false }],
+        "2": [{ "opens": "07:00", "closes": "21:30", "womenOnly": false }],
+        "3": [{ "opens": "07:00", "closes": "21:30", "womenOnly": false }],
+        "4": [{ "opens": "07:00", "closes": "21:30", "womenOnly": false }],
+        "5": [{ "opens": "07:00", "closes": "21:30", "womenOnly": false }],
+        "6": [{ "opens": "09:00", "closes": "18:00", "womenOnly": false }]
+      },
+      "photos": [
+        "https://picsum.photos/seed/oqim-yoga-loft-mirabad-1/1200/800",
+        "https://picsum.photos/seed/oqim-yoga-loft-mirabad-2/1200/800",
+        "https://picsum.photos/seed/oqim-yoga-loft-mirabad-3/1200/800"
+      ],
+      "rating": 4.8,
+      "ratingCount": 13,
+      "popularity": 7
+    },
+    {
+      "id": "76ce1cc6-7bab-5dea-9f56-8c1a0ea4f2c6",
+      "slug": "core-pilates-yakkasaray",
+      "category": "pilates",
+      "tier": 3,
+      "priceTier": 3,
+      "district": "yakkasaray",
+      "lat": 41.2932,
+      "lng": 69.2684,
+      "name": {
+        "ru": "Core Pilates Studio",
+        "uz": "Core Pilates Studio",
+        "en": "Core Pilates Studio"
+      },
+      "street": {
+        "ru": "ул. Шота Руставели, 41",
+        "uz": "Shota Rustaveli koʻchasi, 41",
+        "en": "41 Shota Rustaveli Street"
+      },
+      "address": {
+        "ru": "ул. Шота Руставели, 41, Яккасарайский район, Ташкент",
+        "uz": "Shota Rustaveli koʻchasi, 41, Yakkasaroy tumani, Toshkent",
+        "en": "41 Shota Rustaveli Street, Yakkasaray District, Tashkent"
+      },
+      "description": {
+        "ru": "Студия пилатеса на реформерах: занятия в мини-группах до шести человек, внимание к технике и восстановлению после травм.",
+        "uz": "Reformerlarda pilates studiyasi: oltitagacha kishilik kichik guruhlarda mashgʻulotlar, texnika va jarohatdan keyin tiklanishga eʼtibor.",
+        "en": "A reformer Pilates studio with small groups of up to six and close attention to technique and injury recovery."
+      },
+      "amenities": ["showers", "lockers", "towels", "air_conditioning"],
+      "phone": "+998712481959",
+      "cancellationWindowMin": 720,
+      "womenOnlyHours": null,
+      "hours": {
+        "0": [{ "opens": "09:00", "closes": "15:00", "womenOnly": false }],
+        "1": [{ "opens": "07:00", "closes": "21:30", "womenOnly": false }],
+        "2": [{ "opens": "07:00", "closes": "21:30", "womenOnly": false }],
+        "3": [{ "opens": "07:00", "closes": "21:30", "womenOnly": false }],
+        "4": [{ "opens": "07:00", "closes": "21:30", "womenOnly": false }],
+        "5": [{ "opens": "07:00", "closes": "21:30", "womenOnly": false }],
+        "6": [{ "opens": "09:00", "closes": "18:00", "womenOnly": false }]
+      },
+      "photos": [
+        "https://picsum.photos/seed/core-pilates-yakkasaray-1/1200/800",
+        "https://picsum.photos/seed/core-pilates-yakkasaray-2/1200/800",
+        "https://picsum.photos/seed/core-pilates-yakkasaray-3/1200/800"
+      ],
+      "rating": 4.9,
+      "ratingCount": 14,
+      "popularity": 13
+    },
+    {
+      "id": "bff0c06f-d348-5d10-a930-549d35003da2",
+      "slug": "muvozanat-pilates-mirzo-ulugbek",
+      "category": "pilates",
+      "tier": 2,
+      "priceTier": 2,
+      "district": "mirzo-ulugbek",
+      "lat": 41.3184,
+      "lng": 69.3076,
+      "name": { "ru": "Muvozanat Pilates", "uz": "Muvozanat Pilates", "en": "Muvozanat Pilates" },
+      "street": {
+        "ru": "просп. Мустакиллик, 59",
+        "uz": "Mustaqillik shoh koʻchasi, 59",
+        "en": "59 Mustaqillik Avenue"
+      },
+      "address": {
+        "ru": "просп. Мустакиллик, 59, Мирзо-Улугбекский район, Ташкент",
+        "uz": "Mustaqillik shoh koʻchasi, 59, Mirzo Ulugʻbek tumani, Toshkent",
+        "en": "59 Mustaqillik Avenue, Mirzo-Ulugbek District, Tashkent"
+      },
+      "description": {
+        "ru": "Пилатес на ковриках и с малым оборудованием: укрепляем спину, корпус и осанку. Удобно для тех, кто весь день сидит за компьютером.",
+        "uz": "Gilamchada va kichik jihozlar bilan pilates: bel, tana va qomatni mustahkamlaymiz. Kun boʻyi kompyuter oldida oʻtiradiganlar uchun qulay.",
+        "en": "Mat Pilates and small-equipment classes that strengthen your back, core and posture. Ideal if you spend all day at a desk."
+      },
+      "amenities": ["mats_provided", "showers", "lockers", "wifi"],
+      "phone": "+998712066919",
+      "cancellationWindowMin": 120,
+      "womenOnlyHours": null,
+      "hours": {
+        "0": [{ "opens": "09:00", "closes": "15:00", "womenOnly": false }],
+        "1": [{ "opens": "07:00", "closes": "21:30", "womenOnly": false }],
+        "2": [{ "opens": "07:00", "closes": "21:30", "womenOnly": false }],
+        "3": [{ "opens": "07:00", "closes": "21:30", "womenOnly": false }],
+        "4": [{ "opens": "07:00", "closes": "21:30", "womenOnly": false }],
+        "5": [{ "opens": "07:00", "closes": "21:30", "womenOnly": false }],
+        "6": [{ "opens": "09:00", "closes": "18:00", "womenOnly": false }]
+      },
+      "photos": [
+        "https://picsum.photos/seed/muvozanat-pilates-mirzo-ulugbek-1/1200/800",
+        "https://picsum.photos/seed/muvozanat-pilates-mirzo-ulugbek-2/1200/800",
+        "https://picsum.photos/seed/muvozanat-pilates-mirzo-ulugbek-3/1200/800",
+        "https://picsum.photos/seed/muvozanat-pilates-mirzo-ulugbek-4/1200/800",
+        "https://picsum.photos/seed/muvozanat-pilates-mirzo-ulugbek-5/1200/800"
+      ],
+      "rating": 4,
+      "ratingCount": 14,
+      "popularity": 52
+    },
+    {
+      "id": "b59921a3-0ece-53c0-a406-dadb1938b5a2",
+      "slug": "ritm-dance-shaykhantahur",
+      "category": "dance",
+      "tier": 1,
+      "priceTier": 1,
+      "district": "shaykhantahur",
+      "lat": 41.3248,
+      "lng": 69.2569,
+      "name": { "ru": "Школа танцев Ritm", "uz": "Ritm raqs maktabi", "en": "Ritm Dance School" },
+      "street": { "ru": "ул. Лабзак, 7", "uz": "Labzak koʻchasi, 7", "en": "7 Labzak Street" },
+      "address": {
+        "ru": "ул. Лабзак, 7, Шайхантахурский район, Ташкент",
+        "uz": "Labzak koʻchasi, 7, Shayxontohur tumani, Toshkent",
+        "en": "7 Labzak Street, Shaykhantahur District, Tashkent"
+      },
+      "description": {
+        "ru": "Хип-хоп, бачата и современная хореография для взрослых. Группы для новичков стартуют каждый месяц, партнёр не нужен.",
+        "uz": "Kattalar uchun xip-xop, bachata va zamonaviy xoreografiya. Yangi boshlovchilar guruhlari har oy ochiladi, sherik shart emas.",
+        "en": "Hip-hop, bachata and contemporary choreography for adults. Beginner groups start every month, and no partner is needed."
+      },
+      "amenities": ["showers", "lockers", "water", "air_conditioning"],
+      "phone": "+998712776957",
+      "cancellationWindowMin": 120,
+      "womenOnlyHours": null,
+      "hours": {
+        "0": [{ "opens": "11:00", "closes": "19:00", "womenOnly": false }],
+        "1": [{ "opens": "10:00", "closes": "22:00", "womenOnly": false }],
+        "2": [{ "opens": "10:00", "closes": "22:00", "womenOnly": false }],
+        "3": [{ "opens": "10:00", "closes": "22:00", "womenOnly": false }],
+        "4": [{ "opens": "10:00", "closes": "22:00", "womenOnly": false }],
+        "5": [{ "opens": "10:00", "closes": "22:00", "womenOnly": false }],
+        "6": [{ "opens": "11:00", "closes": "19:00", "womenOnly": false }]
+      },
+      "photos": [
+        "https://picsum.photos/seed/ritm-dance-shaykhantahur-1/1200/800",
+        "https://picsum.photos/seed/ritm-dance-shaykhantahur-2/1200/800"
+      ],
+      "rating": 4.6,
+      "ratingCount": 15,
+      "popularity": 39
+    },
+    {
+      "id": "1894a3a1-22e9-5804-b7c7-51baafe80e8d",
+      "slug": "raqs-studio-chilanzar",
+      "category": "dance",
+      "tier": 1,
+      "priceTier": 1,
+      "district": "chilanzar",
+      "lat": 41.2921,
+      "lng": 69.2301,
+      "name": { "ru": "Raqs Studio", "uz": "Raqs Studio", "en": "Raqs Studio" },
+      "street": {
+        "ru": "ул. Мукими, 104",
+        "uz": "Muqimiy koʻchasi, 104",
+        "en": "104 Muqimiy Street"
+      },
+      "address": {
+        "ru": "ул. Мукими, 104, Чиланзарский район, Ташкент",
+        "uz": "Muqimiy koʻchasi, 104, Chilonzor tumani, Toshkent",
+        "en": "104 Muqimiy Street, Chilanzar District, Tashkent"
+      },
+      "description": {
+        "ru": "Зумба, восточные и национальные танцы в большом зале с зеркалами. Весёлые тренировки, после которых хочется вернуться.",
+        "uz": "Koʻzgular bilan jihozlangan katta zalda zumba, sharq va milliy raqslar. Yana qaytgingiz keladigan quvnoq mashgʻulotlar.",
+        "en": "Zumba, oriental and Uzbek folk dance in a big mirrored hall. Fun workouts that keep you coming back."
+      },
+      "amenities": ["lockers", "water", "air_conditioning"],
+      "phone": "+998712016454",
+      "cancellationWindowMin": 120,
+      "womenOnlyHours": null,
+      "hours": {
+        "0": [{ "opens": "11:00", "closes": "19:00", "womenOnly": false }],
+        "1": [{ "opens": "10:00", "closes": "22:00", "womenOnly": false }],
+        "2": [{ "opens": "10:00", "closes": "22:00", "womenOnly": false }],
+        "3": [{ "opens": "10:00", "closes": "22:00", "womenOnly": false }],
+        "4": [{ "opens": "10:00", "closes": "22:00", "womenOnly": false }],
+        "5": [{ "opens": "10:00", "closes": "22:00", "womenOnly": false }],
+        "6": [{ "opens": "11:00", "closes": "19:00", "womenOnly": false }]
+      },
+      "photos": [
+        "https://picsum.photos/seed/raqs-studio-chilanzar-1/1200/800",
+        "https://picsum.photos/seed/raqs-studio-chilanzar-2/1200/800",
+        "https://picsum.photos/seed/raqs-studio-chilanzar-3/1200/800"
+      ],
+      "rating": 4.5,
+      "ratingCount": 14,
+      "popularity": 48
+    },
+    {
+      "id": "0b11294e-d602-5ee8-893d-507c96e72400",
+      "slug": "samurai-dojo-mirzo-ulugbek",
+      "category": "martial-arts",
+      "tier": 1,
+      "priceTier": 1,
+      "district": "mirzo-ulugbek",
+      "lat": 41.3354,
+      "lng": 69.3448,
+      "name": { "ru": "Samurai Dojo", "uz": "Samurai Dojo", "en": "Samurai Dojo" },
+      "street": {
+        "ru": "ул. Паркентская, 45",
+        "uz": "Parkent koʻchasi, 45",
+        "en": "45 Parkent Street"
+      },
+      "address": {
+        "ru": "ул. Паркентская, 45, Мирзо-Улугбекский район, Ташкент",
+        "uz": "Parkent koʻchasi, 45, Mirzo Ulugʻbek tumani, Toshkent",
+        "en": "45 Parkent Street, Mirzo-Ulugbek District, Tashkent"
+      },
+      "description": {
+        "ru": "Дзюдо и карате для взрослых в просторном зале с татами. Тренеры — мастера спорта, на первое занятие можно прийти без кимоно.",
+        "uz": "Tatamili keng zalda kattalar uchun dzyudo va karate. Murabbiylar — sport ustalari, birinchi mashgʻulotga kimonosiz kelish mumkin.",
+        "en": "Judo and karate for adults in a spacious tatami hall. The coaches are masters of sport, and you can come to your first class without a gi."
+      },
+      "amenities": ["showers", "lockers", "water", "parking"],
+      "phone": "+998712338396",
+      "cancellationWindowMin": 120,
+      "womenOnlyHours": null,
+      "hours": {
+        "0": [{ "opens": "10:00", "closes": "16:00", "womenOnly": false }],
+        "1": [{ "opens": "08:00", "closes": "21:30", "womenOnly": false }],
+        "2": [{ "opens": "08:00", "closes": "21:30", "womenOnly": false }],
+        "3": [{ "opens": "08:00", "closes": "21:30", "womenOnly": false }],
+        "4": [{ "opens": "08:00", "closes": "21:30", "womenOnly": false }],
+        "5": [{ "opens": "08:00", "closes": "21:30", "womenOnly": false }],
+        "6": [{ "opens": "08:00", "closes": "21:30", "womenOnly": false }]
+      },
+      "photos": [
+        "https://picsum.photos/seed/samurai-dojo-mirzo-ulugbek-1/1200/800",
+        "https://picsum.photos/seed/samurai-dojo-mirzo-ulugbek-2/1200/800"
+      ],
+      "rating": 4.8,
+      "ratingCount": 17,
+      "popularity": 36
+    },
+    {
+      "id": "a0d13c73-d105-55e3-886a-317cb111ff98",
+      "slug": "lochin-fight-club-yunusabad",
+      "category": "martial-arts",
+      "tier": 2,
+      "priceTier": 2,
+      "district": "yunusabad",
+      "lat": 41.3651,
+      "lng": 69.2905,
+      "name": { "ru": "Lochin Fight Club", "uz": "Lochin Fight Club", "en": "Lochin Fight Club" },
+      "street": {
+        "ru": "ул. Ахмада Дониша, 32",
+        "uz": "Ahmad Donish koʻchasi, 32",
+        "en": "32 Ahmad Donish Street"
+      },
+      "address": {
+        "ru": "ул. Ахмада Дониша, 32, Юнусабадский район, Ташкент",
+        "uz": "Ahmad Donish koʻchasi, 32, Yunusobod tumani, Toshkent",
+        "en": "32 Ahmad Donish Street, Yunusabad District, Tashkent"
+      },
+      "description": {
+        "ru": "Бокс, кикбоксинг и ММА: ринг, клетка и зона мешков. Тренировки для новичков и спарринги для тех, кто готов.",
+        "uz": "Boks, kikboksing va MMA: ring, qafas va qopchalar zonasi. Yangi boshlovchilar uchun mashgʻulotlar va tayyorlar uchun sparringlar.",
+        "en": "Boxing, kickboxing and MMA with a ring, a cage and a bag zone. Beginner sessions plus sparring for those who are ready."
+      },
+      "amenities": ["showers", "lockers", "equipment_rental", "water"],
+      "phone": "+998712016159",
+      "cancellationWindowMin": 120,
+      "womenOnlyHours": null,
+      "hours": {
+        "0": [{ "opens": "10:00", "closes": "16:00", "womenOnly": false }],
+        "1": [{ "opens": "08:00", "closes": "21:30", "womenOnly": false }],
+        "2": [{ "opens": "08:00", "closes": "21:30", "womenOnly": false }],
+        "3": [{ "opens": "08:00", "closes": "21:30", "womenOnly": false }],
+        "4": [{ "opens": "08:00", "closes": "21:30", "womenOnly": false }],
+        "5": [{ "opens": "08:00", "closes": "21:30", "womenOnly": false }],
+        "6": [{ "opens": "08:00", "closes": "21:30", "womenOnly": false }]
+      },
+      "photos": [
+        "https://picsum.photos/seed/lochin-fight-club-yunusabad-1/1200/800",
+        "https://picsum.photos/seed/lochin-fight-club-yunusabad-2/1200/800"
+      ],
+      "rating": 4.9,
+      "ratingCount": 18,
+      "popularity": 23
+    },
+    {
+      "id": "128bbcde-6ea3-54c8-bad9-ce3cc4ec7964",
+      "slug": "polvon-kurash-almazar",
+      "category": "martial-arts",
+      "tier": 1,
+      "priceTier": 1,
+      "district": "almazar",
+      "lat": 41.3332,
+      "lng": 69.2381,
+      "name": {
+        "ru": "Клуб курэша «Полвон»",
+        "uz": "«Polvon» kurash klubi",
+        "en": "Polvon Kurash Club"
+      },
+      "street": {
+        "ru": "ул. Карасарай, 15",
+        "uz": "Qorasaroy koʻchasi, 15",
+        "en": "15 Qorasaroy Street"
+      },
+      "address": {
+        "ru": "ул. Карасарай, 15, Алмазарский район, Ташкент",
+        "uz": "Qorasaroy koʻchasi, 15, Olmazor tumani, Toshkent",
+        "en": "15 Qorasaroy Street, Almazar District, Tashkent"
+      },
+      "description": {
+        "ru": "Курэш — национальная борьба — и вольная борьба для взрослых. Сильные тренеры, дружная команда и честная нагрузка.",
+        "uz": "Kattalar uchun milliy kurash va erkin kurash. Kuchli murabbiylar, inoq jamoa va jiddiy mashgʻulotlar.",
+        "en": "Kurash, Uzbekistan’s national wrestling, plus freestyle wrestling for adults. Strong coaches, a close-knit team and honest hard work."
+      },
+      "amenities": ["showers", "lockers", "water"],
+      "phone": "+998712536896",
+      "cancellationWindowMin": 120,
+      "womenOnlyHours": null,
+      "hours": {
+        "0": [{ "opens": "10:00", "closes": "16:00", "womenOnly": false }],
+        "1": [{ "opens": "08:00", "closes": "21:30", "womenOnly": false }],
+        "2": [{ "opens": "08:00", "closes": "21:30", "womenOnly": false }],
+        "3": [{ "opens": "08:00", "closes": "21:30", "womenOnly": false }],
+        "4": [{ "opens": "08:00", "closes": "21:30", "womenOnly": false }],
+        "5": [{ "opens": "08:00", "closes": "21:30", "womenOnly": false }],
+        "6": [{ "opens": "08:00", "closes": "21:30", "womenOnly": false }]
+      },
+      "photos": [
+        "https://picsum.photos/seed/polvon-kurash-almazar-1/1200/800",
+        "https://picsum.photos/seed/polvon-kurash-almazar-2/1200/800",
+        "https://picsum.photos/seed/polvon-kurash-almazar-3/1200/800",
+        "https://picsum.photos/seed/polvon-kurash-almazar-4/1200/800",
+        "https://picsum.photos/seed/polvon-kurash-almazar-5/1200/800"
+      ],
+      "rating": 4.7,
+      "ratingCount": 12,
+      "popularity": 26
+    },
+    {
+      "id": "9575a41a-a3d2-59a6-98ca-c5930862e3a1",
+      "slug": "forge-box-mirabad",
+      "category": "crossfit",
+      "tier": 2,
+      "priceTier": 2,
+      "district": "mirabad",
+      "lat": 41.2956,
+      "lng": 69.2763,
+      "name": { "ru": "Forge Box", "uz": "Forge Box", "en": "Forge Box" },
+      "street": { "ru": "ул. Нукусская, 54", "uz": "Nukus koʻchasi, 54", "en": "54 Nukus Street" },
+      "address": {
+        "ru": "ул. Нукусская, 54, Мирабадский район, Ташкент",
+        "uz": "Nukus koʻchasi, 54, Mirobod tumani, Toshkent",
+        "en": "54 Nukus Street, Mirabad District, Tashkent"
+      },
+      "description": {
+        "ru": "Функциональный бокс с тренировкой дня, олимпийской тяжёлой атлетикой и гимнастикой. Каждое занятие ведёт тренер, нагрузку подбираем под ваш уровень.",
+        "uz": "Kun mashgʻuloti, olimpiya ogʻir atletikasi va gimnastika bilan funksional boks. Har bir mashgʻulotni murabbiy olib boradi, yuklamani darajangizga moslaymiz.",
+        "en": "A functional fitness box with a workout of the day, Olympic weightlifting and gymnastics. Every class is coached and scaled to your level."
+      },
+      "amenities": ["showers", "lockers", "water", "parking"],
+      "phone": "+998712278704",
+      "cancellationWindowMin": 120,
+      "womenOnlyHours": null,
+      "hours": {
+        "0": [{ "opens": "09:00", "closes": "14:00", "womenOnly": false }],
+        "1": [{ "opens": "06:30", "closes": "22:00", "womenOnly": false }],
+        "2": [{ "opens": "06:30", "closes": "22:00", "womenOnly": false }],
+        "3": [{ "opens": "06:30", "closes": "22:00", "womenOnly": false }],
+        "4": [{ "opens": "06:30", "closes": "22:00", "womenOnly": false }],
+        "5": [{ "opens": "06:30", "closes": "22:00", "womenOnly": false }],
+        "6": [{ "opens": "08:00", "closes": "18:00", "womenOnly": false }]
+      },
+      "photos": [
+        "https://picsum.photos/seed/forge-box-mirabad-1/1200/800",
+        "https://picsum.photos/seed/forge-box-mirabad-2/1200/800",
+        "https://picsum.photos/seed/forge-box-mirabad-3/1200/800",
+        "https://picsum.photos/seed/forge-box-mirabad-4/1200/800"
+      ],
+      "rating": 5,
+      "ratingCount": 14,
+      "popularity": 51
+    },
+    {
+      "id": "c6975047-2553-54c3-8939-9fe3211e48ff",
+      "slug": "chaqmoq-box-sergeli",
+      "category": "crossfit",
+      "tier": 1,
+      "priceTier": 1,
+      "district": "sergeli",
+      "lat": 41.2534,
+      "lng": 69.2318,
+      "name": { "ru": "Chaqmoq Box", "uz": "Chaqmoq Box", "en": "Chaqmoq Box" },
+      "street": {
+        "ru": "ул. Чоштепа, 9",
+        "uz": "Choshtepa koʻchasi, 9",
+        "en": "9 Choshtepa Street"
+      },
+      "address": {
+        "ru": "ул. Чоштепа, 9, Сергелийский район, Ташкент",
+        "uz": "Choshtepa koʻchasi, 9, Sergeli tumani, Toshkent",
+        "en": "9 Choshtepa Street, Sergeli District, Tashkent"
+      },
+      "description": {
+        "ru": "Небольшой бокс с короткими интенсивными тренировками по 45 минут. Отличный вариант для тех, кто ценит время.",
+        "uz": "45 daqiqalik qisqa va jadal mashgʻulotlarga ega kichik boks. Vaqtini qadrlaydiganlar uchun ajoyib tanlov.",
+        "en": "A small box with short, intense 45-minute workouts. A great choice if your time is precious."
+      },
+      "amenities": ["showers", "lockers", "water"],
+      "phone": "+998712869180",
+      "cancellationWindowMin": 120,
+      "womenOnlyHours": null,
+      "hours": {
+        "0": [{ "opens": "09:00", "closes": "14:00", "womenOnly": false }],
+        "1": [{ "opens": "06:30", "closes": "22:00", "womenOnly": false }],
+        "2": [{ "opens": "06:30", "closes": "22:00", "womenOnly": false }],
+        "3": [{ "opens": "06:30", "closes": "22:00", "womenOnly": false }],
+        "4": [{ "opens": "06:30", "closes": "22:00", "womenOnly": false }],
+        "5": [{ "opens": "06:30", "closes": "22:00", "womenOnly": false }],
+        "6": [{ "opens": "08:00", "closes": "18:00", "womenOnly": false }]
+      },
+      "photos": [
+        "https://picsum.photos/seed/chaqmoq-box-sergeli-1/1200/800",
+        "https://picsum.photos/seed/chaqmoq-box-sergeli-2/1200/800",
+        "https://picsum.photos/seed/chaqmoq-box-sergeli-3/1200/800",
+        "https://picsum.photos/seed/chaqmoq-box-sergeli-4/1200/800",
+        "https://picsum.photos/seed/chaqmoq-box-sergeli-5/1200/800"
+      ],
+      "rating": 4.9,
+      "ratingCount": 10,
+      "popularity": 40
+    },
+    {
+      "id": "ce697d48-4e44-525a-862d-870628485fd5",
+      "slug": "oasis-spa-mirabad",
+      "category": "spa",
+      "tier": 3,
+      "priceTier": 3,
+      "district": "mirabad",
+      "lat": 41.3069,
+      "lng": 69.2742,
+      "name": {
+        "ru": "Oasis Spa & Wellness",
+        "uz": "Oasis Spa & Wellness",
+        "en": "Oasis Spa & Wellness"
+      },
+      "street": {
+        "ru": "ул. Мовароуннахр, 1",
+        "uz": "Movarounnahr koʻchasi, 1",
+        "en": "1 Movarounnahr Street"
+      },
+      "address": {
+        "ru": "ул. Мовароуннахр, 1, Мирабадский район, Ташкент",
+        "uz": "Movarounnahr koʻchasi, 1, Mirobod tumani, Toshkent",
+        "en": "1 Movarounnahr Street, Mirabad District, Tashkent"
+      },
+      "description": {
+        "ru": "Спа-комплекс с бассейном, хаммамом, соляной комнатой и зоной отдыха. Идеально, чтобы выдохнуть после длинной недели.",
+        "uz": "Basseyn, hammom, tuz xonasi va dam olish zonasiga ega spa majmuasi. Uzoq haftadan keyin nafas rostlash uchun ayni muddao.",
+        "en": "A spa complex with a pool, a hammam, a salt room and a relaxation lounge. Perfect for unwinding after a long week."
+      },
+      "amenities": [
+        "showers",
+        "lockers",
+        "towels",
+        "pool",
+        "sauna",
+        "tea_lounge",
+        "hairdryer",
+        "parking"
+      ],
+      "phone": "+998712877542",
+      "cancellationWindowMin": 240,
+      "womenOnlyHours": null,
+      "hours": {
+        "0": [{ "opens": "10:00", "closes": "22:00", "womenOnly": false }],
+        "1": [{ "opens": "10:00", "closes": "22:00", "womenOnly": false }],
+        "2": [{ "opens": "10:00", "closes": "22:00", "womenOnly": false }],
+        "3": [{ "opens": "10:00", "closes": "22:00", "womenOnly": false }],
+        "4": [{ "opens": "10:00", "closes": "22:00", "womenOnly": false }],
+        "5": [{ "opens": "10:00", "closes": "22:00", "womenOnly": false }],
+        "6": [{ "opens": "10:00", "closes": "22:00", "womenOnly": false }]
+      },
+      "photos": [
+        "https://picsum.photos/seed/oasis-spa-mirabad-1/1200/800",
+        "https://picsum.photos/seed/oasis-spa-mirabad-2/1200/800",
+        "https://picsum.photos/seed/oasis-spa-mirabad-3/1200/800",
+        "https://picsum.photos/seed/oasis-spa-mirabad-4/1200/800"
+      ],
+      "rating": 5,
+      "ratingCount": 13,
+      "popularity": 12
+    },
+    {
+      "id": "a953e770-d7b8-597f-babe-9fafd3d5583f",
+      "slug": "bahor-spa-yunusabad",
+      "category": "spa",
+      "tier": 2,
+      "priceTier": 2,
+      "district": "yunusabad",
+      "lat": 41.3511,
+      "lng": 69.2799,
+      "name": { "ru": "Bahor Spa", "uz": "Bahor Spa", "en": "Bahor Spa" },
+      "street": { "ru": "ул. Осиё, 8", "uz": "Osiyo koʻchasi, 8", "en": "8 Osiyo Street" },
+      "address": {
+        "ru": "ул. Осиё, 8, Юнусабадский район, Ташкент",
+        "uz": "Osiyo koʻchasi, 8, Yunusobod tumani, Toshkent",
+        "en": "8 Osiyo Street, Yunusabad District, Tashkent"
+      },
+      "description": {
+        "ru": "Уютный спа с травяной парной, массажными кабинетами и чайной комнатой. По средам днём — часы только для женщин.",
+        "uz": "Giyohli bugʻxona, massaj xonalari va choyxonali shinam spa. Chorshanba kunlari kunduzi — faqat ayollar uchun soatlar.",
+        "en": "A cosy spa with a herbal steam room, massage rooms and a tea room. Wednesday daytime is reserved for women."
+      },
+      "amenities": ["showers", "lockers", "towels", "tea_lounge", "hairdryer"],
+      "phone": "+998712466808",
+      "cancellationWindowMin": 120,
+      "womenOnlyHours": [{ "weekday": 3, "opens": "10:00", "closes": "15:00" }],
+      "hours": {
+        "0": [{ "opens": "10:00", "closes": "22:00", "womenOnly": false }],
+        "1": [{ "opens": "10:00", "closes": "22:00", "womenOnly": false }],
+        "2": [{ "opens": "10:00", "closes": "22:00", "womenOnly": false }],
+        "3": [
+          { "opens": "10:00", "closes": "15:00", "womenOnly": true },
+          { "opens": "15:00", "closes": "22:00", "womenOnly": false }
+        ],
+        "4": [{ "opens": "10:00", "closes": "22:00", "womenOnly": false }],
+        "5": [{ "opens": "10:00", "closes": "22:00", "womenOnly": false }],
+        "6": [{ "opens": "10:00", "closes": "22:00", "womenOnly": false }]
+      },
+      "photos": [
+        "https://picsum.photos/seed/bahor-spa-yunusabad-1/1200/800",
+        "https://picsum.photos/seed/bahor-spa-yunusabad-2/1200/800",
+        "https://picsum.photos/seed/bahor-spa-yunusabad-3/1200/800",
+        "https://picsum.photos/seed/bahor-spa-yunusabad-4/1200/800",
+        "https://picsum.photos/seed/bahor-spa-yunusabad-5/1200/800"
+      ],
+      "rating": 4.9,
+      "ratingCount": 10,
+      "popularity": 10
+    },
+    {
+      "id": "d3c426da-8dd7-53f6-9bcf-70e9dc2b2139",
+      "slug": "sharq-hammam-shaykhantahur",
+      "category": "sauna-hammam",
+      "tier": 2,
+      "priceTier": 2,
+      "district": "shaykhantahur",
+      "lat": 41.3197,
+      "lng": 69.2412,
+      "name": { "ru": "Хаммам «Шарк»", "uz": "«Sharq» hammomi", "en": "Sharq Hammam" },
+      "street": {
+        "ru": "ул. Заркайнар, 27",
+        "uz": "Zarqaynar koʻchasi, 27",
+        "en": "27 Zarqaynar Street"
+      },
+      "address": {
+        "ru": "ул. Заркайнар, 27, Шайхантахурский район, Ташкент",
+        "uz": "Zarqaynar koʻchasi, 27, Shayxontohur tumani, Toshkent",
+        "en": "27 Zarqaynar Street, Shaykhantahur District, Tashkent"
+      },
+      "description": {
+        "ru": "Восточная баня в старом городе: горячий мрамор, кесе-пилинг и пенный массаж. В понедельник и четверг до 15:00 — только для женщин.",
+        "uz": "Eski shahardagi sharqona hammom: issiq marmar, kesa-piling va koʻpikli massaj. Dushanba va payshanba kunlari soat 15:00 gacha — faqat ayollar uchun.",
+        "en": "An oriental bathhouse in the old city with hot marble, a kese scrub and foam massage. Monday and Thursday until 3 pm are women-only."
+      },
+      "amenities": ["showers", "lockers", "towels", "tea_lounge"],
+      "phone": "+998712880249",
+      "cancellationWindowMin": 120,
+      "womenOnlyHours": [
+        { "weekday": 1, "opens": "09:00", "closes": "15:00" },
+        { "weekday": 4, "opens": "09:00", "closes": "15:00" }
+      ],
+      "hours": {
+        "0": [{ "opens": "09:00", "closes": "23:00", "womenOnly": false }],
+        "1": [
+          { "opens": "09:00", "closes": "15:00", "womenOnly": true },
+          { "opens": "15:00", "closes": "23:00", "womenOnly": false }
+        ],
+        "2": [{ "opens": "09:00", "closes": "23:00", "womenOnly": false }],
+        "3": [{ "opens": "09:00", "closes": "23:00", "womenOnly": false }],
+        "4": [
+          { "opens": "09:00", "closes": "15:00", "womenOnly": true },
+          { "opens": "15:00", "closes": "23:00", "womenOnly": false }
+        ],
+        "5": [{ "opens": "09:00", "closes": "23:00", "womenOnly": false }],
+        "6": [{ "opens": "09:00", "closes": "23:00", "womenOnly": false }]
+      },
+      "photos": [
+        "https://picsum.photos/seed/sharq-hammam-shaykhantahur-1/1200/800",
+        "https://picsum.photos/seed/sharq-hammam-shaykhantahur-2/1200/800",
+        "https://picsum.photos/seed/sharq-hammam-shaykhantahur-3/1200/800",
+        "https://picsum.photos/seed/sharq-hammam-shaykhantahur-4/1200/800",
+        "https://picsum.photos/seed/sharq-hammam-shaykhantahur-5/1200/800"
+      ],
+      "rating": 4.8,
+      "ratingCount": 17,
+      "popularity": 20
+    },
+    {
+      "id": "3699940e-e871-5f6b-a250-7afbc7202d99",
+      "slug": "kedr-banya-chilanzar",
+      "category": "sauna-hammam",
+      "tier": 1,
+      "priceTier": 1,
+      "district": "chilanzar",
+      "lat": 41.2829,
+      "lng": 69.2205,
+      "name": { "ru": "Баня «Кедр»", "uz": "«Kedr» saunasi", "en": "Kedr Banya" },
+      "street": {
+        "ru": "ул. Гавхар, 133",
+        "uz": "Gavhar koʻchasi, 133",
+        "en": "133 Gavhar Street"
+      },
+      "address": {
+        "ru": "ул. Гавхар, 133, Чиланзарский район, Ташкент",
+        "uz": "Gavhar koʻchasi, 133, Chilonzor tumani, Toshkent",
+        "en": "133 Gavhar Street, Chilanzar District, Tashkent"
+      },
+      "description": {
+        "ru": "Русская баня на дровах и финская сауна с купелью. По пятницам и субботам открыто до двух ночи.",
+        "uz": "Oʻtinda isitiladigan rus hammomi va sovuq suvli hovuzchali fin saunasi. Juma va shanba kunlari tungi soat ikkigacha ochiq.",
+        "en": "A wood-fired Russian banya and a Finnish sauna with a plunge pool. Open until 2 am on Fridays and Saturdays."
+      },
+      "amenities": ["showers", "lockers", "towels", "tea_lounge", "parking"],
+      "phone": "+998712757225",
+      "cancellationWindowMin": 120,
+      "womenOnlyHours": null,
+      "hours": {
+        "0": [{ "opens": "12:00", "closes": "23:00", "womenOnly": false }],
+        "1": [{ "opens": "12:00", "closes": "23:00", "womenOnly": false }],
+        "2": [{ "opens": "12:00", "closes": "23:00", "womenOnly": false }],
+        "3": [{ "opens": "12:00", "closes": "23:00", "womenOnly": false }],
+        "4": [{ "opens": "12:00", "closes": "23:00", "womenOnly": false }],
+        "5": [{ "opens": "12:00", "closes": "02:00", "womenOnly": false }],
+        "6": [{ "opens": "12:00", "closes": "02:00", "womenOnly": false }]
+      },
+      "photos": [
+        "https://picsum.photos/seed/kedr-banya-chilanzar-1/1200/800",
+        "https://picsum.photos/seed/kedr-banya-chilanzar-2/1200/800",
+        "https://picsum.photos/seed/kedr-banya-chilanzar-3/1200/800",
+        "https://picsum.photos/seed/kedr-banya-chilanzar-4/1200/800"
+      ],
+      "rating": 4.6,
+      "ratingCount": 11,
+      "popularity": 35
+    },
+    {
+      "id": "08195dd2-7678-5343-9ff7-6808712be253",
+      "slug": "issiq-hammam-yakkasaray",
+      "category": "sauna-hammam",
+      "tier": 1,
+      "priceTier": 1,
+      "district": "yakkasaray",
+      "lat": 41.2847,
+      "lng": 69.2556,
+      "name": { "ru": "Хаммам «Иссик»", "uz": "«Issiq» hammomi", "en": "Issiq Hammam" },
+      "street": {
+        "ru": "ул. Кушбеги, 6",
+        "uz": "Qoʻshbegi koʻchasi, 6",
+        "en": "6 Qushbegi Street"
+      },
+      "address": {
+        "ru": "ул. Кушбеги, 6, Яккасарайский район, Ташкент",
+        "uz": "Qoʻshbegi koʻchasi, 6, Yakkasaroy tumani, Toshkent",
+        "en": "6 Qushbegi Street, Yakkasaray District, Tashkent"
+      },
+      "description": {
+        "ru": "Семейный хаммам с парной и массажем. Сейчас закрыт на ремонт и скоро снова откроется.",
+        "uz": "Bugʻxona va massajli oilaviy hammom. Hozir taʼmirlash uchun yopiq, tez orada yana ochiladi.",
+        "en": "A family hammam with a steam room and massage. Closed for renovation for now and reopening soon."
+      },
+      "amenities": ["showers", "lockers", "towels"],
+      "phone": "+998712119131",
+      "cancellationWindowMin": 120,
+      "womenOnlyHours": null,
+      "hours": {
+        "0": [{ "opens": "09:00", "closes": "23:00", "womenOnly": false }],
+        "1": [{ "opens": "09:00", "closes": "23:00", "womenOnly": false }],
+        "2": [{ "opens": "09:00", "closes": "23:00", "womenOnly": false }],
+        "3": [{ "opens": "09:00", "closes": "23:00", "womenOnly": false }],
+        "4": [{ "opens": "09:00", "closes": "23:00", "womenOnly": false }],
+        "5": [{ "opens": "09:00", "closes": "23:00", "womenOnly": false }],
+        "6": [{ "opens": "09:00", "closes": "23:00", "womenOnly": false }]
+      },
+      "photos": [
+        "https://picsum.photos/seed/issiq-hammam-yakkasaray-1/1200/800",
+        "https://picsum.photos/seed/issiq-hammam-yakkasaray-2/1200/800",
+        "https://picsum.photos/seed/issiq-hammam-yakkasaray-3/1200/800",
+        "https://picsum.photos/seed/issiq-hammam-yakkasaray-4/1200/800"
+      ],
+      "rating": 4.9,
+      "ratingCount": 14,
+      "popularity": 0
+    },
+    {
+      "id": "395eb095-1197-5ae2-891a-e84b074e5699",
+      "slug": "shifo-massage-mirzo-ulugbek",
+      "category": "massage",
+      "tier": 2,
+      "priceTier": 2,
+      "district": "mirzo-ulugbek",
+      "lat": 41.3226,
+      "lng": 69.3189,
+      "name": { "ru": "Shifo Massage", "uz": "Shifo Massage", "en": "Shifo Massage" },
+      "street": {
+        "ru": "ул. Мавлоно Риёзий, 19",
+        "uz": "Mavlono Riyoziy koʻchasi, 19",
+        "en": "19 Mavlono Riyoziy Street"
+      },
+      "address": {
+        "ru": "ул. Мавлоно Риёзий, 19, Мирзо-Улугбекский район, Ташкент",
+        "uz": "Mavlono Riyoziy koʻchasi, 19, Mirzo Ulugʻbek tumani, Toshkent",
+        "en": "19 Mavlono Riyoziy Street, Mirzo-Ulugbek District, Tashkent"
+      },
+      "description": {
+        "ru": "Классический, спортивный и расслабляющий массаж от сертифицированных мастеров. Перед сеансом коротко обсудим, что беспокоит.",
+        "uz": "Sertifikatlangan ustalardan klassik, sport va tinchlantiruvchi massaj. Seansdan oldin sizni nima bezovta qilayotganini qisqacha muhokama qilamiz.",
+        "en": "Classic, sports and relaxing massage from certified therapists. Before each session we briefly talk through what is bothering you."
+      },
+      "amenities": ["showers", "towels", "tea_lounge", "wifi"],
+      "phone": "+998712340712",
+      "cancellationWindowMin": 240,
+      "womenOnlyHours": null,
+      "hours": {
+        "0": [{ "opens": "09:00", "closes": "21:00", "womenOnly": false }],
+        "1": [{ "opens": "09:00", "closes": "21:00", "womenOnly": false }],
+        "2": [{ "opens": "09:00", "closes": "21:00", "womenOnly": false }],
+        "3": [{ "opens": "09:00", "closes": "21:00", "womenOnly": false }],
+        "4": [{ "opens": "09:00", "closes": "21:00", "womenOnly": false }],
+        "5": [{ "opens": "09:00", "closes": "21:00", "womenOnly": false }],
+        "6": [{ "opens": "09:00", "closes": "21:00", "womenOnly": false }]
+      },
+      "photos": [
+        "https://picsum.photos/seed/shifo-massage-mirzo-ulugbek-1/1200/800",
+        "https://picsum.photos/seed/shifo-massage-mirzo-ulugbek-2/1200/800"
+      ],
+      "rating": 4.5,
+      "ratingCount": 14,
+      "popularity": 53
+    },
+    {
+      "id": "52bee414-c597-5a72-bae5-1bffb8356e3d",
+      "slug": "tiniq-massage-almazar",
+      "category": "massage",
+      "tier": 1,
+      "priceTier": 1,
+      "district": "almazar",
+      "lat": 41.3402,
+      "lng": 69.2075,
+      "name": { "ru": "Tiniq Massage", "uz": "Tiniq Massage", "en": "Tiniq Massage" },
+      "street": {
+        "ru": "просп. Беруни, 41",
+        "uz": "Beruniy shoh koʻchasi, 41",
+        "en": "41 Beruniy Avenue"
+      },
+      "address": {
+        "ru": "просп. Беруни, 41, Алмазарский район, Ташкент",
+        "uz": "Beruniy shoh koʻchasi, 41, Olmazor tumani, Toshkent",
+        "en": "41 Beruniy Avenue, Almazar District, Tashkent"
+      },
+      "description": {
+        "ru": "Массажная студия у метро «Беруни». Открытие совсем скоро.",
+        "uz": "«Beruniy» metrosi yonidagi massaj studiyasi. Tez orada ochiladi.",
+        "en": "A massage studio by Beruniy metro, opening very soon."
+      },
+      "amenities": ["showers", "towels"],
+      "phone": "+998712109304",
+      "cancellationWindowMin": 120,
+      "womenOnlyHours": null,
+      "hours": {
+        "0": [{ "opens": "09:00", "closes": "21:00", "womenOnly": false }],
+        "1": [{ "opens": "09:00", "closes": "21:00", "womenOnly": false }],
+        "2": [{ "opens": "09:00", "closes": "21:00", "womenOnly": false }],
+        "3": [{ "opens": "09:00", "closes": "21:00", "womenOnly": false }],
+        "4": [{ "opens": "09:00", "closes": "21:00", "womenOnly": false }],
+        "5": [{ "opens": "09:00", "closes": "21:00", "womenOnly": false }],
+        "6": [{ "opens": "09:00", "closes": "21:00", "womenOnly": false }]
+      },
+      "photos": [
+        "https://picsum.photos/seed/tiniq-massage-almazar-1/1200/800",
+        "https://picsum.photos/seed/tiniq-massage-almazar-2/1200/800"
+      ],
+      "rating": 4.7,
+      "ratingCount": 12,
+      "popularity": 0
+    },
+    {
+      "id": "4a996c0b-e05c-572f-8be1-bf34dc3e50bf",
+      "slug": "harakat-physio-yunusabad",
+      "category": "physio",
+      "tier": 2,
+      "priceTier": 2,
+      "district": "yunusabad",
+      "lat": 41.3396,
+      "lng": 69.2858,
+      "name": {
+        "ru": "Клиника Harakat Physio",
+        "uz": "Harakat Physio klinikasi",
+        "en": "Harakat Physio Clinic"
+      },
+      "street": {
+        "ru": "ул. Шахриобод, 5",
+        "uz": "Shahriobod koʻchasi, 5",
+        "en": "5 Shahriobod Street"
+      },
+      "address": {
+        "ru": "ул. Шахриобод, 5, Юнусабадский район, Ташкент",
+        "uz": "Shahriobod koʻchasi, 5, Yunusobod tumani, Toshkent",
+        "en": "5 Shahriobod Street, Yunusabad District, Tashkent"
+      },
+      "description": {
+        "ru": "Физиотерапевты и реабилитологи помогают вернуться к спорту после травм: ЛФК, кинезиотейпирование и работа со спиной.",
+        "uz": "Fizioterapevtlar va reabilitologlar jarohatdan keyin sportga qaytishga yordam beradi: davolash gimnastikasi, kinezioteyping va bel bilan ishlash.",
+        "en": "Physiotherapists and rehab specialists help you get back to sport after injury with exercise therapy, kinesio taping and back care."
+      },
+      "amenities": ["showers", "lockers", "wheelchair_access", "wifi", "parking"],
+      "phone": "+998712516449",
+      "cancellationWindowMin": 240,
+      "womenOnlyHours": null,
+      "hours": {
+        "0": [{ "opens": "09:00", "closes": "15:00", "womenOnly": false }],
+        "1": [{ "opens": "08:00", "closes": "20:00", "womenOnly": false }],
+        "2": [{ "opens": "08:00", "closes": "20:00", "womenOnly": false }],
+        "3": [{ "opens": "08:00", "closes": "20:00", "womenOnly": false }],
+        "4": [{ "opens": "08:00", "closes": "20:00", "womenOnly": false }],
+        "5": [{ "opens": "08:00", "closes": "20:00", "womenOnly": false }],
+        "6": [{ "opens": "08:00", "closes": "20:00", "womenOnly": false }]
+      },
+      "photos": [
+        "https://picsum.photos/seed/harakat-physio-yunusabad-1/1200/800",
+        "https://picsum.photos/seed/harakat-physio-yunusabad-2/1200/800"
+      ],
+      "rating": 4.6,
+      "ratingCount": 15,
+      "popularity": 11
+    },
+    {
+      "id": "c3b6590e-a168-5a5c-b8cb-336c4dc5c6d6",
+      "slug": "tayanch-rehab-mirabad",
+      "category": "physio",
+      "tier": 3,
+      "priceTier": 3,
+      "district": "mirabad",
+      "lat": 41.3013,
+      "lng": 69.2911,
+      "name": {
+        "ru": "Реабилитационный центр Tayanch",
+        "uz": "Tayanch reabilitatsiya markazi",
+        "en": "Tayanch Rehab Centre"
+      },
+      "street": { "ru": "ул. Ойбека, 36", "uz": "Oybek koʻchasi, 36", "en": "36 Oybek Street" },
+      "address": {
+        "ru": "ул. Ойбека, 36, Мирабадский район, Ташкент",
+        "uz": "Oybek koʻchasi, 36, Mirobod tumani, Toshkent",
+        "en": "36 Oybek Street, Mirabad District, Tashkent"
+      },
+      "description": {
+        "ru": "Современный центр реабилитации: тренировки на антигравитационной дорожке, гидрокинезотерапия и индивидуальные программы.",
+        "uz": "Zamonaviy reabilitatsiya markazi: antigravitatsion yoʻlakda mashgʻulotlar, gidrokinezoterapiya va individual dasturlar.",
+        "en": "A modern rehabilitation centre with anti-gravity treadmill sessions, aquatic therapy and individual programmes."
+      },
+      "amenities": [
+        "showers",
+        "lockers",
+        "wheelchair_access",
+        "towels",
+        "parking",
+        "air_conditioning"
+      ],
+      "phone": "+998712768386",
+      "cancellationWindowMin": 240,
+      "womenOnlyHours": null,
+      "hours": {
+        "0": [{ "opens": "09:00", "closes": "15:00", "womenOnly": false }],
+        "1": [{ "opens": "08:00", "closes": "20:00", "womenOnly": false }],
+        "2": [{ "opens": "08:00", "closes": "20:00", "womenOnly": false }],
+        "3": [{ "opens": "08:00", "closes": "20:00", "womenOnly": false }],
+        "4": [{ "opens": "08:00", "closes": "20:00", "womenOnly": false }],
+        "5": [{ "opens": "08:00", "closes": "20:00", "womenOnly": false }],
+        "6": [{ "opens": "08:00", "closes": "20:00", "womenOnly": false }]
+      },
+      "photos": [
+        "https://picsum.photos/seed/tayanch-rehab-mirabad-1/1200/800",
+        "https://picsum.photos/seed/tayanch-rehab-mirabad-2/1200/800",
+        "https://picsum.photos/seed/tayanch-rehab-mirabad-3/1200/800"
+      ],
+      "rating": 4.7,
+      "ratingCount": 12,
+      "popularity": 20
+    },
+    {
+      "id": "63a89080-32eb-5e87-85fe-036f08b2aa1c",
+      "slug": "recover-lab-shaykhantahur",
+      "category": "recovery",
+      "tier": 3,
+      "priceTier": 3,
+      "district": "shaykhantahur",
+      "lat": 41.3121,
+      "lng": 69.2583,
+      "name": { "ru": "Recover Lab", "uz": "Recover Lab", "en": "Recover Lab" },
+      "street": { "ru": "ул. Фуркат, 10", "uz": "Furqat koʻchasi, 10", "en": "10 Furqat Street" },
+      "address": {
+        "ru": "ул. Фуркат, 10, Шайхантахурский район, Ташкент",
+        "uz": "Furqat koʻchasi, 10, Shayxontohur tumani, Toshkent",
+        "en": "10 Furqat Street, Shaykhantahur District, Tashkent"
+      },
+      "description": {
+        "ru": "Восстановление после нагрузок: криокамера, прессотерапия, инфракрасная сауна и растяжка с тренером. Заходите после тренировки или длинного дня.",
+        "uz": "Yuklamadan keyin tiklanish: kriokamera, pressoterapiya, infraqizil sauna va murabbiy bilan choʻzilish mashqlari. Mashgʻulot yoki uzoq kundan keyin keling.",
+        "en": "Recovery after hard training with a cryo chamber, compression therapy, an infrared sauna and coached stretching. Drop in after a workout or a long day."
+      },
+      "amenities": ["showers", "towels", "wifi", "tea_lounge"],
+      "phone": "+998712377220",
+      "cancellationWindowMin": 120,
+      "womenOnlyHours": null,
+      "hours": {
+        "0": [{ "opens": "08:00", "closes": "22:00", "womenOnly": false }],
+        "1": [{ "opens": "08:00", "closes": "22:00", "womenOnly": false }],
+        "2": [{ "opens": "08:00", "closes": "22:00", "womenOnly": false }],
+        "3": [{ "opens": "08:00", "closes": "22:00", "womenOnly": false }],
+        "4": [{ "opens": "08:00", "closes": "22:00", "womenOnly": false }],
+        "5": [{ "opens": "08:00", "closes": "22:00", "womenOnly": false }],
+        "6": [{ "opens": "08:00", "closes": "22:00", "womenOnly": false }]
+      },
+      "photos": [
+        "https://picsum.photos/seed/recover-lab-shaykhantahur-1/1200/800",
+        "https://picsum.photos/seed/recover-lab-shaykhantahur-2/1200/800"
+      ],
+      "rating": 4.7,
+      "ratingCount": 16,
+      "popularity": 12
+    }
+  ],
+  "trainers": [
+    {
+      "id": "68021737-7dcc-5a14-8874-b5370203f40e",
+      "venueId": "aebd4df0-457a-56c4-ba15-e4dfb1231ab4",
+      "name": "Екатерина Лебедева",
+      "bio": {
+        "ru": "Помогает поставить технику базовых упражнений и составить понятный план тренировок. Опыт работы — 6 лет.",
+        "uz": "Asosiy mashqlar texnikasini sozlash va tushunarli mashgʻulot rejasini tuzishga yordam beradi. 6 yillik tajribaga ega.",
+        "en": "Helps you nail the basic lifts and build a clear training plan. 6 years of experience."
+      },
+      "specialties": ["functional", "stretching"]
+    },
+    {
+      "id": "7ba502a8-f718-52f3-9d12-dc43d004f8bb",
+      "venueId": "aebd4df0-457a-56c4-ba15-e4dfb1231ab4",
+      "name": "Dilnoza Nazarova",
+      "bio": {
+        "ru": "Помогает поставить технику базовых упражнений и составить понятный план тренировок. Опыт работы — 10 лет.",
+        "uz": "Asosiy mashqlar texnikasini sozlash va tushunarli mashgʻulot rejasini tuzishga yordam beradi. 10 yillik tajribaga ega.",
+        "en": "Helps you nail the basic lifts and build a clear training plan. 10 years of experience."
+      },
+      "specialties": ["hiit"]
+    },
+    {
+      "id": "c7ec8817-8ff0-55cc-a13b-2ca38645aa82",
+      "venueId": "aebd4df0-457a-56c4-ba15-e4dfb1231ab4",
+      "name": "Behruz Umarov",
+      "bio": {
+        "ru": "Помогает поставить технику базовых упражнений и составить понятный план тренировок. Опыт работы — 11 лет.",
+        "uz": "Asosiy mashqlar texnikasini sozlash va tushunarli mashgʻulot rejasini tuzishga yordam beradi. 11 yillik tajribaga ega.",
+        "en": "Helps you nail the basic lifts and build a clear training plan. 11 years of experience."
+      },
+      "specialties": ["strength_basics"]
+    },
+    {
+      "id": "be45281a-dab0-5a10-b2e4-704aaa29c13e",
+      "venueId": "693ede47-641b-5567-927e-51a3eb1b8d7d",
+      "name": "Sabina Kholmatova",
+      "bio": {
+        "ru": "Помогает поставить технику базовых упражнений и составить понятный план тренировок. Опыт работы — 15 лет.",
+        "uz": "Asosiy mashqlar texnikasini sozlash va tushunarli mashgʻulot rejasini tuzishga yordam beradi. 15 yillik tajribaga ega.",
+        "en": "Helps you nail the basic lifts and build a clear training plan. 15 years of experience."
+      },
+      "specialties": ["functional"]
+    },
+    {
+      "id": "ffa63dd9-0144-58bc-9643-61274cd2344a",
+      "venueId": "693ede47-641b-5567-927e-51a3eb1b8d7d",
+      "name": "Нодир Хасанов",
+      "bio": {
+        "ru": "Помогает поставить технику базовых упражнений и составить понятный план тренировок. Опыт работы — 8 лет.",
+        "uz": "Asosiy mashqlar texnikasini sozlash va tushunarli mashgʻulot rejasini tuzishga yordam beradi. 8 yillik tajribaga ega.",
+        "en": "Helps you nail the basic lifts and build a clear training plan. 8 years of experience."
+      },
+      "specialties": ["hiit"]
+    },
+    {
+      "id": "f39223da-6c21-5e35-97da-c80c57ce6638",
+      "venueId": "693ede47-641b-5567-927e-51a3eb1b8d7d",
+      "name": "Екатерина Смирнова",
+      "bio": {
+        "ru": "Помогает поставить технику базовых упражнений и составить понятный план тренировок. Опыт работы — 14 лет.",
+        "uz": "Asosiy mashqlar texnikasini sozlash va tushunarli mashgʻulot rejasini tuzishga yordam beradi. 14 yillik tajribaga ega.",
+        "en": "Helps you nail the basic lifts and build a clear training plan. 14 years of experience."
+      },
+      "specialties": ["hiit"]
+    },
+    {
+      "id": "86fd8163-4581-5185-8d0c-9f30c957cfab",
+      "venueId": "ca8681b3-377c-5475-818e-169adbe437a1",
+      "name": "Жасур Мирзаев",
+      "bio": {
+        "ru": "Помогает поставить технику базовых упражнений и составить понятный план тренировок. Опыт работы — 14 лет.",
+        "uz": "Asosiy mashqlar texnikasini sozlash va tushunarli mashgʻulot rejasini tuzishga yordam beradi. 14 yillik tajribaga ega.",
+        "en": "Helps you nail the basic lifts and build a clear training plan. 14 years of experience."
+      },
+      "specialties": ["strength_basics"]
+    },
+    {
+      "id": "36c68a58-4b1e-5d03-9407-a480fe0a21df",
+      "venueId": "ca8681b3-377c-5475-818e-169adbe437a1",
+      "name": "Сабина Усмонова",
+      "bio": {
+        "ru": "Помогает поставить технику базовых упражнений и составить понятный план тренировок. Опыт работы — 10 лет.",
+        "uz": "Asosiy mashqlar texnikasini sozlash va tushunarli mashgʻulot rejasini tuzishga yordam beradi. 10 yillik tajribaga ega.",
+        "en": "Helps you nail the basic lifts and build a clear training plan. 10 years of experience."
+      },
+      "specialties": ["strength_basics"]
+    },
+    {
+      "id": "6a75eb8b-c117-5651-8957-56f8f8c16c3b",
+      "venueId": "32792d45-a7ba-5082-8d1f-fcb63627ed60",
+      "name": "Sanjar Aliyev",
+      "bio": {
+        "ru": "Помогает поставить технику базовых упражнений и составить понятный план тренировок. Опыт работы — 6 лет.",
+        "uz": "Asosiy mashqlar texnikasini sozlash va tushunarli mashgʻulot rejasini tuzishga yordam beradi. 6 yillik tajribaga ega.",
+        "en": "Helps you nail the basic lifts and build a clear training plan. 6 years of experience."
+      },
+      "specialties": ["functional", "stretching", "hiit"]
+    },
+    {
+      "id": "9df0313b-6634-5ae9-9f27-3fe41d57f66d",
+      "venueId": "9dd406c3-0824-5d2c-8b60-ab04f531aea7",
+      "name": "Otabek Ismoilov",
+      "bio": {
+        "ru": "Помогает поставить технику базовых упражнений и составить понятный план тренировок. Опыт работы — 7 лет.",
+        "uz": "Asosiy mashqlar texnikasini sozlash va tushunarli mashgʻulot rejasini tuzishga yordam beradi. 7 yillik tajribaga ega.",
+        "en": "Helps you nail the basic lifts and build a clear training plan. 7 years of experience."
+      },
+      "specialties": ["functional"]
+    },
+    {
+      "id": "be46bcbb-2c2d-5ab7-ad48-6230f61e8b6f",
+      "venueId": "9dd406c3-0824-5d2c-8b60-ab04f531aea7",
+      "name": "Malika Mirzayeva",
+      "bio": {
+        "ru": "Помогает поставить технику базовых упражнений и составить понятный план тренировок. Опыт работы — 5 лет.",
+        "uz": "Asosiy mashqlar texnikasini sozlash va tushunarli mashgʻulot rejasini tuzishga yordam beradi. 5 yillik tajribaga ega.",
+        "en": "Helps you nail the basic lifts and build a clear training plan. 5 years of experience."
+      },
+      "specialties": ["hiit"]
+    },
+    {
+      "id": "fe661b9a-999a-5c82-ad4d-f49554bde9f8",
+      "venueId": "9dd406c3-0824-5d2c-8b60-ab04f531aea7",
+      "name": "Ilya Pavlov",
+      "bio": {
+        "ru": "Помогает поставить технику базовых упражнений и составить понятный план тренировок. Опыт работы — 7 лет.",
+        "uz": "Asosiy mashqlar texnikasini sozlash va tushunarli mashgʻulot rejasini tuzishga yordam beradi. 7 yillik tajribaga ega.",
+        "en": "Helps you nail the basic lifts and build a clear training plan. 7 years of experience."
+      },
+      "specialties": ["hiit"]
+    },
+    {
+      "id": "62d8b038-d6a8-5398-81cd-db67af784963",
+      "venueId": "311a2ded-2f05-5ba1-a548-74c52b2bd7b6",
+      "name": "Павел Петров",
+      "bio": {
+        "ru": "Учит плавать взрослых с нуля и помогает опытным пловцам улучшить технику. Опыт работы — 12 лет.",
+        "uz": "Kattalarga noldan suzishni oʻrgatadi va tajribali suzuvchilarga texnikani yaxshilashda yordam beradi. 12 yillik tajribaga ega.",
+        "en": "Teaches adults to swim from scratch and helps experienced swimmers refine their stroke. 12 years of experience."
+      },
+      "specialties": ["aqua_aerobics", "learn_to_swim", "technique"]
+    },
+    {
+      "id": "016c95f9-e8dd-5a92-b1d2-e3e7bceb28a6",
+      "venueId": "9df7f61b-0096-57f5-b052-8889bff32687",
+      "name": "Mohira Tursunova",
+      "bio": {
+        "ru": "Учит плавать взрослых с нуля и помогает опытным пловцам улучшить технику. Опыт работы — 14 лет.",
+        "uz": "Kattalarga noldan suzishni oʻrgatadi va tajribali suzuvchilarga texnikani yaxshilashda yordam beradi. 14 yillik tajribaga ega.",
+        "en": "Teaches adults to swim from scratch and helps experienced swimmers refine their stroke. 14 years of experience."
+      },
+      "specialties": ["aqua_aerobics", "learn_to_swim"]
+    },
+    {
+      "id": "311bee24-0d86-5d59-b330-d4bad692dd63",
+      "venueId": "005540c5-712c-5969-97ec-a42c9acac62d",
+      "name": "Александр Ким",
+      "bio": {
+        "ru": "Учит плавать взрослых с нуля и помогает опытным пловцам улучшить технику. Опыт работы — 11 лет.",
+        "uz": "Kattalarga noldan suzishni oʻrgatadi va tajribali suzuvchilarga texnikani yaxshilashda yordam beradi. 11 yillik tajribaga ega.",
+        "en": "Teaches adults to swim from scratch and helps experienced swimmers refine their stroke. 11 years of experience."
+      },
+      "specialties": ["aqua_aerobics", "technique"]
+    },
+    {
+      "id": "37037cd5-109b-5414-9f25-e069f41abe80",
+      "venueId": "03afce4b-6ac3-5496-a729-66fffb1f444f",
+      "name": "Islom Aliyev",
+      "bio": {
+        "ru": "Ведёт мягкие и динамичные практики, внимательно следит за выравниванием. Опыт работы — 3 года.",
+        "uz": "Yumshoq va dinamik amaliyotlarni olib boradi, tana holatiga diqqat bilan qaraydi. 3 yillik tajribaga ega.",
+        "en": "Leads both gentle and dynamic practices with careful attention to alignment. 3 years of experience."
+      },
+      "specialties": ["hatha", "vinyasa", "nidra"]
+    },
+    {
+      "id": "969b348a-c726-5db9-b1cd-e76661ae1959",
+      "venueId": "9b56c39e-dc56-55e9-a7c1-e88bf903b3ae",
+      "name": "Aziz Ismoilov",
+      "bio": {
+        "ru": "Ведёт мягкие и динамичные практики, внимательно следит за выравниванием. Опыт работы — 4 года.",
+        "uz": "Yumshoq va dinamik amaliyotlarni olib boradi, tana holatiga diqqat bilan qaraydi. 4 yillik tajribaga ega.",
+        "en": "Leads both gentle and dynamic practices with careful attention to alignment. 4 years of experience."
+      },
+      "specialties": ["hatha", "nidra"]
+    },
+    {
+      "id": "d27360e6-4547-571d-a5af-191d2b22e1b3",
+      "venueId": "6a4f6c73-bf43-53dc-b4d7-a44e981d9e24",
+      "name": "Mohira Qodirova",
+      "bio": {
+        "ru": "Ведёт мягкие и динамичные практики, внимательно следит за выравниванием. Опыт работы — 9 лет.",
+        "uz": "Yumshoq va dinamik amaliyotlarni olib boradi, tana holatiga diqqat bilan qaraydi. 9 yillik tajribaga ega.",
+        "en": "Leads both gentle and dynamic practices with careful attention to alignment. 9 years of experience."
+      },
+      "specialties": ["ashtanga"]
+    },
+    {
+      "id": "a13a8ff4-dbad-5b64-af32-a39140306678",
+      "venueId": "6a4f6c73-bf43-53dc-b4d7-a44e981d9e24",
+      "name": "Ziyoda Xolmatova",
+      "bio": {
+        "ru": "Ведёт мягкие и динамичные практики, внимательно следит за выравниванием. Опыт работы — 13 лет.",
+        "uz": "Yumshoq va dinamik amaliyotlarni olib boradi, tana holatiga diqqat bilan qaraydi. 13 yillik tajribaga ega.",
+        "en": "Leads both gentle and dynamic practices with careful attention to alignment. 13 years of experience."
+      },
+      "specialties": ["aerial"]
+    },
+    {
+      "id": "acd34868-8320-524f-9c6a-43900970237c",
+      "venueId": "6a4f6c73-bf43-53dc-b4d7-a44e981d9e24",
+      "name": "Жамшид Саидов",
+      "bio": {
+        "ru": "Ведёт мягкие и динамичные практики, внимательно следит за выравниванием. Опыт работы — 9 лет.",
+        "uz": "Yumshoq va dinamik amaliyotlarni olib boradi, tana holatiga diqqat bilan qaraydi. 9 yillik tajribaga ega.",
+        "en": "Leads both gentle and dynamic practices with careful attention to alignment. 9 years of experience."
+      },
+      "specialties": ["vinyasa"]
+    },
+    {
+      "id": "e9b4612b-4a76-5c2d-9766-194248e87d9a",
+      "venueId": "76ce1cc6-7bab-5dea-9f56-8c1a0ea4f2c6",
+      "name": "Shahnoza Ergasheva",
+      "bio": {
+        "ru": "Работает с осанкой и мышцами корпуса, в том числе после травм спины. Опыт работы — 15 лет.",
+        "uz": "Qomat va tana mushaklari bilan, jumladan bel jarohatlaridan keyin ham ishlaydi. 15 yillik tajribaga ega.",
+        "en": "Works on posture and core strength, including after back injuries. 15 years of experience."
+      },
+      "specialties": ["reformer", "mat"]
+    },
+    {
+      "id": "47e1e812-eb5e-582c-9e18-931cfcdce7b2",
+      "venueId": "bff0c06f-d348-5d10-a930-549d35003da2",
+      "name": "Шохрух Кадыров",
+      "bio": {
+        "ru": "Работает с осанкой и мышцами корпуса, в том числе после травм спины. Опыт работы — 11 лет.",
+        "uz": "Qomat va tana mushaklari bilan, jumladan bel jarohatlaridan keyin ham ishlaydi. 11 yillik tajribaga ega.",
+        "en": "Works on posture and core strength, including after back injuries. 11 years of experience."
+      },
+      "specialties": ["mat"]
+    },
+    {
+      "id": "c14cd223-6f4a-5b04-a67f-4a01898023bb",
+      "venueId": "bff0c06f-d348-5d10-a930-549d35003da2",
+      "name": "Шохрух Алиев",
+      "bio": {
+        "ru": "Работает с осанкой и мышцами корпуса, в том числе после травм спины. Опыт работы — 11 лет.",
+        "uz": "Qomat va tana mushaklari bilan, jumladan bel jarohatlaridan keyin ham ishlaydi. 11 yillik tajribaga ega.",
+        "en": "Works on posture and core strength, including after back injuries. 11 years of experience."
+      },
+      "specialties": ["healthy_back"]
+    },
+    {
+      "id": "d491b594-8891-5281-9c5f-402c19a18655",
+      "venueId": "bff0c06f-d348-5d10-a930-549d35003da2",
+      "name": "Ilya Smirnov",
+      "bio": {
+        "ru": "Работает с осанкой и мышцами корпуса, в том числе после травм спины. Опыт работы — 9 лет.",
+        "uz": "Qomat va tana mushaklari bilan, jumladan bel jarohatlaridan keyin ham ishlaydi. 9 yillik tajribaga ega.",
+        "en": "Works on posture and core strength, including after back injuries. 9 years of experience."
+      },
+      "specialties": ["healthy_back"]
+    },
+    {
+      "id": "80a66378-b3d9-5e5e-8600-3e53fc075f2e",
+      "venueId": "b59921a3-0ece-53c0-a406-dadb1938b5a2",
+      "name": "Shokhrukh Kadirov",
+      "bio": {
+        "ru": "Ставит хореографию для взрослых и умеет раскрепостить даже тех, кто танцует впервые. Опыт работы — 12 лет.",
+        "uz": "Kattalar uchun xoreografiya sahnalashtiradi va ilk bor raqsga tushayotganlarni ham ochib yuboradi. 12 yillik tajribaga ega.",
+        "en": "Choreographs for adults and puts even first-time dancers at ease. 12 years of experience."
+      },
+      "specialties": ["hiphop", "bachata", "contemporary"]
+    },
+    {
+      "id": "346dccc5-450a-5e08-9ff6-45599ed34abb",
+      "venueId": "1894a3a1-22e9-5804-b7c7-51baafe80e8d",
+      "name": "Бехруз Юсупов",
+      "bio": {
+        "ru": "Ставит хореографию для взрослых и умеет раскрепостить даже тех, кто танцует впервые. Опыт работы — 12 лет.",
+        "uz": "Kattalar uchun xoreografiya sahnalashtiradi va ilk bor raqsga tushayotganlarni ham ochib yuboradi. 12 yillik tajribaga ega.",
+        "en": "Choreographs for adults and puts even first-time dancers at ease. 12 years of experience."
+      },
+      "specialties": ["zumba"]
+    },
+    {
+      "id": "caf0bcbc-b27c-5860-a8bd-467b50dda0a1",
+      "venueId": "1894a3a1-22e9-5804-b7c7-51baafe80e8d",
+      "name": "Лайло Каримова",
+      "bio": {
+        "ru": "Ставит хореографию для взрослых и умеет раскрепостить даже тех, кто танцует впервые. Опыт работы — 8 лет.",
+        "uz": "Kattalar uchun xoreografiya sahnalashtiradi va ilk bor raqsga tushayotganlarni ham ochib yuboradi. 8 yillik tajribaga ega.",
+        "en": "Choreographs for adults and puts even first-time dancers at ease. 8 years of experience."
+      },
+      "specialties": ["uzbek_folk"]
+    },
+    {
+      "id": "541a6ec5-3f3b-5ead-8265-b27c667fa033",
+      "venueId": "1894a3a1-22e9-5804-b7c7-51baafe80e8d",
+      "name": "Dilnoza Tursunova",
+      "bio": {
+        "ru": "Ставит хореографию для взрослых и умеет раскрепостить даже тех, кто танцует впервые. Опыт работы — 5 лет.",
+        "uz": "Kattalar uchun xoreografiya sahnalashtiradi va ilk bor raqsga tushayotganlarni ham ochib yuboradi. 5 yillik tajribaga ega.",
+        "en": "Choreographs for adults and puts even first-time dancers at ease. 5 years of experience."
+      },
+      "specialties": ["uzbek_folk"]
+    },
+    {
+      "id": "9171c11c-2668-5853-a43b-87e567bc80c7",
+      "venueId": "0b11294e-d602-5ee8-893d-507c96e72400",
+      "name": "Aziz Xolmatov",
+      "bio": {
+        "ru": "Мастер спорта, тренирует взрослых новичков и готовит к соревнованиям. Опыт работы — 7 лет.",
+        "uz": "Sport ustasi, kattalarni noldan oʻrgatadi va musobaqalarga tayyorlaydi. 7 yillik tajribaga ega.",
+        "en": "A master of sport who coaches adult beginners and prepares fighters for competition. 7 years of experience."
+      },
+      "specialties": ["judo", "karate"]
+    },
+    {
+      "id": "02f8756f-5a9d-5608-afc3-d589fa849144",
+      "venueId": "a0d13c73-d105-55e3-886a-317cb111ff98",
+      "name": "Zarina Ismoilova",
+      "bio": {
+        "ru": "Мастер спорта, тренирует взрослых новичков и готовит к соревнованиям. Опыт работы — 11 лет.",
+        "uz": "Sport ustasi, kattalarni noldan oʻrgatadi va musobaqalarga tayyorlaydi. 11 yillik tajribaga ega.",
+        "en": "A master of sport who coaches adult beginners and prepares fighters for competition. 11 years of experience."
+      },
+      "specialties": ["boxing", "mma"]
+    },
+    {
+      "id": "81c575fb-cdae-5d18-b9ed-f7b9917c74af",
+      "venueId": "a0d13c73-d105-55e3-886a-317cb111ff98",
+      "name": "Сергей Тен",
+      "bio": {
+        "ru": "Мастер спорта, тренирует взрослых новичков и готовит к соревнованиям. Опыт работы — 3 года.",
+        "uz": "Sport ustasi, kattalarni noldan oʻrgatadi va musobaqalarga tayyorlaydi. 3 yillik tajribaga ega.",
+        "en": "A master of sport who coaches adult beginners and prepares fighters for competition. 3 years of experience."
+      },
+      "specialties": ["kickboxing"]
+    },
+    {
+      "id": "29f0d848-f29c-5d49-89aa-f7381638b786",
+      "venueId": "128bbcde-6ea3-54c8-bad9-ce3cc4ec7964",
+      "name": "Илья Ким",
+      "bio": {
+        "ru": "Мастер спорта, тренирует взрослых новичков и готовит к соревнованиям. Опыт работы — 7 лет.",
+        "uz": "Sport ustasi, kattalarni noldan oʻrgatadi va musobaqalarga tayyorlaydi. 7 yillik tajribaga ega.",
+        "en": "A master of sport who coaches adult beginners and prepares fighters for competition. 7 years of experience."
+      },
+      "specialties": ["kurash"]
+    },
+    {
+      "id": "d13e64e0-ffc6-5ebd-b3a2-1fe144cff371",
+      "venueId": "128bbcde-6ea3-54c8-bad9-ce3cc4ec7964",
+      "name": "Ziyoda Toshmatova",
+      "bio": {
+        "ru": "Мастер спорта, тренирует взрослых новичков и готовит к соревнованиям. Опыт работы — 12 лет.",
+        "uz": "Sport ustasi, kattalarni noldan oʻrgatadi va musobaqalarga tayyorlaydi. 12 yillik tajribaga ega.",
+        "en": "A master of sport who coaches adult beginners and prepares fighters for competition. 12 years of experience."
+      },
+      "specialties": ["kurash"]
+    },
+    {
+      "id": "439a1f0c-14a5-58e0-a004-a96be36eb625",
+      "venueId": "9575a41a-a3d2-59a6-98ca-c5930862e3a1",
+      "name": "Сабина Абдуллаева",
+      "bio": {
+        "ru": "Подбирает нагрузку под уровень каждого и следит за техникой в интенсивных комплексах. Опыт работы — 11 лет.",
+        "uz": "Har kimning darajasiga mos yuklama tanlaydi va jadal komplekslarda texnikani kuzatadi. 11 yillik tajribaga ega.",
+        "en": "Scales every workout to your level and keeps technique sharp under fatigue. 11 years of experience."
+      },
+      "specialties": ["wod"]
+    },
+    {
+      "id": "17207165-9d7e-5efd-8128-d4a92565145c",
+      "venueId": "9575a41a-a3d2-59a6-98ca-c5930862e3a1",
+      "name": "Roman Volkov",
+      "bio": {
+        "ru": "Подбирает нагрузку под уровень каждого и следит за техникой в интенсивных комплексах. Опыт работы — 8 лет.",
+        "uz": "Har kimning darajasiga mos yuklama tanlaydi va jadal komplekslarda texnikani kuzatadi. 8 yillik tajribaga ega.",
+        "en": "Scales every workout to your level and keeps technique sharp under fatigue. 8 years of experience."
+      },
+      "specialties": ["olympic"]
+    },
+    {
+      "id": "2a3d6c91-c175-54ee-9a5d-4e9dbb19e838",
+      "venueId": "9575a41a-a3d2-59a6-98ca-c5930862e3a1",
+      "name": "Виктория Петрова",
+      "bio": {
+        "ru": "Подбирает нагрузку под уровень каждого и следит за техникой в интенсивных комплексах. Опыт работы — 6 лет.",
+        "uz": "Har kimning darajasiga mos yuklama tanlaydi va jadal komplekslarda texnikani kuzatadi. 6 yillik tajribaga ega.",
+        "en": "Scales every workout to your level and keeps technique sharp under fatigue. 6 years of experience."
+      },
+      "specialties": ["olympic"]
+    },
+    {
+      "id": "24882517-9598-5f03-90a8-ed2376e9ca8f",
+      "venueId": "c6975047-2553-54c3-8939-9fe3211e48ff",
+      "name": "Бекзод Кадыров",
+      "bio": {
+        "ru": "Подбирает нагрузку под уровень каждого и следит за техникой в интенсивных комплексах. Опыт работы — 12 лет.",
+        "uz": "Har kimning darajasiga mos yuklama tanlaydi va jadal komplekslarda texnikani kuzatadi. 12 yillik tajribaga ega.",
+        "en": "Scales every workout to your level and keeps technique sharp under fatigue. 12 years of experience."
+      },
+      "specialties": ["express"]
+    },
+    {
+      "id": "abc3e5ca-48a3-553a-b61a-510520ede0a4",
+      "venueId": "c6975047-2553-54c3-8939-9fe3211e48ff",
+      "name": "Elena Petrova",
+      "bio": {
+        "ru": "Подбирает нагрузку под уровень каждого и следит за техникой в интенсивных комплексах. Опыт работы — 13 лет.",
+        "uz": "Har kimning darajasiga mos yuklama tanlaydi va jadal komplekslarda texnikani kuzatadi. 13 yillik tajribaga ega.",
+        "en": "Scales every workout to your level and keeps technique sharp under fatigue. 13 years of experience."
+      },
+      "specialties": ["wod"]
+    },
+    {
+      "id": "1227afd8-0128-54bd-9542-c46d515bf8f7",
+      "venueId": "ce697d48-4e44-525a-862d-870628485fd5",
+      "name": "Дильноза Жураева",
+      "bio": {
+        "ru": "Специалист по спа-ритуалам и восстановительным процедурам. Опыт работы — 14 лет.",
+        "uz": "Spa marosimlari va tiklovchi muolajalar boʻyicha mutaxassis. 14 yillik tajribaga ega.",
+        "en": "A specialist in spa rituals and restorative treatments. 14 years of experience."
+      },
+      "specialties": ["hammam_ritual", "salt_room"]
+    },
+    {
+      "id": "f2d7ddf6-aa6f-5d27-856d-26a41b2ebb18",
+      "venueId": "ce697d48-4e44-525a-862d-870628485fd5",
+      "name": "Муниса Хасанова",
+      "bio": {
+        "ru": "Специалист по спа-ритуалам и восстановительным процедурам. Опыт работы — 14 лет.",
+        "uz": "Spa marosimlari va tiklovchi muolajalar boʻyicha mutaxassis. 14 yillik tajribaga ega.",
+        "en": "A specialist in spa rituals and restorative treatments. 14 years of experience."
+      },
+      "specialties": ["aqua_relax"]
+    },
+    {
+      "id": "c37b5ee5-b71c-5c97-9d81-079987e617f8",
+      "venueId": "a953e770-d7b8-597f-babe-9fafd3d5583f",
+      "name": "Зарина Кадырова",
+      "bio": {
+        "ru": "Специалист по спа-ритуалам и восстановительным процедурам. Опыт работы — 7 лет.",
+        "uz": "Spa marosimlari va tiklovchi muolajalar boʻyicha mutaxassis. 7 yillik tajribaga ega.",
+        "en": "A specialist in spa rituals and restorative treatments. 7 years of experience."
+      },
+      "specialties": ["hammam_ritual"]
+    },
+    {
+      "id": "cee6dcbf-6914-5416-a2d0-12c65358811e",
+      "venueId": "d3c426da-8dd7-53f6-9bcf-70e9dc2b2139",
+      "name": "Муниса Султонова",
+      "bio": {
+        "ru": "Банный мастер: знает, как правильно прогреться и восстановиться после парной. Опыт работы — 6 лет.",
+        "uz": "Hammom ustasi: qanday qilib toʻgʻri isinish va bugʻxonadan keyin tiklanishni yaxshi biladi. 6 yillik tajribaga ega.",
+        "en": "A bath master who knows how to warm up properly and recover after the steam room. 6 years of experience."
+      },
+      "specialties": ["scrub"]
+    },
+    {
+      "id": "282b4fc3-23a4-56fd-b832-874f824ab22a",
+      "venueId": "d3c426da-8dd7-53f6-9bcf-70e9dc2b2139",
+      "name": "Санжар Мирзаев",
+      "bio": {
+        "ru": "Банный мастер: знает, как правильно прогреться и восстановиться после парной. Опыт работы — 6 лет.",
+        "uz": "Hammom ustasi: qanday qilib toʻgʻri isinish va bugʻxonadan keyin tiklanishni yaxshi biladi. 6 yillik tajribaga ega.",
+        "en": "A bath master who knows how to warm up properly and recover after the steam room. 6 years of experience."
+      },
+      "specialties": ["steam_ceremony"]
+    },
+    {
+      "id": "520af64a-5cb5-5102-8329-0eea1f20cf15",
+      "venueId": "3699940e-e871-5f6b-a250-7afbc7202d99",
+      "name": "Sherzod Umarov",
+      "bio": {
+        "ru": "Банный мастер: знает, как правильно прогреться и восстановиться после парной. Опыт работы — 3 года.",
+        "uz": "Hammom ustasi: qanday qilib toʻgʻri isinish va bugʻxonadan keyin tiklanishni yaxshi biladi. 3 yillik tajribaga ega.",
+        "en": "A bath master who knows how to warm up properly and recover after the steam room. 3 years of experience."
+      },
+      "specialties": ["steam_ceremony"]
+    },
+    {
+      "id": "56147c15-7bb0-5bc1-bcd5-71c44abe4583",
+      "venueId": "08195dd2-7678-5343-9ff7-6808712be253",
+      "name": "Виктория Петрова",
+      "bio": {
+        "ru": "Банный мастер: знает, как правильно прогреться и восстановиться после парной. Опыт работы — 12 лет.",
+        "uz": "Hammom ustasi: qanday qilib toʻgʻri isinish va bugʻxonadan keyin tiklanishni yaxshi biladi. 12 yillik tajribaga ega.",
+        "en": "A bath master who knows how to warm up properly and recover after the steam room. 12 years of experience."
+      },
+      "specialties": ["scrub"]
+    },
+    {
+      "id": "4cb84955-9790-5ed2-ada0-dacd01982d78",
+      "venueId": "08195dd2-7678-5343-9ff7-6808712be253",
+      "name": "Алина Волкова",
+      "bio": {
+        "ru": "Банный мастер: знает, как правильно прогреться и восстановиться после парной. Опыт работы — 11 лет.",
+        "uz": "Hammom ustasi: qanday qilib toʻgʻri isinish va bugʻxonadan keyin tiklanishni yaxshi biladi. 11 yillik tajribaga ega.",
+        "en": "A bath master who knows how to warm up properly and recover after the steam room. 11 years of experience."
+      },
+      "specialties": ["scrub"]
+    },
+    {
+      "id": "5f49554e-c467-5f06-bc34-6dda07ab21ef",
+      "venueId": "08195dd2-7678-5343-9ff7-6808712be253",
+      "name": "Yulduz Tursunova",
+      "bio": {
+        "ru": "Банный мастер: знает, как правильно прогреться и восстановиться после парной. Опыт работы — 8 лет.",
+        "uz": "Hammom ustasi: qanday qilib toʻgʻri isinish va bugʻxonadan keyin tiklanishni yaxshi biladi. 8 yillik tajribaga ega.",
+        "en": "A bath master who knows how to warm up properly and recover after the steam room. 8 years of experience."
+      },
+      "specialties": ["scrub"]
+    },
+    {
+      "id": "d8c31173-0b29-5a25-bb3f-636161fdd755",
+      "venueId": "395eb095-1197-5ae2-891a-e84b074e5699",
+      "name": "Maria Tsoi",
+      "bio": {
+        "ru": "Сертифицированный массажист: классический, спортивный и расслабляющий массаж. Опыт работы — 14 лет.",
+        "uz": "Sertifikatlangan massajchi: klassik, sport va tinchlantiruvchi massaj. 14 yillik tajribaga ega.",
+        "en": "A certified therapist offering classic, sports and relaxing massage. 14 years of experience."
+      },
+      "specialties": ["mfr"]
+    },
+    {
+      "id": "7d4fd948-fb49-581e-89a1-021ddbe0423e",
+      "venueId": "395eb095-1197-5ae2-891a-e84b074e5699",
+      "name": "Роман Морозов",
+      "bio": {
+        "ru": "Сертифицированный массажист: классический, спортивный и расслабляющий массаж. Опыт работы — 4 года.",
+        "uz": "Sertifikatlangan massajchi: klassik, sport va tinchlantiruvchi massaj. 4 yillik tajribaga ega.",
+        "en": "A certified therapist offering classic, sports and relaxing massage. 4 years of experience."
+      },
+      "specialties": ["face_massage"]
+    },
+    {
+      "id": "3782701f-2a8e-587a-801b-6adf95ea5915",
+      "venueId": "395eb095-1197-5ae2-891a-e84b074e5699",
+      "name": "Ulugʻbek Xolmatov",
+      "bio": {
+        "ru": "Сертифицированный массажист: классический, спортивный и расслабляющий массаж. Опыт работы — 14 лет.",
+        "uz": "Sertifikatlangan massajchi: klassik, sport va tinchlantiruvchi massaj. 14 yillik tajribaga ega.",
+        "en": "A certified therapist offering classic, sports and relaxing massage. 14 years of experience."
+      },
+      "specialties": ["face_massage"]
+    },
+    {
+      "id": "dad52ce7-9877-5e1f-ba4d-fc6c120dc996",
+      "venueId": "52bee414-c597-5a72-bae5-1bffb8356e3d",
+      "name": "Максим Волков",
+      "bio": {
+        "ru": "Сертифицированный массажист: классический, спортивный и расслабляющий массаж. Опыт работы — 8 лет.",
+        "uz": "Sertifikatlangan massajchi: klassik, sport va tinchlantiruvchi massaj. 8 yillik tajribaga ega.",
+        "en": "A certified therapist offering classic, sports and relaxing massage. 8 years of experience."
+      },
+      "specialties": ["mfr"]
+    },
+    {
+      "id": "accad828-914c-5fa4-96be-7258fdf9cecf",
+      "venueId": "4a996c0b-e05c-572f-8be1-bf34dc3e50bf",
+      "name": "Жамшид Турсунов",
+      "bio": {
+        "ru": "Физиотерапевт, помогает восстановиться после травм и операций. Опыт работы — 11 лет.",
+        "uz": "Fizioterapevt, jarohat va operatsiyalardan keyin tiklanishga yordam beradi. 11 yillik tajribaga ega.",
+        "en": "A physiotherapist who helps people recover from injuries and surgery. 11 years of experience."
+      },
+      "specialties": ["exercise_therapy", "knee_rehab", "posture"]
+    },
+    {
+      "id": "55dc6bea-fb46-52ed-8656-a46e78025123",
+      "venueId": "c3b6590e-a168-5a5c-b8cb-336c4dc5c6d6",
+      "name": "Наталья Ли",
+      "bio": {
+        "ru": "Физиотерапевт, помогает восстановиться после травм и операций. Опыт работы — 4 года.",
+        "uz": "Fizioterapevt, jarohat va operatsiyalardan keyin tiklanishga yordam beradi. 4 yillik tajribaga ega.",
+        "en": "A physiotherapist who helps people recover from injuries and surgery. 4 years of experience."
+      },
+      "specialties": ["knee_rehab"]
+    },
+    {
+      "id": "9b8b45f7-a02b-5f03-803a-78f5706f48ba",
+      "venueId": "c3b6590e-a168-5a5c-b8cb-336c4dc5c6d6",
+      "name": "Жамшид Холматов",
+      "bio": {
+        "ru": "Физиотерапевт, помогает восстановиться после травм и операций. Опыт работы — 12 лет.",
+        "uz": "Fizioterapevt, jarohat va operatsiyalardan keyin tiklanishga yordam beradi. 12 yillik tajribaga ega.",
+        "en": "A physiotherapist who helps people recover from injuries and surgery. 12 years of experience."
+      },
+      "specialties": ["exercise_therapy"]
+    },
+    {
+      "id": "70a5bb0a-a4b4-5fa3-b8ce-5acb523ce6eb",
+      "venueId": "c3b6590e-a168-5a5c-b8cb-336c4dc5c6d6",
+      "name": "Никита Смирнов",
+      "bio": {
+        "ru": "Физиотерапевт, помогает восстановиться после травм и операций. Опыт работы — 5 лет.",
+        "uz": "Fizioterapevt, jarohat va operatsiyalardan keyin tiklanishga yordam beradi. 5 yillik tajribaga ega.",
+        "en": "A physiotherapist who helps people recover from injuries and surgery. 5 years of experience."
+      },
+      "specialties": ["exercise_therapy"]
+    },
+    {
+      "id": "cb54242a-a681-56ba-a1bf-3366320ba063",
+      "venueId": "63a89080-32eb-5e87-85fe-036f08b2aa1c",
+      "name": "Madina Hasanova",
+      "bio": {
+        "ru": "Подскажет, как быстрее восстанавливаться между тренировками. Опыт работы — 11 лет.",
+        "uz": "Mashgʻulotlar orasida qanday qilib tezroq tiklanishni maslahat beradi. 11 yillik tajribaga ega.",
+        "en": "Shows you how to bounce back faster between workouts. 11 years of experience."
+      },
+      "specialties": ["mobility"]
+    },
+    {
+      "id": "25b1a940-49e1-5a20-afa3-d3621118b401",
+      "venueId": "63a89080-32eb-5e87-85fe-036f08b2aa1c",
+      "name": "Nilufar Tursunova",
+      "bio": {
+        "ru": "Подскажет, как быстрее восстанавливаться между тренировками. Опыт работы — 3 года.",
+        "uz": "Mashgʻulotlar orasida qanday qilib tezroq tiklanishni maslahat beradi. 3 yillik tajribaga ega.",
+        "en": "Shows you how to bounce back faster between workouts. 3 years of experience."
+      },
+      "specialties": ["breathwork"]
+    },
+    {
+      "id": "cce34277-375d-534f-a8e4-eeca86f8091e",
+      "venueId": "63a89080-32eb-5e87-85fe-036f08b2aa1c",
+      "name": "Ksenia Ten",
+      "bio": {
+        "ru": "Подскажет, как быстрее восстанавливаться между тренировками. Опыт работы — 5 лет.",
+        "uz": "Mashgʻulotlar orasida qanday qilib tezroq tiklanishni maslahat beradi. 5 yillik tajribaga ega.",
+        "en": "Shows you how to bounce back faster between workouts. 5 years of experience."
+      },
+      "specialties": ["contrast"]
+    }
+  ],
+  "classes": [
+    {
+      "id": "88f8ec73-cc2c-51b4-b305-8948224b8ff4",
+      "venueId": "aebd4df0-457a-56c4-ba15-e4dfb1231ab4",
+      "key": "functional",
+      "name": {
+        "ru": "Функциональный тренинг",
+        "uz": "Funksional mashgʻulot",
+        "en": "Functional training"
+      },
+      "description": {
+        "ru": "Круговая тренировка с собственным весом, гирями и эспандерами.",
+        "uz": "Oʻz vazni, gantellar va rezina lentalar bilan aylanma mashgʻulot.",
+        "en": "A circuit workout with bodyweight, kettlebells and resistance bands."
+      },
+      "durationMin": 55,
+      "capacity": 14,
+      "level": "any",
+      "trainerId": "68021737-7dcc-5a14-8874-b5370203f40e",
+      "slots": [
+        [0, "19:00"],
+        [3, "18:30"],
+        [2, "18:30"],
+        [4, "13:00"]
+      ]
+    },
+    {
+      "id": "c3b509da-59d5-5a91-947f-3b8787e41947",
+      "venueId": "aebd4df0-457a-56c4-ba15-e4dfb1231ab4",
+      "key": "hiit",
+      "name": {
+        "ru": "Интервальная тренировка HIIT",
+        "uz": "HIIT intervalli mashgʻulot",
+        "en": "HIIT intervals"
+      },
+      "description": {
+        "ru": "Короткие интенсивные интервалы, чтобы разогнать пульс и сжечь калории.",
+        "uz": "Pulsni tezlashtirish va kaloriya yoqish uchun qisqa va jadal intervallar.",
+        "en": "Short, intense intervals to raise your heart rate and burn calories."
+      },
+      "durationMin": 45,
+      "capacity": 16,
+      "level": "intermediate",
+      "trainerId": "7ba502a8-f718-52f3-9d12-dc43d004f8bb",
+      "slots": [
+        [6, "20:00"],
+        [3, "12:30"],
+        [1, "12:30"],
+        [0, "18:30"]
+      ]
+    },
+    {
+      "id": "9558c17d-7603-5de0-b611-d8690c6dc168",
+      "venueId": "aebd4df0-457a-56c4-ba15-e4dfb1231ab4",
+      "key": "strength_basics",
+      "name": { "ru": "Силовая база", "uz": "Kuch asoslari", "en": "Strength basics" },
+      "description": {
+        "ru": "Учимся правильно приседать, делать становую тягу и жим под присмотром тренера.",
+        "uz": "Murabbiy nazorati ostida toʻgʻri oʻtirib-turish, shtanga tortish va siqishni oʻrganamiz.",
+        "en": "Learn to squat, deadlift and press with good form under a coach’s eye."
+      },
+      "durationMin": 60,
+      "capacity": 8,
+      "level": "beginner",
+      "trainerId": "c7ec8817-8ff0-55cc-a13b-2ca38645aa82",
+      "slots": [
+        [1, "07:30"],
+        [3, "20:00"],
+        [0, "18:00"]
+      ]
+    },
+    {
+      "id": "8e42d10c-a9e1-54a8-a5cc-db300d9a4942",
+      "venueId": "aebd4df0-457a-56c4-ba15-e4dfb1231ab4",
+      "key": "stretching",
+      "name": { "ru": "Стретчинг", "uz": "Choʻzilish mashqlari", "en": "Stretching" },
+      "description": {
+        "ru": "Спокойная растяжка всего тела для гибкости и восстановления.",
+        "uz": "Egiluvchanlik va tiklanish uchun butun tanani xotirjam choʻzish.",
+        "en": "A calm full-body stretch for flexibility and recovery."
+      },
+      "durationMin": 50,
+      "capacity": 16,
+      "level": "any",
+      "trainerId": "68021737-7dcc-5a14-8874-b5370203f40e",
+      "slots": [
+        [3, "13:00"],
+        [6, "17:00"]
+      ]
+    },
+    {
+      "id": "19cb3aee-d41b-5cac-9c14-72363ab9c014",
+      "venueId": "693ede47-641b-5567-927e-51a3eb1b8d7d",
+      "key": "functional",
+      "name": {
+        "ru": "Функциональный тренинг",
+        "uz": "Funksional mashgʻulot",
+        "en": "Functional training"
+      },
+      "description": {
+        "ru": "Круговая тренировка с собственным весом, гирями и эспандерами.",
+        "uz": "Oʻz vazni, gantellar va rezina lentalar bilan aylanma mashgʻulot.",
+        "en": "A circuit workout with bodyweight, kettlebells and resistance bands."
+      },
+      "durationMin": 55,
+      "capacity": 14,
+      "level": "any",
+      "trainerId": "be45281a-dab0-5a10-b2e4-704aaa29c13e",
+      "slots": [
+        [4, "07:30"],
+        [2, "17:00"]
+      ]
+    },
+    {
+      "id": "120409b5-901e-54ef-a181-171fecd978fb",
+      "venueId": "693ede47-641b-5567-927e-51a3eb1b8d7d",
+      "key": "hiit",
+      "name": {
+        "ru": "Интервальная тренировка HIIT",
+        "uz": "HIIT intervalli mashgʻulot",
+        "en": "HIIT intervals"
+      },
+      "description": {
+        "ru": "Короткие интенсивные интервалы, чтобы разогнать пульс и сжечь калории.",
+        "uz": "Pulsni tezlashtirish va kaloriya yoqish uchun qisqa va jadal intervallar.",
+        "en": "Short, intense intervals to raise your heart rate and burn calories."
+      },
+      "durationMin": 45,
+      "capacity": 16,
+      "level": "intermediate",
+      "trainerId": "ffa63dd9-0144-58bc-9643-61274cd2344a",
+      "slots": [
+        [4, "08:00"],
+        [1, "18:00"],
+        [2, "10:00"],
+        [6, "09:00"]
+      ]
+    },
+    {
+      "id": "95d320c0-5796-5c98-845a-2f49490ed2ab",
+      "venueId": "ca8681b3-377c-5475-818e-169adbe437a1",
+      "key": "strength_basics",
+      "name": { "ru": "Силовая база", "uz": "Kuch asoslari", "en": "Strength basics" },
+      "description": {
+        "ru": "Учимся правильно приседать, делать становую тягу и жим под присмотром тренера.",
+        "uz": "Murabbiy nazorati ostida toʻgʻri oʻtirib-turish, shtanga tortish va siqishni oʻrganamiz.",
+        "en": "Learn to squat, deadlift and press with good form under a coach’s eye."
+      },
+      "durationMin": 60,
+      "capacity": 8,
+      "level": "beginner",
+      "trainerId": "86fd8163-4581-5185-8d0c-9f30c957cfab",
+      "slots": [
+        [1, "18:30"],
+        [6, "18:00"],
+        [5, "12:30"],
+        [4, "13:00"]
+      ]
+    },
+    {
+      "id": "e7a99a10-bc24-59a3-9006-9198b70b2b83",
+      "venueId": "32792d45-a7ba-5082-8d1f-fcb63627ed60",
+      "key": "functional",
+      "name": {
+        "ru": "Функциональный тренинг",
+        "uz": "Funksional mashgʻulot",
+        "en": "Functional training"
+      },
+      "description": {
+        "ru": "Круговая тренировка с собственным весом, гирями и эспандерами.",
+        "uz": "Oʻz vazni, gantellar va rezina lentalar bilan aylanma mashgʻulot.",
+        "en": "A circuit workout with bodyweight, kettlebells and resistance bands."
+      },
+      "durationMin": 55,
+      "capacity": 14,
+      "level": "any",
+      "trainerId": "6a75eb8b-c117-5651-8957-56f8f8c16c3b",
+      "slots": [
+        [2, "08:00"],
+        [5, "07:00"]
+      ]
+    },
+    {
+      "id": "731c0ff4-93a8-55d3-80c0-9fb98766ff6b",
+      "venueId": "32792d45-a7ba-5082-8d1f-fcb63627ed60",
+      "key": "stretching",
+      "name": { "ru": "Стретчинг", "uz": "Choʻzilish mashqlari", "en": "Stretching" },
+      "description": {
+        "ru": "Спокойная растяжка всего тела для гибкости и восстановления.",
+        "uz": "Egiluvchanlik va tiklanish uchun butun tanani xotirjam choʻzish.",
+        "en": "A calm full-body stretch for flexibility and recovery."
+      },
+      "durationMin": 50,
+      "capacity": 16,
+      "level": "any",
+      "trainerId": "6a75eb8b-c117-5651-8957-56f8f8c16c3b",
+      "slots": [
+        [6, "17:00"],
+        [4, "18:00"],
+        [5, "07:30"]
+      ]
+    },
+    {
+      "id": "c673f4c2-6123-5957-ae3e-c7465f921973",
+      "venueId": "32792d45-a7ba-5082-8d1f-fcb63627ed60",
+      "key": "hiit",
+      "name": {
+        "ru": "Интервальная тренировка HIIT",
+        "uz": "HIIT intervalli mashgʻulot",
+        "en": "HIIT intervals"
+      },
+      "description": {
+        "ru": "Короткие интенсивные интервалы, чтобы разогнать пульс и сжечь калории.",
+        "uz": "Pulsni tezlashtirish va kaloriya yoqish uchun qisqa va jadal intervallar.",
+        "en": "Short, intense intervals to raise your heart rate and burn calories."
+      },
+      "durationMin": 45,
+      "capacity": 16,
+      "level": "intermediate",
+      "trainerId": "6a75eb8b-c117-5651-8957-56f8f8c16c3b",
+      "slots": [
+        [0, "19:30"],
+        [3, "07:00"]
+      ]
+    },
+    {
+      "id": "d04cafa9-f659-56c8-ad51-350e726852b4",
+      "venueId": "9dd406c3-0824-5d2c-8b60-ab04f531aea7",
+      "key": "functional",
+      "name": {
+        "ru": "Функциональный тренинг",
+        "uz": "Funksional mashgʻulot",
+        "en": "Functional training"
+      },
+      "description": {
+        "ru": "Круговая тренировка с собственным весом, гирями и эспандерами.",
+        "uz": "Oʻz vazni, gantellar va rezina lentalar bilan aylanma mashgʻulot.",
+        "en": "A circuit workout with bodyweight, kettlebells and resistance bands."
+      },
+      "durationMin": 55,
+      "capacity": 14,
+      "level": "any",
+      "trainerId": "9df0313b-6634-5ae9-9f27-3fe41d57f66d",
+      "slots": [
+        [6, "20:00"],
+        [5, "20:00"],
+        [4, "08:00"]
+      ]
+    },
+    {
+      "id": "217d3b48-820d-58b7-9596-4b131943e5ca",
+      "venueId": "9dd406c3-0824-5d2c-8b60-ab04f531aea7",
+      "key": "hiit",
+      "name": {
+        "ru": "Интервальная тренировка HIIT",
+        "uz": "HIIT intervalli mashgʻulot",
+        "en": "HIIT intervals"
+      },
+      "description": {
+        "ru": "Короткие интенсивные интервалы, чтобы разогнать пульс и сжечь калории.",
+        "uz": "Pulsni tezlashtirish va kaloriya yoqish uchun qisqa va jadal intervallar.",
+        "en": "Short, intense intervals to raise your heart rate and burn calories."
+      },
+      "durationMin": 45,
+      "capacity": 16,
+      "level": "intermediate",
+      "trainerId": "be46bcbb-2c2d-5ab7-ad48-6230f61e8b6f",
+      "slots": [
+        [6, "17:00"],
+        [0, "11:00"]
+      ]
+    },
+    {
+      "id": "eaaca2be-cb3a-5156-b41e-79f1b02c8e4d",
+      "venueId": "311a2ded-2f05-5ba1-a548-74c52b2bd7b6",
+      "key": "aqua_aerobics",
+      "name": { "ru": "Аквааэробика", "uz": "Akvaaerobika", "en": "Aqua aerobics" },
+      "description": {
+        "ru": "Энергичная тренировка в воде под музыку, щадящая для суставов.",
+        "uz": "Musiqa ostida suvda gʻayratli mashgʻulot, boʻgʻimlarga yengil.",
+        "en": "An upbeat workout in the water set to music, easy on the joints."
+      },
+      "durationMin": 45,
+      "capacity": 20,
+      "level": "any",
+      "trainerId": "62d8b038-d6a8-5398-81cd-db67af784963",
+      "slots": [
+        [3, "09:00"],
+        [4, "20:00"]
+      ]
+    },
+    {
+      "id": "d5b5a604-b724-5d92-a2cd-9166bbdaaf20",
+      "venueId": "311a2ded-2f05-5ba1-a548-74c52b2bd7b6",
+      "key": "learn_to_swim",
+      "name": {
+        "ru": "Плавание для взрослых с нуля",
+        "uz": "Kattalar uchun noldan suzish",
+        "en": "Adult learn-to-swim"
+      },
+      "description": {
+        "ru": "Учимся держаться на воде и правильно дышать в небольшой группе с инструктором.",
+        "uz": "Instruktor bilan kichik guruhda suvda turish va toʻgʻri nafas olishni oʻrganamiz.",
+        "en": "Learn to float and breathe properly in a small group with an instructor."
+      },
+      "durationMin": 45,
+      "capacity": 6,
+      "level": "beginner",
+      "trainerId": "62d8b038-d6a8-5398-81cd-db67af784963",
+      "slots": [
+        [2, "19:30"],
+        [5, "12:30"],
+        [1, "07:30"]
+      ]
+    },
+    {
+      "id": "31c49f2e-97e9-5105-8e52-c313b03867a2",
+      "venueId": "311a2ded-2f05-5ba1-a548-74c52b2bd7b6",
+      "key": "technique",
+      "name": { "ru": "Техника кроля", "uz": "Krol texnikasi", "en": "Front crawl technique" },
+      "description": {
+        "ru": "Ставим технику кроля и работаем над выносливостью.",
+        "uz": "Krol texnikasini sozlaymiz va chidamlilik ustida ishlaymiz.",
+        "en": "Polish your front crawl and build endurance."
+      },
+      "durationMin": 60,
+      "capacity": 8,
+      "level": "intermediate",
+      "trainerId": "62d8b038-d6a8-5398-81cd-db67af784963",
+      "slots": [
+        [0, "10:00"],
+        [3, "08:00"]
+      ]
+    },
+    {
+      "id": "8cda5d66-611e-55b7-b4c0-787a9fb6918c",
+      "venueId": "9df7f61b-0096-57f5-b052-8889bff32687",
+      "key": "aqua_aerobics",
+      "name": { "ru": "Аквааэробика", "uz": "Akvaaerobika", "en": "Aqua aerobics" },
+      "description": {
+        "ru": "Энергичная тренировка в воде под музыку, щадящая для суставов.",
+        "uz": "Musiqa ostida suvda gʻayratli mashgʻulot, boʻgʻimlarga yengil.",
+        "en": "An upbeat workout in the water set to music, easy on the joints."
+      },
+      "durationMin": 45,
+      "capacity": 20,
+      "level": "any",
+      "trainerId": "016c95f9-e8dd-5a92-b1d2-e3e7bceb28a6",
+      "slots": [
+        [4, "19:30"],
+        [1, "20:00"]
+      ]
+    },
+    {
+      "id": "ac3c4313-a165-5b52-8cf1-1b9803fb4582",
+      "venueId": "9df7f61b-0096-57f5-b052-8889bff32687",
+      "key": "learn_to_swim",
+      "name": {
+        "ru": "Плавание для взрослых с нуля",
+        "uz": "Kattalar uchun noldan suzish",
+        "en": "Adult learn-to-swim"
+      },
+      "description": {
+        "ru": "Учимся держаться на воде и правильно дышать в небольшой группе с инструктором.",
+        "uz": "Instruktor bilan kichik guruhda suvda turish va toʻgʻri nafas olishni oʻrganamiz.",
+        "en": "Learn to float and breathe properly in a small group with an instructor."
+      },
+      "durationMin": 45,
+      "capacity": 6,
+      "level": "beginner",
+      "trainerId": "016c95f9-e8dd-5a92-b1d2-e3e7bceb28a6",
+      "slots": [
+        [6, "07:30"],
+        [5, "18:00"],
+        [4, "18:00"],
+        [2, "11:00"]
+      ]
+    },
+    {
+      "id": "605950a1-abfe-58a9-800a-206cd25cf1ba",
+      "venueId": "005540c5-712c-5969-97ec-a42c9acac62d",
+      "key": "aqua_aerobics",
+      "name": { "ru": "Аквааэробика", "uz": "Akvaaerobika", "en": "Aqua aerobics" },
+      "description": {
+        "ru": "Энергичная тренировка в воде под музыку, щадящая для суставов.",
+        "uz": "Musiqa ostida suvda gʻayratli mashgʻulot, boʻgʻimlarga yengil.",
+        "en": "An upbeat workout in the water set to music, easy on the joints."
+      },
+      "durationMin": 45,
+      "capacity": 20,
+      "level": "any",
+      "trainerId": "311bee24-0d86-5d59-b330-d4bad692dd63",
+      "slots": [
+        [3, "09:00"],
+        [1, "19:30"],
+        [5, "19:00"]
+      ]
+    },
+    {
+      "id": "4ca9cf7e-f629-5e29-8029-6af1da545b23",
+      "venueId": "005540c5-712c-5969-97ec-a42c9acac62d",
+      "key": "technique",
+      "name": { "ru": "Техника кроля", "uz": "Krol texnikasi", "en": "Front crawl technique" },
+      "description": {
+        "ru": "Ставим технику кроля и работаем над выносливостью.",
+        "uz": "Krol texnikasini sozlaymiz va chidamlilik ustida ishlaymiz.",
+        "en": "Polish your front crawl and build endurance."
+      },
+      "durationMin": 60,
+      "capacity": 8,
+      "level": "intermediate",
+      "trainerId": "311bee24-0d86-5d59-b330-d4bad692dd63",
+      "slots": [
+        [3, "18:30"],
+        [2, "17:00"],
+        [6, "11:00"],
+        [1, "12:30"]
+      ]
+    },
+    {
+      "id": "c0cca15f-c299-5247-b9e9-c629112bc665",
+      "venueId": "03afce4b-6ac3-5496-a729-66fffb1f444f",
+      "key": "hatha",
+      "name": { "ru": "Хатха-йога", "uz": "Xatha-yoga", "en": "Hatha yoga" },
+      "description": {
+        "ru": "Плавная практика с удержанием асан и вниманием к дыханию.",
+        "uz": "Asanalarni ushlab turish va nafasga eʼtibor qaratilgan ravon amaliyot.",
+        "en": "A steady practice holding postures with attention to the breath."
+      },
+      "durationMin": 75,
+      "capacity": 16,
+      "level": "any",
+      "trainerId": "37037cd5-109b-5414-9f25-e069f41abe80",
+      "slots": [
+        [1, "19:00"],
+        [3, "19:00"],
+        [6, "10:00"]
+      ]
+    },
+    {
+      "id": "c3bc3c01-effd-5bc4-a5e6-61551909bd39",
+      "venueId": "03afce4b-6ac3-5496-a729-66fffb1f444f",
+      "key": "vinyasa",
+      "name": { "ru": "Виньяса-флоу", "uz": "Vinyasa flow", "en": "Vinyasa flow" },
+      "description": {
+        "ru": "Динамичные связки асан в ритме дыхания.",
+        "uz": "Nafas ritmida asanalarning dinamik bogʻlamalari.",
+        "en": "Dynamic sequences of postures linked to the breath."
+      },
+      "durationMin": 60,
+      "capacity": 16,
+      "level": "intermediate",
+      "trainerId": "37037cd5-109b-5414-9f25-e069f41abe80",
+      "slots": [
+        [2, "19:00"],
+        [6, "09:00"]
+      ]
+    },
+    {
+      "id": "7f12d305-582a-5ef6-bdd1-6b4a27eb8945",
+      "venueId": "03afce4b-6ac3-5496-a729-66fffb1f444f",
+      "key": "nidra",
+      "name": { "ru": "Йога-нидра", "uz": "Yoga-nidra", "en": "Yoga nidra" },
+      "description": {
+        "ru": "Глубокое расслабление лёжа, которое помогает снять стресс и лучше спать.",
+        "uz": "Yotgan holda chuqur boʻshashish: stressni yengillashtiradi va uyquni yaxshilaydi.",
+        "en": "Deep guided relaxation lying down to ease stress and sleep better."
+      },
+      "durationMin": 45,
+      "capacity": 18,
+      "level": "any",
+      "trainerId": "37037cd5-109b-5414-9f25-e069f41abe80",
+      "slots": [
+        [0, "13:00"],
+        [5, "18:30"],
+        [6, "12:30"],
+        [2, "13:00"]
+      ]
+    },
+    {
+      "id": "5e347f32-e4c7-51c6-901a-2f294db009bc",
+      "venueId": "9b56c39e-dc56-55e9-a7c1-e88bf903b3ae",
+      "key": "hatha",
+      "name": { "ru": "Хатха-йога", "uz": "Xatha-yoga", "en": "Hatha yoga" },
+      "description": {
+        "ru": "Плавная практика с удержанием асан и вниманием к дыханию.",
+        "uz": "Asanalarni ushlab turish va nafasga eʼtibor qaratilgan ravon amaliyot.",
+        "en": "A steady practice holding postures with attention to the breath."
+      },
+      "durationMin": 75,
+      "capacity": 16,
+      "level": "any",
+      "trainerId": "969b348a-c726-5db9-b1cd-e76661ae1959",
+      "slots": [
+        [0, "09:00"],
+        [3, "13:00"],
+        [6, "09:00"],
+        [1, "18:30"]
+      ]
+    },
+    {
+      "id": "19e18db4-dabd-5cfd-a8af-8278d1343b09",
+      "venueId": "9b56c39e-dc56-55e9-a7c1-e88bf903b3ae",
+      "key": "nidra",
+      "name": { "ru": "Йога-нидра", "uz": "Yoga-nidra", "en": "Yoga nidra" },
+      "description": {
+        "ru": "Глубокое расслабление лёжа, которое помогает снять стресс и лучше спать.",
+        "uz": "Yotgan holda chuqur boʻshashish: stressni yengillashtiradi va uyquni yaxshilaydi.",
+        "en": "Deep guided relaxation lying down to ease stress and sleep better."
+      },
+      "durationMin": 45,
+      "capacity": 18,
+      "level": "any",
+      "trainerId": "969b348a-c726-5db9-b1cd-e76661ae1959",
+      "slots": [
+        [0, "10:00"],
+        [6, "11:00"]
+      ]
+    },
+    {
+      "id": "cb53fd0a-fb5f-56f6-b41d-9623bbfe1e80",
+      "venueId": "6a4f6c73-bf43-53dc-b4d7-a44e981d9e24",
+      "key": "ashtanga",
+      "name": { "ru": "Аштанга-йога", "uz": "Ashtanga-yoga", "en": "Ashtanga yoga" },
+      "description": {
+        "ru": "Классическая последовательность аштанги для тех, кто уже практикует.",
+        "uz": "Amaliyot qilib yurganlar uchun ashtanganing klassik ketma-ketligi.",
+        "en": "The classic Ashtanga sequence for people who already practise."
+      },
+      "durationMin": 90,
+      "capacity": 14,
+      "level": "advanced",
+      "trainerId": "d27360e6-4547-571d-a5af-191d2b22e1b3",
+      "slots": [
+        [4, "20:00"],
+        [5, "09:00"],
+        [3, "13:00"]
+      ]
+    },
+    {
+      "id": "902d3cfd-981b-537b-998b-6c07085aae42",
+      "venueId": "6a4f6c73-bf43-53dc-b4d7-a44e981d9e24",
+      "key": "aerial",
+      "name": { "ru": "Йога в гамаках", "uz": "Gamakda yoga", "en": "Aerial yoga" },
+      "description": {
+        "ru": "Асаны в подвесных гамаках: вытяжение позвоночника и немного полёта.",
+        "uz": "Osma gamaklarda asanalar: umurtqa pogʻonasini choʻzish va biroz parvoz.",
+        "en": "Postures in suspended hammocks for spinal traction and a little flight."
+      },
+      "durationMin": 60,
+      "capacity": 8,
+      "level": "any",
+      "trainerId": "a13a8ff4-dbad-5b64-af32-a39140306678",
+      "slots": [
+        [5, "13:00"],
+        [2, "20:00"],
+        [1, "11:00"],
+        [4, "18:30"]
+      ]
+    },
+    {
+      "id": "4d17f54d-2574-5761-aadc-0f1fc2243fcc",
+      "venueId": "6a4f6c73-bf43-53dc-b4d7-a44e981d9e24",
+      "key": "vinyasa",
+      "name": { "ru": "Виньяса-флоу", "uz": "Vinyasa flow", "en": "Vinyasa flow" },
+      "description": {
+        "ru": "Динамичные связки асан в ритме дыхания.",
+        "uz": "Nafas ritmida asanalarning dinamik bogʻlamalari.",
+        "en": "Dynamic sequences of postures linked to the breath."
+      },
+      "durationMin": 60,
+      "capacity": 16,
+      "level": "intermediate",
+      "trainerId": "acd34868-8320-524f-9c6a-43900970237c",
+      "slots": [
+        [1, "07:30"],
+        [2, "08:00"]
+      ]
+    },
+    {
+      "id": "b462cfc8-d057-5aee-bcca-860244b82218",
+      "venueId": "76ce1cc6-7bab-5dea-9f56-8c1a0ea4f2c6",
+      "key": "reformer",
+      "name": {
+        "ru": "Пилатес на реформере",
+        "uz": "Reformerda pilates",
+        "en": "Reformer Pilates"
+      },
+      "description": {
+        "ru": "Работа на реформере в мини-группе: сила корпуса и контроль движения.",
+        "uz": "Kichik guruhda reformerda mashgʻulot: tana kuchi va harakat nazorati.",
+        "en": "Reformer work in a mini group for core strength and movement control."
+      },
+      "durationMin": 55,
+      "capacity": 6,
+      "level": "any",
+      "trainerId": "e9b4612b-4a76-5c2d-9766-194248e87d9a",
+      "slots": [
+        [1, "08:00"],
+        [2, "19:00"],
+        [4, "19:00"],
+        [6, "11:00"]
+      ]
+    },
+    {
+      "id": "2e7e26c4-b1a6-5262-9fe9-85573fd4bdfb",
+      "venueId": "76ce1cc6-7bab-5dea-9f56-8c1a0ea4f2c6",
+      "key": "mat",
+      "name": { "ru": "Пилатес на ковриках", "uz": "Gilamchada pilates", "en": "Mat Pilates" },
+      "description": {
+        "ru": "Базовые упражнения пилатеса для глубоких мышц и осанки.",
+        "uz": "Chuqur mushaklar va qomat uchun pilatesning asosiy mashqlari.",
+        "en": "Core Pilates exercises for deep muscles and posture."
+      },
+      "durationMin": 55,
+      "capacity": 12,
+      "level": "any",
+      "trainerId": "e9b4612b-4a76-5c2d-9766-194248e87d9a",
+      "slots": [
+        [5, "20:00"],
+        [0, "13:00"],
+        [1, "07:00"],
+        [3, "12:30"]
+      ]
+    },
+    {
+      "id": "9571b479-f520-5d1d-8fb0-168810e2dfe5",
+      "venueId": "bff0c06f-d348-5d10-a930-549d35003da2",
+      "key": "mat",
+      "name": { "ru": "Пилатес на ковриках", "uz": "Gilamchada pilates", "en": "Mat Pilates" },
+      "description": {
+        "ru": "Базовые упражнения пилатеса для глубоких мышц и осанки.",
+        "uz": "Chuqur mushaklar va qomat uchun pilatesning asosiy mashqlari.",
+        "en": "Core Pilates exercises for deep muscles and posture."
+      },
+      "durationMin": 55,
+      "capacity": 12,
+      "level": "any",
+      "trainerId": "47e1e812-eb5e-582c-9e18-931cfcdce7b2",
+      "slots": [
+        [5, "19:30"],
+        [4, "07:00"],
+        [0, "10:00"],
+        [2, "08:00"]
+      ]
+    },
+    {
+      "id": "13a6d4c4-a1b9-593f-b1e9-f3953357364f",
+      "venueId": "bff0c06f-d348-5d10-a930-549d35003da2",
+      "key": "healthy_back",
+      "name": { "ru": "Здоровая спина", "uz": "Sogʻlom bel", "en": "Healthy back" },
+      "description": {
+        "ru": "Мягкие упражнения для тех, у кого от сидячей работы болит поясница или шея.",
+        "uz": "Oʻtirib ishlashdan beli yoki boʻyni ogʻriydiganlar uchun yengil mashqlar.",
+        "en": "Gentle exercises for lower back or neck pain from desk work."
+      },
+      "durationMin": 50,
+      "capacity": 10,
+      "level": "beginner",
+      "trainerId": "c14cd223-6f4a-5b04-a67f-4a01898023bb",
+      "slots": [
+        [0, "09:00"],
+        [3, "19:00"]
+      ]
+    },
+    {
+      "id": "5d703de7-fd98-5a3e-a8c0-b43b0d205bb9",
+      "venueId": "b59921a3-0ece-53c0-a406-dadb1938b5a2",
+      "key": "hiphop",
+      "name": {
+        "ru": "Хип-хоп для начинающих",
+        "uz": "Yangi boshlovchilar uchun xip-xop",
+        "en": "Hip-hop for beginners"
+      },
+      "description": {
+        "ru": "Базовые шаги и простые связки под актуальную музыку.",
+        "uz": "Zamonaviy musiqa ostida asosiy qadamlar va oddiy bogʻlamalar.",
+        "en": "Basic steps and easy combinations to current music."
+      },
+      "durationMin": 60,
+      "capacity": 20,
+      "level": "beginner",
+      "trainerId": "80a66378-b3d9-5e5e-8600-3e53fc075f2e",
+      "slots": [
+        [3, "10:00"],
+        [5, "12:30"],
+        [6, "17:00"]
+      ]
+    },
+    {
+      "id": "4caf5575-1aad-53d0-a4dd-14ed71b11a8e",
+      "venueId": "b59921a3-0ece-53c0-a406-dadb1938b5a2",
+      "key": "bachata",
+      "name": { "ru": "Бачата", "uz": "Bachata", "en": "Bachata" },
+      "description": {
+        "ru": "Парный танец со сменой партнёров по кругу — приходить можно одному.",
+        "uz": "Sheriklar navbat bilan almashadigan juft raqs — yolgʻiz kelish mumkin.",
+        "en": "A partner dance with rotating partners, so you can come on your own."
+      },
+      "durationMin": 60,
+      "capacity": 20,
+      "level": "any",
+      "trainerId": "80a66378-b3d9-5e5e-8600-3e53fc075f2e",
+      "slots": [
+        [0, "13:00"],
+        [5, "18:00"],
+        [1, "13:00"],
+        [4, "13:00"]
+      ]
+    },
+    {
+      "id": "6b1d1362-a9b1-51bc-9b52-8c2ae336b400",
+      "venueId": "b59921a3-0ece-53c0-a406-dadb1938b5a2",
+      "key": "contemporary",
+      "name": { "ru": "Контемпорари", "uz": "Kontemporari", "en": "Contemporary" },
+      "description": {
+        "ru": "Свободное движение, импровизация и работа в партере.",
+        "uz": "Erkin harakat, improvizatsiya va polda ishlash.",
+        "en": "Free movement, improvisation and floor work."
+      },
+      "durationMin": 75,
+      "capacity": 14,
+      "level": "intermediate",
+      "trainerId": "80a66378-b3d9-5e5e-8600-3e53fc075f2e",
+      "slots": [
+        [0, "17:00"],
+        [6, "12:30"],
+        [1, "19:30"]
+      ]
+    },
+    {
+      "id": "d63be633-16db-5f69-8d6a-f231491a64a0",
+      "venueId": "1894a3a1-22e9-5804-b7c7-51baafe80e8d",
+      "key": "zumba",
+      "name": { "ru": "Зумба", "uz": "Zumba", "en": "Zumba" },
+      "description": {
+        "ru": "Танцевальная кардиотренировка на латиноамериканских ритмах.",
+        "uz": "Lotin Amerikasi ritmlarida raqsli kardio mashgʻulot.",
+        "en": "A dance cardio workout to Latin rhythms."
+      },
+      "durationMin": 55,
+      "capacity": 25,
+      "level": "any",
+      "trainerId": "346dccc5-450a-5e08-9ff6-45599ed34abb",
+      "slots": [
+        [6, "17:00"],
+        [3, "20:00"],
+        [4, "19:00"]
+      ]
+    },
+    {
+      "id": "454426b3-a2ef-589f-9199-ea294ca63fa0",
+      "venueId": "1894a3a1-22e9-5804-b7c7-51baafe80e8d",
+      "key": "uzbek_folk",
+      "name": {
+        "ru": "Узбекский национальный танец",
+        "uz": "Oʻzbek milliy raqsi",
+        "en": "Uzbek folk dance"
+      },
+      "description": {
+        "ru": "Пластика рук, характерные движения и красивые постановки.",
+        "uz": "Nafis qoʻl harakatlari, oʻziga xos qadamlar va chiroyli sahnalashtirishlar.",
+        "en": "Graceful arm work, signature movements and beautiful routines."
+      },
+      "durationMin": 60,
+      "capacity": 16,
+      "level": "any",
+      "trainerId": "caf0bcbc-b27c-5860-a8bd-467b50dda0a1",
+      "slots": [
+        [0, "12:30"],
+        [5, "20:00"],
+        [1, "17:00"],
+        [4, "18:30"]
+      ]
+    },
+    {
+      "id": "350f96bf-5a9b-5a7e-bc1b-7cec558f3242",
+      "venueId": "0b11294e-d602-5ee8-893d-507c96e72400",
+      "key": "judo",
+      "name": { "ru": "Дзюдо для взрослых", "uz": "Kattalar uchun dzyudo", "en": "Adult judo" },
+      "description": {
+        "ru": "Страховка, броски и борьба в партере с нуля.",
+        "uz": "Noldan toʻgʻri yiqilish, tashlashlar va parterda kurash.",
+        "en": "Breakfalls, throws and groundwork from scratch."
+      },
+      "durationMin": 90,
+      "capacity": 18,
+      "level": "beginner",
+      "trainerId": "9171c11c-2668-5853-a43b-87e567bc80c7",
+      "slots": [
+        [0, "13:00"],
+        [3, "11:00"]
+      ]
+    },
+    {
+      "id": "f71e13ad-fc6a-53fd-a1c8-35599db0baf2",
+      "venueId": "0b11294e-d602-5ee8-893d-507c96e72400",
+      "key": "karate",
+      "name": { "ru": "Карате", "uz": "Karate", "en": "Karate" },
+      "description": {
+        "ru": "Кихон, ката и кумитэ для взрослых любого уровня.",
+        "uz": "Har qanday darajadagi kattalar uchun kixon, kata va kumite.",
+        "en": "Kihon, kata and kumite for adults of any level."
+      },
+      "durationMin": 75,
+      "capacity": 18,
+      "level": "any",
+      "trainerId": "9171c11c-2668-5853-a43b-87e567bc80c7",
+      "slots": [
+        [5, "12:30"],
+        [3, "10:00"],
+        [0, "10:00"],
+        [1, "08:00"]
+      ]
+    },
+    {
+      "id": "2a9d60e6-26b6-59f1-8b3c-cbcf7b99a8a0",
+      "venueId": "a0d13c73-d105-55e3-886a-317cb111ff98",
+      "key": "boxing",
+      "name": { "ru": "Бокс", "uz": "Boks", "en": "Boxing" },
+      "description": {
+        "ru": "Стойка, удары и работа на лапах; перчатки можно взять в клубе.",
+        "uz": "Turish holati, zarbalar va lapalarda ishlash; qoʻlqopni klubdan olish mumkin.",
+        "en": "Stance, punches and pad work; gloves are available at the club."
+      },
+      "durationMin": 60,
+      "capacity": 16,
+      "level": "any",
+      "trainerId": "02f8756f-5a9d-5608-afc3-d589fa849144",
+      "slots": [
+        [1, "12:30"],
+        [2, "08:00"],
+        [4, "18:00"],
+        [5, "08:00"]
+      ]
+    },
+    {
+      "id": "d83bc39a-68d7-5598-b198-4d065cb5d07d",
+      "venueId": "a0d13c73-d105-55e3-886a-317cb111ff98",
+      "key": "kickboxing",
+      "name": { "ru": "Кикбоксинг", "uz": "Kikboksing", "en": "Kickboxing" },
+      "description": {
+        "ru": "Удары руками и ногами, кардио и сила в одной тренировке.",
+        "uz": "Qoʻl va oyoq zarbalari, kardio va kuch bitta mashgʻulotda.",
+        "en": "Punches and kicks, cardio and strength in one workout."
+      },
+      "durationMin": 60,
+      "capacity": 16,
+      "level": "intermediate",
+      "trainerId": "81c575fb-cdae-5d18-b9ed-f7b9917c74af",
+      "slots": [
+        [2, "18:30"],
+        [5, "17:00"]
+      ]
+    },
+    {
+      "id": "9d1f3fa6-9603-57a6-9d8e-f1615b0a08d5",
+      "venueId": "a0d13c73-d105-55e3-886a-317cb111ff98",
+      "key": "mma",
+      "name": { "ru": "ММА", "uz": "MMA", "en": "MMA" },
+      "description": {
+        "ru": "Смешанные единоборства: ударная техника, борьба и спарринги.",
+        "uz": "Aralash jang sanʼati: zarba texnikasi, kurash va sparringlar.",
+        "en": "Mixed martial arts: striking, grappling and sparring."
+      },
+      "durationMin": 90,
+      "capacity": 14,
+      "level": "advanced",
+      "trainerId": "02f8756f-5a9d-5608-afc3-d589fa849144",
+      "slots": [
+        [0, "11:00"],
+        [6, "18:30"]
+      ]
+    },
+    {
+      "id": "4b0bf8e8-1612-59d1-8a29-d33e89671cf9",
+      "venueId": "128bbcde-6ea3-54c8-bad9-ce3cc4ec7964",
+      "key": "kurash",
+      "name": { "ru": "Курэш", "uz": "Kurash", "en": "Kurash" },
+      "description": {
+        "ru": "Национальная борьба в стойке: захваты за пояс, броски и честный поединок.",
+        "uz": "Tik turgan holdagi milliy kurash: belbogʻdan ushlash, tashlashlar va halol bellashuv.",
+        "en": "National stand-up wrestling: belt grips, throws and fair play."
+      },
+      "durationMin": 90,
+      "capacity": 20,
+      "level": "any",
+      "trainerId": "29f0d848-f29c-5d49-89aa-f7381638b786",
+      "slots": [
+        [2, "12:30"],
+        [1, "12:30"]
+      ]
+    },
+    {
+      "id": "b1d70e5e-2a7f-5e5d-adae-059203a2cef1",
+      "venueId": "9575a41a-a3d2-59a6-98ca-c5930862e3a1",
+      "key": "wod",
+      "name": {
+        "ru": "Тренировка дня (WOD)",
+        "uz": "Kun mashgʻuloti (WOD)",
+        "en": "Workout of the day (WOD)"
+      },
+      "description": {
+        "ru": "Разминка, техника и интенсивный комплекс — каждый день новый.",
+        "uz": "Badan qizdirish, texnika va jadal kompleks — har kuni yangisi.",
+        "en": "Warm-up, skill work and an intense workout, new every day."
+      },
+      "durationMin": 60,
+      "capacity": 14,
+      "level": "any",
+      "trainerId": "439a1f0c-14a5-58e0-a004-a96be36eb625",
+      "slots": [
+        [1, "19:00"],
+        [2, "12:30"],
+        [6, "12:30"],
+        [0, "11:00"]
+      ]
+    },
+    {
+      "id": "ac31b66c-9a57-5085-b8f0-2cf11d01497d",
+      "venueId": "9575a41a-a3d2-59a6-98ca-c5930862e3a1",
+      "key": "olympic",
+      "name": { "ru": "Тяжёлая атлетика", "uz": "Ogʻir atletika", "en": "Olympic weightlifting" },
+      "description": {
+        "ru": "Рывок и толчок: техника, мобильность и постепенное увеличение веса.",
+        "uz": "Siltab va dast koʻtarish: texnika, harakatchanlik va vaznni asta-sekin oshirish.",
+        "en": "Snatch and clean & jerk: technique, mobility and progressive loading."
+      },
+      "durationMin": 75,
+      "capacity": 8,
+      "level": "intermediate",
+      "trainerId": "17207165-9d7e-5efd-8128-d4a92565145c",
+      "slots": [
+        [5, "09:00"],
+        [2, "20:00"]
+      ]
+    },
+    {
+      "id": "a8634c89-bf30-57f3-b630-6a050f4298ec",
+      "venueId": "c6975047-2553-54c3-8939-9fe3211e48ff",
+      "key": "express",
+      "name": { "ru": "Экспресс 45", "uz": "Ekspress 45", "en": "Express 45" },
+      "description": {
+        "ru": "Короткий интенсивный комплекс на 45 минут — идеально в обеденный перерыв.",
+        "uz": "45 daqiqalik qisqa jadal kompleks — tushlik tanaffusi uchun ayni muddao.",
+        "en": "A short, intense 45-minute session, perfect for a lunch break."
+      },
+      "durationMin": 45,
+      "capacity": 12,
+      "level": "any",
+      "trainerId": "24882517-9598-5f03-90a8-ed2376e9ca8f",
+      "slots": [
+        [6, "11:00"],
+        [5, "18:30"]
+      ]
+    },
+    {
+      "id": "fb3431af-db38-5603-854a-6e1b441fb7d8",
+      "venueId": "c6975047-2553-54c3-8939-9fe3211e48ff",
+      "key": "wod",
+      "name": {
+        "ru": "Тренировка дня (WOD)",
+        "uz": "Kun mashgʻuloti (WOD)",
+        "en": "Workout of the day (WOD)"
+      },
+      "description": {
+        "ru": "Разминка, техника и интенсивный комплекс — каждый день новый.",
+        "uz": "Badan qizdirish, texnika va jadal kompleks — har kuni yangisi.",
+        "en": "Warm-up, skill work and an intense workout, new every day."
+      },
+      "durationMin": 60,
+      "capacity": 14,
+      "level": "any",
+      "trainerId": "abc3e5ca-48a3-553a-b61a-510520ede0a4",
+      "slots": [
+        [2, "07:30"],
+        [3, "11:00"],
+        [0, "11:00"],
+        [1, "13:00"]
+      ]
+    },
+    {
+      "id": "e6625bec-5071-549a-855f-c2052d3bf487",
+      "venueId": "ce697d48-4e44-525a-862d-870628485fd5",
+      "key": "hammam_ritual",
+      "name": { "ru": "Ритуал хаммама", "uz": "Hammom marosimi", "en": "Hammam ritual" },
+      "description": {
+        "ru": "Прогрев на горячем мраморе, кесе-пилинг и пенный массаж с мастером.",
+        "uz": "Issiq marmarda isinish, kesa-piling va usta bilan koʻpikli massaj.",
+        "en": "Warming up on hot marble, a kese scrub and a foam massage with a therapist."
+      },
+      "durationMin": 90,
+      "capacity": 6,
+      "level": "any",
+      "trainerId": "1227afd8-0128-54bd-9542-c46d515bf8f7",
+      "slots": [
+        [0, "17:00"],
+        [4, "17:00"],
+        [6, "12:30"]
+      ]
+    },
+    {
+      "id": "a0ab950b-a041-58ea-83dd-bcce8cd0a08f",
+      "venueId": "ce697d48-4e44-525a-862d-870628485fd5",
+      "key": "aqua_relax",
+      "name": { "ru": "Аква-релакс", "uz": "Akva-relaks", "en": "Aqua relax" },
+      "description": {
+        "ru": "Мягкая растяжка и дыхательные упражнения в тёплом бассейне.",
+        "uz": "Iliq basseynda yumshoq choʻzilish va nafas mashqlari.",
+        "en": "Gentle stretching and breathing exercises in a warm pool."
+      },
+      "durationMin": 45,
+      "capacity": 10,
+      "level": "any",
+      "trainerId": "f2d7ddf6-aa6f-5d27-856d-26a41b2ebb18",
+      "slots": [
+        [2, "10:00"],
+        [0, "10:00"],
+        [4, "18:30"]
+      ]
+    },
+    {
+      "id": "ec565b22-0564-5486-91c3-ed587ab4cf97",
+      "venueId": "ce697d48-4e44-525a-862d-870628485fd5",
+      "key": "salt_room",
+      "name": {
+        "ru": "Сеанс в соляной комнате",
+        "uz": "Tuz xonasida seans",
+        "en": "Salt room session"
+      },
+      "description": {
+        "ru": "Спокойный отдых в соляной пещере под расслабляющую музыку.",
+        "uz": "Tinchlantiruvchi musiqa ostida tuz gʻorida xotirjam dam olish.",
+        "en": "Quiet rest in a salt cave with relaxing music."
+      },
+      "durationMin": 40,
+      "capacity": 8,
+      "level": "any",
+      "trainerId": "1227afd8-0128-54bd-9542-c46d515bf8f7",
+      "slots": [
+        [4, "13:00"],
+        [3, "18:00"],
+        [6, "13:00"]
+      ]
+    },
+    {
+      "id": "a0876f81-fefe-5abe-8f40-bcc00c2f3779",
+      "venueId": "a953e770-d7b8-597f-babe-9fafd3d5583f",
+      "key": "hammam_ritual",
+      "name": { "ru": "Ритуал хаммама", "uz": "Hammom marosimi", "en": "Hammam ritual" },
+      "description": {
+        "ru": "Прогрев на горячем мраморе, кесе-пилинг и пенный массаж с мастером.",
+        "uz": "Issiq marmarda isinish, kesa-piling va usta bilan koʻpikli massaj.",
+        "en": "Warming up on hot marble, a kese scrub and a foam massage with a therapist."
+      },
+      "durationMin": 90,
+      "capacity": 6,
+      "level": "any",
+      "trainerId": "c37b5ee5-b71c-5c97-9d81-079987e617f8",
+      "slots": [
+        [4, "17:00"],
+        [2, "18:00"],
+        [0, "19:30"]
+      ]
+    },
+    {
+      "id": "d460d1bc-c567-5e6c-99d7-40f0b9baf5eb",
+      "venueId": "d3c426da-8dd7-53f6-9bcf-70e9dc2b2139",
+      "key": "scrub",
+      "name": {
+        "ru": "Кесе-пилинг и пенный массаж",
+        "uz": "Kesa-piling va koʻpikli massaj",
+        "en": "Kese scrub and foam massage"
+      },
+      "description": {
+        "ru": "Традиционное очищение кожи рукавицей кесе и мыльной пеной.",
+        "uz": "Kesa qoʻlqopi va sovun koʻpigi bilan anʼanaviy teri tozalash.",
+        "en": "Traditional skin cleansing with a kese mitt and soap foam."
+      },
+      "durationMin": 45,
+      "capacity": 6,
+      "level": "any",
+      "trainerId": "cee6dcbf-6914-5416-a2d0-12c65358811e",
+      "slots": [
+        [1, "19:00"],
+        [3, "18:30"]
+      ]
+    },
+    {
+      "id": "8173434c-abdf-556e-bd96-2516d05db799",
+      "venueId": "d3c426da-8dd7-53f6-9bcf-70e9dc2b2139",
+      "key": "steam_ceremony",
+      "name": {
+        "ru": "Парение с банным мастером",
+        "uz": "Hammom ustasi bilan bugʻ marosimi",
+        "en": "Steam ceremony with a bath master"
+      },
+      "description": {
+        "ru": "Банная церемония с вениками, ароматами и контрастным душем.",
+        "uz": "Supurgi, xushboʻy moylar va kontrast dush bilan hammom marosimi.",
+        "en": "A bath ceremony with birch whisks, aromas and a contrast shower."
+      },
+      "durationMin": 60,
+      "capacity": 8,
+      "level": "any",
+      "trainerId": "282b4fc3-23a4-56fd-b832-874f824ab22a",
+      "slots": [
+        [5, "20:00"],
+        [0, "17:00"]
+      ]
+    },
+    {
+      "id": "1b03abc6-9c17-597d-b041-dcf55721a562",
+      "venueId": "3699940e-e871-5f6b-a250-7afbc7202d99",
+      "key": "steam_ceremony",
+      "name": {
+        "ru": "Парение с банным мастером",
+        "uz": "Hammom ustasi bilan bugʻ marosimi",
+        "en": "Steam ceremony with a bath master"
+      },
+      "description": {
+        "ru": "Банная церемония с вениками, ароматами и контрастным душем.",
+        "uz": "Supurgi, xushboʻy moylar va kontrast dush bilan hammom marosimi.",
+        "en": "A bath ceremony with birch whisks, aromas and a contrast shower."
+      },
+      "durationMin": 60,
+      "capacity": 8,
+      "level": "any",
+      "trainerId": "520af64a-5cb5-5102-8329-0eea1f20cf15",
+      "slots": [
+        [2, "17:00"],
+        [3, "19:00"],
+        [5, "18:30"],
+        [6, "18:00"]
+      ]
+    },
+    {
+      "id": "c894ed47-3364-54f3-953c-b7bdd48ab127",
+      "venueId": "08195dd2-7678-5343-9ff7-6808712be253",
+      "key": "scrub",
+      "name": {
+        "ru": "Кесе-пилинг и пенный массаж",
+        "uz": "Kesa-piling va koʻpikli massaj",
+        "en": "Kese scrub and foam massage"
+      },
+      "description": {
+        "ru": "Традиционное очищение кожи рукавицей кесе и мыльной пеной.",
+        "uz": "Kesa qoʻlqopi va sovun koʻpigi bilan anʼanaviy teri tozalash.",
+        "en": "Traditional skin cleansing with a kese mitt and soap foam."
+      },
+      "durationMin": 45,
+      "capacity": 6,
+      "level": "any",
+      "trainerId": "56147c15-7bb0-5bc1-bcd5-71c44abe4583",
+      "slots": [
+        [4, "11:00"],
+        [3, "19:00"]
+      ]
+    },
+    {
+      "id": "9506e190-7bf4-5285-883f-0bab501fb187",
+      "venueId": "395eb095-1197-5ae2-891a-e84b074e5699",
+      "key": "mfr",
+      "name": {
+        "ru": "Самомассаж с роллом (МФР)",
+        "uz": "Rolik bilan oʻz-oʻzini massaj qilish",
+        "en": "Foam rolling"
+      },
+      "description": {
+        "ru": "Учимся снимать напряжение в мышцах с помощью ролла и мячей.",
+        "uz": "Rolik va koptoklar yordamida mushaklardagi zoʻriqishni yoʻqotishni oʻrganamiz.",
+        "en": "Learn to release muscle tension with a foam roller and balls."
+      },
+      "durationMin": 50,
+      "capacity": 10,
+      "level": "any",
+      "trainerId": "d8c31173-0b29-5a25-bb3f-636161fdd755",
+      "slots": [
+        [0, "18:00"],
+        [3, "11:00"],
+        [5, "10:00"],
+        [1, "12:30"]
+      ]
+    },
+    {
+      "id": "3c0cf656-8776-5727-8b1a-d8f79cb1f2cb",
+      "venueId": "395eb095-1197-5ae2-891a-e84b074e5699",
+      "key": "face_massage",
+      "name": {
+        "ru": "Самомассаж лица",
+        "uz": "Yuzni oʻz-oʻzini massaj qilish",
+        "en": "Facial self-massage"
+      },
+      "description": {
+        "ru": "Простые техники, которые снимают отёки и напряжение.",
+        "uz": "Shish va zoʻriqishni ketkazadigan oddiy usullar.",
+        "en": "Simple techniques to reduce puffiness and tension."
+      },
+      "durationMin": 45,
+      "capacity": 10,
+      "level": "any",
+      "trainerId": "7d4fd948-fb49-581e-89a1-021ddbe0423e",
+      "slots": [
+        [6, "12:30"],
+        [3, "20:00"]
+      ]
+    },
+    {
+      "id": "02008896-5f37-5b98-a9f3-12a6f8497136",
+      "venueId": "52bee414-c597-5a72-bae5-1bffb8356e3d",
+      "key": "mfr",
+      "name": {
+        "ru": "Самомассаж с роллом (МФР)",
+        "uz": "Rolik bilan oʻz-oʻzini massaj qilish",
+        "en": "Foam rolling"
+      },
+      "description": {
+        "ru": "Учимся снимать напряжение в мышцах с помощью ролла и мячей.",
+        "uz": "Rolik va koptoklar yordamida mushaklardagi zoʻriqishni yoʻqotishni oʻrganamiz.",
+        "en": "Learn to release muscle tension with a foam roller and balls."
+      },
+      "durationMin": 50,
+      "capacity": 10,
+      "level": "any",
+      "trainerId": "dad52ce7-9877-5e1f-ba4d-fc6c120dc996",
+      "slots": [
+        [2, "19:30"],
+        [3, "13:00"],
+        [6, "19:00"],
+        [0, "11:00"]
+      ]
+    },
+    {
+      "id": "f586362e-d645-551a-b8c8-2d16a6a3bf31",
+      "venueId": "4a996c0b-e05c-572f-8be1-bf34dc3e50bf",
+      "key": "exercise_therapy",
+      "name": {
+        "ru": "ЛФК для спины",
+        "uz": "Bel uchun davolash gimnastikasi",
+        "en": "Back exercise therapy"
+      },
+      "description": {
+        "ru": "Лечебная гимнастика в мини-группе под контролем физиотерапевта.",
+        "uz": "Fizioterapevt nazorati ostida kichik guruhda davolash gimnastikasi.",
+        "en": "Therapeutic exercise in a small group supervised by a physiotherapist."
+      },
+      "durationMin": 50,
+      "capacity": 6,
+      "level": "beginner",
+      "trainerId": "accad828-914c-5fa4-96be-7258fdf9cecf",
+      "slots": [
+        [0, "12:30"],
+        [4, "19:00"],
+        [3, "17:00"],
+        [2, "12:30"]
+      ]
+    },
+    {
+      "id": "0ff14a5f-6bbe-52fc-8a40-15271c5e4e98",
+      "venueId": "4a996c0b-e05c-572f-8be1-bf34dc3e50bf",
+      "key": "knee_rehab",
+      "name": { "ru": "Реабилитация колена", "uz": "Tizzani tiklash", "en": "Knee rehab" },
+      "description": {
+        "ru": "Восстановление после травм и операций на колене, постепенное возвращение к нагрузкам.",
+        "uz": "Tizza jarohati va operatsiyalaridan keyin tiklanish, yuklamaga bosqichma-bosqich qaytish.",
+        "en": "Recovery after knee injuries or surgery with a gradual return to load."
+      },
+      "durationMin": 50,
+      "capacity": 6,
+      "level": "any",
+      "trainerId": "accad828-914c-5fa4-96be-7258fdf9cecf",
+      "slots": [
+        [5, "19:00"],
+        [1, "19:00"]
+      ]
+    },
+    {
+      "id": "d77cf239-b456-5c6d-8111-931a2b2ad2fb",
+      "venueId": "4a996c0b-e05c-572f-8be1-bf34dc3e50bf",
+      "key": "posture",
+      "name": {
+        "ru": "Осанка и мобильность",
+        "uz": "Qomat va harakatchanlik",
+        "en": "Posture and mobility"
+      },
+      "description": {
+        "ru": "Упражнения для подвижности грудного отдела и плеч.",
+        "uz": "Koʻkrak qismi va yelkalar harakatchanligi uchun mashqlar.",
+        "en": "Exercises for upper back and shoulder mobility."
+      },
+      "durationMin": 45,
+      "capacity": 8,
+      "level": "any",
+      "trainerId": "accad828-914c-5fa4-96be-7258fdf9cecf",
+      "slots": [
+        [5, "11:00"],
+        [4, "13:00"],
+        [6, "12:30"]
+      ]
+    },
+    {
+      "id": "e8cc72e3-d9fc-5ba2-bb77-713e4f3c145b",
+      "venueId": "c3b6590e-a168-5a5c-b8cb-336c4dc5c6d6",
+      "key": "knee_rehab",
+      "name": { "ru": "Реабилитация колена", "uz": "Tizzani tiklash", "en": "Knee rehab" },
+      "description": {
+        "ru": "Восстановление после травм и операций на колене, постепенное возвращение к нагрузкам.",
+        "uz": "Tizza jarohati va operatsiyalaridan keyin tiklanish, yuklamaga bosqichma-bosqich qaytish.",
+        "en": "Recovery after knee injuries or surgery with a gradual return to load."
+      },
+      "durationMin": 50,
+      "capacity": 6,
+      "level": "any",
+      "trainerId": "55dc6bea-fb46-52ed-8656-a46e78025123",
+      "slots": [
+        [4, "13:00"],
+        [1, "17:00"],
+        [3, "08:00"]
+      ]
+    },
+    {
+      "id": "b32db531-d51e-5f75-90be-f53bafa67fca",
+      "venueId": "c3b6590e-a168-5a5c-b8cb-336c4dc5c6d6",
+      "key": "exercise_therapy",
+      "name": {
+        "ru": "ЛФК для спины",
+        "uz": "Bel uchun davolash gimnastikasi",
+        "en": "Back exercise therapy"
+      },
+      "description": {
+        "ru": "Лечебная гимнастика в мини-группе под контролем физиотерапевта.",
+        "uz": "Fizioterapevt nazorati ostida kichik guruhda davolash gimnastikasi.",
+        "en": "Therapeutic exercise in a small group supervised by a physiotherapist."
+      },
+      "durationMin": 50,
+      "capacity": 6,
+      "level": "beginner",
+      "trainerId": "9b8b45f7-a02b-5f03-803a-78f5706f48ba",
+      "slots": [
+        [5, "18:30"],
+        [4, "09:00"],
+        [1, "19:00"],
+        [3, "12:30"]
+      ]
+    },
+    {
+      "id": "b2d7e366-8816-5c1f-8bad-26273b9173a1",
+      "venueId": "63a89080-32eb-5e87-85fe-036f08b2aa1c",
+      "key": "mobility",
+      "name": {
+        "ru": "Растяжка и мобилити",
+        "uz": "Choʻzilish va harakatchanlik",
+        "en": "Stretch and mobility"
+      },
+      "description": {
+        "ru": "Восстанавливающая растяжка после тренировок с акцентом на бёдра и спину.",
+        "uz": "Mashgʻulotlardan keyin son va belga urgʻu berilgan tiklovchi choʻzilish.",
+        "en": "Restorative stretching after training, focused on hips and back."
+      },
+      "durationMin": 45,
+      "capacity": 10,
+      "level": "any",
+      "trainerId": "cb54242a-a681-56ba-a1bf-3366320ba063",
+      "slots": [
+        [4, "18:30"],
+        [0, "18:30"],
+        [6, "10:00"],
+        [3, "10:00"]
+      ]
+    },
+    {
+      "id": "c482fc0c-35d9-571d-b541-2847c74bdcd7",
+      "venueId": "63a89080-32eb-5e87-85fe-036f08b2aa1c",
+      "key": "breathwork",
+      "name": { "ru": "Дыхательная практика", "uz": "Nafas amaliyoti", "en": "Breathwork" },
+      "description": {
+        "ru": "Дыхательные техники, которые снижают стресс и улучшают сон.",
+        "uz": "Stressni kamaytiradigan va uyquni yaxshilaydigan nafas usullari.",
+        "en": "Breathing techniques that lower stress and improve sleep."
+      },
+      "durationMin": 40,
+      "capacity": 12,
+      "level": "any",
+      "trainerId": "25b1a940-49e1-5a20-afa3-d3621118b401",
+      "slots": [
+        [5, "13:00"],
+        [1, "18:30"]
+      ]
+    },
+    {
+      "id": "d4639eab-36eb-5236-a4ab-39e287d3f801",
+      "venueId": "63a89080-32eb-5e87-85fe-036f08b2aa1c",
+      "key": "contrast",
+      "name": {
+        "ru": "Контрастное восстановление",
+        "uz": "Kontrast tiklanish",
+        "en": "Contrast recovery"
+      },
+      "description": {
+        "ru": "Сауна, холодная купель и отдых — классический цикл восстановления.",
+        "uz": "Sauna, sovuq hovuz va dam olish — tiklanishning klassik sikli.",
+        "en": "Sauna, cold plunge and rest: the classic recovery cycle."
+      },
+      "durationMin": 60,
+      "capacity": 8,
+      "level": "any",
+      "trainerId": "cce34277-375d-534f-a8e4-eeca86f8091e",
+      "slots": [
+        [4, "18:00"],
+        [3, "17:00"],
+        [5, "19:30"],
+        [2, "18:00"]
+      ]
+    }
+  ],
+  "reviews": [
+    {
+      "id": "f5071f9e-9be8-5deb-8d4c-173bc170bc75",
+      "venueId": "03afce4b-6ac3-5496-a729-66fffb1f444f",
+      "rating": 5,
+      "text": "Очень чисто, персонал внимательный и всегда подскажет. Хожу второй месяц и менять не собираюсь.",
+      "createdAt": 1791428040000,
+      "author": "Дильноза"
+    },
+    {
+      "id": "ca7c40be-14f5-5d3c-8586-455419a4f6e6",
+      "venueId": "ce697d48-4e44-525a-862d-870628485fd5",
+      "rating": 5,
+      "text": "Spotless, with friendly, helpful staff. Checking in with the QR code takes two seconds.",
+      "createdAt": 1791512340000,
+      "author": "Kamila"
+    },
+    {
+      "id": "72e6d814-096d-5bcf-ae05-d2d530d2e273",
+      "venueId": "9df7f61b-0096-57f5-b052-8889bff32687",
+      "rating": 2,
+      "text": "Arrived at opening time and had to wait fifteen minutes for the front desk.",
+      "createdAt": 1790141160000,
+      "author": "Natalia"
+    },
+    {
+      "id": "6cc36520-7d5f-5b6d-9564-a37edd217b77",
+      "venueId": "ca8681b3-377c-5475-818e-169adbe437a1",
+      "rating": 3,
+      "text": "Неплохо, но раздевалки пора обновить. Персонал приветливый.",
+      "createdAt": 1788556800000,
+      "author": "Павел"
+    },
+    {
+      "id": "b1fddd0a-17e8-5764-a6e1-31ee5d64036a",
+      "venueId": "395eb095-1197-5ae2-891a-e84b074e5699",
+      "rating": 5,
+      "text": "Juda toza, xodimlar eʼtiborli. Ilova orqali yozilaman, kirishda bir necha soniyada belgilashadi.",
+      "createdAt": 1791680400000,
+      "author": "Dilnoza"
+    },
+    {
+      "id": "2fd6c11b-3479-58d0-827b-6018fc17cdd7",
+      "venueId": "bff0c06f-d348-5d10-a930-549d35003da2",
+      "rating": 4,
+      "text": "Хорошее место, но вечером бывает многолюдно. В остальном всё нравится.",
+      "createdAt": 1789288140000,
+      "author": "Ксения"
+    },
+    {
+      "id": "d80a9c47-8811-5a16-a1bb-8484ea655b66",
+      "venueId": "1894a3a1-22e9-5804-b7c7-51baafe80e8d",
+      "rating": 5,
+      "text": "A lovely place to switch off after work. I come every week now.",
+      "createdAt": 1789494000000,
+      "author": "Kamila"
+    },
+    {
+      "id": "33a2d778-dc46-5d1c-a342-d00e62d507ae",
+      "venueId": "9575a41a-a3d2-59a6-98ca-c5930862e3a1",
+      "rating": 5,
+      "text": "Отличное место! Записываюсь через приложение, на входе отмечают за пару секунд.",
+      "createdAt": 1791658680000,
+      "author": "Шахноза"
+    },
+    {
+      "id": "3cce783d-b04d-5d43-9843-496618b78919",
+      "venueId": "9df7f61b-0096-57f5-b052-8889bff32687",
+      "rating": 5,
+      "text": "Атмосфера супер, после визита чувствую себя другим человеком. Рекомендую.",
+      "createdAt": 1787424300000,
+      "author": "Сергей"
+    },
+    {
+      "id": "0cad050c-8d1f-5504-954a-e6d47825fda5",
+      "venueId": "ca8681b3-377c-5475-818e-169adbe437a1",
+      "rating": 5,
+      "text": "Close to home and open late. Everything is top notch.",
+      "createdAt": 1786909560000,
+      "author": "Anna"
+    },
+    {
+      "id": "8cc2f003-0c8f-5151-ad1b-744fcaec4d57",
+      "venueId": "395eb095-1197-5ae2-891a-e84b074e5699",
+      "rating": 4,
+      "text": "Really good overall, just a bit crowded after 7 pm.",
+      "createdAt": 1790715480000,
+      "author": "Anna"
+    },
+    {
+      "id": "500ac855-d5be-5364-afb9-9163760b5999",
+      "venueId": "bff0c06f-d348-5d10-a930-549d35003da2",
+      "rating": 4,
+      "text": "Понравилось, только парковка маленькая — лучше приезжать заранее.",
+      "createdAt": 1787595900000,
+      "author": "Дониёр"
+    },
+    {
+      "id": "ac51b29c-52af-54fb-8763-1eb03ca7927c",
+      "venueId": "1894a3a1-22e9-5804-b7c7-51baafe80e8d",
+      "rating": 4,
+      "text": "Yaxshi joy, lekin kechqurun odam koʻp boʻladi. Qolgani yoqdi.",
+      "createdAt": 1788908820000,
+      "author": "Aziz"
+    },
+    {
+      "id": "97e2468e-55e5-5d56-831d-a7eba6ff4c53",
+      "venueId": "9575a41a-a3d2-59a6-98ca-c5930862e3a1",
+      "rating": 5,
+      "text": "Ajoyib joy! Tashrifdan keyin oʻzimni yangi odamdek his qilaman.",
+      "createdAt": 1788624780000,
+      "author": "Islom"
+    },
+    {
+      "id": "e16d18b0-c352-5b92-b93f-c068dbb957d0",
+      "venueId": "9df7f61b-0096-57f5-b052-8889bff32687",
+      "rating": 4,
+      "text": "Liked it a lot; parking is tight, so come early.",
+      "createdAt": 1791615240000,
+      "author": "Alexander"
+    }
+  ]
+}
