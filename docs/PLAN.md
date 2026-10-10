@@ -229,7 +229,7 @@ Jest (90 suites), `expo export --platform web`, and a manual walkthrough in the 
 (onboarding → sign-in → OTP → member tabs → language/theme switch → partner mode → sign-out).
 Not observed locally: iOS/Android simulator boot, Maestro flows, EAS builds (CI carries them).
 
-Status (2026-10-10): **M2 done** (branch `m2`). Schema 0001–0010 + 0090 with RLS on every table,
+Status (2026-10-10): **M2 done**, merged to `main`. Schema 0001–0010 + 0090 with RLS on every table,
 triggers, ledgers, `rpc_nearby_venues` / `rpc_venue_is_open`, roles via the access-token hook, the
 Send-SMS hook, a deterministic seed (30 venues, 3 plans, 106 users) and generated types wired into
 a typed client and the remote feature-flag provider. Gates observed on the authoring machine:
