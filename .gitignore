@@ -61,3 +61,6 @@ apps/admin/.next/
 
 # submission archives
 *.zip
+
+# agent worktrees
+.claude/worktrees/
