@@ -1,3 +1,119 @@
 {
-  "title": "Subscription"
+  "title": "Subscription",
+  "back": "Back",
+  "visits_one": "{{count}} visit a month",
+  "visits_other": "{{count}} visits a month",
+  "unlimited": "Unlimited visits",
+  "providers": {
+    "payme": "Payme",
+    "click": "Click",
+    "uzum": "Uzum"
+  },
+  "plans": {
+    "title": "Plans",
+    "heroOverline": "One pass for the whole city",
+    "heroTitle": "One subscription, dozens of places",
+    "heroSubtitle": "Gyms, pools, yoga, martial arts and spas all over Tashkent. Pick where to go today.",
+    "heroPoints": {
+      "venues": "Gyms and studios",
+      "booking": "Book in two taps",
+      "freedom": "Not tied to one place"
+    },
+    "perMonth": "per month",
+    "popular": "Popular",
+    "current": "Your plan",
+    "subscribe": "Subscribe",
+    "switch": "Switch",
+    "manage": "Manage subscription",
+    "subscribeLabel": "Subscribe to {{plan}}",
+    "switchLabel": "Switch to {{plan}}",
+    "upgradeCharge": "Pay the difference today: {{amount}}",
+    "downgradeFree": "No extra charge: the new limit applies right away",
+    "errorTitle": "Couldn't load the plans",
+    "legal": "Your subscription renews automatically every 30 days at the plan price. You can turn off auto-renewal at any time in Subscription."
+  },
+  "faq": {
+    "title": "Questions and answers",
+    "visits": {
+      "question": "How are visits counted?",
+      "answer": "One visit is one class booking or one drop-in at a venue. Cancelling in time gives the visit back; a late cancellation uses it. Your limit resets at the start of every 30-day period."
+    },
+    "freeze": {
+      "question": "Can I freeze my subscription?",
+      "answer": "Yes, once a quarter you can freeze it for up to 30 days, for a holiday or while you are ill. The frozen days are added to your period."
+    },
+    "cancel": {
+      "question": "How do I cancel?",
+      "answer": "Cancel any time in Subscription. You keep access until the end of the paid period and won't be charged again."
+    }
+  },
+  "checkout": {
+    "title": "Checkout",
+    "summary": "Your order",
+    "plan": "Plan",
+    "period": "Period",
+    "periodValue": "30 days",
+    "visits": "Visits",
+    "total": "Total",
+    "changeFrom": "Current plan",
+    "prorated": "Difference for the days left",
+    "freeChange": "No extra charge",
+    "provider": "Payment method",
+    "providerHint": {
+      "payme": "Uzcard or Humo card",
+      "click": "Wallet or card",
+      "uzum": "Uzum Bank or instalments"
+    },
+    "secure": "You enter your card on the payment provider's secure page. The app never sees or stores card data.",
+    "sandbox": "Demo mode: no money is charged",
+    "pay": "Pay {{amount}}",
+    "confirmChange": "Switch at no charge",
+    "processing": "Waiting for confirmation from {{provider}}…",
+    "processingHint": "Keep this screen open, it takes a couple of seconds",
+    "notFoundTitle": "Plan not found",
+    "notFoundBody": "The link looks out of date. Please choose a plan again.",
+    "toPlans": "See plans"
+  },
+  "success": {
+    "title": "Payment complete",
+    "changedTitle": "Plan changed",
+    "activeUntil": "Your subscription is active until {{date}}",
+    "paid": "Paid {{amount}} with {{provider}}",
+    "findVenue": "Find a venue",
+    "home": "Go home"
+  },
+  "manage": {
+    "title": "My subscription",
+    "planLabel": "Plan",
+    "statusActive": "Active",
+    "statusCancelled": "Cancelled, valid until {{date}}",
+    "until": "Valid until {{date}}",
+    "visitsLeft_one": "{{count}} visit left",
+    "visitsLeft_other": "{{count}} visits left",
+    "visitsUsed": "{{used}} of {{total}} used",
+    "visitsUsedUnlimited": "Visits used: {{used}}",
+    "progressLabel": "{{used}} of {{total}} visits used",
+    "autoRenew": "Auto-renewal",
+    "autoRenewOn": "Next charge on {{date}}: {{amount}}",
+    "autoRenewOff": "Off: your subscription ends on {{date}}",
+    "changePlan": "Change plan",
+    "cancel": "Cancel subscription",
+    "resume": "Resume subscription",
+    "history": "Payment history",
+    "historyEmpty": "No payments yet",
+    "kindSubscription": "{{plan}} subscription",
+    "kindUpgrade": "Upgrade to {{plan}}",
+    "receiptMeta": "{{date}} · {{provider}}",
+    "emptyTitle": "You don't have a subscription yet",
+    "emptyBody": "Get a pass and visit gyms, pools and studios across the city.",
+    "expiredTitle": "Your subscription has ended",
+    "expiredBody": "Renew your pass to book classes again.",
+    "choosePlan": "Choose a plan",
+    "cancelSheet": {
+      "title": "Cancel your subscription?",
+      "body": "You keep access until {{date}} and can use your remaining visits until then. You won't be charged again.",
+      "confirm": "Yes, cancel",
+      "keep": "Keep subscription"
+    }
+  }
 }

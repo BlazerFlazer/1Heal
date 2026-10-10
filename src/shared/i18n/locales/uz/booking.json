@@ -1,3 +1,36 @@
 {
-  "title": "Bron qilish"
+  "title": "Bron qilish",
+  "confirm": {
+    "title": "Yozilishni tasdiqlang",
+    "class": "Mashgʻulot",
+    "dropIn": "Erkin tashrif",
+    "when": "Qachon",
+    "where": "Qayerda",
+    "dateTime": "{{date}}, {{time}}",
+    "visits": "Tashrif tarifdan yechiladi: {{total}} tadan {{left}} ta qoladi",
+    "cancelUntil": "{{time}} gacha bepul bekor qilish",
+    "cancelNote": "Keyinroq bekor qilsangiz ham tashrif yechiladi.",
+    "submit": "Yozilishni tasdiqlash"
+  },
+  "success": {
+    "title": "Siz yozildingiz!",
+    "body": "Tashrif haqida eslatamiz. Qabulxonada ilovadagi QR-kodni koʻrsating.",
+    "toast": "Yozilish tasdiqlandi",
+    "myBookings": "Mening bronlarim",
+    "done": "Tayyor"
+  },
+  "errors": {
+    "title": "Yozilib boʻlmadi",
+    "NO_SUBSCRIPTION": "Yozilish uchun obuna rasmiylashtiring — bir daqiqa vaqt oladi.",
+    "SUBSCRIPTION_EXPIRED": "Obuna muddati tugadi. Davom etish uchun uni uzaytiring.",
+    "TIER_NOT_ALLOWED": "{{plan}} tarifidan boshlab mavjud. Bu yerga borish uchun tarifni oshiring.",
+    "QUOTA_EXCEEDED": "Bu oydagi tashriflar tugadi. Limiti kattaroq tarifni tanlang.",
+    "VENUE_CAP_EXCEEDED": "Bu maskan uchun oylik tashrif limitiga yetdingiz.",
+    "CLASS_FULL": "Bu mashgʻulotda boʻsh joy qolmadi. Boshqa vaqtni tanlang.",
+    "ALREADY_BOOKED": "Siz bu vaqtga allaqachon yozilgansiz.",
+    "IN_THE_PAST": "Bu vaqt allaqachon oʻtgan. Boshqasini tanlang.",
+    "choosePlan": "Tarif tanlash",
+    "upgrade": "Tarifni oshirish",
+    "back": "Tushunarli"
+  }
 }

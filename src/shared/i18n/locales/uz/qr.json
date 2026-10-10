@@ -1,6 +1,21 @@
 {
   "title": "Mening QR kodim",
-  "frameLabel": "QR kod uchun joy",
+  "subtitle": "Kodni kiraverishda administratorga koʻrsating",
+  "pass": {
+    "eyebrow": "{{brand}} ruxsatnomasi",
+    "memberId": "Aʼzo ID raqami",
+    "validUntil": "{{date}} gacha",
+    "visitsLeft": "Tashriflar: {{total}} tadan {{left}} ta",
+    "codeA11y": "Kirish uchun aʼzo kodi. Kod har daqiqada yangilanadi",
+    "refreshes": "Kod har daqiqada yangilanadi",
+    "demoNote": "Demo kod: tekshiriladigan QR tashrifni belgilash bilan birga paydo boʻladi."
+  },
+  "brightness": "Ekran yorqinligini oshiring — kod tezroq skanerlanadi.",
+  "nextBooking": {
+    "title": "Eng yaqin bron",
+    "dropIn": "Erkin tashrif",
+    "a11y": "{{name}}, {{venue}}, {{when}}. Bronni ochish"
+  },
   "inactive": {
     "title": "QR kod obuna faollashgach paydo boʻladi",
     "body": "Uni kiraverishda koʻrsating — xodim skanerlaydi va tashrif hisobga olinadi.",

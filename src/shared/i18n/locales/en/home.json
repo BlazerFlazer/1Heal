@@ -1,5 +1,7 @@
 {
   "title": "Home",
+  "tagline": "One membership for sport and self-care all over Tashkent",
+  "webCaption": "A demo of the mobile app. It looks even better on a phone.",
   "greeting": {
     "morning": "Good morning, {{name}}",
     "afternoon": "Good afternoon, {{name}}",
@@ -12,25 +14,66 @@
       "night": "Good night"
     }
   },
+  "profileA11y": "Open profile",
+  "membership": {
+    "planLabel": "Your plan",
+    "of": "of {{total}}",
+    "left": "left",
+    "ringA11y": "{{left}} of {{total}} visits left",
+    "until": "Valid until {{date}}",
+    "endsOn": "Won't renew · until {{date}}",
+    "manage": "Manage",
+    "manageA11y": "Manage subscription"
+  },
+  "promo": {
+    "eyebrow": "{{brand}} membership",
+    "title_one": "One membership — {{count}} place in Tashkent",
+    "title_other": "One membership — {{count}} places in Tashkent",
+    "body": "Gyms, pools, yoga, martial arts and spa without separate memberships.",
+    "priceFrom": "from {{price}}",
+    "perMonth": "per month",
+    "cta": "Choose a plan"
+  },
+  "nextBooking": {
+    "title": "Next booking",
+    "dropIn": "Drop-in visit",
+    "inMinutes": "In {{count}} min",
+    "inHours": "In {{count}} h",
+    "dayTime": "{{day}}, {{time}}",
+    "a11y": "{{name}}, {{venue}}, {{when}}. Open booking",
+    "empty": {
+      "title": "No bookings yet",
+      "body": "Book a class and it will show up here.",
+      "cta": "Find a class"
+    }
+  },
+  "categories": {
+    "title": "Categories",
+    "a11y": "Category: {{name}}"
+  },
+  "nearby": {
+    "title": "Near you",
+    "seeAll": "All",
+    "seeAllA11y": "All venues near you"
+  },
+  "popular": {
+    "title": "Popular",
+    "seeAll": "All",
+    "seeAllA11y": "All popular venues"
+  },
+  "included": {
+    "title": "Included in your plan",
+    "count_one": "{{count}} venue at no extra cost",
+    "count_other": "{{count}} venues at no extra cost"
+  },
+  "error": {
+    "title": "Couldn't load venues",
+    "body": "Check your connection and try again."
+  },
   "subscription": {
-    "title": "Your subscription",
-    "none": {
-      "title": "No subscription yet",
-      "body": "One subscription unlocks gyms, pools and studios across the city.",
-      "cta": "See plans"
-    },
     "plansSoon": {
       "title": "Plans are coming soon",
       "body": "Plan comparison and checkout arrive in the next update."
-    }
-  },
-  "nearby": {
-    "title": "Nearby venues",
-    "seeAll": "See all",
-    "empty": {
-      "title": "Venues will appear here",
-      "body": "The partner catalogue opens in the next update.",
-      "cta": "Open the catalogue"
     }
   }
 }

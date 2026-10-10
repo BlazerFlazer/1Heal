@@ -16,7 +16,7 @@ admin web app lives in `apps/admin` as a separate package.
 | M2 Data                     | done        | Postgres schema (36 tables) with RLS on every table, triggers and ledgers, payment state machine, Send-SMS auth hook (Eskiz + mock), Tashkent demo seed, generated types   |
 | Observability               | done        | Sentry (privacy-first, scrubbed events), verified end to end                                                                                                               |
 | M3 Discovery                | not started | home with real data, list/map, filters, venue page                                                                                                                         |
-| M4 Subscriptions & payments | not started | Payme/Click/Uzum adapters, webhooks                                                                                                                                        |
+| M4 Subscriptions & payments | demo | 3 plans, simulated Payme/Click/Uzum checkout (no real charge), subscription management and payment history |
 | M5 Booking engine           | not started | capacity, waitlist, cancellation, penalties                                                                                                                                |
 | M6 Check-in                 | not started | rotating QR, partner scanner                                                                                                                                               |
 | M7 Profile & reviews        | not started | reviews, notifications, deletion + export                                                                                                                                  |

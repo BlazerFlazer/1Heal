@@ -1,3 +1,119 @@
 {
-  "title": "Obuna"
+  "title": "Obuna",
+  "back": "Orqaga",
+  "visits_one": "Oyiga {{count}} ta tashrif",
+  "visits_other": "Oyiga {{count}} ta tashrif",
+  "unlimited": "Cheklovsiz tashriflar",
+  "providers": {
+    "payme": "Payme",
+    "click": "Click",
+    "uzum": "Uzum"
+  },
+  "plans": {
+    "title": "Tariflar",
+    "heroOverline": "Butun shahar uchun bitta abonement",
+    "heroTitle": "Bitta abonement — oʻnlab maskanlar",
+    "heroSubtitle": "Toshkent boʻylab trenajyor zallari, basseynlar, yoga, yakkakurash va spa. Bugun qayerga borishni oʻzingiz tanlang.",
+    "heroPoints": {
+      "venues": "Zallar va studiyalar",
+      "booking": "Ikki bosishda yozilish",
+      "freedom": "Bitta joyga bogʻlanmagan"
+    },
+    "perMonth": "oyiga",
+    "popular": "Ommabop",
+    "current": "Sizning tarifingiz",
+    "subscribe": "Rasmiylashtirish",
+    "switch": "Oʻtish",
+    "manage": "Obunani boshqarish",
+    "subscribeLabel": "{{plan}} tarifini rasmiylashtirish",
+    "switchLabel": "{{plan}} tarifiga oʻtish",
+    "upgradeCharge": "Bugun qoʻshimcha toʻlov — {{amount}}",
+    "downgradeFree": "Qoʻshimcha toʻlovsiz: yangi limit darhol amal qiladi",
+    "errorTitle": "Tariflarni yuklab boʻlmadi",
+    "legal": "Obuna har 30 kunda tarif narxida avtomatik uzaytiriladi. Avtomatik uzaytirishni istalgan vaqtda «Obuna» boʻlimida oʻchirib qoʻyishingiz mumkin."
+  },
+  "faq": {
+    "title": "Koʻp beriladigan savollar",
+    "visits": {
+      "question": "Tashriflar qanday hisoblanadi?",
+      "answer": "Bitta tashrif — bu mashgʻulotga bitta yozilish yoki maskanga bitta erkin tashrif. Oldindan bekor qilsangiz, tashrif qaytariladi, kech bekor qilsangiz, hisobdan yechiladi. Limit har 30 kunlik davr boshida yangilanadi."
+    },
+    "freeze": {
+      "question": "Obunani muzlatish mumkinmi?",
+      "answer": "Ha, har chorakda bir marta obunani 30 kungacha muzlatish mumkin — masalan, taʼtil yoki kasallik vaqtida. Muzlatilgan kunlar davrga qoʻshiladi."
+    },
+    "cancel": {
+      "question": "Obunani qanday bekor qilaman?",
+      "answer": "«Obuna» boʻlimida istalgan vaqtda bekor qilishingiz mumkin. Toʻlangan davr oxirigacha kirish saqlanadi, keyingi toʻlov yechilmaydi."
+    }
+  },
+  "checkout": {
+    "title": "Rasmiylashtirish",
+    "summary": "Buyurtmangiz",
+    "plan": "Tarif",
+    "period": "Davr",
+    "periodValue": "30 kun",
+    "visits": "Tashriflar",
+    "total": "Jami",
+    "changeFrom": "Joriy tarif",
+    "prorated": "Qolgan kunlar uchun qoʻshimcha toʻlov",
+    "freeChange": "Qoʻshimcha toʻlovsiz",
+    "provider": "Toʻlov usuli",
+    "providerHint": {
+      "payme": "Uzcard yoki Humo kartasi",
+      "click": "Hamyon yoki karta",
+      "uzum": "Uzum Bank yoki muddatli toʻlov"
+    },
+    "secure": "Karta maʼlumotlarini toʻlov tizimining himoyalangan sahifasida kiritasiz. Ilova ularni koʻrmaydi va saqlamaydi.",
+    "sandbox": "Demo rejim: pul yechilmaydi",
+    "pay": "{{amount}} toʻlash",
+    "confirmChange": "Qoʻshimcha toʻlovsiz oʻtish",
+    "processing": "{{provider}} tasdigʻini kutyapmiz…",
+    "processingHint": "Ekranni yopmang, bu bir necha soniya oladi",
+    "notFoundTitle": "Tarif topilmadi",
+    "notFoundBody": "Havola eskirganga oʻxshaydi. Tarifni qaytadan tanlang.",
+    "toPlans": "Tariflarga"
+  },
+  "success": {
+    "title": "Toʻlov amalga oshirildi",
+    "changedTitle": "Tarif oʻzgartirildi",
+    "activeUntil": "Obuna {{date}} gacha faol",
+    "paid": "{{provider}} orqali {{amount}} toʻlandi",
+    "findVenue": "Zal topish",
+    "home": "Bosh sahifaga"
+  },
+  "manage": {
+    "title": "Mening obunam",
+    "planLabel": "Tarif",
+    "statusActive": "Faol",
+    "statusCancelled": "Bekor qilingan — {{date}} gacha amal qiladi",
+    "until": "{{date}} gacha amal qiladi",
+    "visitsLeft_one": "{{count}} ta tashrif qoldi",
+    "visitsLeft_other": "{{count}} ta tashrif qoldi",
+    "visitsUsed": "{{total}} tadan {{used}} tasi ishlatildi",
+    "visitsUsedUnlimited": "Ishlatilgan tashriflar: {{used}}",
+    "progressLabel": "{{total}} ta tashrifdan {{used}} tasi ishlatildi",
+    "autoRenew": "Avtomatik uzaytirish",
+    "autoRenewOn": "Keyingi toʻlov {{date}} — {{amount}}",
+    "autoRenewOff": "Oʻchirilgan: obuna {{date}} da tugaydi",
+    "changePlan": "Tarifni oʻzgartirish",
+    "cancel": "Obunani bekor qilish",
+    "resume": "Obunani tiklash",
+    "history": "Toʻlovlar tarixi",
+    "historyEmpty": "Hali toʻlovlar yoʻq",
+    "kindSubscription": "{{plan}} obunasi",
+    "kindUpgrade": "{{plan}} tarifiga oʻtish uchun qoʻshimcha toʻlov",
+    "receiptMeta": "{{date}} · {{provider}}",
+    "emptyTitle": "Sizda hali obuna yoʻq",
+    "emptyBody": "Abonement oling va shahar boʻylab zallar, basseynlar va studiyalarga boring.",
+    "expiredTitle": "Obuna muddati tugadi",
+    "expiredBody": "Mashgʻulotlarga yana yozilish uchun abonementni uzaytiring.",
+    "choosePlan": "Tarif tanlash",
+    "cancelSheet": {
+      "title": "Obunani bekor qilasizmi?",
+      "body": "Kirish {{date}} gacha saqlanadi, qolgan tashriflardan shu sanagacha foydalanishingiz mumkin. Keyingi toʻlov yechilmaydi.",
+      "confirm": "Ha, bekor qilish",
+      "keep": "Obunani qoldirish"
+    }
+  }
 }

@@ -1,3 +1,169 @@
 {
-  "title": "Заведение"
+  "title": "Площадка",
+  "card": {
+    "open": "Открыто",
+    "closed": "Закрыто",
+    "a11y": "{{name}}, {{category}}, {{district}}, рейтинг {{rating}}"
+  },
+  "distance": {
+    "km": "{{value}} км",
+    "m": "{{value}} м"
+  },
+  "tier": {
+    "badge": {
+      "1": "Basic+",
+      "2": "Standard+",
+      "3": "Premium"
+    },
+    "info": {
+      "1": "Входит во все тарифы",
+      "2": "Входит в тариф Standard и выше",
+      "3": "Только в тарифе Premium"
+    }
+  },
+  "district": {
+    "yunusabad": "Юнусабад",
+    "chilanzar": "Чиланзар",
+    "sergeli": "Сергели",
+    "mirabad": "Мирабад",
+    "almazar": "Алмазар",
+    "mirzo-ulugbek": "Мирзо-Улугбек",
+    "yakkasaray": "Яккасарай",
+    "shaykhantahur": "Шайхантахур"
+  },
+  "gallery": {
+    "back": "Назад",
+    "share": "Поделиться",
+    "photo": "Фото {{index}} из {{total}}",
+    "shareMessage": "{{name}}, {{address}}. Хожу сюда по подписке {{brand}}."
+  },
+  "summary": {
+    "reviews_one": "{{count}} отзыв",
+    "reviews_few": "{{count}} отзыва",
+    "reviews_many": "{{count}} отзывов",
+    "reviews_other": "{{count}} отзыва",
+    "ratingLabel": "Рейтинг {{value}} из 5",
+    "todayHours": "Сегодня {{hours}}",
+    "closedToday": "Сегодня выходной"
+  },
+  "about": "О площадке",
+  "amenities": {
+    "title": "Удобства",
+    "showers": "Душевые",
+    "lockers": "Шкафчики",
+    "parking": "Парковка",
+    "wifi": "Wi-Fi",
+    "towels": "Полотенца",
+    "air_conditioning": "Кондиционер",
+    "personal_training": "Персональные тренировки",
+    "sauna": "Сауна",
+    "water": "Питьевая вода",
+    "cafe": "Кафе",
+    "hairdryer": "Фен",
+    "kids_room": "Детская комната",
+    "tea_lounge": "Чайная зона",
+    "mats_provided": "Коврики на месте",
+    "equipment_rental": "Прокат инвентаря",
+    "pool": "Бассейн",
+    "wheelchair_access": "Доступно для колясок"
+  },
+  "hours": {
+    "title": "Часы работы",
+    "closed": "Выходной",
+    "womenOnly": "только для женщин",
+    "today": "Сегодня"
+  },
+  "schedule": {
+    "title": "Расписание занятий",
+    "dayA11y": "{{weekday}}, {{date}}",
+    "book": "Записаться",
+    "booked": "Вы записаны",
+    "full": "Мест нет",
+    "bookA11y": "Записаться: {{name}}, {{time}}",
+    "trainer": "Тренер: {{name}}",
+    "spots_one": "Осталось {{count}} место",
+    "spots_few": "Осталось {{count}} места",
+    "spots_many": "Осталось {{count}} мест",
+    "spots_other": "Осталось {{count}} места",
+    "empty": {
+      "title": "В этот день занятий нет",
+      "body": "Выберите другой день или приходите на свободное посещение."
+    }
+  },
+  "dropIn": {
+    "title": "Свободное посещение",
+    "body": "Приходите в удобное время и занимайтесь в своём темпе.",
+    "tomorrow": "завтра",
+    "slotA11y": "Время {{time}}",
+    "book": "Забронировать на {{time}}",
+    "unavailable": "Сегодня и завтра свободных слотов нет."
+  },
+  "trainers": {
+    "title": "Тренеры",
+    "avatar": "Тренер {{name}}",
+    "specialty": {
+      "functional": "Функциональный тренинг",
+      "stretching": "Растяжка",
+      "hiit": "HIIT",
+      "strength_basics": "Основы силовых",
+      "aqua_aerobics": "Аквааэробика",
+      "learn_to_swim": "Обучение плаванию",
+      "technique": "Техника плавания",
+      "hatha": "Хатха-йога",
+      "vinyasa": "Виньяса",
+      "nidra": "Йога-нидра",
+      "ashtanga": "Аштанга",
+      "aerial": "Аэройога",
+      "reformer": "Пилатес на реформере",
+      "mat": "Пилатес на коврике",
+      "healthy_back": "Здоровая спина",
+      "hiphop": "Хип-хоп",
+      "bachata": "Бачата",
+      "contemporary": "Контемпорари",
+      "zumba": "Зумба",
+      "uzbek_folk": "Узбекский народный танец",
+      "judo": "Дзюдо",
+      "karate": "Карате",
+      "boxing": "Бокс",
+      "mma": "ММА",
+      "kickboxing": "Кикбоксинг",
+      "kurash": "Кураш",
+      "wod": "WOD",
+      "olympic": "Тяжёлая атлетика",
+      "express": "Экспресс-тренировки",
+      "hammam_ritual": "Ритуалы хаммама",
+      "salt_room": "Соляная комната",
+      "aqua_relax": "Аква-релакс",
+      "scrub": "Скрабирование",
+      "steam_ceremony": "Банные церемонии",
+      "mfr": "Миофасциальный релиз",
+      "face_massage": "Массаж лица",
+      "exercise_therapy": "ЛФК",
+      "knee_rehab": "Реабилитация колена",
+      "posture": "Осанка",
+      "mobility": "Мобильность",
+      "breathwork": "Дыхательные практики",
+      "contrast": "Контрастные процедуры"
+    }
+  },
+  "reviews": {
+    "title": "Отзывы",
+    "basedOn_one": "на основе {{count}} отзыва",
+    "basedOn_few": "на основе {{count}} отзывов",
+    "basedOn_many": "на основе {{count}} отзывов",
+    "basedOn_other": "на основе {{count}} отзыва",
+    "ratingLabel": "Оценка {{value}} из 5",
+    "empty": "Отзывов пока нет. Станьте первым после визита."
+  },
+  "location": {
+    "title": "Как добраться",
+    "openMaps": "Открыть в картах",
+    "call": "Позвонить",
+    "callA11y": "Позвонить по номеру {{phone}}"
+  },
+  "notFound": {
+    "title": "Площадка не найдена",
+    "body": "Возможно, ссылка устарела. Загляните в каталог.",
+    "back": "В каталог"
+  }
 }

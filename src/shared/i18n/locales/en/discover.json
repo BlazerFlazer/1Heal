@@ -1,24 +1,30 @@
 {
   "title": "Discover",
+  "subtitle": "Gyms, pools and studios across Tashkent on one subscription",
   "search": {
     "placeholder": "Gym, pool, yoga…",
     "label": "Search venues",
     "clear": "Clear search"
   },
-  "view": {
-    "list": "List",
-    "map": "Map"
+  "categories": {
+    "all": "All"
   },
+  "filters": {
+    "openNow": "Open now",
+    "inPlan": "Included in my plan",
+    "sortLabel": "Sort: {{value}}"
+  },
+  "sort": {
+    "title": "Sort by",
+    "recommended": "Recommended",
+    "distance": "Nearest",
+    "rating": "Top rated"
+  },
+  "results_one": "{{count}} venue",
+  "results_other": "{{count}} venues",
   "empty": {
-    "title": "Venues are coming soon",
-    "body": "The partner catalogue with filters and a map opens in the next update.",
-    "search": {
-      "title": "Nothing found",
-      "body": "Nothing matches “{{query}}” yet. Try another word."
-    }
-  },
-  "map": {
-    "title": "Map is coming soon",
-    "body": "Venues on the map arrive together with the catalogue."
+    "title": "Nothing found",
+    "body": "Try another search or reset the filters.",
+    "reset": "Reset filters"
   }
 }

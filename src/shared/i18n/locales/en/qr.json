@@ -1,6 +1,21 @@
 {
   "title": "My QR code",
-  "frameLabel": "QR code placeholder",
+  "subtitle": "Show the code to staff at the entrance",
+  "pass": {
+    "eyebrow": "{{brand}} pass",
+    "memberId": "Member ID",
+    "validUntil": "Until {{date}}",
+    "visitsLeft": "Visits: {{left}} of {{total}}",
+    "codeA11y": "Member entry code. The code refreshes every minute",
+    "refreshes": "The code refreshes every minute",
+    "demoNote": "Demo code: a verifiable QR arrives together with visit check-in."
+  },
+  "brightness": "Turn up the screen brightness so the code scans faster.",
+  "nextBooking": {
+    "title": "Next booking",
+    "dropIn": "Drop-in visit",
+    "a11y": "{{name}}, {{venue}}, {{when}}. Open booking"
+  },
   "inactive": {
     "title": "Your QR code appears once a subscription is active",
     "body": "Show it at the entrance — staff scan it and the visit is counted.",

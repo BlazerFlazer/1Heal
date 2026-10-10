@@ -1,18 +1,77 @@
 {
   "title": "Mening bronlarim",
+  "visitsPill": "{{total}} tadan {{left}} ta qoldi",
+  "visitsPillA11y": "Joriy davrdagi tashriflar: {{total}} tadan {{left}} ta qoldi",
   "tabs": {
     "upcoming": "Kelgusi",
-    "past": "Oʻtgan"
+    "history": "Tarix"
   },
+  "dropIn": "Erkin tashrif",
+  "unknownVenue": "Maskan",
+  "dateTime": "{{date}} · {{time}}",
+  "status": {
+    "confirmed": "Tasdiqlangan",
+    "ongoing": "Hozir davom etmoqda",
+    "visited": "Tashrif buyurildi",
+    "cancelled": "Bekor qilingan",
+    "lateCancelled": "Kech bekor qilingan",
+    "lateCancelledNote": "Kech bekor qilindi — tashrif hisobdan yechildi",
+    "visitUsed": "Tashrif hisobdan yechildi"
+  },
+  "card": {
+    "a11y": "{{venue}}, {{title}}, {{when}}, {{status}}",
+    "hint": "Bron tafsilotlarini ochadi"
+  },
+  "loading": "Bronlar yuklanmoqda…",
   "empty": {
     "upcoming": {
-      "title": "Hali bronlar yoʻq",
-      "body": "Maskanni toping va birinchi mashgʻulotni bron qiling.",
-      "cta": "Maskan topish"
+      "title": "Mashgʻulot toping",
+      "body": "Katalogdan zal, studiya yoki mashgʻulotni tanlang — bron shu yerda paydo boʻladi.",
+      "cta": "Katalogni ochish"
     },
-    "past": {
-      "title": "Tarix boʻsh",
-      "body": "Bu yerda tashrif buyurilgan mashgʻulotlar paydo boʻladi."
+    "history": {
+      "title": "Tarix hozircha boʻsh",
+      "body": "Bu yerda oʻtgan va bekor qilingan bronlar paydo boʻladi."
+    }
+  },
+  "noSubscription": {
+    "eyebrow": "Obuna",
+    "title": "Bitta obuna — oʻnlab maskanlar",
+    "body": "Toshkentdagi zallar, basseynlar va studiyalarda mashgʻulotlarni bron qilish uchun obuna rasmiylashtiring.",
+    "cta": "Tarifni tanlash"
+  },
+  "detail": {
+    "title": "Bron",
+    "when": "Qachon",
+    "where": "Qayerda",
+    "format": "Format",
+    "directions": "Yoʻnalish",
+    "openVenue": "Maskanni ochish",
+    "mapsError": "Xaritani ochib boʻlmadi",
+    "checkin": {
+      "title": "Qabulxonada QR-kodni koʻrsating",
+      "body": "Kirishda QR boʻlimini oching — administrator tashrifni belgilaydi.",
+      "cta": "QR-kodni ochish"
+    },
+    "cancel": {
+      "title": "Bronni bekor qilish",
+      "freeUntil": "{{time}} gacha bepul bekor qilish",
+      "freeBody": "Rejalaringiz oʻzgarsa, tashrif balansingizga qaytariladi.",
+      "late": "Hozir bekor qilsangiz, tashrif hisobdan yechiladi",
+      "lateBody": "Boshlanishiga {{window}} dan kam vaqt qoldi — maskan qoidalariga koʻra tashrif hisobdan yechiladi.",
+      "action": "Bronni bekor qilish",
+      "confirmTitle": "Bron bekor qilinsinmi?",
+      "confirmFree": "Tashrif balansingizga qaytadi, joy esa boshqalar uchun boʻshaydi.",
+      "confirmLate": "Boshlanishiga juda oz vaqt qoldi: tashrif hisobdan yechiladi.",
+      "confirm": "Ha, bekor qilish",
+      "keep": "Bronni qoldirish",
+      "doneFree": "Bron bekor qilindi, tashrif qaytarildi",
+      "doneLate": "Bron bekor qilindi, tashrif hisobdan yechildi"
+    },
+    "notFound": {
+      "title": "Bron topilmadi",
+      "body": "Ehtimol, u oʻchirilgan yoki boshqa qurilmada yaratilgan.",
+      "cta": "Bronlarimga"
     }
   }
 }

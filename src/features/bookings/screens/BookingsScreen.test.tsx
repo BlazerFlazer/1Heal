@@ -4,10 +4,10 @@ import { router } from 'expo-router';
 import { StyleSheet } from 'react-native';
 
 import { i18n } from '@/shared/i18n';
-import { ThemeProvider } from '@/shared/theme/ThemeProvider';
-import { themeColors, type ColorScheme } from '@/shared/theme/tokens';
+import { themeColors } from '@/shared/theme/tokens';
 
 import { BookingsScreen } from './BookingsScreen';
+import { makeBooking, seedMembership, withProviders } from '../__fixtures__/bookingsFixtures';
 
 jest.mock('@react-native-async-storage/async-storage', () =>
   jest.requireActual('@react-native-async-storage/async-storage/jest/async-storage-mock'),
@@ -33,21 +33,7 @@ jest.mock('@/shared/theme/haptics', () => ({
     error: jest.fn(async () => undefined),
   },
 }));
-
-const useNetworkState = jest.mocked(Network.useNetworkState);
-const OFFLINE = 'No connection. Showing saved data.';
-
-function setOnline(isOnline: boolean) {
-  useNetworkState.mockReturnValue({ isConnected: isOnline, isInternetReachable: isOnline });
-}
-
-function tree(scheme: ColorScheme = 'light') {
-  return (
-    <ThemeProvider scheme={scheme}>
-      <BookingsScreen />
-    </ThemeProvider>
-  );
-}
+jest.mock('@/services/auth', () => ({ getAuthService: jest.fn() }));
 
 describe('BookingsScreen', () => {
   beforeAll(async () => {
@@ -56,40 +42,48 @@ describe('BookingsScreen', () => {
 
   beforeEach(() => {
     jest.mocked(router.push).mockClear();
-    setOnline(true);
+    jest
+      .mocked(Network.useNetworkState)
+      .mockReturnValue({ isConnected: true, isInternetReachable: true });
   });
 
-  it('starts on the upcoming tab with a call to action towards the catalogue', async () => {
-    await render(tree());
+  it('lists a seeded upcoming booking with the visits summary and opens its detail', async () => {
+    const booking = makeBooking();
+    seedMembership([booking], 'basic');
+    await render(withProviders(<BookingsScreen />));
+
     expect(screen.getByRole('header', { name: 'My bookings' })).toBeOnTheScreen();
-    expect(screen.getByRole('tab', { name: 'Upcoming', selected: true })).toBeOnTheScreen();
-    expect(screen.getByText('No bookings yet')).toBeOnTheScreen();
+    expect(await screen.findByTestId(`booking-card-${booking.id}`)).toBeOnTheScreen();
+    expect(screen.getByText('7 of 8 left')).toBeOnTheScreen();
+    expect(screen.getByText('Confirmed')).toBeOnTheScreen();
 
-    await fireEvent.press(screen.getByRole('button', { name: 'Find a venue' }));
-    expect(router.push).toHaveBeenCalledWith('/(member)/(tabs)/discover');
+    await fireEvent.press(screen.getByTestId(`booking-card-${booking.id}`));
+    expect(router.push).toHaveBeenCalledWith({
+      pathname: '/booking/[id]',
+      params: { id: booking.id },
+    });
   });
 
-  it('switches to the past tab', async () => {
-    await render(tree());
-    await fireEvent.press(screen.getByRole('tab', { name: 'Past' }));
-    expect(screen.getByRole('tab', { name: 'Past', selected: true })).toBeOnTheScreen();
-    expect(screen.getByText('No history yet')).toBeOnTheScreen();
-    expect(screen.queryByRole('button', { name: 'Find a venue' })).toBeNull();
+  it('shows cancelled bookings under History', async () => {
+    seedMembership([makeBooking({ id: 'bk_cancelled', status: 'cancelled' })]);
+    await render(withProviders(<BookingsScreen />));
+
+    expect(await screen.findByText('Find a session')).toBeOnTheScreen();
+    await fireEvent.press(screen.getByRole('tab', { name: 'History' }));
+    expect(screen.getByTestId('booking-card-bk_cancelled')).toBeOnTheScreen();
+    expect(screen.getByText('Cancelled')).toBeOnTheScreen();
   });
 
-  it('shows the offline banner only while offline', async () => {
-    await render(tree());
-    expect(screen.queryByText(OFFLINE)).toBeNull();
+  it('promotes plans when there is no subscription', async () => {
+    seedMembership([], null);
+    await render(withProviders(<BookingsScreen />, 'dark'));
 
-    setOnline(false);
-    await screen.rerender(tree());
-    expect(screen.getByText(OFFLINE)).toBeOnTheScreen();
-  });
-
-  it.each<ColorScheme>(['light', 'dark'])('paints the %s background', async (scheme) => {
-    await render(tree(scheme));
+    expect(await screen.findByText('Choose a plan')).toBeOnTheScreen();
+    expect(screen.queryByTestId('bookings-visits')).toBeNull();
     expect(StyleSheet.flatten(screen.getByTestId('bookings').props.style).backgroundColor).toBe(
-      themeColors[scheme].background,
+      themeColors.dark.background,
     );
+    await fireEvent.press(screen.getByRole('button', { name: 'Choose a plan' }));
+    expect(router.push).toHaveBeenCalledWith('/subscription/plans');
   });
 });

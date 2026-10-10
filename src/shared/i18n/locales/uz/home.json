@@ -1,5 +1,7 @@
 {
   "title": "Asosiy",
+  "tagline": "Bitta obuna — butun Toshkent boʻylab sport va oʻzingizga gʻamxoʻrlik",
+  "webCaption": "Mobil ilovaning demo versiyasi. Telefonda yanada chiroyli koʻrinadi.",
   "greeting": {
     "morning": "Xayrli tong, {{name}}",
     "afternoon": "Xayrli kun, {{name}}",
@@ -12,25 +14,66 @@
       "night": "Xayrli tun"
     }
   },
-  "subscription": {
-    "title": "Obunangiz",
-    "none": {
-      "title": "Hali obuna yoʻq",
-      "body": "Bitta obuna — shahardagi sport zallari, basseynlar va studiyalarga kirish.",
-      "cta": "Tariflarni koʻrish"
-    },
-    "plansSoon": {
-      "title": "Tariflar tez orada",
-      "body": "Tariflarni solishtirish va toʻlov keyingi yangilanishda paydo boʻladi."
+  "profileA11y": "Profilni ochish",
+  "membership": {
+    "planLabel": "Tarifingiz",
+    "of": "{{total}} tadan",
+    "left": "qoldi",
+    "ringA11y": "{{total}} ta tashrifdan {{left}} tasi qoldi",
+    "until": "{{date}} gacha amal qiladi",
+    "endsOn": "Uzaytirilmaydi · {{date}} gacha",
+    "manage": "Boshqarish",
+    "manageA11y": "Obunani boshqarish"
+  },
+  "promo": {
+    "eyebrow": "{{brand}} obunasi",
+    "title_one": "Bitta obuna — Toshkentda {{count}} ta maskan",
+    "title_other": "Bitta obuna — Toshkentda {{count}} ta maskan",
+    "body": "Sport zallari, basseynlar, yoga, yakkakurash va SPA — alohida abonementlarsiz.",
+    "priceFrom": "{{price}} dan",
+    "perMonth": "oyiga",
+    "cta": "Tarif tanlash"
+  },
+  "nextBooking": {
+    "title": "Eng yaqin bron",
+    "dropIn": "Erkin tashrif",
+    "inMinutes": "{{count}} daqiqadan soʻng",
+    "inHours": "{{count}} soatdan soʻng",
+    "dayTime": "{{day}}, {{time}}",
+    "a11y": "{{name}}, {{venue}}, {{when}}. Bronni ochish",
+    "empty": {
+      "title": "Hozircha bronlar yoʻq",
+      "body": "Mashgʻulotga yoziling — bron shu yerda paydo boʻladi.",
+      "cta": "Mashgʻulot topish"
     }
+  },
+  "categories": {
+    "title": "Toifalar",
+    "a11y": "Toifa: {{name}}"
   },
   "nearby": {
     "title": "Yaqin atrofda",
-    "seeAll": "Barchasini koʻrish",
-    "empty": {
-      "title": "Maskanlar shu yerda paydo boʻladi",
-      "body": "Hamkorlar katalogi keyingi yangilanishda ochiladi.",
-      "cta": "Katalogni ochish"
+    "seeAll": "Barchasi",
+    "seeAllA11y": "Yaqin atrofdagi barcha maskanlar"
+  },
+  "popular": {
+    "title": "Mashhur",
+    "seeAll": "Barchasi",
+    "seeAllA11y": "Barcha mashhur maskanlar"
+  },
+  "included": {
+    "title": "Tarifingizga kiritilgan",
+    "count_one": "Qoʻshimcha toʻlovsiz {{count}} ta maskan",
+    "count_other": "Qoʻshimcha toʻlovsiz {{count}} ta maskan"
+  },
+  "error": {
+    "title": "Maskanlarni yuklab boʻlmadi",
+    "body": "Internetni tekshirib, qayta urinib koʻring."
+  },
+  "subscription": {
+    "plansSoon": {
+      "title": "Tariflar tez orada",
+      "body": "Tariflarni solishtirish va toʻlov keyingi yangilanishda paydo boʻladi."
     }
   }
 }

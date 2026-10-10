@@ -1,16 +1,16 @@
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { fireEvent, render, screen } from '@testing-library/react-native';
 import * as Network from 'expo-network';
 import { router } from 'expo-router';
-import { StyleSheet } from 'react-native';
 
+import { DAY_MS } from '@/domain/membership';
 import { useAuthStore } from '@/services/auth/authStore';
 import type { Session } from '@/services/auth/types';
+import { useMembershipStore } from '@/services/membership/membershipStore';
 import { i18n } from '@/shared/i18n';
 import { ThemeProvider } from '@/shared/theme/ThemeProvider';
-import { themeColors, type ColorScheme } from '@/shared/theme/tokens';
 
 import { HomeScreen } from './HomeScreen';
-import { NearbySection } from '../components/NearbySection';
 
 jest.mock('@react-native-async-storage/async-storage', () =>
   jest.requireActual('@react-native-async-storage/async-storage/jest/async-storage-mock'),
@@ -38,10 +38,7 @@ jest.mock('@/shared/theme/haptics', () => ({
 }));
 jest.mock('@/services/auth', () => ({ getAuthService: jest.fn() }));
 
-const useNetworkState = jest.mocked(Network.useNetworkState);
-const OFFLINE = 'No connection. Showing saved data.';
-
-const memberSession: Session = {
+const session: Session = {
   userId: 'u1',
   phoneE164: '+998901234567',
   accessToken: 'a',
@@ -52,15 +49,16 @@ const memberSession: Session = {
   profile: { fullName: 'Aziza Karimova' },
 };
 
-function setOnline(isOnline: boolean) {
-  useNetworkState.mockReturnValue({ isConnected: isOnline, isInternetReachable: isOnline });
-}
-
-function tree(scheme: ColorScheme = 'light') {
+function tree() {
+  const client = new QueryClient({
+    defaultOptions: { queries: { retry: false, gcTime: Infinity } },
+  });
   return (
-    <ThemeProvider scheme={scheme}>
-      <HomeScreen />
-    </ThemeProvider>
+    <QueryClientProvider client={client}>
+      <ThemeProvider scheme="light">
+        <HomeScreen />
+      </ThemeProvider>
+    </QueryClientProvider>
   );
 }
 
@@ -71,67 +69,55 @@ describe('HomeScreen', () => {
 
   beforeEach(() => {
     jest.mocked(router.push).mockClear();
-    setOnline(true);
-    useAuthStore.setState({ status: 'signedIn', session: memberSession, activeMode: 'member' });
+    jest
+      .mocked(Network.useNetworkState)
+      .mockReturnValue({ isConnected: true, isInternetReachable: true });
+    useAuthStore.setState({ status: 'signedIn', session, activeMode: 'member' });
+    useMembershipStore.setState({ byUser: {} });
   });
 
-  it('greets by first name and shows the subscription and nearby placeholders', async () => {
+  it('greets the member and promotes plans when there is no subscription', async () => {
     await render(tree());
     expect(
       screen.getByRole('header', { name: /^Good (morning|afternoon|evening|night), Aziza$/ }),
     ).toBeOnTheScreen();
-    expect(screen.getByRole('header', { name: 'Your subscription' })).toBeOnTheScreen();
-    expect(screen.getByText('No subscription yet')).toBeOnTheScreen();
-    expect(screen.getByRole('header', { name: 'Nearby venues' })).toBeOnTheScreen();
-    expect(screen.getByText('Venues will appear here')).toBeOnTheScreen();
+    expect(await screen.findByText('One membership — 30 places in Tashkent')).toBeOnTheScreen();
+    expect(await screen.findByText(/^from 199 000/)).toBeOnTheScreen();
+
+    await fireEvent.press(screen.getByRole('button', { name: 'Choose a plan' }));
+    expect(router.push).toHaveBeenLastCalledWith('/subscription/plans');
+
+    await fireEvent.press(await screen.findByRole('button', { name: 'Category: Gyms' }));
+    expect(router.push).toHaveBeenLastCalledWith({
+      pathname: '/discover',
+      params: { category: 'gym' },
+    });
   });
 
-  it('greets neutrally when the profile has no name', async () => {
-    useAuthStore.setState({ session: { ...memberSession, profile: {} } });
+  it('shows the plan and the visits ring for an active subscription', async () => {
+    const now = Date.now();
+    useMembershipStore.setState({
+      byUser: {
+        u1: {
+          subscription: {
+            planCode: 'standard',
+            status: 'active',
+            periodStart: now - DAY_MS,
+            periodEnd: now + 29 * DAY_MS,
+            autoRenew: true,
+          },
+          bookings: [],
+          payments: [],
+        },
+      },
+    });
     await render(tree());
-    expect(
-      screen.getByRole('header', { name: /^Good (morning|afternoon|evening|night)$/ }),
-    ).toBeOnTheScreen();
-  });
+    expect(screen.getByText('Standard')).toBeOnTheScreen();
+    expect(screen.getByLabelText('16 of 16 visits left')).toBeOnTheScreen();
+    expect(screen.queryByTestId('home-promo')).toBeNull();
+    expect(await screen.findByText('Included in your plan')).toBeOnTheScreen();
 
-  it('routes the calls to action to plans and to the catalogue', async () => {
-    await render(tree());
-    await fireEvent.press(screen.getByRole('button', { name: 'See plans' }));
-    expect(router.push).toHaveBeenLastCalledWith('/(member)/subscription/plans');
-
-    await fireEvent.press(screen.getByRole('button', { name: 'Open the catalogue' }));
-    expect(router.push).toHaveBeenLastCalledWith('/(member)/(tabs)/discover');
-
-    await fireEvent.press(screen.getByRole('button', { name: 'See all' }));
-    expect(router.push).toHaveBeenCalledTimes(3);
-  });
-
-  it('shows the offline banner only while offline', async () => {
-    await render(tree());
-    expect(screen.queryByText(OFFLINE)).toBeNull();
-
-    setOnline(false);
-    await screen.rerender(tree());
-    expect(screen.getByText(OFFLINE)).toBeOnTheScreen();
-  });
-
-  it.each<ColorScheme>(['light', 'dark'])('paints the %s background', async (scheme) => {
-    await render(tree(scheme));
-    expect(StyleSheet.flatten(screen.getByTestId('home').props.style).backgroundColor).toBe(
-      themeColors[scheme].background,
-    );
-  });
-});
-
-describe('NearbySection', () => {
-  it('shows skeleton rows while loading', async () => {
-    await render(
-      <ThemeProvider>
-        <NearbySection status="loading" />
-      </ThemeProvider>,
-    );
-    expect(screen.getByTestId('home-nearby-skeleton')).toBeOnTheScreen();
-    expect(screen.getByRole('progressbar')).toBeOnTheScreen();
-    expect(screen.queryByText('Venues will appear here')).toBeNull();
+    await fireEvent.press(screen.getByRole('link', { name: 'Manage subscription' }));
+    expect(router.push).toHaveBeenLastCalledWith('/subscription');
   });
 });

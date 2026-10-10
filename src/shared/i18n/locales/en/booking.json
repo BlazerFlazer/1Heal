@@ -1,3 +1,36 @@
 {
-  "title": "Booking"
+  "title": "Booking",
+  "confirm": {
+    "title": "Confirm your booking",
+    "class": "Class",
+    "dropIn": "Drop-in visit",
+    "when": "When",
+    "where": "Where",
+    "dateTime": "{{date}}, {{time}}",
+    "visits": "One visit will be used: {{left}} of {{total}} left",
+    "cancelUntil": "Free cancellation until {{time}}",
+    "cancelNote": "Cancelling later still uses the visit.",
+    "submit": "Confirm booking"
+  },
+  "success": {
+    "title": "You’re booked!",
+    "body": "We’ll remind you before the visit. Show the QR code from the app at the front desk.",
+    "toast": "Booking confirmed",
+    "myBookings": "My bookings",
+    "done": "Done"
+  },
+  "errors": {
+    "title": "Couldn’t book this",
+    "NO_SUBSCRIPTION": "Get a subscription to start booking — it takes a minute.",
+    "SUBSCRIPTION_EXPIRED": "Your subscription has ended. Renew it to keep booking.",
+    "TIER_NOT_ALLOWED": "Available from the {{plan}} plan. Upgrade to visit this venue.",
+    "QUOTA_EXCEEDED": "You’ve used all visits for this month. Pick a plan with more visits.",
+    "VENUE_CAP_EXCEEDED": "You’ve reached this month’s visit limit for this venue.",
+    "CLASS_FULL": "This class is full. Please pick another time.",
+    "ALREADY_BOOKED": "You’re already booked for this time.",
+    "IN_THE_PAST": "This time has already passed. Please pick another.",
+    "choosePlan": "Choose a plan",
+    "upgrade": "Upgrade plan",
+    "back": "Got it"
+  }
 }

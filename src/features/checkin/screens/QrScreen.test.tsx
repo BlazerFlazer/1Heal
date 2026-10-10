@@ -1,13 +1,16 @@
 import { fireEvent, render, screen } from '@testing-library/react-native';
 import * as Network from 'expo-network';
 import { router } from 'expo-router';
-import { StyleSheet } from 'react-native';
 
+import { DAY_MS } from '@/domain/membership';
+import { useAuthStore } from '@/services/auth/authStore';
+import type { Session } from '@/services/auth/types';
+import { useMembershipStore } from '@/services/membership/membershipStore';
 import { i18n } from '@/shared/i18n';
 import { ThemeProvider } from '@/shared/theme/ThemeProvider';
-import { themeColors, type ColorScheme } from '@/shared/theme/tokens';
 
-import { QR_FRAME_BORDER_WIDTH, QrScreen } from './QrScreen';
+import { memberShortId } from '../qrPattern';
+import { QrScreen } from './QrScreen';
 
 jest.mock('@react-native-async-storage/async-storage', () =>
   jest.requireActual('@react-native-async-storage/async-storage/jest/async-storage-mock'),
@@ -33,22 +36,24 @@ jest.mock('@/shared/theme/haptics', () => ({
     error: jest.fn(async () => undefined),
   },
 }));
+jest.mock('@/services/auth', () => ({ getAuthService: jest.fn() }));
 
-const useNetworkState = jest.mocked(Network.useNetworkState);
-const OFFLINE = 'No connection. Showing saved data.';
-const OFFLINE_NOTE = 'The QR code works offline too: a few codes are saved in advance.';
+const session: Session = {
+  userId: 'u1',
+  phoneE164: '+998901234567',
+  accessToken: 'a',
+  refreshToken: 'r',
+  expiresAt: '2030-01-01T00:00:00.000Z',
+  roles: ['member'],
+  deviceId: 'device-1',
+  profile: { fullName: 'Aziza Karimova' },
+};
 
-function setOnline(isOnline: boolean) {
-  useNetworkState.mockReturnValue({ isConnected: isOnline, isInternetReachable: isOnline });
-}
-
-function tree(scheme: ColorScheme = 'light') {
-  return (
-    <ThemeProvider scheme={scheme}>
-      <QrScreen />
-    </ThemeProvider>
-  );
-}
+const tree = () => (
+  <ThemeProvider>
+    <QrScreen />
+  </ThemeProvider>
+);
 
 describe('QrScreen', () => {
   beforeAll(async () => {
@@ -57,43 +62,55 @@ describe('QrScreen', () => {
 
   beforeEach(() => {
     jest.mocked(router.push).mockClear();
-    setOnline(true);
+    jest
+      .mocked(Network.useNetworkState)
+      .mockReturnValue({ isConnected: true, isInternetReachable: true });
+    useAuthStore.setState({ status: 'signedIn', session, activeMode: 'member' });
+    useMembershipStore.setState({ byUser: {} });
   });
 
-  it('shows the placeholder frame and explains how to get a QR code', async () => {
+  it('points at plans without a subscription', async () => {
     await render(tree());
     expect(screen.getByRole('header', { name: 'My QR code' })).toBeOnTheScreen();
-    const frame = screen.getByLabelText('QR code placeholder');
-    expect(StyleSheet.flatten(frame.props.style).borderWidth).toBe(QR_FRAME_BORDER_WIDTH);
-    expect(
-      screen.getByText('Your QR code appears once a subscription is active'),
-    ).toBeOnTheScreen();
-
+    expect(screen.queryByTestId('qr-pass')).toBeNull();
     await fireEvent.press(screen.getByRole('button', { name: 'Choose a plan' }));
-    expect(router.push).toHaveBeenCalledWith('/(member)/subscription/plans');
+    expect(router.push).toHaveBeenCalledWith('/subscription/plans');
   });
 
-  it('shows the banner and the offline note only while offline', async () => {
+  it('shows the member pass with the rotating code and the next booking', async () => {
+    const now = Date.now();
+    useMembershipStore.setState({
+      byUser: {
+        u1: {
+          subscription: {
+            planCode: 'basic',
+            status: 'active',
+            periodStart: now - DAY_MS,
+            periodEnd: now + 29 * DAY_MS,
+            autoRenew: true,
+          },
+          bookings: [
+            {
+              id: 'bk1',
+              venueId: 'missing-venue',
+              sessionId: null,
+              startsAt: now + 2 * 60 * 60_000,
+              endsAt: now + 3 * 60 * 60_000,
+              status: 'confirmed',
+              createdAt: now,
+            },
+          ],
+          payments: [],
+        },
+      },
+    });
     await render(tree());
-    expect(screen.queryByText(OFFLINE)).toBeNull();
-    expect(screen.queryByText(OFFLINE_NOTE)).toBeNull();
+    expect(screen.getByText('Basic')).toBeOnTheScreen();
+    expect(screen.getByText(memberShortId('u1'))).toBeOnTheScreen();
+    expect(screen.getByText('The code refreshes every minute')).toBeOnTheScreen();
+    expect(screen.getByText('Visits: 7 of 8')).toBeOnTheScreen();
 
-    setOnline(false);
-    await screen.rerender(tree());
-    expect(screen.getByText(OFFLINE)).toBeOnTheScreen();
-    expect(screen.getByText(OFFLINE_NOTE)).toBeOnTheScreen();
+    await fireEvent.press(screen.getByTestId('qr-next-booking'));
+    expect(router.push).toHaveBeenCalledWith({ pathname: '/booking/[id]', params: { id: 'bk1' } });
   });
-
-  it.each<ColorScheme>(['light', 'dark'])(
-    'uses the %s surface and background tokens',
-    async (scheme) => {
-      await render(tree(scheme));
-      expect(StyleSheet.flatten(screen.getByTestId('qr').props.style).backgroundColor).toBe(
-        themeColors[scheme].background,
-      );
-      expect(StyleSheet.flatten(screen.getByTestId('qr-card').props.style).backgroundColor).toBe(
-        themeColors[scheme].surfaceElevated,
-      );
-    },
-  );
 });

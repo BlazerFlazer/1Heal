@@ -1,24 +1,30 @@
 {
   "title": "Katalog",
+  "subtitle": "Toshkentdagi zallar, basseynlar va studiyalar — bitta obunada",
   "search": {
     "placeholder": "Zal, basseyn, yoga…",
     "label": "Maskanlarni qidirish",
     "clear": "Qidiruvni tozalash"
   },
-  "view": {
-    "list": "Roʻyxat",
-    "map": "Xarita"
+  "categories": {
+    "all": "Barchasi"
   },
+  "filters": {
+    "openNow": "Hozir ochiq",
+    "inPlan": "Tarifimga kiradi",
+    "sortLabel": "Saralash: {{value}}"
+  },
+  "sort": {
+    "title": "Saralash",
+    "recommended": "Tavsiya etamiz",
+    "distance": "Yaqin atrofda",
+    "rating": "Reyting"
+  },
+  "results_one": "{{count}} ta maskan",
+  "results_other": "{{count}} ta maskan",
   "empty": {
-    "title": "Maskanlar tez orada",
-    "body": "Filtrlar va xaritali hamkorlar katalogi keyingi yangilanishda ochiladi.",
-    "search": {
-      "title": "Hech narsa topilmadi",
-      "body": "«{{query}}» soʻrovi boʻyicha hozircha hech narsa yoʻq. Boshqa soʻz bilan urinib koʻring."
-    }
-  },
-  "map": {
-    "title": "Xarita tez orada",
-    "body": "Xaritadagi maskanlar katalog bilan birga paydo boʻladi."
+    "title": "Hech narsa topilmadi",
+    "body": "Boshqa soʻz bilan qidiring yoki filtrlarni tozalang.",
+    "reset": "Filtrlarni tozalash"
   }
 }

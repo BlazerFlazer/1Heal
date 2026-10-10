@@ -1,18 +1,77 @@
 {
   "title": "My bookings",
+  "visitsPill": "{{left}} of {{total}} left",
+  "visitsPillA11y": "Visits this period: {{left}} of {{total}} left",
   "tabs": {
     "upcoming": "Upcoming",
-    "past": "Past"
+    "history": "History"
   },
+  "dropIn": "Drop-in visit",
+  "unknownVenue": "Venue",
+  "dateTime": "{{date}} · {{time}}",
+  "status": {
+    "confirmed": "Confirmed",
+    "ongoing": "Happening now",
+    "visited": "Visited",
+    "cancelled": "Cancelled",
+    "lateCancelled": "Late cancellation",
+    "lateCancelledNote": "Late cancellation — the visit was used",
+    "visitUsed": "Visit used"
+  },
+  "card": {
+    "a11y": "{{venue}}, {{title}}, {{when}}, {{status}}",
+    "hint": "Opens booking details"
+  },
+  "loading": "Loading bookings…",
   "empty": {
     "upcoming": {
-      "title": "No bookings yet",
-      "body": "Find a venue and book your first session.",
-      "cta": "Find a venue"
+      "title": "Find a session",
+      "body": "Pick a gym, studio or class in the catalogue and your booking will show up here.",
+      "cta": "Open catalogue"
     },
-    "past": {
+    "history": {
       "title": "No history yet",
-      "body": "Sessions you attended will appear here."
+      "body": "Past and cancelled bookings will appear here."
+    }
+  },
+  "noSubscription": {
+    "eyebrow": "Subscription",
+    "title": "One subscription, dozens of places",
+    "body": "Subscribe to book sessions at gyms, pools and studios across Tashkent.",
+    "cta": "Choose a plan"
+  },
+  "detail": {
+    "title": "Booking",
+    "when": "When",
+    "where": "Where",
+    "format": "Format",
+    "directions": "Directions",
+    "openVenue": "Open venue",
+    "mapsError": "Could not open maps",
+    "checkin": {
+      "title": "Show your QR code at reception",
+      "body": "Open the QR tab when you arrive and staff will check you in.",
+      "cta": "Open QR code"
+    },
+    "cancel": {
+      "title": "Cancellation",
+      "freeUntil": "Free cancellation until {{time}}",
+      "freeBody": "If your plans change, the visit goes back to your balance.",
+      "late": "Cancelling now uses up the visit",
+      "lateBody": "The session starts in less than {{window}}, so under the venue rules the visit will be used.",
+      "action": "Cancel booking",
+      "confirmTitle": "Cancel this booking?",
+      "confirmFree": "The visit returns to your balance and the spot opens up for others.",
+      "confirmLate": "The session starts too soon: the visit will be used.",
+      "confirm": "Yes, cancel",
+      "keep": "Keep booking",
+      "doneFree": "Booking cancelled, visit returned",
+      "doneLate": "Booking cancelled, visit used"
+    },
+    "notFound": {
+      "title": "Booking not found",
+      "body": "It may have been removed or made on another device.",
+      "cta": "Back to my bookings"
     }
   }
 }

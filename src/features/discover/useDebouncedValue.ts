@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
-/** Delay between the last keystroke and the search request that M3 will send. */
-export const SEARCH_DEBOUNCE_MS = 300;
+/** Delay between the last keystroke and the catalogue search. */
+export const SEARCH_DEBOUNCE_MS = 250;
 
 /** Trails `value` by `delayMs`; an unmount or a newer value cancels the pending update. */
 export function useDebouncedValue<T>(value: T, delayMs: number): T {

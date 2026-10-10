@@ -1,3 +1,163 @@
 {
-  "title": "Venue"
+  "title": "Venue",
+  "card": {
+    "open": "Open",
+    "closed": "Closed",
+    "a11y": "{{name}}, {{category}}, {{district}}, rated {{rating}}"
+  },
+  "distance": {
+    "km": "{{value}} km",
+    "m": "{{value}} m"
+  },
+  "tier": {
+    "badge": {
+      "1": "Basic+",
+      "2": "Standard+",
+      "3": "Premium"
+    },
+    "info": {
+      "1": "Included in every plan",
+      "2": "Included in Standard and above",
+      "3": "Premium plan only"
+    }
+  },
+  "district": {
+    "yunusabad": "Yunusabad",
+    "chilanzar": "Chilanzar",
+    "sergeli": "Sergeli",
+    "mirabad": "Mirabad",
+    "almazar": "Almazar",
+    "mirzo-ulugbek": "Mirzo Ulugbek",
+    "yakkasaray": "Yakkasaray",
+    "shaykhantahur": "Shaykhantahur"
+  },
+  "gallery": {
+    "back": "Back",
+    "share": "Share",
+    "photo": "Photo {{index}} of {{total}}",
+    "shareMessage": "{{name}}, {{address}}. I train here with my {{brand}} subscription."
+  },
+  "summary": {
+    "reviews_one": "{{count}} review",
+    "reviews_other": "{{count}} reviews",
+    "ratingLabel": "Rated {{value}} out of 5",
+    "todayHours": "Today {{hours}}",
+    "closedToday": "Closed today"
+  },
+  "about": "About",
+  "amenities": {
+    "title": "Amenities",
+    "showers": "Showers",
+    "lockers": "Lockers",
+    "parking": "Parking",
+    "wifi": "Wi-Fi",
+    "towels": "Towels",
+    "air_conditioning": "Air conditioning",
+    "personal_training": "Personal training",
+    "sauna": "Sauna",
+    "water": "Drinking water",
+    "cafe": "Café",
+    "hairdryer": "Hairdryer",
+    "kids_room": "Kids’ room",
+    "tea_lounge": "Tea lounge",
+    "mats_provided": "Mats provided",
+    "equipment_rental": "Equipment rental",
+    "pool": "Pool",
+    "wheelchair_access": "Wheelchair access"
+  },
+  "hours": {
+    "title": "Opening hours",
+    "closed": "Closed",
+    "womenOnly": "women only",
+    "today": "Today"
+  },
+  "schedule": {
+    "title": "Class schedule",
+    "dayA11y": "{{weekday}}, {{date}}",
+    "book": "Book",
+    "booked": "You’re booked",
+    "full": "Full",
+    "bookA11y": "Book {{name}} at {{time}}",
+    "trainer": "Coach: {{name}}",
+    "spots_one": "{{count}} spot left",
+    "spots_other": "{{count}} spots left",
+    "empty": {
+      "title": "No classes on this day",
+      "body": "Pick another day or come for a drop-in visit."
+    }
+  },
+  "dropIn": {
+    "title": "Drop-in visit",
+    "body": "Come at a time that suits you and train at your own pace.",
+    "tomorrow": "tomorrow",
+    "slotA11y": "Time {{time}}",
+    "book": "Book for {{time}}",
+    "unavailable": "No free slots today or tomorrow."
+  },
+  "trainers": {
+    "title": "Coaches",
+    "avatar": "Coach {{name}}",
+    "specialty": {
+      "functional": "Functional training",
+      "stretching": "Stretching",
+      "hiit": "HIIT",
+      "strength_basics": "Strength basics",
+      "aqua_aerobics": "Aqua aerobics",
+      "learn_to_swim": "Learn to swim",
+      "technique": "Swim technique",
+      "hatha": "Hatha yoga",
+      "vinyasa": "Vinyasa",
+      "nidra": "Yoga nidra",
+      "ashtanga": "Ashtanga",
+      "aerial": "Aerial yoga",
+      "reformer": "Reformer Pilates",
+      "mat": "Mat Pilates",
+      "healthy_back": "Healthy back",
+      "hiphop": "Hip-hop",
+      "bachata": "Bachata",
+      "contemporary": "Contemporary",
+      "zumba": "Zumba",
+      "uzbek_folk": "Uzbek folk dance",
+      "judo": "Judo",
+      "karate": "Karate",
+      "boxing": "Boxing",
+      "mma": "MMA",
+      "kickboxing": "Kickboxing",
+      "kurash": "Kurash",
+      "wod": "WOD",
+      "olympic": "Olympic lifting",
+      "express": "Express workouts",
+      "hammam_ritual": "Hammam rituals",
+      "salt_room": "Salt room",
+      "aqua_relax": "Aqua relax",
+      "scrub": "Body scrub",
+      "steam_ceremony": "Steam ceremonies",
+      "mfr": "Myofascial release",
+      "face_massage": "Face massage",
+      "exercise_therapy": "Exercise therapy",
+      "knee_rehab": "Knee rehab",
+      "posture": "Posture",
+      "mobility": "Mobility",
+      "breathwork": "Breathwork",
+      "contrast": "Contrast therapy"
+    }
+  },
+  "reviews": {
+    "title": "Reviews",
+    "basedOn_one": "based on {{count}} review",
+    "basedOn_other": "based on {{count}} reviews",
+    "ratingLabel": "Rated {{value}} out of 5",
+    "empty": "No reviews yet. Be the first after your visit."
+  },
+  "location": {
+    "title": "Getting there",
+    "openMaps": "Open in Maps",
+    "call": "Call",
+    "callA11y": "Call {{phone}}"
+  },
+  "notFound": {
+    "title": "Venue not found",
+    "body": "The link may be out of date. Have a look at the catalogue.",
+    "back": "Go to Discover"
+  }
 }

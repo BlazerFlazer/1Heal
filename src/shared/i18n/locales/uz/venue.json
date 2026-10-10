@@ -1,3 +1,163 @@
 {
-  "title": "Maskan"
+  "title": "Maskan",
+  "card": {
+    "open": "Ochiq",
+    "closed": "Yopiq",
+    "a11y": "{{name}}, {{category}}, {{district}}, reyting {{rating}}"
+  },
+  "distance": {
+    "km": "{{value}} km",
+    "m": "{{value}} m"
+  },
+  "tier": {
+    "badge": {
+      "1": "Basic+",
+      "2": "Standard+",
+      "3": "Premium"
+    },
+    "info": {
+      "1": "Barcha tariflarga kiradi",
+      "2": "Standard va undan yuqori tariflarga kiradi",
+      "3": "Faqat Premium tarifida"
+    }
+  },
+  "district": {
+    "yunusabad": "Yunusobod",
+    "chilanzar": "Chilonzor",
+    "sergeli": "Sergeli",
+    "mirabad": "Mirobod",
+    "almazar": "Olmazor",
+    "mirzo-ulugbek": "Mirzo Ulugʻbek",
+    "yakkasaray": "Yakkasaroy",
+    "shaykhantahur": "Shayxontohur"
+  },
+  "gallery": {
+    "back": "Orqaga",
+    "share": "Ulashish",
+    "photo": "{{total}} tadan {{index}}-surat",
+    "shareMessage": "{{name}}, {{address}}. Bu yerga {{brand}} obunasi bilan boraman."
+  },
+  "summary": {
+    "reviews_one": "{{count}} ta sharh",
+    "reviews_other": "{{count}} ta sharh",
+    "ratingLabel": "Reyting 5 dan {{value}}",
+    "todayHours": "Bugun {{hours}}",
+    "closedToday": "Bugun dam olish kuni"
+  },
+  "about": "Maskan haqida",
+  "amenities": {
+    "title": "Qulayliklar",
+    "showers": "Dush",
+    "lockers": "Shkafchalar",
+    "parking": "Avtoturargoh",
+    "wifi": "Wi-Fi",
+    "towels": "Sochiqlar",
+    "air_conditioning": "Konditsioner",
+    "personal_training": "Shaxsiy mashgʻulotlar",
+    "sauna": "Sauna",
+    "water": "Ichimlik suvi",
+    "cafe": "Kafe",
+    "hairdryer": "Fen",
+    "kids_room": "Bolalar xonasi",
+    "tea_lounge": "Choyxona zonasi",
+    "mats_provided": "Gilamchalar beriladi",
+    "equipment_rental": "Jihozlar ijarasi",
+    "pool": "Basseyn",
+    "wheelchair_access": "Aravachada kirish mumkin"
+  },
+  "hours": {
+    "title": "Ish vaqti",
+    "closed": "Dam olish kuni",
+    "womenOnly": "faqat ayollar uchun",
+    "today": "Bugun"
+  },
+  "schedule": {
+    "title": "Mashgʻulotlar jadvali",
+    "dayA11y": "{{weekday}}, {{date}}",
+    "book": "Yozilish",
+    "booked": "Siz yozilgansiz",
+    "full": "Joy yoʻq",
+    "bookA11y": "Yozilish: {{name}}, {{time}}",
+    "trainer": "Murabbiy: {{name}}",
+    "spots_one": "{{count}} ta joy qoldi",
+    "spots_other": "{{count}} ta joy qoldi",
+    "empty": {
+      "title": "Bu kunda mashgʻulot yoʻq",
+      "body": "Boshqa kunni tanlang yoki erkin tashrif bilan keling."
+    }
+  },
+  "dropIn": {
+    "title": "Erkin tashrif",
+    "body": "Qulay vaqtda keling va oʻz surʼatingizda shugʻullaning.",
+    "tomorrow": "ertaga",
+    "slotA11y": "Vaqt {{time}}",
+    "book": "{{time}} ga bron qilish",
+    "unavailable": "Bugun va ertaga boʻsh vaqt yoʻq."
+  },
+  "trainers": {
+    "title": "Murabbiylar",
+    "avatar": "Murabbiy {{name}}",
+    "specialty": {
+      "functional": "Funksional trening",
+      "stretching": "Choʻzilish",
+      "hiit": "HIIT",
+      "strength_basics": "Kuch mashqlari asoslari",
+      "aqua_aerobics": "Akvaaerobika",
+      "learn_to_swim": "Suzishni oʻrganish",
+      "technique": "Suzish texnikasi",
+      "hatha": "Xatxa-yoga",
+      "vinyasa": "Vinyasa",
+      "nidra": "Yoga-nidra",
+      "ashtanga": "Ashtanga",
+      "aerial": "Aeroyoga",
+      "reformer": "Reformerda pilates",
+      "mat": "Gilamchada pilates",
+      "healthy_back": "Sogʻlom bel",
+      "hiphop": "Xip-xop",
+      "bachata": "Bachata",
+      "contemporary": "Kontemporari",
+      "zumba": "Zumba",
+      "uzbek_folk": "Oʻzbek xalq raqsi",
+      "judo": "Dzyudo",
+      "karate": "Karate",
+      "boxing": "Boks",
+      "mma": "MMA",
+      "kickboxing": "Kikboksing",
+      "kurash": "Kurash",
+      "wod": "WOD",
+      "olympic": "Ogʻir atletika",
+      "express": "Ekspress mashgʻulotlar",
+      "hammam_ritual": "Hammom marosimlari",
+      "salt_room": "Tuz xonasi",
+      "aqua_relax": "Akva-relaks",
+      "scrub": "Skrab",
+      "steam_ceremony": "Bugʻ seanslari",
+      "mfr": "Miofassial boʻshashtirish",
+      "face_massage": "Yuz massaji",
+      "exercise_therapy": "Davolovchi gimnastika",
+      "knee_rehab": "Tizza reabilitatsiyasi",
+      "posture": "Qomat",
+      "mobility": "Harakatchanlik",
+      "breathwork": "Nafas amaliyotlari",
+      "contrast": "Kontrast muolajalar"
+    }
+  },
+  "reviews": {
+    "title": "Sharhlar",
+    "basedOn_one": "{{count}} ta sharh asosida",
+    "basedOn_other": "{{count}} ta sharh asosida",
+    "ratingLabel": "Baho 5 dan {{value}}",
+    "empty": "Hozircha sharh yoʻq. Tashrifdan keyin birinchi boʻling."
+  },
+  "location": {
+    "title": "Qanday borish mumkin",
+    "openMaps": "Xaritada ochish",
+    "call": "Qoʻngʻiroq qilish",
+    "callA11y": "{{phone}} raqamiga qoʻngʻiroq qilish"
+  },
+  "notFound": {
+    "title": "Maskan topilmadi",
+    "body": "Havola eskirgan boʻlishi mumkin. Katalogga qarang.",
+    "back": "Katalogga"
+  }
 }
