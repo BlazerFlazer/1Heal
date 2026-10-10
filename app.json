@@ -43,6 +43,14 @@
             "image": "./assets/images/splash-icon.png"
           }
         }
+      ],
+      [
+        "@sentry/react-native/expo",
+        {
+          "url": "https://sentry.io/",
+          "organization": "blaz-org",
+          "project": "oneheal-mobile"
+        }
       ]
     ],
     "experiments": {

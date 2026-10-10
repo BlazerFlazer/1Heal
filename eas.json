@@ -14,6 +14,9 @@
       },
       "android": {
         "buildType": "apk"
+      },
+      "env": {
+        "EXPO_PUBLIC_APP_ENV": "dev"
       }
     },
     "development-device": {
@@ -28,12 +31,22 @@
       "environment": "preview",
       "android": {
         "buildType": "apk"
+      },
+      "env": {
+        "EXPO_PUBLIC_APP_ENV": "staging",
+        "EXPO_PUBLIC_SENTRY_ENABLED": "true",
+        "EXPO_PUBLIC_SENTRY_DSN": "https://3e8b4f8194aabb99cae2a9a5533cdcbf@o4512230381846528.ingest.de.sentry.io/4512231621853264"
       }
     },
     "production": {
       "channel": "production",
       "environment": "production",
-      "autoIncrement": true
+      "autoIncrement": true,
+      "env": {
+        "EXPO_PUBLIC_APP_ENV": "production",
+        "EXPO_PUBLIC_SENTRY_ENABLED": "true",
+        "EXPO_PUBLIC_SENTRY_DSN": "https://3e8b4f8194aabb99cae2a9a5533cdcbf@o4512230381846528.ingest.de.sentry.io/4512231621853264"
+      }
     }
   },
   "submit": {

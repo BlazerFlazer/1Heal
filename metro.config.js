@@ -1,9 +1,11 @@
 // https://docs.expo.dev/guides/customizing-metro/
 const path = require('path');
 
-const { getDefaultConfig } = require('expo/metro-config');
+const { getSentryExpoConfig } = require('@sentry/react-native/metro');
 
-const config = getDefaultConfig(__dirname);
+// Sentry serializer adds Debug IDs to bundles and source maps (readable production stack traces).
+// Keep the SDK defaults: excluding the web feedback bundle breaks the web preview at import time.
+const config = getSentryExpoConfig(__dirname);
 
 /**
  * Blocks one top-level project folder by absolute path. A bare `/supabase\/.*\/` would also match

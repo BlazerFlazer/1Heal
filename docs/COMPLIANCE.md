@@ -60,3 +60,19 @@ encrypted storage adapter for supabase-js (AES key held in SecureStore, cipherte
 server-side refresh-token rotation and reuse detection (Supabase default), and a device list with
 remote revocation (`devices.revoked_at`). Biometric lock (`profiles.biometric_lock`) is a later
 milestone.
+
+## 8. Error monitoring data leaves Uzbekistan
+
+Flag: crash reports and performance traces go to Sentry's EU region (Frankfurt, `de.sentry.io`).
+Even scrubbed, an error event carries device model, OS, app version, route names and an internal
+user UUID; Sentry also derives a coarse country from the sender's IP at ingestion.
+
+Design response: SDK off unless `EXPO_PUBLIC_SENTRY_ENABLED=true`; `sendDefaultPii: false`; phones,
+e-mails, tokens, OTP codes and URL query strings scrubbed on the device before sending (unit-tested
+in `src/services/observability/scrub.test.ts`); session replay only for sessions with an error and
+fully masked; no health-adjacent fields (visit history, categories) are attached to events.
+Recommended project settings (Sentry → Project → Security & Privacy): enable "Prevent Storing of
+IP Addresses" and keep "Data Scrubber" and "Use Default Scrubbers" on for both projects.
+Open question for the lawyer: whether pseudonymous diagnostics count as personal data under the
+localisation rule; if yes, switch the DSN to a self-hosted Sentry/GlitchTip instance in Uzbekistan
+(ADR-022 keeps this a configuration change).

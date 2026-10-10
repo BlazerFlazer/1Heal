@@ -256,3 +256,23 @@ but never forward `accessible={false}` to the DOM.
 Context: on web (and Android devices without a gesture inset) the tab labels clipped at the bottom.
 Decision: `useTabBarScreenOptions` sets `height = 56 + max(insets.bottom, 8)` and the matching
 `paddingBottom`, so the icon + label block always has the same room regardless of inset.
+
+## ADR-022 (2026-10-10) Sentry for crash and error monitoring, privacy-first
+
+Context: production needs crash/error visibility with readable stack traces. The org `blaz-org`
+is hosted in Sentry's EU region; the app handles health-adjacent data of Uzbek users.
+Options: (a) Sentry SaaS with strict scrubbing; (b) self-hosted Sentry/GlitchTip inside Uzbekistan;
+(c) no third-party monitoring until the localisation question is settled.
+Decision: (a) now, behind `EXPO_PUBLIC_SENTRY_ENABLED`, with the SDK abstracted in
+`src/services/observability` so (b) stays a config change (same SDK, different DSN).
+Projects: `oneheal-mobile` (react-native) for the app, `oneheal-backend` (node) for Supabase Edge
+Functions; dev/staging/production are Sentry environments, not separate projects.
+SDK version: `@sentry/react-native` ~8.30 instead of Expo SDK 57's pinned ~7.11 (released before
+React Native 0.86 and without `expoRouterIntegration`/`wrapExpoRouterErrorBoundary`); it is listed
+in `expo.install.exclude` so `expo install --fix` does not downgrade it.
+Privacy: `sendDefaultPii: false`; user identified by internal UUID only; `beforeSend`,
+`beforeSendTransaction` and `beforeBreadcrumb` scrub phones, e-mails, JWTs, bearer tokens and
+sensitive keys and drop URL query strings; replays only on error with all text, images and vectors
+masked; trace headers only to the Supabase origin; no screenshots or view hierarchy.
+Consequences: production stack traces need `SENTRY_AUTH_TOKEN` as an EAS secret so the config
+plugin uploads source maps and dSYMs during `eas build`. COMPLIANCE §8 tracks the cross-border flow.

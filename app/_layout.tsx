@@ -5,7 +5,14 @@ import * as SplashScreen from 'expo-splash-screen';
 import { useTranslation } from 'react-i18next';
 
 import {
+  initObservability,
+  useObservabilityUser,
+  wrapErrorBoundary,
+  wrapRoot,
+} from '@/services/observability';
+import {
   AppProviders,
+  RootErrorBoundary,
   resolveShellGuards,
   ThemedStatusBar,
   useAppBootstrap,
@@ -16,7 +23,10 @@ import { useTheme } from '@/shared/theme';
 // Module scope, not awaited: the native splash stays up until `useAppBootstrap` is ready.
 void SplashScreen.preventAutoHideAsync().catch(() => undefined);
 
-export { RootErrorBoundary as ErrorBoundary } from '@/shared/providers';
+// Sentry starts before the first render; a no-op unless EXPO_PUBLIC_SENTRY_ENABLED=true (ADR-022).
+initObservability();
+
+export const ErrorBoundary = wrapErrorBoundary(RootErrorBoundary);
 
 /**
  * `initialRouteName="index"` makes the unprotected `index` route the anchor: when a guard closes,
@@ -26,6 +36,7 @@ function RootNavigator() {
   const { t } = useTranslation();
   const { colors, typography } = useTheme();
   const guards = resolveShellGuards(useShellState());
+  useObservabilityUser();
 
   return (
     <Stack initialRouteName="index" screenOptions={{ headerShown: false }}>
@@ -54,7 +65,7 @@ function RootNavigator() {
   );
 }
 
-export default function RootLayout() {
+function RootLayout() {
   const { ready } = useAppBootstrap();
   if (!ready) return null;
   return (
@@ -64,3 +75,5 @@ export default function RootLayout() {
     </AppProviders>
   );
 }
+
+export default wrapRoot(RootLayout);
