@@ -6,6 +6,8 @@ import { useOnboardingStore } from '@/services/session/onboardingStore';
 import { initI18n } from '@/shared/i18n';
 import { useAppFonts, useThemeStore } from '@/shared/theme';
 
+import { useFeatureFlagSync } from './useFeatureFlagSync';
+
 export type BootstrapParts = {
   fontsLoaded: boolean;
   fontError: Error | null;
@@ -34,11 +36,13 @@ export function isBootstrapReady(parts: BootstrapParts): boolean {
 
 /**
  * Mount once in the root layout. Loads fonts, restores the session, waits for the persisted
- * stores and the saved language, then hides the native splash screen.
+ * stores and the saved language, then hides the native splash screen. Remote feature flags load
+ * after sign-in and never hold the splash screen (the local defaults apply meanwhile).
  */
 export function useAppBootstrap(): AppBootstrap {
   const [fontsLoaded, fontError] = useAppFonts();
   const status = useAuthBootstrap();
+  useFeatureFlagSync(status);
   const onboardingHydrated = useOnboardingStore((state) => state.hydrated);
   const themeHydrated = useThemeStore((state) => state.hydrated);
   const [localeReady, setLocaleReady] = useState(false);

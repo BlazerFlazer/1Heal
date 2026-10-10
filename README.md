@@ -8,8 +8,10 @@ and venue staff scan it to consume a visit from the monthly quota.
 One Expo (React Native) codebase serves two modes, **member** and **partner** (venue staff). A small
 admin web app lives in `apps/admin` as a separate package.
 
-Status: Milestone 1 (foundation, design system, i18n, auth with a mock provider, navigation shell
-with placeholder tabs). See `docs/PLAN.md` for the full scope and the remaining milestones.
+Status: Milestone 2 (data: Postgres schema with RLS, triggers and ledgers, the Send-SMS hook,
+a deterministic demo seed, generated types) on top of Milestone 1 (foundation, design system,
+i18n, auth with a mock provider, navigation shell with placeholder tabs). See `docs/PLAN.md` for
+the full scope and the remaining milestones.
 
 ## Prerequisites
 
@@ -17,8 +19,9 @@ with placeholder tabs). See `docs/PLAN.md` for the full scope and the remaining 
 - Git. On Windows, Git Bash is enough for every script in this repo.
 - For a phone: the Expo Go app (iOS/Android) on the same Wi-Fi as your machine.
 - Optional: Android Studio (emulator) and/or Xcode (simulator) for `npm run android` / `npm run ios`.
-- Optional: EAS CLI (`npm i -g eas-cli`) for cloud builds, Supabase CLI + Docker for the database
-  (`npm run db:*`), Maestro for end-to-end flows (`npm run e2e`).
+- Optional: EAS CLI (`npm i -g eas-cli`) for cloud builds, Docker for a full Supabase local stack
+  (`npx supabase start`; the CLI itself is a devDependency), Maestro for end-to-end flows
+  (`npm run e2e`). Database tests need neither Docker nor a Postgres install.
 
 ## Setup
 
@@ -55,8 +58,9 @@ npm run web          # browser preview at http://localhost:8081
 ## Quality checks
 
 ```bash
-npm run check          # typecheck + lint + unit tests (run before every commit)
+npm run check          # typecheck (app + db) + lint + unit tests (run before every commit)
 npm run typecheck      # tsc --noEmit (TypeScript 6 strict, noUncheckedIndexedAccess)
+npm run typecheck:db   # tsc -p tsconfig.db.json (supabase/tests, supabase/functions)
 npm run lint           # expo lint (ESLint flat config + prettier plugin)
 npm run lint:fix
 npm run format         # prettier --write
@@ -65,7 +69,7 @@ npm test               # jest: unit, component (Testing Library) and architectur
 npm run test:watch
 npm run test:ci        # jest --ci --coverage (what CI runs)
 npm run e2e            # maestro test e2e/ (needs a running simulator/emulator with the app)
-npm run db:start | db:reset | db:test | db:types   # Supabase local DB (needs Docker + Supabase CLI)
+npm run db:test       # database + Edge Function tests on an embedded PostgreSQL (see Database)
 ```
 
 Architecture tests in Jest enforce the rules from `CLAUDE.md`: no hex colours outside
@@ -94,13 +98,52 @@ Details: `src/services/README.md`.
 
 1. In `.env` set `EXPO_PUBLIC_AUTH_PROVIDER=supabase`, `EXPO_PUBLIC_SUPABASE_URL` and
    `EXPO_PUBLIC_SUPABASE_ANON_KEY` (env validation fails if either is missing).
-2. Roles are read from the JWT claim `app_metadata.roles`, written by a custom access-token hook
-   from the `user_roles` table (Milestone 2). Without the claim every user is a member.
-3. SMS delivery goes through the Supabase "Send SMS" auth hook and an Edge Function with an
-   `SmsProvider` adapter (Eskiz in staging/production), see ADR-003 in `docs/DECISIONS.md`.
+2. Roles are read from the JWT claim `app_metadata.roles`, written by
+   `public.custom_access_token_hook` from the `user_roles` table (ADR-027). Without the claim
+   every user is a member.
+3. SMS delivery goes through the Supabase "Send SMS" auth hook and the `auth-sms-hook` Edge
+   Function with an `SmsProvider` adapter (mock locally, Eskiz in staging/production), see
+   ADR-003/028 and `supabase/functions/README.md`.
+4. Feature flags then come from the `feature_flags` table after sign-in, live via Realtime
+   (ADR-031); with the mock provider the local defaults apply.
 
 The feature code never imports a vendor SDK: all provider access goes through the interfaces in
 `src/services/*`, so the backend can later move to self-hosted Postgres inside Uzbekistan.
+
+## Database
+
+Schema, RLS and server rules live in `supabase/migrations` (plain SQL, runs on Supabase and on any
+PostgreSQL 17 with contrib extensions). Details: `docs/ARCHITECTURE.md`, `docs/RUNBOOK.md`.
+
+```bash
+npm run db:test        # boots an embedded PostgreSQL 17 (~10 s, no Docker), applies migrations +
+                       # seed, runs supabase/tests and the Edge Function tests, deletes the cluster
+npm run db:up          # same database kept running with demo data; prints DATABASE_URL, Ctrl+C stops
+npm run db:sql -- "select code, price_uzs from plans"   # SQL prompt (no psql needed)
+npm run db:sql -- --as authenticated --sub <uuid> "select * from bookings"   # under RLS
+npm run db:types       # regenerate src/services/api/database.types.ts after a migration (commit it)
+npm run db:reset       # remove a stale embedded data directory
+node supabase/seed/generate.mjs   # regenerate supabase/seed.sql (demo accounts: docs/SEED.md)
+```
+
+With `DATABASE_URL` set, `db:test` and `db:sql` use that database instead of starting one.
+
+**Supabase local** (Docker), for Auth, PostgREST, Realtime and the Send-SMS hook end to end:
+
+```bash
+export SEND_SMS_HOOK_SECRETS="v1,whsec_$(openssl rand -base64 32)"   # read by supabase/config.toml
+npx supabase start                    # applies migrations + seed; prints the API URL and anon key
+DATABASE_URL=postgresql://postgres:postgres@127.0.0.1:54322/postgres npm run db:test
+```
+
+Point the app at it with `EXPO_PUBLIC_AUTH_PROVIDER=supabase`, `EXPO_PUBLIC_SUPABASE_URL` (the API
+URL, `http://127.0.0.1:54321`; use your LAN IP for a phone) and `EXPO_PUBLIC_SUPABASE_ANON_KEY`.
+`+998 90 000 00 00` and `+998 90 123 45 00` sign in with code `123456` without an SMS
+(`[auth.sms.test_otp]`). Other numbers need the hook served:
+`npx supabase functions serve auth-sms-hook` with an env file holding
+`SEND_SMS_HOOK_SECRET` (the same value as `SEND_SMS_HOOK_SECRETS`) and `SMS_PROVIDER=mock`; the
+code then appears in the function log (`supabase/functions/README.md`). Secrets never go into
+the repo: `supabase/functions/.env` is git-ignored.
 
 ## Project layout
 
@@ -120,7 +163,8 @@ src/shared/providers      AppProviders, route guards, app bootstrap, status bar,
 src/shared/brand          logo mark and lockup (react-native-svg)
 src/services/             auth, api (Supabase client), storage, query, network, session
 src/domain/               pure mirrors of server rules for previews (quota, booking, penalties)
-supabase/                 migrations, Edge Functions, seed, pgTAP tests (from Milestone 2)
+supabase/                 migrations, Edge Functions (auth-sms-hook), seed generator + seed.sql, DB tests
+scripts/db/               embedded PostgreSQL, migration runner, SQL prompt, type generator
 apps/admin                admin web app, separate package and lockfile (ignored by Metro)
 assets/                   brand SVG sources and generated icons/splash (scripts/generate-assets.mjs)
 docs/                     product plan, decisions, compliance, copy glossary, brand, screen docs
@@ -133,21 +177,25 @@ internals; they share through `src/shared` and `src/services`. Locales: `ru` (de
 
 ## Documentation index
 
-| Document                     | Content                                                                |
-| ---------------------------- | ---------------------------------------------------------------------- |
-| `CLAUDE.md`                  | Engineering conventions and rules (also for AI assistants)             |
-| `docs/PLAN.md`               | Product scope, environment matrix, data model, screen map, milestones  |
-| `docs/DECISIONS.md`          | ADR log (append only)                                                  |
-| `docs/COMPLIANCE.md`         | Legal and compliance flags for Uzbekistan, open questions              |
-| `docs/COPY.md`               | Copy glossary for ru/uz/en                                             |
-| `docs/BRAND.md`              | Logo construction, asset generation                                    |
-| `docs/screens/auth.md`       | Auth screens: states, errors, test ids                                 |
-| `docs/screens/shell.md`      | Providers, route guards, tab bars, deep links, placeholder inventory   |
-| `src/services/README.md`     | Service interfaces, auth flow, mock conventions, switching to Supabase |
-| `src/shared/ui/README.md`    | Component library conventions                                          |
-| `src/shared/theme/README.md` | Design tokens and theming                                              |
-| `src/shared/i18n/README.md`  | Locale files, key conventions, formatters                              |
-| `src/domain/README.md`       | Client-side mirrors of server rules                                    |
+| Document                       | Content                                                                |
+| ------------------------------ | ---------------------------------------------------------------------- |
+| `CLAUDE.md`                    | Engineering conventions and rules (also for AI assistants)             |
+| `docs/PLAN.md`                 | Product scope, environment matrix, data model, screen map, milestones  |
+| `docs/DECISIONS.md`            | ADR log (append only)                                                  |
+| `docs/COMPLIANCE.md`           | Legal and compliance flags for Uzbekistan, open questions              |
+| `docs/ARCHITECTURE.md`         | Schema, RLS matrix, triggers, RPCs, app ↔ backend boundaries           |
+| `docs/RUNBOOK.md`              | Database how-tos, migration rollout, secret rotation, seed refresh     |
+| `docs/SEED.md`                 | Demo data: regeneration, anchor date, demo accounts                    |
+| `supabase/functions/README.md` | Edge Functions: the Send-SMS hook, env, local serving, rotation        |
+| `docs/COPY.md`                 | Copy glossary for ru/uz/en                                             |
+| `docs/BRAND.md`                | Logo construction, asset generation                                    |
+| `docs/screens/auth.md`         | Auth screens: states, errors, test ids                                 |
+| `docs/screens/shell.md`        | Providers, route guards, tab bars, deep links, placeholder inventory   |
+| `src/services/README.md`       | Service interfaces, auth flow, mock conventions, switching to Supabase |
+| `src/shared/ui/README.md`      | Component library conventions                                          |
+| `src/shared/theme/README.md`   | Design tokens and theming                                              |
+| `src/shared/i18n/README.md`    | Locale files, key conventions, formatters                              |
+| `src/domain/README.md`         | Client-side mirrors of server rules                                    |
 
 ## EAS builds and updates
 
@@ -177,13 +225,15 @@ an Expo account. Credentials and store secrets are managed by EAS, not committed
 - **check**: `npm ci`, typecheck, lint with zero warnings, prettier check, `npm run test:ci`
   (coverage uploaded as an artifact).
 - **audit**: `npm audit --audit-level=high` on production dependencies.
-- **db**: starts a local Supabase and runs migrations + pgTAP tests; skipped until
-  `supabase/config.toml` exists (Milestone 2).
+- **db**: `npx supabase start` (migrations + seed on the real stack), `npm run db:test` against it
+  and against the embedded PostgreSQL, `npm run typecheck:db`, and a drift check of the generated
+  database types.
 - **e2e-smoke**: Maestro placeholder on pull requests; the emulator runner is configured in
   Milestone 3 together with an EAS development build artifact.
 
-The authoring machine for Milestone 1 had no Android SDK, Xcode, Docker, Supabase CLI or EAS CLI:
-simulator runs, local DB tests and EAS builds are written to run in CI and were not executed locally.
+The authoring machine has no Android SDK, Xcode, Docker, Deno or EAS CLI: simulator runs, the
+Supabase local stack, serving Edge Functions and EAS builds are written to run in CI and were not
+executed locally. The database suite runs locally on the embedded PostgreSQL.
 
 ## License
 

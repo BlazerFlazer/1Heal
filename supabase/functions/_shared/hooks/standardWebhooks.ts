@@ -112,7 +112,8 @@ function parseSignatureHeader(header: string): Uint8Array[] {
 async function hmacSha256(key: Uint8Array, content: string): Promise<Uint8Array> {
   const cryptoKey = await crypto.subtle.importKey(
     'raw',
-    key,
+    // A copy backed by a plain ArrayBuffer, which is what BufferSource accepts.
+    new Uint8Array(key),
     { name: 'HMAC', hash: 'SHA-256' },
     false,
     ['sign'],

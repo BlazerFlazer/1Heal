@@ -138,6 +138,35 @@ describe('SupabaseAuthService', () => {
       expect(session.deviceId.length).toBeGreaterThanOrEqual(8);
     });
 
+    it.each([
+      [
+        ['member', 'partner', 'admin'],
+        ['member', 'partner', 'admin'],
+      ],
+      [
+        ['member', 'admin'],
+        ['member', 'admin'],
+      ],
+      [[], ['member']],
+    ])(
+      'reads the roles claim exactly as custom_access_token_hook writes it (%j)',
+      async (claimRoles, expected) => {
+        // Shape from supabase/migrations/0003_identity.sql: the hook keeps GoTrue's app_metadata
+        // and adds `roles` sorted in user_role enum order; [] when user_roles has no row.
+        const session = fakeSession();
+        session.access_token = fakeJwt({
+          sub: 'user-1',
+          role: 'authenticated',
+          aud: 'authenticated',
+          app_metadata: { provider: 'phone', providers: ['phone'], roles: claimRoles },
+        });
+        auth.mocks.verifyOtp.mockResolvedValue({ data: { session, user: null }, error: null });
+        await expect(service.verifyOtp(PHONE, '123456')).resolves.toMatchObject({
+          roles: expected,
+        });
+      },
+    );
+
     it('maps expired and invalid codes', async () => {
       auth.mocks.verifyOtp.mockResolvedValueOnce({
         data: { session: null, user: null },

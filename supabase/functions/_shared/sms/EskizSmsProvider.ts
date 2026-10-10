@@ -5,7 +5,8 @@
  *   PATCH /auth/refresh      Authorization: Bearer <token>       → { data: { token } }
  *   POST  /message/sms/send  form { mobile_phone, message, from, callback_url? } + Bearer
  *                                                                → { id, status, message }
- * The token is cached in memory until its JWT `exp`; a 401 from /send triggers one refresh (or a
+ * The token is cached in memory (a warm Edge Function isolate serves many requests) until its JWT
+ * `exp`; concurrent sends share one login or refresh. A 401 from /send triggers one refresh (or a
  * fresh login) and a single retry. `fetch` and the clock are injectable for tests.
  */
 import { e164ToDigits, UZ_E164_PATTERN } from '../phone';
@@ -49,6 +50,7 @@ export class EskizSmsProvider implements SmsProvider {
   private readonly baseUrl: string;
   private readonly timeoutMs: number;
   private token: CachedToken | null = null;
+  private pendingToken: Promise<string> | null = null;
 
   constructor(
     private readonly config: EskizConfig,
@@ -67,13 +69,13 @@ export class EskizSmsProvider implements SmsProvider {
     let token = await this.getToken();
     let response = await this.postSms(token, input);
     if (response.status === 401) {
-      token = await this.renewToken(token);
+      token = await this.renew(token);
       response = await this.postSms(token, input);
     }
     const json = await readJson(response);
     if (!response.ok) throw mapError(response.status, json, 'send');
-    // PROVIDER-STUB: a 200 with status "fail" is how the Python SDK reports rejected sends; the
-    // exact shape is unverified against the live API.
+    // PROVIDER-STUB: the success body ({ id, status, message }) and a 200 with status "fail" for a
+    // rejected send are what community SDKs read; neither is verified against the live API.
     if (readString(json, 'status') === 'fail') throw mapError(400, json, 'send');
     const id = readString(json, 'id');
     return id === undefined ? {} : { providerMessageId: id };
@@ -94,7 +96,25 @@ export class EskizSmsProvider implements SmsProvider {
 
   private async getToken(): Promise<string> {
     if (this.token !== null && this.token.expiresAtMs > this.now()) return this.token.value;
-    return this.login();
+    return this.singleFlight(() => this.login());
+  }
+
+  /** After a 401: reuse a token another send already renewed, otherwise refresh once for all. */
+  private async renew(rejected: string): Promise<string> {
+    const cached = this.token;
+    if (cached !== null && cached.value !== rejected && cached.expiresAtMs > this.now()) {
+      return cached.value;
+    }
+    return this.singleFlight(() => this.renewToken(rejected));
+  }
+
+  private singleFlight(task: () => Promise<string>): Promise<string> {
+    if (this.pendingToken === null) {
+      this.pendingToken = task().finally(() => {
+        this.pendingToken = null;
+      });
+    }
+    return this.pendingToken;
   }
 
   private async login(): Promise<string> {
@@ -187,8 +207,7 @@ export function jwtExpiryMs(token: string): number | null {
     const base64 = payload.replace(/-/g, '+').replace(/_/g, '/');
     const padded = base64 + '='.repeat((4 - (base64.length % 4)) % 4);
     const claims: unknown = JSON.parse(atob(padded));
-    const exp =
-      typeof claims === 'object' && claims !== null ? (claims as Json).exp : undefined;
+    const exp = typeof claims === 'object' && claims !== null ? (claims as Json).exp : undefined;
     return typeof exp === 'number' && Number.isFinite(exp) ? exp * 1000 : null;
   } catch {
     return null;

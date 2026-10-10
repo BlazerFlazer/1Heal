@@ -13,7 +13,13 @@
 import { createConsoleLogger, type Logger } from '../log';
 import { maskPhone } from '../phone';
 import { isSmsError, type SmsError, type SmsProvider } from '../sms/SmsProvider';
-import type { RateLimiter, SmsLogEntry, SmsLogStatus, SmsSendLog } from './rateLimiter';
+import type {
+  RateLimitDecision,
+  RateLimiter,
+  SmsLogEntry,
+  SmsLogStatus,
+  SmsSendLog,
+} from './rateLimiter';
 import { parseSendSmsPayload, type SendSmsPayload } from './sendSmsPayload';
 import { OTP_TEMPLATES, renderOtpSms, type OtpTemplates } from './smsTemplates';
 import { type HeaderReader, verifyStandardWebhook } from './standardWebhooks';
@@ -45,6 +51,8 @@ export interface SendSmsHookInput {
 }
 
 const PURPOSE = 'otp';
+/** Auth's payload is well under 4 KiB; anything far larger is not from Auth (HMAC costs CPU). */
+export const MAX_BODY_CHARS = 64 * 1024;
 /** Seconds Auth waits before retrying a 503 (its back-off is 2 s, budget 5 s in total). */
 const RETRY_AFTER_SEC = '1';
 
@@ -53,6 +61,11 @@ export async function handleSendSms(input: SendSmsHookInput): Promise<HookRespon
   const now = input.now ?? (() => new Date());
   const startedAt = now().getTime();
   const elapsed = (): number => now().getTime() - startedAt;
+
+  if (input.rawBody.length > MAX_BODY_CHARS) {
+    log.log('warn', 'sms_hook_body_too_large', { chars: input.rawBody.length, ms: elapsed() });
+    return requestError(413, 'Payload too large');
+  }
 
   const signature = await verifyStandardWebhook({
     secret: input.secret,
@@ -74,7 +87,7 @@ export async function handleSendSms(input: SendSmsHookInput): Promise<HookRespon
   const { payload } = parsed;
   const fields = { phone_masked: maskPhone(payload.phone), provider: input.provider.name };
 
-  let decision;
+  let decision: RateLimitDecision;
   try {
     decision = await input.rateLimiter.check({
       phone: payload.phone,
@@ -83,12 +96,22 @@ export async function handleSendSms(input: SendSmsHookInput): Promise<HookRespon
       now: now(),
     });
   } catch (error) {
-    log.log('error', 'sms_rate_limit_unavailable', { ...fields, error: describe(error), ms: elapsed() });
+    log.log('error', 'sms_rate_limit_unavailable', {
+      ...fields,
+      error: describe(error),
+      ms: elapsed(),
+    });
     return requestError(503, 'SMS rate limiter unavailable', { 'retry-after': RETRY_AFTER_SEC });
   }
   if (!decision.allowed) {
     await record(input.sendLog, log, payload, input.provider.name, 'rate_limited', now());
-    log.log('info', 'sms_rate_limited', { ...fields, ...decision, ms: elapsed() });
+    log.log('info', 'sms_rate_limited', {
+      ...fields,
+      scope: decision.scope,
+      rule: decision.rule,
+      retry_after_sec: decision.retryAfterSec,
+      ms: elapsed(),
+    });
     return userError(
       429,
       `Too many SMS requests, you can only request this after ${decision.retryAfterSec} seconds.`,
@@ -98,7 +121,15 @@ export async function handleSendSms(input: SendSmsHookInput): Promise<HookRespon
   const text = renderOtpSms(payload.locale, payload.otp, input.templates ?? OTP_TEMPLATES);
   try {
     const result = await input.provider.send({ to: payload.phone, text, purpose: PURPOSE });
-    await record(input.sendLog, log, payload, input.provider.name, 'sent', now(), result.providerMessageId);
+    await record(
+      input.sendLog,
+      log,
+      payload,
+      input.provider.name,
+      'sent',
+      now(),
+      result.providerMessageId,
+    );
     log.log('info', 'sms_sent', {
       ...fields,
       locale: payload.locale,

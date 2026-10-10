@@ -19,7 +19,8 @@ export interface RestSmsLogConfig {
   timeoutMs?: number;
 }
 
-const DEFAULT_TIMEOUT_MS = 2500;
+/** Auth gives the whole hook 5 s per attempt; the check and the insert must leave room for the SMS. */
+const DEFAULT_TIMEOUT_MS = 1500;
 
 /** The store did not answer; the hook fails closed with a retryable response. */
 export class SmsLogUnavailableError extends Error {

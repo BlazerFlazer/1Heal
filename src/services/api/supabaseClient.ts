@@ -4,11 +4,16 @@ import { AppState, type AppStateStatus, Platform } from 'react-native';
 
 import { env } from '@/shared/config/env';
 
+import type { Database } from './database.types';
+
 /**
  * The single Supabase client. Created lazily so the mock auth provider never touches the network,
  * and only when `EXPO_PUBLIC_AUTH_PROVIDER=supabase` with URL and anon key present.
- * Generated database types land in `./database.types.ts` with M2 (`npm run db:types`).
+ * Typed with the generated `Database` from `./database.types.ts` (`npm run db:types`, never edit it
+ * by hand), so table, column, enum and RPC names are checked at compile time.
  */
+
+export type AppSupabaseClient = SupabaseClient<Database>;
 
 export type AutoRefreshControls = Pick<
   SupabaseClient['auth'],
@@ -36,7 +41,7 @@ export function bindAutoRefreshToAppState(
   return () => subscription.remove();
 }
 
-let client: SupabaseClient | undefined;
+let client: AppSupabaseClient | undefined;
 
 export function isSupabaseConfigured(): boolean {
   return (
@@ -46,7 +51,7 @@ export function isSupabaseConfigured(): boolean {
   );
 }
 
-export function getSupabaseClient(): SupabaseClient {
+export function getSupabaseClient(): AppSupabaseClient {
   if (client) return client;
   if (env.AUTH_PROVIDER !== 'supabase' || !env.SUPABASE_URL || !env.SUPABASE_ANON_KEY) {
     throw new Error(
@@ -54,7 +59,7 @@ export function getSupabaseClient(): SupabaseClient {
         'EXPO_PUBLIC_SUPABASE_URL / EXPO_PUBLIC_SUPABASE_ANON_KEY are missing',
     );
   }
-  client = createClient(env.SUPABASE_URL, env.SUPABASE_ANON_KEY, {
+  client = createClient<Database>(env.SUPABASE_URL, env.SUPABASE_ANON_KEY, {
     auth: {
       storage: AsyncStorage,
       autoRefreshToken: true,

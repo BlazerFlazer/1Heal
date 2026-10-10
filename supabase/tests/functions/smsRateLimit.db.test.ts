@@ -53,7 +53,12 @@ async function check(
 ): Promise<Decision> {
   const { rows } = await client.query<{ decision: Decision }>(
     `select public.sms_rate_limit_check($1, $2, $3, $4::timestamptz) as decision`,
-    [options.phone ?? PHONE, options.ip === undefined ? IP : options.ip, options.purpose ?? 'otp', NOW],
+    [
+      options.phone ?? PHONE,
+      options.ip === undefined ? IP : options.ip,
+      options.purpose ?? 'otp',
+      NOW,
+    ],
   );
   const decision = rows[0]?.decision;
   if (decision === undefined) throw new Error('no decision returned');
@@ -138,10 +143,28 @@ describe('sms_rate_limit_check', () => {
     });
   });
 
+  test('the window is (now - window, now]: an attempt exactly 10 minutes old no longer counts', async () => {
+    await runInTransaction(async (client) => {
+      await asService(client);
+      await insertRows(client, [{ minutesAgo: 10 }, { minutesAgo: 2 }, { minutesAgo: 1 }]);
+      await expect(check(client)).resolves.toEqual({ allowed: true });
+      await insertRows(client, [{ minutesAgo: 9.5 }]);
+      await expect(check(client)).resolves.toEqual({
+        allowed: false,
+        scope: 'phone',
+        rule: 'phone_10m',
+        retry_after_sec: 30,
+      });
+    });
+  });
+
   test('with more attempts than the limit, waits for enough of them to expire', async () => {
     await runInTransaction(async (client) => {
       await asService(client);
-      await insertRows(client, [1, 2, 3, 4, 5].map((minutesAgo) => ({ minutesAgo })));
+      await insertRows(
+        client,
+        [1, 2, 3, 4, 5].map((minutesAgo) => ({ minutesAgo })),
+      );
       // 5 attempts, limit 3: the third oldest (3 min ago) must leave the 10 min window.
       await expect(check(client)).resolves.toEqual({
         allowed: false,
@@ -159,7 +182,20 @@ describe('sms_rate_limit_check', () => {
     });
   });
 
-  test('only the service role may call it or touch sms_send_log', async () => {
+  test('only the service role may call it or write sms_send_log; admins may only read', async () => {
+    const insert = (client: DbClient) =>
+      client.query(
+        `insert into public.sms_send_log (phone_e164, purpose, provider, status)
+         values ($1, 'otp', 'test', 'sent')`,
+        [PHONE],
+      );
+    const countRows = async (client: DbClient) => {
+      const { rows } = await client.query<{ n: number }>(
+        'select count(*)::int as n from public.sms_send_log where phone_e164 = $1',
+        [PHONE],
+      );
+      return rows[0]?.n;
+    };
     await runInTransaction(async (client) => {
       await asService(client);
       await insertRows(client, [{ minutesAgo: 1 }]);
@@ -167,26 +203,21 @@ describe('sms_rate_limit_check', () => {
       await asAnon(client);
       await expectDenied(() => check(client), client);
       await expectDenied(() => client.query('select * from public.sms_send_log'), client);
+      await expectDenied(() => insert(client), client);
 
-      await asUser(client, { sub: randomUUID(), roles: ['member', 'admin'] });
+      await asUser(client, { sub: randomUUID(), roles: ['member'] });
       await expectDenied(() => check(client), client);
       await expectDenied(() => client.query('select * from public.sms_send_log'), client);
-      await expectDenied(
-        () =>
-          client.query(
-            `insert into public.sms_send_log (phone_e164, purpose, provider, status)
-             values ($1, 'otp', 'test', 'sent')`,
-            [PHONE],
-          ),
-        client,
-      );
+      await expectDenied(() => insert(client), client);
+
+      // The admin app reads the log (0008_rls.sql) but cannot forge rows or probe the limiter.
+      await asUser(client, { sub: randomUUID(), roles: ['member', 'admin'] });
+      await expect(countRows(client)).resolves.toBe(1);
+      await expectDenied(() => check(client), client);
+      await expectDenied(() => insert(client), client);
 
       await asService(client);
-      const { rows } = await client.query<{ n: number }>(
-        'select count(*)::int as n from public.sms_send_log where phone_e164 = $1',
-        [PHONE],
-      );
-      expect(rows[0]?.n).toBe(1);
+      await expect(countRows(client)).resolves.toBe(1);
     });
   });
 });

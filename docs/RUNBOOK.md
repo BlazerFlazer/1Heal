@@ -118,8 +118,8 @@ The Supabase CLI from the `supabase` npm package (`gen types typescript --db-url
 public`) generates natively, no Docker needed (verified on this machine). The script appends
 `sslmode=disable` (the embedded cluster is plain TCP on loopback), fills a placeholder
 `SEND_SMS_HOOK_SECRETS` when the variable is unset (the CLI validates `config.toml` before it
-connects) and writes the output only when the CLI succeeds. Run it after adding migrations and
-commit the generated file.
+connects), formats the output with Prettier and writes it only when the CLI succeeds. Run it after
+adding migrations and commit the generated file; CI fails when it is stale.
 
 ### The shim caveat
 
@@ -142,13 +142,14 @@ those is only verified by the CI job against Supabase local; read its log, do no
 
 ### CI
 
-Job `db` in `.github/workflows/ci.yml`: `supabase start` (excluding studio, imgproxy, mailpit,
+Job `db` in `.github/workflows/ci.yml`: `npx supabase start` (excluding studio, imgproxy, mailpit,
 logflare, vector, edge-runtime, supavisor, postgres-meta) applies migrations + seed on the real
 stack, then `npm run db:test` runs twice: with `DATABASE_URL` pointing at Supabase local (real
 auth schema, shim skipped) and without it (embedded cluster, shim applied), then
-`npm run typecheck:db`. `config.toml` reads `SEND_SMS_HOOK_SECRETS` from the environment; CI sets
-a dummy value, real deployments use a repository secret in the form `v1,whsec_<base64>` shared
-with the `auth-sms-hook` Edge Function.
+`npm run typecheck:db`, then regenerates the database types and fails if
+`src/services/api/database.types.ts` differs (ADR-030). `config.toml` reads
+`SEND_SMS_HOOK_SECRETS` from the environment; CI sets a dummy value, real deployments use a
+repository secret in the form `v1,whsec_<base64>` shared with the `auth-sms-hook` Edge Function.
 
 ### Troubleshooting
 
@@ -159,3 +160,80 @@ with the `auth-sms-hook` Edge Function.
 - `the data directory must be an ASCII-only path`: `TEMP` contains non-ASCII characters; set
   `DB_DATA_DIR=C:\pg-tmp`.
 - `changed after it was applied`: see "Add a migration", step 5.
+
+## Roll out migrations (staging, then production)
+
+Migrations are forward-only (ADR-026): never edit a merged file, fix with a new one. The Supabase
+CLI is the pinned devDependency, so always call it through `npx supabase`.
+
+1. The PR contains the migration, the regenerated `src/services/api/database.types.ts`
+   (`npm run db:types`) and tests; CI job `db` is green on both targets and its types drift check
+   passes.
+2. Staging:
+
+   ```bash
+   npx supabase login
+   npx supabase link --project-ref <staging-ref>
+   npx supabase db push --dry-run      # lists the pending files; expect only the new ones
+   npx supabase db push                # applies them in filename order, one transaction each
+   ```
+
+   `db push` never runs `supabase/seed.sql`. Staging gets demo data only on purpose:
+   `npx supabase db push --include-seed` on a fresh staging project.
+
+3. First rollout of a project only (Dashboard → Authentication → Hooks): enable the custom access
+   token hook (`public.custom_access_token_hook`, ADR-027) and the Send SMS hook pointing at
+   `https://<ref>.supabase.co/functions/v1/auth-sms-hook`; then deploy the function:
+   `npx supabase functions deploy auth-sms-hook --import-map supabase/functions/deno.json`
+   (`verify_jwt = false` comes from `config.toml`). Set its secrets as in
+   `supabase/functions/README.md`.
+4. Smoke test on staging: sign in with a staging test number, check that the access token has
+   `app_metadata.roles`, open Discover (`rpc_nearby_venues`) and flip a row in `feature_flags` to
+   see the app follow it.
+5. Production: take or confirm a backup (Dashboard → Database → Backups; point-in-time recovery
+   when enabled), then the same `link` / `db push --dry-run` / `db push` against the production ref.
+   Never `--include-seed` there.
+6. If a migration fails, its transaction rolls back and later files are not applied. Fix forward
+   with a new file. Restoring a backup is only for data loss, and it also rewinds every write made
+   since.
+
+Auth settings that `config.toml` does not carry to cloud projects must be set in the Dashboard
+for each project: SMS OTP expiry and length, rate limits, JWT expiry, refresh-token rotation.
+`SUPABASE_OTP_RESEND_AFTER_SEC` (60) and `SUPABASE_OTP_EXPIRES_IN_SEC` (600) in
+`src/services/auth/SupabaseAuthService.ts` are only UI hints and must match what the project
+enforces.
+
+## Rotate the Send-SMS hook secret
+
+Both sides accept a list, so a rotation has no failure window. Full detail:
+`supabase/functions/README.md` ("Rotate the hook secret").
+
+1. Generate: `echo "v1,whsec_$(openssl rand -base64 32)"`.
+2. Function accepts old and new:
+   `npx supabase secrets set SEND_SMS_HOOK_SECRET='v1,whsec_NEW|v1,whsec_OLD'`.
+3. Auth signs with the new one: Dashboard → Authentication → Hooks → Send SMS → secret (cloud);
+   `SEND_SMS_HOOK_SECRETS` in the environment of `supabase start` (local, CI repository secret).
+4. Request an OTP to a real staging number; the function log shows `sms_sent`, not
+   `sms_hook_signature_rejected`.
+5. Drop the old one: `npx supabase secrets set SEND_SMS_HOOK_SECRET='v1,whsec_NEW'`.
+
+Rotate immediately if a secret leaks (it lets anyone make the function send SMS at our cost, up to
+the `sms_rate_limit_check` limits). Secrets never enter the repo; CI uses a dummy value.
+
+## Refresh the demo seed
+
+The seed is generated and committed (ADR-029). Everything is anchored to Monday 2026-10-12
+(`ANCHOR_DATE` in `supabase/seed/lib/time.mjs`); details in `docs/SEED.md`.
+
+```bash
+# after editing supabase/seed/data/*.mjs or moving ANCHOR_DATE by whole weeks (must stay a Monday)
+node supabase/seed/generate.mjs           # rewrites supabase/seed.sql, prints a summary
+npm run db:test                           # seed tests include `generate.mjs --check`
+```
+
+Apply it to a running database:
+
+- embedded: restart `npm run db:up` (every start is a fresh cluster);
+- Supabase local: `npx supabase db reset` (migrations + seed);
+- staging: only on a fresh project, `npx supabase db push --include-seed`. The seed expects an
+  empty database or one it seeded itself, so do not re-run it on a database with real users.

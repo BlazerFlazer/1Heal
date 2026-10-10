@@ -24,8 +24,7 @@ export interface SendSmsPayload {
 }
 
 export type ParsedSendSmsPayload =
-  | { ok: true; payload: SendSmsPayload }
-  | { ok: false; error: string };
+  { ok: true; payload: SendSmsPayload } | { ok: false; error: string };
 
 const OTP_PATTERN = /^\d{4,10}$/;
 const MAX_IP_LENGTH = 64;

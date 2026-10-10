@@ -1,8 +1,9 @@
-# 1Heal — database architecture (M2)
+# 1Heal — architecture: database and app ↔ backend (M2)
 
 Schema `public` on Supabase Postgres 17 (and the embedded PostgreSQL used by `npm run db:test`).
-Migrations: `supabase/migrations/0001…0009` (M2 schema), `0090+` reserved for the SMS hook.
-Tests: `supabase/tests/schema/*.test.ts`. Runbook: `docs/RUNBOOK.md` ("Database").
+Migrations: `supabase/migrations/0001…0010` (M2 schema; 0010 publishes `feature_flags` to Realtime),
+`0090+` for the SMS hook. Tests: `supabase/tests/**/*.test.ts`. Runbook: `docs/RUNBOOK.md` ("Database").
+How the app reaches all of this: section 6.
 
 ## 1. ER diagram
 
@@ -152,6 +153,62 @@ has all grants and bypasses RLS. "—" = no grant. "owner" = `user_id = auth.uid
 | --------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `rpc_nearby_venues(p_lat, p_lng, p_radius_m = 5000, p_category = null, p_open_now = false, p_limit = 50)` | security invoker; active venues within the radius via `earth_box` + `earth_distance`; returns venue columns, `category_slug`, `distance_m`; nearest first; limit ≤ 200 |
 | `rpc_venue_is_open(p_venue_id, p_at = now())`                                                             | security invoker; venue-local weekday/time against `venue_hours`, overnight slots supported                                                                            |
+| `sms_rate_limit_check(p_phone_e164, p_ip = null, p_purpose = 'otp', p_now = now())`                       | service role only; used by the `auth-sms-hook` Edge Function (ADR-028): `{allowed}` or `{allowed:false, scope, rule, retry_after_sec}`                                 |
 | `custom_access_token_hook(event)`                                                                         | Supabase Auth hook (`supabase_auth_admin` only): adds `claims.app_metadata.roles`                                                                                      |
 
 Booking, check-in, subscription and review mutations (`rpc_book`, `rpc_checkin`, …) are M5–M7.
+
+## 6. App ↔ backend boundaries
+
+Feature code never imports `@supabase/supabase-js`. It talks to interfaces in `src/services/*`,
+whose adapters are the only place that knows the backend is Supabase.
+
+```
+app/ routes ──> src/features/<domain> (screens, hooks)
+                  │  TanStack Query hooks, zustand stores
+                  ▼
+src/services/*  interfaces ─────────────┬──> mock adapters (dev, tests, offline)
+  auth/AuthService                      │
+  api/featureFlagProvider (Flag source) │
+  api/repositories/* (data access)      └──> Supabase adapters
+                                              supabase-js (typed: createClient<Database>)
+                                                │ Auth (GoTrue) · PostgREST · Realtime · Storage
+                                                ▼
+                                        Postgres: RLS, triggers, rpc_* (source of truth)
+                                        Edge Functions: hooks, webhooks, provider calls
+```
+
+| Layer                                 | Owns                                                                                                                        | Must not                                                        |
+| ------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
+| Routes (`app/`)                       | URL → screen composition                                                                                                    | fetch data or hold rules                                        |
+| Features (`src/features/*`)           | UI states, query hooks, form validation for UX                                                                              | import a vendor SDK or another feature's internals              |
+| Services (`src/services/*`)           | provider adapters, zod validation of every response, mapping DB rows to app types                                           | decide quota/booking/check-in outcomes                          |
+| `src/services/api/database.types.ts`  | generated `Database` types (`npm run db:types`, ADR-030)                                                                    | be edited by hand                                               |
+| `src/services/api/repositories/*`     | one module per table group: explicit column lists, typed queries, `rpc_*` calls, Realtime subscriptions                     | `select('*')` on tables with secret columns (`payment_methods`) |
+| Postgres (`supabase/migrations`)      | RLS (deny by default), invariants (constraints, triggers), ledgers, `rpc_*` transactions, roles in the JWT (ADR-027)        | trust a client-supplied price, status, quota or role            |
+| Edge Functions (`supabase/functions`) | secrets, third-party calls (SMS, payments), webhook verification; logic in `_shared` plain TS, Deno only at the entry point | be called with the service-role key from the app                |
+
+What is wired in M2:
+
+- `getSupabaseClient()` returns one `AppSupabaseClient` (`SupabaseClient<Database>`), created only
+  when `EXPO_PUBLIC_AUTH_PROVIDER=supabase` with URL and anon key; the mock provider never touches
+  the network.
+- Auth: `SupabaseAuthService` (phone OTP via the Send-SMS hook, ADR-003/028), roles from the
+  `app_metadata.roles` claim written by `custom_access_token_hook` (ADR-027).
+- Feature flags: `getFlagProvider()` → `SupabaseFlagProvider` (reads `feature_flags`, follows
+  Realtime) or `LocalFlagProvider`; `useFeatureFlagSync` loads after sign-in (ADR-031).
+- Data for discovery, subscriptions, bookings and check-in arrives with M3–M6 as repositories
+  under `src/services/api/repositories`, each with a mocked-client unit test and, for its server
+  rules, DB tests in `supabase/tests`.
+
+Self-hosted path (COMPLIANCE §1): every server piece is portable. Postgres objects are plain SQL
+(no PostGIS, no Supabase-only syntax outside guarded blocks, ADR-023/025) and run on any
+PostgreSQL 17 with the contrib extensions `pgcrypto`, `cube`, `earthdistance`, `pg_trgm`, `citext`,
+`btree_gist` (proved on every `npm run db:test`). The options, in order of effort:
+
+1. Self-hosted Supabase (Docker images for GoTrue, PostgREST, Realtime, Storage, Edge Runtime)
+   on servers inside Uzbekistan: zero app changes; `EXPO_PUBLIC_SUPABASE_URL` points at it.
+2. Vanilla Postgres + PostgREST + a GoTrue-compatible auth server: the `auth` schema contract
+   the migrations need is exactly what `supabase/tests/_shim` documents; the app keeps supabase-js.
+3. A different backend: new adapters behind the same `src/services` interfaces; features and
+   screens are untouched.

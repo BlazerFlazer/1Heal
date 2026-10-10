@@ -276,3 +276,154 @@ sensitive keys and drop URL query strings; replays only on error with all text, 
 masked; trace headers only to the Supabase origin; no screenshots or view hierarchy.
 Consequences: production stack traces need `SENTRY_AUTH_TOKEN` as an EAS secret so the config
 plugin uploads source maps and dSYMs during `eas build`. COMPLIANCE §8 tracks the cross-border flow.
+
+## ADR-023 (2026-10-10) Geo with cube + earthdistance, not PostGIS
+
+Context: discovery needs "venues near me" and an "open now" filter. PostGIS is available on
+Supabase but not on the embedded PostgreSQL the DB tests run on, nor guaranteed on a minimal
+self-hosted Postgres inside Uzbekistan (COMPLIANCE §1).
+Options: (a) PostGIS `geography(Point)` + `ST_DWithin`; (b) `lat/lng double precision` with the
+contrib extensions `cube` + `earthdistance` and a GiST index on `ll_to_earth(lat, lng)`;
+(c) plain bounding boxes in SQL.
+Decision: (b). `venues.lat/lng` plus `venues_earth_idx`; `rpc_nearby_venues` prefilters with
+`earth_box` and orders by `earth_distance` (metres, `distance_m int`), active venues only, limit
+capped at 200, security invoker. Extensions are created in schema `extensions` when it exists
+(Supabase) and in `public` otherwise (0001).
+Consequences: spherical-earth accuracy is enough for distance sorting at city scale; polygons
+(districts as shapes, service areas) would need PostGIS later, behind a guarded migration.
+PLAN §3 now lists `lat`, `lng` instead of `location geography`.
+
+## ADR-024 (2026-10-10) Database tests in TypeScript on embedded PostgreSQL, Supabase local in CI
+
+Context: PLAN asked for pgTAP. The authoring machine has no Docker or Deno, so neither the
+Supabase local stack nor pgTAP can run here; the embedded PostgreSQL 17 (npm `embedded-postgres`,
+zonky binaries) starts in ~10 s and has every contrib extension we use except `pg_cron`,
+`postgis` and `pgtap`.
+Options: (a) pgTAP only, run in CI; (b) Jest + `pg` tests in TypeScript against any Postgres URL:
+an embedded cluster locally and Supabase local (`supabase start`) in CI; (c) both.
+Decision: (b). `npm run db:test` (`jest.db.config.js`, Babel TS, 4 workers) starts the embedded
+cluster in `globalSetup`, applies `supabase/tests/_shim` + migrations + seed with
+`scripts/db/migrate.mjs`, and every test runs in `runInTransaction` (always rolled back). With
+`DATABASE_URL` set nothing is started; CI job `db` runs the suite twice, against Supabase local
+(real `auth` schema) and against the embedded cluster. Helpers live in
+`supabase/tests/_harness/db.ts` (`asAnon`, `asUser`, `asService`, `createAuthUser`,
+`expectDenied`, `expectErrorCode`).
+Consequences: the same suite runs on Windows without Docker and on the real stack; RLS is tested
+by switching role + JWT claims the way PostgREST does. Edge Function logic is plain TypeScript
+with Deno only at the entry point, so the same Jest run covers it. `supabase` (CLI),
+`embedded-postgres` and `pg` are pinned devDependencies; CI calls the CLI through `npx`.
+
+## ADR-025 (2026-10-10) A Supabase shim for plain PostgreSQL, applied only where `auth` is missing
+
+Context: migrations reference `auth.users`, `auth.uid()`, the roles `anon`, `authenticated`,
+`service_role` and `supabase_auth_admin`, and schema `extensions`, which exist only on Supabase.
+Decision: `supabase/tests/_shim/0000_supabase_shim.sql` creates exactly those (the `auth.users`
+columns the app and seed use; `auth.uid/role/email/jwt` reading `request.jwt.claim(s)` like
+supabase/postgres; Supabase's default privileges in `public`). The runner applies it only when
+schema `auth` is absent (`DB_SHIM=1|0` overrides), and the shim raises if `auth.uid()` already
+exists, so it can never touch a real project. Migrations stay valid on both targets: Supabase-only
+features (`pg_cron`, the `supabase_realtime` publication, `auth.identities`) are guarded by
+existence checks.
+Consequences: GoTrue, PostgREST, Storage, Realtime and cron are not emulated; anything depending
+on them is verified only by the CI job against Supabase local (RUNBOOK "The shim caveat").
+
+## ADR-026 (2026-10-10) Migration files and runner
+
+Context: two appliers (the Supabase CLI and our harness) must agree on order, versions and
+transactions.
+Decision: the M2 baseline uses four-digit, domain-ordered prefixes (`0001_extensions` …
+`0010_realtime_feature_flags`; `0090+` for the SMS hook); from M3 on, new files use 14-digit
+timestamps, which sort after the baseline. Files contain no `begin`/`commit`; the harness wraps
+each in its own transaction, records name + checksum in `harness.schema_migrations`, skips files
+whose version is already in `supabase_migrations.schema_migrations` (applied by the CLI) and fails
+on a file edited after it was applied. A migration that adds tables with `updated_at` ends with
+`select public.ensure_updated_at_triggers()`; every table enables RLS with explicit grants
+(`rls-coverage.test.ts` enforces RLS and pins the anon-readable list). No cron migration in M2:
+nothing needs scheduling until M5.
+Consequences: migrations are append-only once merged to `main`; fixes go in a new file.
+
+## ADR-027 (2026-10-10) Roles in the JWT via the custom access-token hook
+
+Context: RLS and the app both need roles (member, partner, admin) without a lookup per request
+(ADR-013 reads them from the token on the client).
+Options: (a) copy roles into `auth.users.raw_app_meta_data` from triggers; (b) Supabase's custom
+access-token hook as a Postgres function; (c) look up `user_roles` in every policy.
+Decision: (b). `public.custom_access_token_hook(event jsonb)` sets `claims.app_metadata.roles` to
+the user's `user_roles` sorted in enum order (`member, partner, admin`), `[]` when there are none,
+and keeps GoTrue's other `app_metadata` keys. Only `supabase_auth_admin` may execute it (plus a
+dedicated select policy on `user_roles`). New users get `member` from the `on_auth_user_created`
+trigger. Policies read roles through `app_role()`, `has_role()` and `is_admin()`; venue scoping
+uses `is_venue_staff()`/`is_venue_owner()` (security definer). `SupabaseAuthService` parses the
+claim with zod and falls back to `['member']` for `[]`, a missing claim or an unknown role
+(unit-tested with the hook's exact claim shape; the hook itself is tested in
+`supabase/tests/schema/identity.test.ts`).
+Consequences: a role change applies at the next token refresh (≤ 1 h, `jwt_expiry`); revoking an
+admin immediately also requires deleting their sessions. The hook is enabled in
+`supabase/config.toml`; on a cloud project it must be enabled in Dashboard → Authentication →
+Hooks.
+
+## ADR-028 (2026-10-10) Send-SMS hook: Standard Webhooks, own rate limits, provider-agnostic
+
+Context: ADR-003 chose Supabase Auth phone OTP with a Send-SMS hook. The hook must be verifiable,
+testable without Deno, and must not become an SMS-pumping vector.
+Decision: `supabase/functions/auth-sms-hook` is a thin `Deno.serve` wrapper; all logic lives in
+`supabase/functions/_shared` as plain TypeScript (extensionless imports mapped by
+`supabase/functions/deno.json`, wired with `import_map` in `config.toml`). Requests are verified
+with Standard Webhooks (HMAC-SHA256, 5 min tolerance, several `v1,whsec_` secrets separated by
+`|` for rotation). Before sending, `public.sms_rate_limit_check` (service role only, called through
+PostgREST) allows 3 per phone per 10 min, 10 per phone per 24 h and 20 per IP per hour, counting
+`sms_send_log` rows with status `sent` or `failed`; every attempt is logged (`sent`, `failed`,
+`rate_limited`). Responses follow GoTrue's hook contract: 200 `{}` on delivery; 200 with
+`error.http_code` 429 (our limit, message carries the seconds), 400 (invalid number) or 500
+(provider auth/unknown); 503 with `retry-after: 1` when the provider or the limiter is
+unreachable; 401/400/413 for bad signature, payload or size. OTP texts are templated per locale
+(`ru` default, read from user metadata) with the brand from `_shared/brand.ts` (tested equal to
+`BRAND_NAME`). Providers: `MockSmsProvider` (dev) and `EskizSmsProvider` (token cached, 3 s
+timeout).
+Consequences: the hook cannot be served on this machine (no Docker/Deno); its logic is covered by
+`npm run db:test`, including a database test of the limiter. Phones are masked in logs.
+
+## ADR-029 (2026-10-10) Deterministic demo seed with a fixed anchor date
+
+Context: demos, screenshots, e2e flows and tests need the same rich data everywhere (PLAN M2: 25+
+venues, 3 plans, 100 members), including scripted stories (waitlist, frozen, penalty).
+Options: (a) hand-written SQL; (b) a generator relative to `now()`; (c) a generator with a fixed
+PRNG seed and a fixed anchor date, output committed.
+Decision: (c). `node supabase/seed/generate.mjs` builds a validated model (30 venues, 12
+categories, 106 users, 2 017 class sessions, ledgers written by the real triggers) and writes
+`supabase/seed.sql`; `--check` (run by the DB suite) fails when the file is stale. Everything is
+relative to Monday 2026-10-12 00:00 Asia/Tashkent; ids derive from readable keys; inserts are
+idempotent (`on conflict do nothing` plus state-guarded updates). Supabase-only `auth` columns and
+`auth.identities` are written only where they exist. Demo phones are listed in `docs/SEED.md`.
+Consequences: the timetable does not move by itself; until the M5 cron jobs exist the anchor is
+moved by whole weeks and the seed regenerated (RUNBOOK "Refresh the demo seed").
+
+## ADR-030 (2026-10-10) Generated database types are committed and checked in CI
+
+Context: the app needs table, enum and RPC types that cannot drift from the migrations.
+Decision: `npm run db:types` starts the embedded cluster, applies shim + migrations (no seed), runs
+the pinned Supabase CLI (`supabase gen types typescript --db-url ... --schema public`, no Docker
+needed), formats the output with Prettier and writes `src/services/api/database.types.ts`, which
+is committed and never edited by hand. CI job `db` regenerates it and fails on any diff. The
+Supabase client is `createClient<Database>` (`AppSupabaseClient`); repositories select explicit
+columns and still validate rows with zod at the boundary.
+Consequences: a migration PR must include the regenerated file. Only schema `public` is typed;
+`auth` and `storage` stay behind the service interfaces.
+
+## ADR-031 (2026-10-10) Remote feature flags from `public.feature_flags`
+
+Context: M1 shipped local per-environment defaults behind a `FeatureFlagProvider` interface. Table
+keys must match `^[a-z0-9_]+$`; the app's keys are dotted or camelCase.
+Decision: each row carries the app key in `payload.app_key`. `SupabaseFlagProvider`
+(`src/services/api/featureFlagProvider.ts`) selects `key, enabled, payload` and maps rows one by
+one: boolean flags take `enabled`; non-boolean flags (`maps.provider`) take `payload.value` only
+while `enabled`; rows without a known app key (`no_show_penalty` is a server rule) or with an
+invalid value are skipped individually. `getFlagProvider()` returns it when
+`EXPO_PUBLIC_AUTH_PROVIDER=supabase` with URL and key, else `LocalFlagProvider`.
+`useFeatureFlagSync` loads after sign-in (the table is readable by `authenticated` only) and never
+holds the splash screen; a failed fetch keeps the local defaults (`status: 'error'`). Live updates
+use Realtime `postgres_changes` (migration 0010 adds the table to `supabase_realtime` where that
+publication exists); each change triggers a refetch; on channel error or timeout the channel is
+dropped and the next sign-in or app start fetches again.
+Consequences: a deleted row does not revert its flag until the next app start (the store merges
+remote values over defaults). `audience` targeting is not evaluated yet.

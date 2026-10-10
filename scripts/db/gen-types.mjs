@@ -2,8 +2,9 @@
 /**
  * Regenerates src/services/api/database.types.ts from the migrations:
  * starts the embedded PostgreSQL, applies shim + migrations (no seed), runs
- * `supabase gen types typescript --db-url <url> --schema public` and writes the output only when
- * the CLI succeeds, so a failed run never leaves an empty file behind.
+ * `supabase gen types typescript --db-url <url> --schema public`, formats the output with the
+ * repo's Prettier config (so `prettier --check` and CI's drift check see a stable file) and writes
+ * it only when the CLI succeeds, so a failed run never leaves an empty file behind.
  *
  *   node scripts/db/gen-types.mjs [output-path]
  */
@@ -12,6 +13,8 @@ import { mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import process from 'node:process';
 import { fileURLToPath } from 'node:url';
+
+import * as prettier from 'prettier';
 
 import { startEmbeddedDb } from './embedded.mjs';
 import { migrate } from './migrate.mjs';
@@ -57,7 +60,9 @@ async function main() {
   const db = await startEmbeddedDb();
   try {
     await migrate({ databaseUrl: db.url, seed: false });
-    const types = await generateTypes(db.url);
+    const raw = await generateTypes(db.url);
+    const options = (await prettier.resolveConfig(OUTPUT)) ?? {};
+    const types = await prettier.format(raw, { ...options, filepath: OUTPUT });
     await mkdir(path.dirname(OUTPUT), { recursive: true });
     await writeFile(OUTPUT, types);
     process.stdout.write(`wrote ${path.relative(ROOT, OUTPUT)} (${types.length} bytes)\n`);

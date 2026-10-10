@@ -73,7 +73,11 @@ describe('parseSendSmsPayload', () => {
     ['no otp', body({ sms: {} }), 'sms.otp must be 4 to 10 digits'],
     ['otp with letters', body({ sms: { otp: '12a456' } }), 'sms.otp must be 4 to 10 digits'],
     ['no phone', body({ user: { id: 'u' } }), 'user.phone is not an E.164 number'],
-    ['bad phone', body({ user: { id: 'u', phone: '0901234567' } }), 'user.phone is not an E.164 number'],
+    [
+      'bad phone',
+      body({ user: { id: 'u', phone: '0901234567' } }),
+      'user.phone is not an E.164 number',
+    ],
   ])('rejects %s', (_label, raw, error) => {
     expect(parseSendSmsPayload(raw)).toEqual({ ok: false, error });
   });

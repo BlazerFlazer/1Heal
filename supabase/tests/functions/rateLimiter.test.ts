@@ -140,6 +140,19 @@ describe('evaluateRules', () => {
     });
   });
 
+  test('the window is (now - window, now], like the SQL function', () => {
+    const now = NOW.getTime();
+    expect(evaluateRules([now - 600_000, now - 2_000, now - 1_000], [rule], now)).toEqual({
+      allowed: true,
+    });
+    expect(evaluateRules([now - 599_000, now - 2_000, now - 1_000], [rule], now)).toEqual({
+      allowed: false,
+      scope: 'phone',
+      rule: 'phone_10m',
+      retryAfterSec: 1,
+    });
+  });
+
   test('never returns less than one second', () => {
     const now = NOW.getTime();
     const timestamps = [now - 599_900, now - 100, now - 50];

@@ -56,8 +56,9 @@ export interface SmsSendLog {
 }
 
 /**
- * Applies `rules` to the timestamps (ms) of the counted attempts of one scope. When a rule trips,
- * `retryAfterSec` is when enough of the oldest attempts have left the window.
+ * Applies `rules` to the timestamps (ms) of the counted attempts of one scope. The window is
+ * (now - window, now], as in the SQL function. When a rule trips, `retryAfterSec` is when enough
+ * of the oldest attempts have left the window.
  */
 export function evaluateRules(
   timestampsMs: readonly number[],
@@ -67,7 +68,7 @@ export function evaluateRules(
   for (const rule of rules) {
     const windowMs = rule.windowSec * 1000;
     const inWindow = timestampsMs
-      .filter((at) => at >= nowMs - windowMs && at <= nowMs)
+      .filter((at) => at > nowMs - windowMs && at <= nowMs)
       .sort((a, b) => a - b);
     if (inWindow.length < rule.max) continue;
     const releasing = inWindow[inWindow.length - rule.max] ?? nowMs;

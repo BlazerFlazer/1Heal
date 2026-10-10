@@ -1,10 +1,11 @@
 import { InMemorySmsLog, type RateLimiter } from '../../functions/_shared/hooks/rateLimiter';
-import { handleSendSms, type HookResponse } from '../../functions/_shared/hooks/sendSmsHook';
-import { OTP_TEMPLATES } from '../../functions/_shared/hooks/smsTemplates';
 import {
-  encodeBase64,
-  signStandardWebhook,
-} from '../../functions/_shared/hooks/standardWebhooks';
+  handleSendSms,
+  type HookResponse,
+  MAX_BODY_CHARS,
+} from '../../functions/_shared/hooks/sendSmsHook';
+import { OTP_TEMPLATES } from '../../functions/_shared/hooks/smsTemplates';
+import { encodeBase64, signStandardWebhook } from '../../functions/_shared/hooks/standardWebhooks';
 import { createMemoryLogger } from '../../functions/_shared/log';
 import { MockSmsProvider } from '../../functions/_shared/sms/MockSmsProvider';
 import { SmsError } from '../../functions/_shared/sms/SmsProvider';
@@ -142,15 +143,40 @@ describe('handleSendSms', () => {
       message: 'Too many SMS requests, you can only request this after 600 seconds.',
     });
     expect(provider.sent).toHaveLength(3);
-    expect(smsLog.entries.at(-1)).toMatchObject({ status: 'rate_limited', providerMessageId: undefined });
+    const rejected = smsLog.entries.at(-1);
+    expect(rejected).toMatchObject({ status: 'rate_limited', phone: '+998901234567' });
+    expect(rejected).not.toHaveProperty('providerMessageId');
     expect(log.entries.at(-1)).toMatchObject({
       level: 'info',
       event: 'sms_rate_limited',
       scope: 'phone',
       rule: 'phone_10m',
-      retryAfterSec: 600,
+      retry_after_sec: 600,
       phone_masked: '+99890*****67',
     });
+  });
+
+  test('rate limits an IP after 20 sends to different phones within an hour', async () => {
+    const { provider, smsLog, log, run } = harness();
+    for (let i = 0; i < 20; i += 1) {
+      const phone = `99890${String(i).padStart(7, '0')}`;
+      expect((await run(await signedRequest({ phone }))).status).toBe(200);
+    }
+    const response = await run(await signedRequest({ phone: '998937654321' }));
+    expect(errorOf(response)).toEqual({
+      http_code: 429,
+      message: 'Too many SMS requests, you can only request this after 3600 seconds.',
+    });
+    expect(provider.sent).toHaveLength(20);
+    expect(smsLog.entries.at(-1)).toMatchObject({ status: 'rate_limited', ip: IP });
+    expect(log.entries.at(-1)).toMatchObject({
+      event: 'sms_rate_limited',
+      scope: 'ip',
+      rule: 'ip_1h',
+    });
+
+    const otherIp = await run(await signedRequest({ phone: '998937654321', ip: '198.51.100.7' }));
+    expect(otherIp).toEqual({ status: 200, headers: {}, body: {} });
   });
 
   test('rejects a request signed with another secret before touching anything', async () => {
@@ -165,6 +191,19 @@ describe('handleSendSms', () => {
       event: 'sms_hook_signature_rejected',
       reason: 'no_matching_signature',
     });
+  });
+
+  test('refuses an oversized body before verifying anything', async () => {
+    const { provider, smsLog, log, run } = harness();
+    const response = await run({ rawBody: 'x'.repeat(MAX_BODY_CHARS + 1), headers: new Headers() });
+    expect(response).toEqual({
+      status: 413,
+      headers: {},
+      body: { error: { http_code: 413, message: 'Payload too large' } },
+    });
+    expect(provider.sent).toHaveLength(0);
+    expect(smsLog.entries).toHaveLength(0);
+    expect(log.entries[0]).toMatchObject({ level: 'warn', event: 'sms_hook_body_too_large' });
   });
 
   test('rejects a signed but invalid payload with 400', async () => {

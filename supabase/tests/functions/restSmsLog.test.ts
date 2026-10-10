@@ -17,7 +17,7 @@ interface Captured {
 
 function fakeFetch(reply: { status: number; body?: unknown } | Error) {
   const calls: Captured[] = [];
-  const fetch: typeof fetch = async (input, init) => {
+  const fetch: typeof globalThis.fetch = async (input, init) => {
     const url = typeof input === 'string' ? input : input instanceof URL ? input.href : input.url;
     calls.push({
       url,
@@ -36,7 +36,10 @@ function fakeFetch(reply: { status: number; body?: unknown } | Error) {
 
 function store(reply: { status: number; body?: unknown } | Error) {
   const { fetch, calls } = fakeFetch(reply);
-  return { store: new RestSmsLog({ supabaseUrl: `${URL_BASE}/`, serviceRoleKey: KEY, fetch }), calls };
+  return {
+    store: new RestSmsLog({ supabaseUrl: `${URL_BASE}/`, serviceRoleKey: KEY, fetch }),
+    calls,
+  };
 }
 
 describe('RestSmsLog.check', () => {
@@ -73,9 +76,9 @@ describe('RestSmsLog.check', () => {
 
   test('throws SmsLogUnavailableError on HTTP errors, network errors and odd bodies', async () => {
     const input = { phone: '+998901234567', purpose: 'otp' as const, now: NOW };
-    await expect(store({ status: 500, body: { message: 'boom' } }).store.check(input)).rejects.toThrow(
-      SmsLogUnavailableError,
-    );
+    await expect(
+      store({ status: 500, body: { message: 'boom' } }).store.check(input),
+    ).rejects.toThrow(SmsLogUnavailableError);
     await expect(store(new TypeError('fetch failed')).store.check(input)).rejects.toThrow(
       /fetch failed/,
     );
@@ -114,7 +117,13 @@ describe('RestSmsLog.record', () => {
 
   test('sends nulls for optional columns and reports failures', async () => {
     const ok = store({ status: 201 });
-    await ok.store.record({ phone: '+998901234567', purpose: 'otp', provider: 'mock', status: 'failed', at: NOW });
+    await ok.store.record({
+      phone: '+998901234567',
+      purpose: 'otp',
+      provider: 'mock',
+      status: 'failed',
+      at: NOW,
+    });
     expect(ok.calls[0]?.body).toEqual({
       phone_e164: '+998901234567',
       purpose: 'otp',
@@ -125,7 +134,13 @@ describe('RestSmsLog.record', () => {
     });
     const failing = store({ status: 401, body: { message: 'bad key' } });
     await expect(
-      failing.store.record({ phone: '+998901234567', purpose: 'otp', provider: 'mock', status: 'sent', at: NOW }),
+      failing.store.record({
+        phone: '+998901234567',
+        purpose: 'otp',
+        provider: 'mock',
+        status: 'sent',
+        at: NOW,
+      }),
     ).rejects.toThrow(/HTTP 401/);
   });
 });
@@ -138,8 +153,8 @@ describe('parseDecision', () => {
     ).toEqual({ allowed: false, scope: 'ip', rule: 'ip_1h', retryAfterSec: 1 });
     expect(() => parseDecision(null)).toThrow(SmsLogUnavailableError);
     expect(() => parseDecision({ allowed: false })).toThrow(SmsLogUnavailableError);
-    expect(() => parseDecision({ allowed: false, scope: 'user', rule: 'x', retry_after_sec: 1 })).toThrow(
-      SmsLogUnavailableError,
-    );
+    expect(() =>
+      parseDecision({ allowed: false, scope: 'user', rule: 'x', retry_after_sec: 1 }),
+    ).toThrow(SmsLogUnavailableError);
   });
 });

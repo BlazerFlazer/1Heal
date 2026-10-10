@@ -1,0 +1,196 @@
+/**
+ * Venues 16-30 (martial arts, crossfit, spa, sauna/hammam, massage, physio, recovery).
+ * Same shape as venues-a.mjs. `status` defaults to 'active'; one venue is paused (renovation)
+ * and one is a draft (partner onboarding), to exercise the status rules.
+ */
+// prettier-ignore
+export const VENUES_B = [
+  {
+    slug: 'samurai-dojo-mirzo-ulugbek', category: 'martial-arts', tier: 1, priceTier: 1, district: 'mirzo-ulugbek', lat: 41.3354, lng: 69.3448, hours: 'combat',
+    name: { ru: 'Samurai Dojo', uz: 'Samurai Dojo', en: 'Samurai Dojo' },
+    street: { ru: 'ул. Паркентская, 45', uz: 'Parkent koʻchasi, 45', en: '45 Parkent Street' },
+    description: {
+      ru: 'Дзюдо и карате для взрослых в просторном зале с татами. Тренеры — мастера спорта, на первое занятие можно прийти без кимоно.',
+      uz: 'Tatamili keng zalda kattalar uchun dzyudo va karate. Murabbiylar — sport ustalari, birinchi mashgʻulotga kimonosiz kelish mumkin.',
+      en: 'Judo and karate for adults in a spacious tatami hall. The coaches are masters of sport, and you can come to your first class without a gi.',
+    },
+    amenities: ['showers', 'lockers', 'water', 'parking'],
+    classes: ['judo', 'karate'],
+  },
+  {
+    slug: 'lochin-fight-club-yunusabad', category: 'martial-arts', tier: 2, priceTier: 2, district: 'yunusabad', lat: 41.3651, lng: 69.2905, hours: 'combat',
+    name: { ru: 'Lochin Fight Club', uz: 'Lochin Fight Club', en: 'Lochin Fight Club' },
+    street: { ru: 'ул. Ахмада Дониша, 32', uz: 'Ahmad Donish koʻchasi, 32', en: '32 Ahmad Donish Street' },
+    description: {
+      ru: 'Бокс, кикбоксинг и ММА: ринг, клетка и зона мешков. Тренировки для новичков и спарринги для тех, кто готов.',
+      uz: 'Boks, kikboksing va MMA: ring, qafas va qopchalar zonasi. Yangi boshlovchilar uchun mashgʻulotlar va tayyorlar uchun sparringlar.',
+      en: 'Boxing, kickboxing and MMA with a ring, a cage and a bag zone. Beginner sessions plus sparring for those who are ready.',
+    },
+    amenities: ['showers', 'lockers', 'equipment_rental', 'water'],
+    classes: ['boxing', 'kickboxing', 'mma'],
+  },
+  {
+    slug: 'polvon-kurash-almazar', category: 'martial-arts', tier: 1, priceTier: 1, district: 'almazar', lat: 41.3332, lng: 69.2381, hours: 'combat',
+    name: { ru: 'Клуб курэша «Полвон»', uz: '«Polvon» kurash klubi', en: 'Polvon Kurash Club' },
+    street: { ru: 'ул. Карасарай, 15', uz: 'Qorasaroy koʻchasi, 15', en: '15 Qorasaroy Street' },
+    description: {
+      ru: 'Курэш — национальная борьба — и вольная борьба для взрослых. Сильные тренеры, дружная команда и честная нагрузка.',
+      uz: 'Kattalar uchun milliy kurash va erkin kurash. Kuchli murabbiylar, inoq jamoa va jiddiy mashgʻulotlar.',
+      en: 'Kurash, Uzbekistan’s national wrestling, plus freestyle wrestling for adults. Strong coaches, a close-knit team and honest hard work.',
+    },
+    amenities: ['showers', 'lockers', 'water'],
+    classes: ['kurash'],
+  },
+  {
+    slug: 'forge-box-mirabad', category: 'crossfit', tier: 2, priceTier: 2, district: 'mirabad', lat: 41.2956, lng: 69.2763, hours: 'box',
+    name: { ru: 'Forge Box', uz: 'Forge Box', en: 'Forge Box' },
+    street: { ru: 'ул. Нукусская, 54', uz: 'Nukus koʻchasi, 54', en: '54 Nukus Street' },
+    description: {
+      ru: 'Функциональный бокс с тренировкой дня, олимпийской тяжёлой атлетикой и гимнастикой. Каждое занятие ведёт тренер, нагрузку подбираем под ваш уровень.',
+      uz: 'Kun mashgʻuloti, olimpiya ogʻir atletikasi va gimnastika bilan funksional boks. Har bir mashgʻulotni murabbiy olib boradi, yuklamani darajangizga moslaymiz.',
+      en: 'A functional fitness box with a workout of the day, Olympic weightlifting and gymnastics. Every class is coached and scaled to your level.',
+    },
+    amenities: ['showers', 'lockers', 'water', 'parking'],
+    classes: ['wod', 'olympic'],
+  },
+  {
+    slug: 'chaqmoq-box-sergeli', category: 'crossfit', tier: 1, priceTier: 1, district: 'sergeli', lat: 41.2534, lng: 69.2318, hours: 'box',
+    name: { ru: 'Chaqmoq Box', uz: 'Chaqmoq Box', en: 'Chaqmoq Box' },
+    street: { ru: 'ул. Чоштепа, 9', uz: 'Choshtepa koʻchasi, 9', en: '9 Choshtepa Street' },
+    description: {
+      ru: 'Небольшой бокс с короткими интенсивными тренировками по 45 минут. Отличный вариант для тех, кто ценит время.',
+      uz: '45 daqiqalik qisqa va jadal mashgʻulotlarga ega kichik boks. Vaqtini qadrlaydiganlar uchun ajoyib tanlov.',
+      en: 'A small box with short, intense 45-minute workouts. A great choice if your time is precious.',
+    },
+    amenities: ['showers', 'lockers', 'water'],
+    classes: ['express', 'wod'],
+  },
+  {
+    slug: 'oasis-spa-mirabad', category: 'spa', tier: 3, priceTier: 3, district: 'mirabad', lat: 41.3069, lng: 69.2742, hours: 'spa',
+    cancellationWindowMin: 240,
+    name: { ru: 'Oasis Spa & Wellness', uz: 'Oasis Spa & Wellness', en: 'Oasis Spa & Wellness' },
+    street: { ru: 'ул. Мовароуннахр, 1', uz: 'Movarounnahr koʻchasi, 1', en: '1 Movarounnahr Street' },
+    description: {
+      ru: 'Спа-комплекс с бассейном, хаммамом, соляной комнатой и зоной отдыха. Идеально, чтобы выдохнуть после длинной недели.',
+      uz: 'Basseyn, hammom, tuz xonasi va dam olish zonasiga ega spa majmuasi. Uzoq haftadan keyin nafas rostlash uchun ayni muddao.',
+      en: 'A spa complex with a pool, a hammam, a salt room and a relaxation lounge. Perfect for unwinding after a long week.',
+    },
+    amenities: ['showers', 'lockers', 'towels', 'pool', 'sauna', 'tea_lounge', 'hairdryer', 'parking'],
+    classes: ['hammam_ritual', 'aqua_relax', 'salt_room'],
+  },
+  {
+    slug: 'bahor-spa-yunusabad', category: 'spa', tier: 2, priceTier: 2, district: 'yunusabad', lat: 41.3511, lng: 69.2799, hours: 'spa',
+    womenOnly: [[3, '10:00', '15:00']],
+    name: { ru: 'Bahor Spa', uz: 'Bahor Spa', en: 'Bahor Spa' },
+    street: { ru: 'ул. Осиё, 8', uz: 'Osiyo koʻchasi, 8', en: '8 Osiyo Street' },
+    description: {
+      ru: 'Уютный спа с травяной парной, массажными кабинетами и чайной комнатой. По средам днём — часы только для женщин.',
+      uz: 'Giyohli bugʻxona, massaj xonalari va choyxonali shinam spa. Chorshanba kunlari kunduzi — faqat ayollar uchun soatlar.',
+      en: 'A cosy spa with a herbal steam room, massage rooms and a tea room. Wednesday daytime is reserved for women.',
+    },
+    amenities: ['showers', 'lockers', 'towels', 'tea_lounge', 'hairdryer'],
+    classes: ['hammam_ritual'],
+  },
+  {
+    slug: 'sharq-hammam-shaykhantahur', category: 'sauna-hammam', tier: 2, priceTier: 2, district: 'shaykhantahur', lat: 41.3197, lng: 69.2412, hours: 'bath',
+    womenOnly: [[1, '09:00', '15:00'], [4, '09:00', '15:00']],
+    name: { ru: 'Хаммам «Шарк»', uz: '«Sharq» hammomi', en: 'Sharq Hammam' },
+    street: { ru: 'ул. Заркайнар, 27', uz: 'Zarqaynar koʻchasi, 27', en: '27 Zarqaynar Street' },
+    description: {
+      ru: 'Восточная баня в старом городе: горячий мрамор, кесе-пилинг и пенный массаж. В понедельник и четверг до 15:00 — только для женщин.',
+      uz: 'Eski shahardagi sharqona hammom: issiq marmar, kesa-piling va koʻpikli massaj. Dushanba va payshanba kunlari soat 15:00 gacha — faqat ayollar uchun.',
+      en: 'An oriental bathhouse in the old city with hot marble, a kese scrub and foam massage. Monday and Thursday until 3 pm are women-only.',
+    },
+    amenities: ['showers', 'lockers', 'towels', 'tea_lounge'],
+    classes: ['scrub', 'steam_ceremony'],
+  },
+  {
+    slug: 'kedr-banya-chilanzar', category: 'sauna-hammam', tier: 1, priceTier: 1, district: 'chilanzar', lat: 41.2829, lng: 69.2205, hours: 'banya',
+    name: { ru: 'Баня «Кедр»', uz: '«Kedr» saunasi', en: 'Kedr Banya' },
+    street: { ru: 'ул. Гавхар, 133', uz: 'Gavhar koʻchasi, 133', en: '133 Gavhar Street' },
+    description: {
+      ru: 'Русская баня на дровах и финская сауна с купелью. По пятницам и субботам открыто до двух ночи.',
+      uz: 'Oʻtinda isitiladigan rus hammomi va sovuq suvli hovuzchali fin saunasi. Juma va shanba kunlari tungi soat ikkigacha ochiq.',
+      en: 'A wood-fired Russian banya and a Finnish sauna with a plunge pool. Open until 2 am on Fridays and Saturdays.',
+    },
+    amenities: ['showers', 'lockers', 'towels', 'tea_lounge', 'parking'],
+    classes: ['steam_ceremony'],
+  },
+  {
+    slug: 'issiq-hammam-yakkasaray', category: 'sauna-hammam', tier: 1, priceTier: 1, district: 'yakkasaray', lat: 41.2847, lng: 69.2556, hours: 'bath',
+    status: 'paused',
+    name: { ru: 'Хаммам «Иссик»', uz: '«Issiq» hammomi', en: 'Issiq Hammam' },
+    street: { ru: 'ул. Кушбеги, 6', uz: 'Qoʻshbegi koʻchasi, 6', en: '6 Qushbegi Street' },
+    description: {
+      ru: 'Семейный хаммам с парной и массажем. Сейчас закрыт на ремонт и скоро снова откроется.',
+      uz: 'Bugʻxona va massajli oilaviy hammom. Hozir taʼmirlash uchun yopiq, tez orada yana ochiladi.',
+      en: 'A family hammam with a steam room and massage. Closed for renovation for now and reopening soon.',
+    },
+    amenities: ['showers', 'lockers', 'towels'],
+    classes: ['scrub'],
+  },
+  {
+    slug: 'shifo-massage-mirzo-ulugbek', category: 'massage', tier: 2, priceTier: 2, district: 'mirzo-ulugbek', lat: 41.3226, lng: 69.3189, hours: 'care',
+    cancellationWindowMin: 240,
+    name: { ru: 'Shifo Massage', uz: 'Shifo Massage', en: 'Shifo Massage' },
+    street: { ru: 'ул. Мавлоно Риёзий, 19', uz: 'Mavlono Riyoziy koʻchasi, 19', en: '19 Mavlono Riyoziy Street' },
+    description: {
+      ru: 'Классический, спортивный и расслабляющий массаж от сертифицированных мастеров. Перед сеансом коротко обсудим, что беспокоит.',
+      uz: 'Sertifikatlangan ustalardan klassik, sport va tinchlantiruvchi massaj. Seansdan oldin sizni nima bezovta qilayotganini qisqacha muhokama qilamiz.',
+      en: 'Classic, sports and relaxing massage from certified therapists. Before each session we briefly talk through what is bothering you.',
+    },
+    amenities: ['showers', 'towels', 'tea_lounge', 'wifi'],
+    classes: ['mfr', 'face_massage'],
+  },
+  {
+    slug: 'tiniq-massage-almazar', category: 'massage', tier: 1, priceTier: 1, district: 'almazar', lat: 41.3402, lng: 69.2075, hours: 'care',
+    status: 'draft',
+    name: { ru: 'Tiniq Massage', uz: 'Tiniq Massage', en: 'Tiniq Massage' },
+    street: { ru: 'просп. Беруни, 41', uz: 'Beruniy shoh koʻchasi, 41', en: '41 Beruniy Avenue' },
+    description: {
+      ru: 'Массажная студия у метро «Беруни». Открытие совсем скоро.',
+      uz: '«Beruniy» metrosi yonidagi massaj studiyasi. Tez orada ochiladi.',
+      en: 'A massage studio by Beruniy metro, opening very soon.',
+    },
+    amenities: ['showers', 'towels'],
+    classes: ['mfr'],
+  },
+  {
+    slug: 'harakat-physio-yunusabad', category: 'physio', tier: 2, priceTier: 2, district: 'yunusabad', lat: 41.3396, lng: 69.2858, hours: 'clinic',
+    cancellationWindowMin: 240,
+    name: { ru: 'Клиника Harakat Physio', uz: 'Harakat Physio klinikasi', en: 'Harakat Physio Clinic' },
+    street: { ru: 'ул. Шахриобод, 5', uz: 'Shahriobod koʻchasi, 5', en: '5 Shahriobod Street' },
+    description: {
+      ru: 'Физиотерапевты и реабилитологи помогают вернуться к спорту после травм: ЛФК, кинезиотейпирование и работа со спиной.',
+      uz: 'Fizioterapevtlar va reabilitologlar jarohatdan keyin sportga qaytishga yordam beradi: davolash gimnastikasi, kinezioteyping va bel bilan ishlash.',
+      en: 'Physiotherapists and rehab specialists help you get back to sport after injury with exercise therapy, kinesio taping and back care.',
+    },
+    amenities: ['showers', 'lockers', 'wheelchair_access', 'wifi', 'parking'],
+    classes: ['exercise_therapy', 'knee_rehab', 'posture'],
+  },
+  {
+    slug: 'tayanch-rehab-mirabad', category: 'physio', tier: 3, priceTier: 3, district: 'mirabad', lat: 41.3013, lng: 69.2911, hours: 'clinic',
+    cancellationWindowMin: 240,
+    name: { ru: 'Реабилитационный центр Tayanch', uz: 'Tayanch reabilitatsiya markazi', en: 'Tayanch Rehab Centre' },
+    street: { ru: 'ул. Ойбека, 36', uz: 'Oybek koʻchasi, 36', en: '36 Oybek Street' },
+    description: {
+      ru: 'Современный центр реабилитации: тренировки на антигравитационной дорожке, гидрокинезотерапия и индивидуальные программы.',
+      uz: 'Zamonaviy reabilitatsiya markazi: antigravitatsion yoʻlakda mashgʻulotlar, gidrokinezoterapiya va individual dasturlar.',
+      en: 'A modern rehabilitation centre with anti-gravity treadmill sessions, aquatic therapy and individual programmes.',
+    },
+    amenities: ['showers', 'lockers', 'wheelchair_access', 'towels', 'parking', 'air_conditioning'],
+    classes: ['knee_rehab', 'exercise_therapy'],
+  },
+  {
+    slug: 'recover-lab-shaykhantahur', category: 'recovery', tier: 3, priceTier: 3, district: 'shaykhantahur', lat: 41.3121, lng: 69.2583, hours: 'recovery',
+    name: { ru: 'Recover Lab', uz: 'Recover Lab', en: 'Recover Lab' },
+    street: { ru: 'ул. Фуркат, 10', uz: 'Furqat koʻchasi, 10', en: '10 Furqat Street' },
+    description: {
+      ru: 'Восстановление после нагрузок: криокамера, прессотерапия, инфракрасная сауна и растяжка с тренером. Заходите после тренировки или длинного дня.',
+      uz: 'Yuklamadan keyin tiklanish: kriokamera, pressoterapiya, infraqizil sauna va murabbiy bilan choʻzilish mashqlari. Mashgʻulot yoki uzoq kundan keyin keling.',
+      en: 'Recovery after hard training with a cryo chamber, compression therapy, an infrared sauna and coached stretching. Drop in after a workout or a long day.',
+    },
+    amenities: ['showers', 'towels', 'wifi', 'tea_lounge'],
+    classes: ['mobility', 'breathwork', 'contrast'],
+  },
+];

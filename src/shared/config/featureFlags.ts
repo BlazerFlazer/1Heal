@@ -4,8 +4,10 @@ import { create } from 'zustand';
 import { type AppEnvName, env, MAPS_PROVIDERS } from '@/shared/config/env';
 
 /**
- * Feature flags: local defaults per APP_ENV, optionally overridden by a remote provider
- * (the Supabase `feature_flags` table arrives in M2 as another `FeatureFlagProvider`).
+ * Feature flags: local defaults per APP_ENV, optionally overridden by a remote provider.
+ * `getFlagProvider()` in `@/services/api/featureFlagProvider` picks `SupabaseFlagProvider`
+ * (table `public.feature_flags`, live via Realtime) or `LocalFlagProvider`; the root layout loads it
+ * after sign-in through `useFeatureFlagSync`.
  */
 
 export const flagsSchema = z.object({

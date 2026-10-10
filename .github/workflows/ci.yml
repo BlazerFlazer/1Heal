@@ -55,12 +55,11 @@ jobs:
         with:
           node-version: 22
           cache: npm
+      # The Supabase CLI comes from devDependencies (npm package "supabase"), so CI and every
+      # developer machine run the same pinned version.
       - run: npm ci --no-audit --no-fund
-      - uses: supabase/setup-cli@v1
-        with:
-          version: latest
       - name: Start Supabase local (applies supabase/migrations and seed.sql on the real stack)
-        run: supabase start -x studio,imgproxy,mailpit,logflare,vector,edge-runtime,supavisor,postgres-meta
+        run: npx supabase start -x studio,imgproxy,mailpit,logflare,vector,edge-runtime,supavisor,postgres-meta
       - name: DB tests against Supabase local (real auth schema, shim skipped)
         run: npm run db:test
         env:
@@ -68,9 +67,13 @@ jobs:
       - name: DB tests against embedded PostgreSQL (shim applied)
         run: npm run db:test
       - run: npm run typecheck:db
+      - name: Generated database types match the migrations
+        run: |
+          npm run db:types
+          git diff --exit-code -- src/services/api/database.types.ts
       - name: Stop Supabase local
         if: always()
-        run: supabase stop --no-backup
+        run: npx supabase stop --no-backup
 
   e2e-smoke:
     name: E2E smoke (Maestro, Android emulator)

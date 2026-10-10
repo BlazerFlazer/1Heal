@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "noUncheckedIndexedAccess": true
+  },
+  "imports": {
+    "./_shared/brand": "./_shared/brand.ts",
+    "./_shared/log": "./_shared/log.ts",
+    "./_shared/phone": "./_shared/phone.ts",
+    "./_shared/hooks/rateLimiter": "./_shared/hooks/rateLimiter.ts",
+    "./_shared/hooks/restSmsLog": "./_shared/hooks/restSmsLog.ts",
+    "./_shared/hooks/sendSmsHook": "./_shared/hooks/sendSmsHook.ts",
+    "./_shared/hooks/sendSmsPayload": "./_shared/hooks/sendSmsPayload.ts",
+    "./_shared/hooks/smsTemplates": "./_shared/hooks/smsTemplates.ts",
+    "./_shared/hooks/standardWebhooks": "./_shared/hooks/standardWebhooks.ts",
+    "./_shared/sms/EskizSmsProvider": "./_shared/sms/EskizSmsProvider.ts",
+    "./_shared/sms/MockSmsProvider": "./_shared/sms/MockSmsProvider.ts",
+    "./_shared/sms/SmsProvider": "./_shared/sms/SmsProvider.ts",
+    "./_shared/sms/index": "./_shared/sms/index.ts"
+  }
+}

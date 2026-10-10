@@ -3,6 +3,8 @@ module.exports = {
   preset: 'jest-expo',
   resolver: 'react-native-worklets/jest/resolver',
   roots: ['<rootDir>/src', '<rootDir>/app'],
+  // Component tests that open sheets take ~1 s alone; under full-suite load 5 s was not enough.
+  testTimeout: 15000,
   testMatch: ['**/*.test.ts', '**/*.test.tsx'],
   setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
   moduleNameMapper: {

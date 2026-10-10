@@ -21,7 +21,8 @@ async function signedHeaders(
 ): Promise<Headers> {
   const id = options.id ?? 'msg_2fZ8a';
   const timestamp = options.timestamp ?? NOW_SEC;
-  const signature = options.signature ?? `v1,${await signStandardWebhook(key, id, timestamp, body)}`;
+  const signature =
+    options.signature ?? `v1,${await signStandardWebhook(key, id, timestamp, body)}`;
   return new Headers({
     'webhook-id': id,
     'webhook-timestamp': String(timestamp),

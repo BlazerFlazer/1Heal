@@ -12,13 +12,16 @@ describe('OTP templates', () => {
     expect(BRAND_NAME).toBe(APP_BRAND_NAME);
   });
 
-  test.each(SMS_LOCALES)('%s: contains the brand and the code, no leftover placeholders', (locale) => {
-    const text = renderOtpSms(locale, '482913');
-    expect(text.startsWith(`${BRAND_NAME}: `)).toBe(true);
-    expect(text).toContain('482913');
-    expect(text).not.toMatch(/\{\{|\}\}/);
-    expect(text.length).toBeLessThanOrEqual(70);
-  });
+  test.each(SMS_LOCALES)(
+    '%s: contains the brand and the code, no leftover placeholders',
+    (locale) => {
+      const text = renderOtpSms(locale, '482913');
+      expect(text.startsWith(`${BRAND_NAME}: `)).toBe(true);
+      expect(text).toContain('482913');
+      expect(text).not.toMatch(/\{\{|\}\}/);
+      expect(text.length).toBeLessThanOrEqual(70);
+    },
+  );
 
   test('each locale has its own wording', () => {
     expect(renderOtpSms('ru', '111111')).toBe('1Heal: ваш код 111111. Никому не сообщайте его.');

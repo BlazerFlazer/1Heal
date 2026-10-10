@@ -31,9 +31,9 @@ const TOKEN_VALID = jwt(NOW_MS / 1000 + 30 * 24 * 3600);
 const TOKEN_NEW = jwt(NOW_MS / 1000 + 60 * 24 * 3600);
 
 /** A fetch that answers from a queue and records what it was asked. */
-function fakeFetch(replies: Reply[]): { fetch: typeof fetch; calls: Call[] } {
+function fakeFetch(replies: Reply[]): { fetch: typeof globalThis.fetch; calls: Call[] } {
   const calls: Call[] = [];
-  const fetch: typeof fetch = async (input, init) => {
+  const fetch: typeof globalThis.fetch = async (input, init) => {
     const url = typeof input === 'string' ? input : input instanceof URL ? input.href : input.url;
     const headers = new Headers(init?.headers);
     const form =
@@ -57,10 +57,19 @@ function fakeFetch(replies: Reply[]): { fetch: typeof fetch; calls: Call[] } {
   return { fetch, calls };
 }
 
-const LOGIN_OK = { status: 200, body: { message: 'token_generated', data: { token: TOKEN_VALID } } };
-const SEND_OK = { status: 200, body: { id: '4b1f', status: 'waiting', message: 'Waiting for SMS provider' } };
+const LOGIN_OK = {
+  status: 200,
+  body: { message: 'token_generated', data: { token: TOKEN_VALID } },
+};
+const SEND_OK = {
+  status: 200,
+  body: { id: '4b1f', status: 'waiting', message: 'Waiting for SMS provider' },
+};
 
-function provider(replies: Reply[], options: { now?: () => number; from?: string; callbackUrl?: string } = {}) {
+function provider(
+  replies: Reply[],
+  options: { now?: () => number; from?: string; callbackUrl?: string } = {},
+) {
   const { fetch, calls } = fakeFetch(replies);
   const instance = new EskizSmsProvider(
     { ...CONFIG, from: options.from, callbackUrl: options.callbackUrl },
@@ -120,6 +129,19 @@ describe('EskizSmsProvider', () => {
       from: '1Heal',
       callback_url: 'https://example.test/eskiz/callback',
     });
+  });
+
+  test('concurrent sends share a single login', async () => {
+    const { instance, calls } = provider([LOGIN_OK, SEND_OK, SEND_OK]);
+    await expect(Promise.all([instance.send(INPUT), instance.send(INPUT)])).resolves.toEqual([
+      { providerMessageId: '4b1f' },
+      { providerMessageId: '4b1f' },
+    ]);
+    expect(calls.map((call) => call.path)).toEqual([
+      '/auth/login',
+      '/message/sms/send',
+      '/message/sms/send',
+    ]);
   });
 
   test('logs in again once the cached token JWT is about to expire', async () => {

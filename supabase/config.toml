@@ -91,6 +91,8 @@ deno_version = 2
 # Called by Supabase Auth with the hook signature, not by users.
 [functions.auth-sms-hook]
 verify_jwt = false
+# Exact mappings for the extensionless _shared imports (supabase/functions/README.md).
+import_map = "./functions/deno.json"
 
 [analytics]
 enabled = false

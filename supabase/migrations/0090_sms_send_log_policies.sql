@@ -1,6 +1,7 @@
 -- 0090 sms_send_log policies: the rate-limit check the auth-sms-hook Edge Function calls through
--- the Data API (rpc/sms_rate_limit_check) with the service role before every OTP SMS. The table
--- and its indexes come from 0003_identity.sql; no client role may read or write the log.
+-- the Data API (rpc/sms_rate_limit_check) with the service role before every OTP SMS. The table,
+-- its (phone_e164, created_at) and (ip, created_at) indexes come from 0003_identity.sql, its grants
+-- and the admin read policy from 0008_rls.sql; only service_role writes rows (the hook).
 --
 -- Limits (ADR-003, mirrored by supabase/functions/_shared/hooks/rateLimiter.ts for unit tests):
 --   per phone: 3 in 10 minutes, 10 in 24 hours;  per IP: 20 in 1 hour.
@@ -19,7 +20,7 @@ create or replace function public.sms_rate_limit_check(
 returns jsonb
 language plpgsql
 stable
-security definer
+security invoker
 set search_path = public
 as $$
 declare
@@ -86,11 +87,9 @@ begin
   return jsonb_build_object('allowed', true);
 end $$;
 
+-- Invoker rights: only service_role (bypasses RLS, granted all on the table in 0008) may call it.
+-- Revoked explicitly because Supabase's default privileges grant execute on new functions.
 revoke execute on function public.sms_rate_limit_check(text, text, text, timestamptz)
   from public, anon, authenticated;
 grant execute on function public.sms_rate_limit_check(text, text, text, timestamptz)
   to service_role;
-
--- The log is server-only: the Data API roles for clients get nothing, the hook uses service_role
--- (bypasses RLS). Revoked explicitly because Supabase's default privileges grant all on new tables.
-revoke all on table public.sms_send_log from anon, authenticated;
