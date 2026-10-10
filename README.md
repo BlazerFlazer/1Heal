@@ -8,10 +8,33 @@ and venue staff scan it to consume a visit from the monthly quota.
 One Expo (React Native) codebase serves two modes, **member** and **partner** (venue staff). A small
 admin web app lives in `apps/admin` as a separate package.
 
-Status: Milestone 2 (data: Postgres schema with RLS, triggers and ledgers, the Send-SMS hook,
-a deterministic demo seed, generated types) on top of Milestone 1 (foundation, design system,
-i18n, auth with a mock provider, navigation shell with placeholder tabs). See `docs/PLAN.md` for
-the full scope and the remaining milestones.
+## Project status (2026-10-10)
+
+| Milestone                   | State       | What exists                                                                                                                                                                |
+| --------------------------- | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| M1 Foundation               | done        | design system with WCAG contrast tests, ru/uz/en i18n, 22 UI components + dev gallery, onboarding, phone/OTP sign-in (mock provider), member and partner navigation shells |
+| M2 Data                     | done        | Postgres schema (36 tables) with RLS on every table, triggers and ledgers, payment state machine, Send-SMS auth hook (Eskiz + mock), Tashkent demo seed, generated types   |
+| Observability               | done        | Sentry (privacy-first, scrubbed events), verified end to end                                                                                                               |
+| M3 Discovery                | not started | home with real data, list/map, filters, venue page                                                                                                                         |
+| M4 Subscriptions & payments | not started | Payme/Click/Uzum adapters, webhooks                                                                                                                                        |
+| M5 Booking engine           | not started | capacity, waitlist, cancellation, penalties                                                                                                                                |
+| M6 Check-in                 | not started | rotating QR, partner scanner                                                                                                                                               |
+| M7 Profile & reviews        | not started | reviews, notifications, deletion + export                                                                                                                                  |
+| M8 Admin & release          | not started | admin web app, audits, store readiness                                                                                                                                     |
+
+Screens for M3–M8 are styled placeholders with loading/empty/offline states. Verified gates:
+`npm run check` (93 Jest suites, 718 tests), `npm run db:test` (22 suites, 194 tests), web,
+Android and iOS bundles build. Not run on this machine: simulators, EAS builds, Supabase local.
+Full scope and milestones: `docs/PLAN.md`.
+
+### Quick demo on a phone (Expo Go)
+
+1. Keep `EXPO_PUBLIC_SUPABASE_URL` and `EXPO_PUBLIC_SUPABASE_ANON_KEY` empty in `.env`
+   (the mock auth provider needs neither).
+2. Run `npx expo start --go` (the `--go` flag matters: expo-dev-client is installed) and scan the
+   QR code with Expo Go on the same Wi-Fi; use `--tunnel` if the phone cannot connect.
+3. Sign in with any Uzbek mobile number and the code `123456`. A number ending in `00` also gets
+   the partner role (Profile → Partner mode).
 
 ## Prerequisites
 

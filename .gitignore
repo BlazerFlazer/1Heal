@@ -58,3 +58,6 @@ coverage/
 # admin app
 apps/admin/node_modules/
 apps/admin/.next/
+
+# submission archives
+*.zip
