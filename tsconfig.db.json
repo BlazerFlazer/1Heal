@@ -1,0 +1,15 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "types": ["jest", "node"],
+    "lib": ["ES2023"],
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "customConditions": [],
+    "allowJs": false,
+    "isolatedModules": true,
+    "noEmit": true
+  },
+  "include": ["supabase/tests/**/*.ts", "supabase/functions/**/*.ts"],
+  "exclude": ["node_modules"]
+}

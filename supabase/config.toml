@@ -1,0 +1,96 @@
+# Supabase CLI project config (local stack and CI). Reference:
+# https://supabase.com/docs/guides/local-development/cli/config
+#
+# Secrets never live here: env(NAME) reads the shell environment when the CLI starts.
+#   SEND_SMS_HOOK_SECRETS   "v1,whsec_<base64>" shared with the auth-sms-hook Edge Function
+#                           (the function verifies the hook signature with the same value).
+#
+# The embedded PostgreSQL used by `npm run db:test` on machines without Docker does not read this
+# file; it emulates the auth schema with supabase/tests/_shim (see docs/RUNBOOK.md).
+project_id = "oneheal"
+
+[api]
+enabled = true
+port = 54321
+schemas = ["public", "graphql_public"]
+extra_search_path = ["public", "extensions"]
+max_rows = 1000
+
+[db]
+port = 54322
+shadow_port = 54320
+major_version = 17
+
+[db.migrations]
+enabled = true
+schema_paths = []
+
+[db.seed]
+enabled = true
+sql_paths = ["./seed.sql"]
+
+[realtime]
+enabled = true
+
+[studio]
+enabled = true
+port = 54323
+api_url = "http://127.0.0.1"
+
+[local_smtp]
+enabled = true
+port = 54324
+
+[storage]
+enabled = true
+file_size_limit = "50MiB"
+
+[auth]
+enabled = true
+site_url = "http://127.0.0.1:3000"
+additional_redirect_urls = []
+jwt_expiry = 3600
+enable_refresh_token_rotation = true
+refresh_token_reuse_interval = 10
+enable_signup = true
+enable_anonymous_sign_ins = false
+enable_manual_linking = false
+
+[auth.rate_limit]
+sms_sent = 30
+token_verifications = 30
+
+# Phone OTP is the only sign-in method (ADR-003). The code is delivered by the send_sms hook.
+[auth.sms]
+enable_signup = true
+enable_confirmations = true
+# Must equal SUPABASE_OTP_RESEND_AFTER_SEC in src/services/auth/SupabaseAuthService.ts.
+max_frequency = "60s"
+
+# Fixed codes for CI and e2e; never real numbers.
+[auth.sms.test_otp]
+998900000000 = "123456"
+998901234500 = "123456"
+
+[auth.hook.send_sms]
+enabled = true
+uri = "http://host.docker.internal:54321/functions/v1/auth-sms-hook"
+secrets = "env(SEND_SMS_HOOK_SECRETS)"
+
+# Adds app_metadata.roles from public.user_roles to every access token (ADR-013).
+[auth.hook.custom_access_token]
+enabled = true
+uri = "pg-functions://postgres/public/custom_access_token_hook"
+
+[edge_runtime]
+enabled = true
+policy = "per_worker"
+inspector_port = 8083
+deno_version = 2
+
+# Called by Supabase Auth with the hook signature, not by users.
+[functions.auth-sms-hook]
+verify_jwt = false
+
+[analytics]
+enabled = false

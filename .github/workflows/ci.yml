@@ -43,27 +43,34 @@ jobs:
       - run: npm audit --audit-level=high --omit=dev
 
   db:
-    name: Database migrations and pgTAP tests
+    name: Database (migrations, RLS, seed) on Supabase local and embedded PostgreSQL
     runs-on: ubuntu-latest
+    env:
+      # config.toml reads the send_sms hook secret from the environment; a dummy value keeps
+      # `supabase start` happy here. Real secrets are repository secrets, never in the repo.
+      SEND_SMS_HOOK_SECRETS: v1,whsec_Y2ktZHVtbXktc2VuZC1zbXMtaG9vay1zZWNyZXQ=
     steps:
       - uses: actions/checkout@v4
-      - name: Detect Supabase project
-        id: has_db
-        run: |
-          if [ -f supabase/config.toml ]; then echo "present=true" >> "$GITHUB_OUTPUT"; else echo "present=false" >> "$GITHUB_OUTPUT"; fi
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --no-audit --no-fund
       - uses: supabase/setup-cli@v1
-        if: steps.has_db.outputs.present == 'true'
         with:
           version: latest
-      - name: Start local Supabase and run tests
-        if: steps.has_db.outputs.present == 'true'
-        run: |
-          supabase start -x studio,imgproxy,inbucket,logflare,vector,edge-runtime
-          supabase db reset --local
-          supabase test db --local
-      - name: Skipped (no supabase/config.toml yet)
-        if: steps.has_db.outputs.present != 'true'
-        run: echo "Database tests skipped until M2 adds supabase/config.toml"
+      - name: Start Supabase local (applies supabase/migrations and seed.sql on the real stack)
+        run: supabase start -x studio,imgproxy,mailpit,logflare,vector,edge-runtime,supavisor,postgres-meta
+      - name: DB tests against Supabase local (real auth schema, shim skipped)
+        run: npm run db:test
+        env:
+          DATABASE_URL: postgresql://postgres:postgres@127.0.0.1:54322/postgres
+      - name: DB tests against embedded PostgreSQL (shim applied)
+        run: npm run db:test
+      - run: npm run typecheck:db
+      - name: Stop Supabase local
+        if: always()
+        run: supabase stop --no-backup
 
   e2e-smoke:
     name: E2E smoke (Maestro, Android emulator)
